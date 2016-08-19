@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LocalAlertViewController" customModule="Living" customModuleProvider="target">
+            <connections>
+                <outlet property="lbl_mensaje" destination="ifh-HS-ENw" id="Ofg-r5-gxP"/>
+                <outlet property="view" destination="4b6-qR-ftH" id="Bs9-J9-FVw"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="4b6-qR-ftH">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gkG-d4-fRW">
+                    <rect key="frame" x="0.0" y="86" width="320" height="46"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="46" id="UdN-CF-1fZ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                    <state key="normal" title="Aceptar">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="dismiss:" destination="-1" eventType="touchUpInside" id="jfL-33-T4c"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Un momento por favor..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ifh-HS-ENw">
+                    <rect key="frame" x="8" y="13" width="304" height="65"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="0.72316209529999997" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="ifh-HS-ENw" firstAttribute="leading" secondItem="4b6-qR-ftH" secondAttribute="leading" constant="8" id="9eL-ds-4k0"/>
+                <constraint firstItem="gkG-d4-fRW" firstAttribute="leading" secondItem="4b6-qR-ftH" secondAttribute="leading" id="LbD-n9-g69"/>
+                <constraint firstAttribute="trailing" secondItem="gkG-d4-fRW" secondAttribute="trailing" id="QBL-wJ-eO4"/>
+                <constraint firstItem="gkG-d4-fRW" firstAttribute="top" secondItem="ifh-HS-ENw" secondAttribute="bottom" constant="8" id="bEH-Ds-Xjf"/>
+                <constraint firstAttribute="bottom" secondItem="gkG-d4-fRW" secondAttribute="bottom" id="eAM-Ca-Dg5"/>
+                <constraint firstAttribute="trailing" secondItem="ifh-HS-ENw" secondAttribute="trailing" constant="8" id="k8J-FY-mNd"/>
+                <constraint firstItem="ifh-HS-ENw" firstAttribute="top" secondItem="4b6-qR-ftH" secondAttribute="top" constant="13" id="zES-Ma-3uy"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="331" y="81"/>
+        </view>
+    </objects>
+</document>

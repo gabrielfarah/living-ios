@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pFu-6i-hWZ">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--My Account View Controller-->
+        <scene sceneID="dlH-wz-PfM">
+            <objects>
+                <viewController id="7ss-xt-N1S" customClass="MyAccountViewController" customModule="Living" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="z54-Vc-iZc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fwg-ob-I6d"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="iXz-iv-DP4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="domu_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="VdA-MJ-o60">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RfE-Hr-Zqy">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sX7-BN-fWh">
+                                        <rect key="frame" x="8" y="27" width="30" height="30"/>
+                                        <state key="normal" title="Button" image="feed_btn.png"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Living" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Wm-ql-zPy">
+                                        <rect key="frame" x="8" y="31" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D2A-Vc-mYN">
+                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cf6-hq-fOv">
+                                        <rect key="frame" x="227" y="9" width="25" height="25"/>
+                                        <state key="normal" image="usuario_icon.png"/>
+                                        <state key="selected" image="usuarioDOWN_icon.png"/>
+                                        <state key="highlighted" image="usuarioDOWN_icon.png"/>
+                                        <state key="focused" image="usuarioDOWN_icon.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BdS-If-wtF">
+                                        <rect key="frame" x="74" y="9" width="25" height="25"/>
+                                        <state key="normal" image="home_icon.png"/>
+                                        <state key="selected" image="homeDOWN_icon.png"/>
+                                        <state key="highlighted" image="homeDOWN_icon.png"/>
+                                        <state key="focused" image="homeDOWN_icon.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.83678488760000003" green="0.83678488760000003" blue="0.83678488760000003" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXc-iE-MrK">
+                                <rect key="frame" x="0.0" y="102" width="320" height="58"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Cambiar Contraseña">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="j7d-Pd-d9U" kind="show" id="oHh-fj-tow"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ihr-YA-sq0">
+                                <rect key="frame" x="0.0" y="440" width="320" height="58"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Cerrar Sesión">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="Logout:" destination="7ss-xt-N1S" eventType="touchUpInside" id="3po-Rr-4If"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3n-cf-8GR">
+                                <rect key="frame" x="0.0" y="168" width="320" height="58"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Administrar Usuarios">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hOE-9Q-JlY"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btn_add_users" destination="u3n-cf-8GR" id="fCG-CC-2Gr"/>
+                        <outlet property="btn_change_password" destination="pXc-iE-MrK" id="3Ly-4o-WKx"/>
+                        <outlet property="btn_logout" destination="ihr-YA-sq0" id="36K-1V-A2F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9WO-va-06C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2305" y="2352"/>
+        </scene>
+        <!--Change Password View Controller-->
+        <scene sceneID="w8d-9L-n70">
+            <objects>
+                <viewController id="j7d-Pd-d9U" customClass="ChangePasswordViewController" customModule="Living" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QnJ-Qs-dsf"/>
+                        <viewControllerLayoutGuide type="bottom" id="eSe-xf-x2r"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="u1d-Nx-7Ew">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jHm-og-dTz">
+                                <rect key="frame" x="0.0" y="510" width="320" height="58"/>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Cambiar Contraseña">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="ChangePassword:" destination="j7d-Pd-d9U" eventType="touchUpInside" id="7o5-Qq-TjK"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Antigua Contraseña" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t9l-mz-xxP">
+                                <rect key="frame" x="16" y="99" width="288" height="62"/>
+                                <color key="backgroundColor" red="0.1080475897" green="0.48678877799999998" blue="0.4773968327" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirmar Contraseña" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="aGg-D3-R8b">
+                                <rect key="frame" x="16" y="304" width="288" height="62"/>
+                                <color key="backgroundColor" red="0.1080475897" green="0.48678877799999998" blue="0.4773968327" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nueva Contraseña" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="8s1-Lm-vQC">
+                                <rect key="frame" x="16" y="234" width="288" height="62"/>
+                                <color key="backgroundColor" red="0.1080475897" green="0.48678877799999998" blue="0.4773968327" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ysn-kJ-2uB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6t-9o-Lkm">
+                                        <rect key="frame" x="8" y="27" width="30" height="30"/>
+                                        <state key="normal" title="Button" image="feed_btn.png"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cambiar Contraseña" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PC1-59-VAO">
+                                        <rect key="frame" x="8" y="31" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="btn_change_password" destination="jHm-og-dTz" id="6mN-7B-0i7"/>
+                        <outlet property="txt_new_password_1" destination="8s1-Lm-vQC" id="5iG-gk-0fq"/>
+                        <outlet property="txt_new_password_2" destination="aGg-D3-R8b" id="C2l-be-OmG"/>
+                        <outlet property="txt_old_password" destination="t9l-mz-xxP" id="goA-td-mPV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PNj-pF-xBa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2742" y="2352"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wOb-H0-1UN">
+            <objects>
+                <navigationController storyboardIdentifier="MyAccountViewController" navigationBarHidden="YES" id="pFu-6i-hWZ" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="VLG-qt-IGB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="7ss-xt-N1S" kind="relationship" relationship="rootViewController" id="JnT-Kw-Oqc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1ZO-z6-qhm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1871" y="2352"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="domu_home.png" width="640" height="1001"/>
+        <image name="feed_btn.png" width="128" height="128"/>
+        <image name="homeDOWN_icon.png" width="256" height="237"/>
+        <image name="home_icon.png" width="256" height="237"/>
+        <image name="usuarioDOWN_icon.png" width="256" height="256"/>
+        <image name="usuario_icon.png" width="256" height="256"/>
+    </resources>
+</document>

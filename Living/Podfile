@@ -1,0 +1,27 @@
+# Uncomment this line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'Living' do
+  # Comment this line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Alamofire', '~> 3.4'
+  # Pods for Living
+  pod 'SwiftyJSON'
+  pod 'SwiftyUserDefaults'
+  pod 'UIColor_Hex_Swift', '~> 2.1'
+  pod 'Presentr', :git => 'https://github.com/IcaliaLabs/Presentr.git'
+  pod 'IQKeyboardManagerSwift'
+  pod 'Navajo-Swift'
+  pod 'EZLoadingActivity'
+  pod 'GoogleMaps'
+  pod "CollectionViewWaterfallLayout"
+  pod 'MOHUD'
+  pod 'ZAlertView'
+  pod "JWTDecode"
+  pod "SideMenuController", "~>  0.1.3"
+  pod "OneSignal"
+  pod 'SwiftyTimer'
+  pod "CSStickyHeaderFlowLayout"
+  pod "NVActivityIndicatorView"
+  pod 'BTNavigationDropdownMenu'
+end
