@@ -146,6 +146,62 @@ class DeviceManager{
         }
         
     }
+    
+    func RequestRemoveZWaveToken(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+        
+
+        
+        self.request_type = "zwave"
+        
+        
+        
+        
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.RemoveZWave), hub)
+        
+
+        
+        
+        
+        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+            .validate()
+            .responseJSON { response  in
+                switch response.result {
+                    
+                case .Success:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let url = (json["url"]).rawString()
+                    //completion(IsError:true,result: url!)
+                    self.WaitForZwaveResponse(token, url: url!, completion: { (IsError, result) in
+                        completion(IsError: IsError,result: result)
+                    })
+                    break
+                    
+                    
+                case .Failure:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let response_string = (json["detail"]).rawString()
+                    completion(IsError:true,result: response_string!)
+                    break
+                    
+                }
+                
+                
+        }
+        
+        
+
+        
+    }
+    
+    
     func RequestAddZWaveRequest(token:String,url:String,completion: (IsError:Bool,result: String) -> Void){
         
         let headers = [
@@ -295,6 +351,83 @@ class DeviceManager{
         
         
 
+    }
+    
+    func WaitForZwaveResponse(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+        
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        
+        
+        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+            .validate()
+            .responseJSON {
+                response  in
+                switch response.result {
+                    
+                case .Success:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let status = (json["status"]).rawString()
+                    
+                    if(status == "processing"){
+                        print("Processing..")
+                        var timer = NSTimer.every(2.seconds) {
+                            (timer: NSTimer) in
+                            // do something
+                            
+                            self.WaitForZwaveResponse(token,url: url, completion: { (IsError, result) in
+                                completion(IsError:IsError,result:result)
+                            })
+                            
+                            timer.invalidate()
+                            
+                        }
+                        
+                    }else if(status == "done"){
+                        print("Done..")
+                        let data = NSData(data: response.data!)
+                        var json = JSON(data: data)
+                        
+                        
+                    }
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                    completion(IsError:false,result:"")
+                    
+                    
+                    
+     
+                    
+                    
+                case .Failure:
+                    print("error..")
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let response_string = (json["ERROR"]).rawString()
+                    
+                    completion(IsError:true,result:response_string!)
+
+                    
+                }
+                
+                
+        }
+        
+        
+        
+        
+        
+        
     }
 
 

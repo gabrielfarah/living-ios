@@ -3,11 +3,13 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MainMenuHeaderView" customModule="Living" customModuleProvider="target">
             <connections>
+                <outlet property="btn_areas" destination="Ntl-a1-08O" id="1Fc-HJ-6Pv"/>
+                <outlet property="btn_devices" destination="eg7-gz-jPM" id="BCz-sx-emM"/>
+                <outlet property="btn_favorites" destination="u3K-Y4-7Wt" id="LWB-EW-OMv"/>
                 <outlet property="view" destination="Ei1-ke-q8L" id="JF0-YH-2tk"/>
                 <outlet property="view_main" destination="Xg2-E2-Jmy" id="QSg-ig-SBb"/>
             </connections>
@@ -18,51 +20,64 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xg2-E2-Jmy">
-                    <rect key="frame" x="21" y="15" width="277" height="85"/>
+                    <rect key="frame" x="21" y="14" width="278" height="85"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u3K-Y4-7Wt" userLabel="Left Button">
-                            <rect key="frame" x="11" y="7" width="70" height="70"/>
+                            <rect key="frame" x="10" y="7" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="pbf-GB-fK2"/>
+                                <constraint firstAttribute="width" constant="70" id="2ye-ML-BvJ"/>
+                                <constraint firstAttribute="height" constant="70" id="7Kl-ft-KZS"/>
                             </constraints>
                             <state key="normal" image="favoritos_btn.png"/>
                             <state key="selected" image="favoritosDOWN_btn.png"/>
+                            <connections>
+                                <action selector="SelectedFavorites:" destination="-1" eventType="touchUpInside" id="idC-vM-poR"/>
+                            </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-gz-jPM" userLabel="Center Button">
-                            <rect key="frame" x="99" y="7" width="70" height="70"/>
+                        <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eg7-gz-jPM" userLabel="Center Button">
+                            <rect key="frame" x="104" y="7" width="70" height="70"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="70" id="VEg-Ut-Pmm"/>
+                                <constraint firstAttribute="width" constant="70" id="MOH-MT-Rzb"/>
+                                <constraint firstAttribute="height" constant="70" id="jUg-43-ows"/>
                             </constraints>
                             <state key="normal" image="dispositivos_btn.png"/>
                             <state key="selected" image="dispositivosDOWN_btn.png"/>
+                            <connections>
+                                <action selector="SelectedDevices:" destination="-1" eventType="touchUpInside" id="mPX-Xo-ga5"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="Right Button" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ntl-a1-08O">
-                            <rect key="frame" x="187" y="7" width="70" height="70"/>
+                            <rect key="frame" x="198" y="9" width="70" height="68"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="cn8-d4-1Zi"/>
+                                <constraint firstAttribute="height" constant="68" id="lBH-9O-nfP"/>
+                            </constraints>
                             <state key="normal" title="Button" image="areas_btn.png"/>
                             <state key="selected" image="areasDOWN_btn.png"/>
+                            <connections>
+                                <action selector="SelectedRooms:" destination="-1" eventType="touchUpInside" id="gP8-es-swB"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="0.76711443349999997" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="centerY" secondItem="Xg2-E2-Jmy" secondAttribute="centerY" id="6u3-OQ-7mI"/>
-                        <constraint firstItem="eg7-gz-jPM" firstAttribute="leading" secondItem="u3K-Y4-7Wt" secondAttribute="trailing" constant="18" id="DBe-ef-eVS"/>
-                        <constraint firstItem="eg7-gz-jPM" firstAttribute="bottom" secondItem="Ntl-a1-08O" secondAttribute="bottom" id="QDE-rQ-LqS"/>
-                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="leading" secondItem="Xg2-E2-Jmy" secondAttribute="leading" constant="11" id="d4b-E4-dkl"/>
-                        <constraint firstAttribute="trailing" secondItem="Ntl-a1-08O" secondAttribute="trailing" constant="20" id="nLM-zl-QVF"/>
-                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="top" secondItem="eg7-gz-jPM" secondAttribute="top" id="pp6-qh-0zv"/>
-                        <constraint firstItem="Ntl-a1-08O" firstAttribute="leading" secondItem="eg7-gz-jPM" secondAttribute="trailing" constant="18" id="vJc-Kb-UG6"/>
-                        <constraint firstItem="eg7-gz-jPM" firstAttribute="top" secondItem="Ntl-a1-08O" secondAttribute="top" id="xXr-Fc-Xnb"/>
-                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="bottom" secondItem="Xg2-E2-Jmy" secondAttribute="bottomMargin" id="yPk-jF-1Tp"/>
-                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="bottom" secondItem="eg7-gz-jPM" secondAttribute="bottom" id="zBb-cM-SEW"/>
+                        <constraint firstAttribute="width" constant="278" id="4vu-kn-fCs"/>
+                        <constraint firstItem="eg7-gz-jPM" firstAttribute="centerX" secondItem="Xg2-E2-Jmy" secondAttribute="centerX" id="5W6-H8-Wr2"/>
+                        <constraint firstItem="Ntl-a1-08O" firstAttribute="top" secondItem="Xg2-E2-Jmy" secondAttribute="top" constant="9" id="Ack-7J-U1h"/>
+                        <constraint firstAttribute="height" constant="85" id="CgA-J4-Wq8"/>
+                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="leading" secondItem="Xg2-E2-Jmy" secondAttribute="leading" constant="10" id="HYV-d0-kBH"/>
+                        <constraint firstItem="eg7-gz-jPM" firstAttribute="centerY" secondItem="Xg2-E2-Jmy" secondAttribute="centerY" id="Itd-jM-kcN"/>
+                        <constraint firstAttribute="trailing" secondItem="Ntl-a1-08O" secondAttribute="trailing" constant="10" id="Otc-vY-1MS"/>
+                        <constraint firstItem="u3K-Y4-7Wt" firstAttribute="top" secondItem="Xg2-E2-Jmy" secondAttribute="top" constant="7" id="g5k-6m-SiR"/>
+                        <constraint firstAttribute="bottom" secondItem="Ntl-a1-08O" secondAttribute="bottom" constant="8" id="j9x-gQ-XhW"/>
+                        <constraint firstAttribute="bottom" secondItem="u3K-Y4-7Wt" secondAttribute="bottom" constant="8" id="jIa-aY-LFn"/>
                     </constraints>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="Xg2-E2-Jmy" firstAttribute="top" secondItem="Ei1-ke-q8L" secondAttribute="top" constant="15" id="BZX-Ok-6Vw"/>
-                <constraint firstAttribute="bottom" secondItem="Xg2-E2-Jmy" secondAttribute="bottom" constant="13" id="St5-5e-LrJ"/>
-                <constraint firstItem="Xg2-E2-Jmy" firstAttribute="leading" secondItem="Ei1-ke-q8L" secondAttribute="leading" constant="21" id="eBW-fR-crB"/>
-                <constraint firstItem="Xg2-E2-Jmy" firstAttribute="centerX" secondItem="Ei1-ke-q8L" secondAttribute="centerX" id="k7b-Np-i2O"/>
+                <constraint firstItem="Xg2-E2-Jmy" firstAttribute="centerY" secondItem="Ei1-ke-q8L" secondAttribute="centerY" id="FgL-Nb-NVd"/>
+                <constraint firstItem="Xg2-E2-Jmy" firstAttribute="centerX" secondItem="Ei1-ke-q8L" secondAttribute="centerX" id="ON1-1E-gqf"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="186" y="94.5"/>

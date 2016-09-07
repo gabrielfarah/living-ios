@@ -91,4 +91,19 @@ class Hub{
 
     }
     
+    func getFavorites()->[Endpoint]{
+        
+        var favorites = [Endpoint]()
+        
+        for endpoint:Endpoint in self.endpoints.endpoints {
+            if(endpoint.favorite == 1){
+            favorites.append(endpoint)
+            
+            }
+        
+        }
+        
+        return favorites
+    }
+    
 }

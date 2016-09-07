@@ -16,7 +16,7 @@ import CollectionViewWaterfallLayout
 class PhotoLibrary: UIViewController,UICollectionViewDataSource, CollectionViewWaterfallLayoutDelegate,UIImagePickerControllerDelegate,
 UINavigationControllerDelegate  {
     
-    let mySpecialNotificationKey = "com.andrewcbancroft.specialNotificationKey"
+    let mySpecialNotificationKey = "com.arsmart.specialNotificationKey"
     
     
     @IBOutlet weak var btn_continue: UIButton!

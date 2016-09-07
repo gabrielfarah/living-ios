@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="101" id="qeU-41-rrX" customClass="SceneEndpointCell" customModule="Living" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="101"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qeU-41-rrX" id="Jbw-4W-tYU">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Lampara" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OfW-1O-wV0">
+                        <rect key="frame" x="75" y="13" width="124" height="57"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lamp_2_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="m3e-ow-aVz">
+                        <rect key="frame" x="25" y="28" width="42" height="42"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                    </imageView>
+                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="OLp-jQ-aK6">
+                        <rect key="frame" x="216" y="34" width="51" height="31"/>
+                        <color key="onTintColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="SwitchChangeValue:" destination="qeU-41-rrX" eventType="valueChanged" id="Ouc-eB-NvV"/>
+                        </connections>
+                    </switch>
+                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="99" continuous="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pZp-wa-gtc">
+                        <rect key="frame" x="73" y="62" width="194" height="31"/>
+                        <color key="tintColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <connections>
+                            <action selector="LevelChangeValue:" destination="qeU-41-rrX" eventType="valueChanged" id="hDs-YB-M98"/>
+                        </connections>
+                    </slider>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Desactivado" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hry-LU-azf">
+                        <rect key="frame" x="204" y="8" width="73" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Volumen" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z61-Pp-fJ3">
+                        <rect key="frame" x="160" y="79" width="105" height="21"/>
+                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                        <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="endpoint_image" destination="m3e-ow-aVz" id="t0o-kk-6bM"/>
+                <outlet property="endpoint_level_label" destination="z61-Pp-fJ3" id="2gY-gr-5xJ"/>
+                <outlet property="endpoint_name" destination="OfW-1O-wV0" id="YEg-Wp-JcG"/>
+                <outlet property="endpoint_slider" destination="pZp-wa-gtc" id="e3H-HS-nqv"/>
+                <outlet property="endpoint_switch" destination="OLp-jQ-aK6" id="dPe-pd-S2A"/>
+                <outlet property="endpoint_switch_label" destination="Hry-LU-azf" id="c5Y-I1-NRu"/>
+            </connections>
+            <point key="canvasLocation" x="436" y="328.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="lamp_2_icon.png" width="256" height="256"/>
+    </resources>
+</document>

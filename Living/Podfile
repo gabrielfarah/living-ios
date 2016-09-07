@@ -24,4 +24,6 @@ target 'Living' do
   pod "CSStickyHeaderFlowLayout"
   pod "NVActivityIndicatorView"
   pod 'BTNavigationDropdownMenu'
+  pod 'Localize-Swift', "~>  1.5" 
+  pod 'SwiftHUEColorPicker'  
 end

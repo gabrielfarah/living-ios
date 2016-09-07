@@ -39,6 +39,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Localize-Swift.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>MOHUD.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -65,6 +70,11 @@
 			<false/>
 		</dict>
 		<key>SideMenuController.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SwiftHUEColorPicker.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -107,12 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>12CF0DA0542987FD4A2B0A56E1810E18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>26948795CD9E431B78D70CC7A41C27FF</key>
+		<key>2470ED63DB32897087B38245C9F6ED7C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,22 +137,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>3A3697151C2D40CB99F2B13DBBAE8ED9</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>4D639AA683006090D0F460EE4263118D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6D06A043FA371A9E2C584D517C15ACF2</key>
+		<key>4E3BBCA6078A6AAAD053C911572F0B0C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>775D55426F94078E6E4E075AB31607D0</key>
+		<key>5DEC8AA840A74D01D2E61A787E72E135</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6FD217B968B2367158A7A433A51A26AB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,17 +162,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7A2D77BDCD9D516B871E8C05C6072427</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7C3202429EDC45AC93A59010245A730B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7C347957390695B7CA03852938F8F5D8</key>
+		<key>84CB80FB26AA1D04C1F8014CB40AF1B5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -167,7 +172,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>88D63E9FF5EF01EDC791100B4DD5E263</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>903A108934E1A089B76F443DC34C8E54</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>A2484F9F3E7C4DCF0C35F212DC146A1E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -177,7 +192,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>E43A7B37931CD47DB75215E7531BCE77</key>
+		<key>CB8B347751336A4875DDD641F4AD242D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D22F0B2C10018663F01B1DCF7D4CC77D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -28,6 +28,8 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     @IBOutlet weak var btn_add_guest: UIButton!
     
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sideMenuController?.delegate = self
@@ -66,14 +68,15 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     }
     func methodOfReceivedNotificationSuccess(notification: NSNotification){
         //Take Action on Notification
+        let width = ModalSize.Custom(size: 240)
+        let height = ModalSize.Custom(size: 130)
+        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        presenter2.transitionType = .CrossDissolve // Optional
+        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+        vc2.setText("Se adicionó cuarto con éxito")
         
-        let presenter3 = Presentr(presentationType: .Alert)
-        
-        
-        presenter3.transitionType = .CrossDissolve // Optional
-        let vc3 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-        self.customPresentViewController(presenter3, viewController: vc3, animated: true, completion: nil)
-        vc3.lbl_mensaje.text = "Se adicionó cuarto con éxito"
+
         load_rooms()
     }
     override func didReceiveMemoryWarning() {
@@ -97,7 +100,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         vc2.txt_email.becomeFirstResponder()
         
         
-        //vc2.lbl_mensaje.text = "Test"
+
         
         
     }
@@ -173,12 +176,66 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         }else{
         
         }
+        
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            let presenter: Presentr = {
+            let presenter = Presentr(presentationType: .Alert)
+            presenter.transitionType = TransitionType.CrossDissolve
+            return presenter
+            }()
+            
+            
 
-        
-        
-        
-        
-        
+            let title = "Está seguro?"
+            let body = "No se puede deshacer esta acción"
+            
+            let controller = Presentr.alertViewController(title: title, body: body)
+
+            
+            let deleteAction = AlertAction(title: "Estoy seguro", style: .Destructive) {
+                print("Deleted!")
+                // Delete the row from the data source
+                let token = ArSmartApi.sharedApi.getToken()
+                let hub = ArSmartApi.sharedApi.hub?.hid
+                
+                let room = self.rooms.rooms[indexPath.row]
+                room.delete(token, hub: hub!, completion: { (IsError, result) in
+                    self.load_rooms()
+                    
+                    NSTimer.after(500.milliseconds) {
+                        let width = ModalSize.Custom(size: 240)
+                        let height = ModalSize.Custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                        presenter2.transitionType = .CrossDissolve // Optional
+                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                        vc2.setText("El cuarto ha sido eliminado")
+                    }
+                    
+                    
+
+                })
+            }
+            
+            let okAction = AlertAction(title: "Cancelar", style: .Cancel){
+                print("Ok!")
+            }
+            
+            controller.addAction(deleteAction)
+            controller.addAction(okAction)
+            
+            presenter.presentationType = .Alert
+            customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+            
+            
+
+            
+            
+            
+        }
     }
     
 }

@@ -18,6 +18,7 @@ class Hubs{
     init(){
     
     }
+
     
     func load(token:String,completion: (IsError:Bool,result: String) -> Void){
             

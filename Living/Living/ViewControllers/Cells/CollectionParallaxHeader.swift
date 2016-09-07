@@ -11,7 +11,7 @@ import UIKit
 class CollectionParallaxHeader: UICollectionReusableView {
     
     
-    private var imageView : MainMenuHeaderView?
+    var imageView : MainMenuHeaderView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

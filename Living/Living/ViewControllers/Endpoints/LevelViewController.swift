@@ -29,6 +29,8 @@ class LevelViewController: UIViewController {
         slider_level.minimumValue = MIN_VALUE
         slider_level.maximumValue = MAX_VALUE
         
+        slider_level.continuous = false
+        
         // Do any additional setup after loading the view.
     }
 
@@ -53,11 +55,12 @@ class LevelViewController: UIViewController {
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
-        print("Value Changed:%@",slider_level.value )
+        
         delegate?.ValueChanged(slider_level.value)
         //TODO:SetValue
         
-        let value = String(slider_level.value)
+        let value = String(Int(slider_level.value))
+        print("Value Changed: ",Int(slider_level.value) )
         
         endpoint.setValue(hub!, token: token, value: value) { (IsError, result) in
             print("Change Value")

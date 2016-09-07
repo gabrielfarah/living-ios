@@ -41,6 +41,10 @@ class Endpoint{
     var version:String
     var wkup_intv:String
     var is_room_available:Bool
+    
+    
+    
+    
         
     
     init(){
@@ -253,6 +257,70 @@ class Endpoint{
     func Update(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
         
         
+    }
+    
+    func Delete(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+        
+        //Z-Wave devices cannot be directly deleted. Send the zwnet_remove command to hub first."
+        
+        if(self.endpoint_type == EndPointType.Wifi){
+            DeleteWIFI(hub, token: token, completion: { (IsError, result) in
+                completion(IsError: IsError,result: result)
+            })
+        }else{
+            RequestRemoveZWaveToken(token, hub: hub, completion: { (IsError, result) in
+                completion(IsError: IsError,result: result)
+            })
+        }
+    }
+    
+    func DeleteZWave(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    
+    //Z-Wave devices cannot be directly deleted. Send the zwnet_remove command to hub first."
+    }
+    
+    
+    func DeleteWIFI(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Endpoint), hub,self.id)
+        
+        
+        
+
+        
+        
+        Alamofire.request(.DELETE,endpoint,encoding: .JSON,headers: headers)
+            .validate()
+            .responseJSON { response  in
+                switch response.result {
+                    
+                case .Success:
+                    
+                    // TODO: se debe consultar la url que responde esste tema.
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    
+                    
+                    
+                    completion(IsError: false,result: "")
+                    
+                    
+                case .Failure:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let response_string = (json["ERROR"]).rawString()
+                    completion(IsError:true,result: response_string!)
+                    
+                    
+                    
+                }
+                
+                
+        }
     }
     
     func command_level_on(hub:Int,token:String, completion: (IsError:Bool,result: String) -> Void){
@@ -587,6 +655,8 @@ class Endpoint{
     
     }
     
+
+    
     func ImageNamed()->String{
     
         switch (self.image) {
@@ -695,6 +765,10 @@ class Endpoint{
     }
     
 
+    func GetFunctionValue()->String{
+        return Endpoint.GetFunctionValue(self.ui_class_command)
+    
+    }
     
     static func GetFunctionValue(ui_class_command:String)->String{
         switch(ui_class_command){
@@ -720,7 +794,6 @@ class Endpoint{
             case "ui-water-sensor-zwave":
                 return "zwif_level_set" // Sensor
 
-            return "zwif_level_set" //TODO:Este es un GET (todo lo que sea sensor, con el getall)
             default:
                 return "zwif_basic_set" //TODOS los dispositivos es binario (0,255)
                 
@@ -764,12 +837,12 @@ class Endpoint{
         }
     }
     func nextSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
-        setValueSonos(hub, token: token, function: "next", parameters: parameters) { (IsError, result) in
+        setValueSonos(hub, token: token, function: "play_next", parameters: parameters) { (IsError, result) in
             completion(IsError: IsError,result:result)
         }
     }
     func prevSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
-        setValueSonos(hub, token: token, function: "prev", parameters: parameters) { (IsError, result) in
+        setValueSonos(hub, token: token, function: "play_previous", parameters: parameters) { (IsError, result) in
             completion(IsError: IsError,result:result)
         }
     }
@@ -795,7 +868,7 @@ class Endpoint{
             "type":self.getEndpointTypeString(),
             "target":"sonos",
             "ip":ip_address,
-            "function":Endpoint.GetFunctionValue(self.ui_class_command),
+            "function":function,
             "parameters":parameters
             
         ]
@@ -841,13 +914,191 @@ class Endpoint{
     
         
         
-        
-        
-        
-        
-    
-    
+    func isLevel()->Bool{
+        switch(self.ui_class_command){
+            
+        case "ui-level-light-zwave":
+            return true
 
+        default:
+            return false
+            
+            
+        }
+    
+    }
+    
+    func isSonos()->Bool{
+        switch(self.ui_class_command){
+            
+        case "ui-sonos":
+            return true
+            
+        default:
+            return false
+            
+            
+        }
+        
+    }
+    func isHue()->Bool{
+        switch(self.ui_class_command){
+            
+        case "ui-hue":
+            return true
+            
+        default:
+            return false
+            
+            
+        }
+        
+    }
+    
+    func isSwitch()->Bool{
+        switch(self.ui_class_command){
+            
+            
+            case "ui-binary-outlet-zwave":
+                return true
+            case "ui-binary-light-zwave":
+                return true
+            case "ui-sensor-open-close-zwave":
+                return true
+            case "ui-lock-zwave":
+                return true
+            case "ui-switch-binary-zwave":
+                return true
+
+            
+            default:
+                return false
+            
+            
+            }
+        
+    }
+    
+    
+    func RequestRemoveZWaveToken(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+        
+        
+        
+        
+    
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.RemoveZWave), hub)
+        
+        
+        
+        
+        
+        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+            .validate()
+            .responseJSON { response  in
+                switch response.result {
+                    
+                case .Success:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let url = (json["url"]).rawString()
+                    //completion(IsError:true,result: url!)
+                    self.WaitForZwaveResponse(token, url: url!, completion: { (IsError, result) in
+                        completion(IsError: IsError,result: result)
+                    })
+                    break
+                    
+                    
+                case .Failure:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let response_string = (json["detail"]).rawString()
+                    completion(IsError:true,result: response_string!)
+                    break
+                    
+                }
+                
+                
+        }
+        
+        
+        
+        
+    }
+    
+    func WaitForZwaveResponse(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+        
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        
+        
+        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+            .validate()
+            .responseJSON {
+                response  in
+                switch response.result {
+                    
+                case .Success:
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let status = (json["status"]).rawString()
+                    
+                    if(status == "processing"){
+                        print("Processing..")
+                        var timer = NSTimer.every(2.seconds) {
+                            (timer: NSTimer) in
+                            // do something
+                            
+                            self.WaitForZwaveResponse(token,url: url, completion: { (IsError, result) in
+                                completion(IsError:IsError,result:result)
+                            })
+                            
+                            timer.invalidate()
+                            
+                        }
+                        
+                    }else if(status == "done"){
+                        print("Done..")
+                        let data = NSData(data: response.data!)
+                        var json = JSON(data: data)
+                        
+                        
+                    }
+                    
+
+                    completion(IsError:false,result:"")
+
+                case .Failure:
+                    print("error..")
+                    let data = NSData(data: response.data!)
+                    var json = JSON(data: data)
+                    let response_string = (json["ERROR"]).rawString()
+                    
+                    completion(IsError:true,result:response_string!)
+                    
+                    
+                }
+                
+                
+        }
+        
+        
+        
+        
+        
+        
+    }
+
+    
+    
+        
     //Comandos para el Hue
     //Apagar
     //Prender

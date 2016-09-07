@@ -29,6 +29,7 @@ class MenuViewController:UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
+        self.tableView.tableFooterView = UIView()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

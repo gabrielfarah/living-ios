@@ -11,16 +11,17 @@ import Foundation
 class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegate{
 
     
+    let mySpecialLocationNotificationKey = "com.arsmart.mySpecialLocationNotificationKey"
     
     var lat:Double = 0.0
     var lon:Double = 0.0
-    
+    var firstLocationUpdate: Bool?
+    var has_location:Bool  = false
     
     
     @IBOutlet weak var btn_continue: UIButton!
-
     let locationManager = CLLocationManager()
-    
+
     @IBOutlet weak var mapView: GMSMapView!
     
     func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
@@ -36,6 +37,7 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
         let marker = GMSMarker(position: coordinate)
         marker.title = "Punto a Seleccionar"
         marker.map = mapView
+
     }
     
     override func viewDidLoad() {
@@ -45,6 +47,10 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
         mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
+        self.mapView.myLocationEnabled = true
+        
+        
+
         
     }
     
@@ -56,16 +62,34 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
     func style(){
         
         self.navigationController?.navigationBarHidden = true
-
-        
     }
+    
+
+    
+    
     @IBAction func close(sender: AnyObject) {
         
-        self.dismissViewControllerAnimated(true) { 
+        let location = [
+            "lat":lat,
+            "lon":lon,
+            "hasLocation":has_location
+        ]
+        
+        NSNotificationCenter.defaultCenter().postNotificationName(mySpecialLocationNotificationKey, object: location)
+        self.dismissViewControllerAnimated(true) {
             
         }
         
     }
+    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+        lat = mapView.camera.target.latitude;
+        lon = mapView.camera.target.longitude;
+        ArSmartApi.sharedApi.hub!.latitude = lat
+        ArSmartApi.sharedApi.hub!.longitude = lon
+        print("location:", lat, lon)
+        has_location = true
+    }
+
 
 }
 extension SelectInitialHubPositionViewController: CLLocationManagerDelegate {
@@ -87,11 +111,14 @@ extension SelectInitialHubPositionViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             
+            has_location = true
             // 7
             mapView.camera = GMSCameraPosition(target: location.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
             
             // 8
             locationManager.stopUpdatingLocation()
+            
+            
         }
         
     }

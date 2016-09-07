@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="Hue2ViewController" customModule="Living" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8O5-qR-ctm">
+                    <rect key="frame" x="0.0" y="519" width="320" height="49"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <items>
+                        <tabBarItem title="Grupos" image="hue_icon1_ico_32.png" id="sSc-zg-iuG"/>
+                        <tabBarItem title="Luces" image="hue_icon1_ico_32.png" id="co5-sw-4Yz"/>
+                    </items>
+                </tabBar>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ag0-bB-0Ht">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4zw-H0-QIf">
+                            <rect key="frame" x="8" y="27" width="30" height="30"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="aot-ey-G9E"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="feed_btn.png"/>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Living" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vQr-ro-tWp">
+                            <rect key="frame" x="8" y="31" width="304" height="21"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="4zw-H0-QIf" secondAttribute="bottom" constant="7" id="K1L-fq-oij"/>
+                        <constraint firstItem="4zw-H0-QIf" firstAttribute="top" secondItem="ag0-bB-0Ht" secondAttribute="top" constant="27" id="K5S-lS-KGU"/>
+                        <constraint firstItem="vQr-ro-tWp" firstAttribute="top" secondItem="ag0-bB-0Ht" secondAttribute="top" constant="31" id="e3P-RB-K5y"/>
+                        <constraint firstItem="4zw-H0-QIf" firstAttribute="centerY" secondItem="vQr-ro-tWp" secondAttribute="centerY" id="kuL-1i-ruM"/>
+                        <constraint firstAttribute="height" constant="64" id="pEC-MN-aZh"/>
+                        <constraint firstItem="4zw-H0-QIf" firstAttribute="leading" secondItem="vQr-ro-tWp" secondAttribute="leading" id="reA-JW-Sbo"/>
+                        <constraint firstItem="vQr-ro-tWp" firstAttribute="trailing" secondItem="ag0-bB-0Ht" secondAttribute="trailingMargin" id="rjh-8k-Bk7"/>
+                        <constraint firstItem="4zw-H0-QIf" firstAttribute="leading" secondItem="ag0-bB-0Ht" secondAttribute="leadingMargin" id="xnU-Lg-GKY"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uuu-ec-9sP">
+                    <rect key="frame" x="0.0" y="83" width="320" height="436"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="feed_btn.png" width="128" height="128"/>
+        <image name="hue_icon1_ico_32.png" width="24" height="32"/>
+    </resources>
+</document>

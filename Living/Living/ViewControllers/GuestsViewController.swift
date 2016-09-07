@@ -62,13 +62,16 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     func methodOfReceivedNotificationSuccess(notification: NSNotification){
         //Take Action on Notification
         
-        let presenter2 = Presentr(presentationType: .Alert)
+
         
-        
+        let width = ModalSize.Custom(size: 240)
+        let height = ModalSize.Custom(size: 130)
+        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
         presenter2.transitionType = .CrossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.lbl_mensaje.text = "Se adicionó el usuario con éxito"
+        vc2.setText("Se adicionó el usuario con éxito")
+        
         load_guests()
     }
     override func didReceiveMemoryWarning() {
@@ -150,6 +153,80 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
 
+    }
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            let presenter: Presentr = {
+                let presenter = Presentr(presentationType: .Alert)
+                presenter.transitionType = TransitionType.CrossDissolve
+                return presenter
+            }()
+            
+            
+            
+            let title = "Está seguro?"
+            let body = "No se puede deshacer esta acción"
+            
+            let controller = Presentr.alertViewController(title: title, body: body)
+            
+            
+            let deleteAction = AlertAction(title: "Estoy seguro", style: .Destructive) {
+                print("Deleted!")
+                // Delete the row from the data source
+                let token = ArSmartApi.sharedApi.getToken()
+                let hub = ArSmartApi.sharedApi.hub?.hid
+                
+                let guest = self.guests.guests[indexPath.row]
+                guest.delete(token, hub: hub!, completion: { (IsError, result) in
+                    
+                    if(!IsError){
+                        self.load_guests()
+                        
+                        NSTimer.after(500.milliseconds) {
+                            let width = ModalSize.Custom(size: 240)
+                            let height = ModalSize.Custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                            presenter2.transitionType = .CrossDissolve // Optional
+                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                            vc2.setText("El invitado ha sido removido")
+                        }
+                    }else{
+                       
+                        NSTimer.after(500.milliseconds) {
+                            let width = ModalSize.Custom(size: 240)
+                            let height = ModalSize.Custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                            presenter2.transitionType = .CrossDissolve // Optional
+                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                            vc2.setText("Ocurrió un error el usuario no ha sido borrado")
+                        }
+                    }
+
+                    
+                    
+                    
+                })
+            }
+            
+            let okAction = AlertAction(title: "Cancelar", style: .Cancel){
+                print("Ok!")
+            }
+            
+            controller.addAction(deleteAction)
+            controller.addAction(okAction)
+            
+            presenter.presentationType = .Alert
+            customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+            
+            
+            
+            
+            
+            
+        }
     }
 
 }

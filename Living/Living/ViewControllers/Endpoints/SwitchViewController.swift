@@ -26,12 +26,21 @@ class SwitchViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(animated:Bool) {
+        super.viewDidAppear(animated)
+        turnon()
+        // Do any additional setup after loading the view.
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func turnon(){
+        if(endpoint.state == MAX_VALUE){
+            swt_control.setOn(true, animated: true)
+        }
+    }
 
     /*
     // MARK: - Navigation

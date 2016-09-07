@@ -118,6 +118,25 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
         performSegueWithIdentifier("EditEndpoint", sender: nil)
         
     }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            
+            // Delete the row from the data source
+            let token = ArSmartApi.sharedApi.getToken()
+            let hub = ArSmartApi.sharedApi.hub?.hid
+            ArSmartApi.sharedApi.hub?.endpoints.endpoints[indexPath.row].Delete(hub!, token: token, completion: { (IsError, result) in
+                if(!IsError){
+                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    tableView.reloadData()
+                    
+                    
+                }else{
+                }
+            })
+
+        }
+    }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if(segue.identifier == "EditEndpoint"){
             // Create a variable that you want to send
@@ -129,6 +148,9 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
         
         }
 
+    }
+    @IBAction func ShowMenu(sender: AnyObject) {
+        sideMenuController?.toggle()
     }
 
     

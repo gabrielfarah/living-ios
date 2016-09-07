@@ -33,6 +33,23 @@
 		BB099A721D6586EC009960C4 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = BB099A6E1D6586EC009960C4 /* end.png */; };
 		BB099A741D667C38009960C4 /* Scenes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB099A731D667C38009960C4 /* Scenes.storyboard */; };
 		BB099A761D66F164009960C4 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */; };
+		BB099A781D6CA7EE009960C4 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A771D6CA7EE009960C4 /* Scenes.swift */; };
+		BB099A7A1D6CA8EA009960C4 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A791D6CA8EA009960C4 /* Scene.swift */; };
+		BB099A7D1D6CA94A009960C4 /* ScenesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A7C1D6CA94A009960C4 /* ScenesViewController.swift */; };
+		BB099A7F1D6CB48E009960C4 /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A7E1D6CB48E009960C4 /* Payload.swift */; };
+		BB099A851D6CCF47009960C4 /* SceneEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A841D6CCF47009960C4 /* SceneEditViewController.swift */; };
+		BB099A8B1D6CD1CF009960C4 /* SceneEndpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB099A8A1D6CD1CF009960C4 /* SceneEndpointCell.xib */; };
+		BB099A8F1D6CD212009960C4 /* SceneEndpointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A8E1D6CD212009960C4 /* SceneEndpointCell.swift */; };
+		BB099A911D6E02BB009960C4 /* marker.png in Resources */ = {isa = PBXBuildFile; fileRef = BB099A901D6E02BB009960C4 /* marker.png */; };
+		BB099A931D70A0CE009960C4 /* HueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A921D70A0CD009960C4 /* HueViewController.swift */; };
+		BB099A971D710760009960C4 /* Trigger.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A961D710760009960C4 /* Trigger.swift */; };
+		BB099A991D710CC9009960C4 /* Triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A981D710CC9009960C4 /* Triggers.swift */; };
+		BB099A9B1D711075009960C4 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A9A1D711075009960C4 /* SensorViewController.swift */; };
+		BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB099A9C1D711093009960C4 /* SensorViewController.xib */; };
+		BB0DAC981D74ADEF00A472B2 /* EndPointMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0DAC961D74AD7900A472B2 /* EndPointMenuCell.xib */; };
+		BB0DACC71D778EA300A472B2 /* HueEndpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */; };
+		BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */; };
+		BB0DACCE1D77E26800A472B2 /* HueEndpointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */; };
 		BB3DD89F1D2DA51C0020B11D /* RecoverPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3DD89E1D2DA51C0020B11D /* RecoverPassword.swift */; };
 		BB3DD8A11D2DDA770020B11D /* domu_home.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8A01D2DDA770020B11D /* domu_home.png */; };
 		BB3DD8A31D2DDBB10020B11D /* conectar_btn_512.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8A21D2DDBB10020B11D /* conectar_btn_512.png */; };
@@ -55,6 +72,15 @@
 		BB41CE1A1D2D7FC600682A72 /* LocalAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB41CE181D2D7FC600682A72 /* LocalAlertViewController.xib */; };
 		BB41CE1D1D2D889B00682A72 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41CE1C1D2D889B00682A72 /* CongratulationsViewController.swift */; };
 		BB41CE1F1D2D970900682A72 /* SelectInitialHubPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41CE1E1D2D970900682A72 /* SelectInitialHubPositionViewController.swift */; };
+		BB552CEB1D77E62200C25F8B /* VKExpandableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */; };
+		BB552CEF1D78964E00C25F8B /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CEE1D78964E00C25F8B /* Hue.swift */; };
+		BB552CF11D78965D00C25F8B /* HueLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CF01D78965D00C25F8B /* HueLight.swift */; };
+		BB552CF31D78D07A00C25F8B /* HueGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CF21D78D07A00C25F8B /* HueGroup.swift */; };
+		BB552CF61D78E85E00C25F8B /* Hue2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CF41D78E85E00C25F8B /* Hue2ViewController.swift */; };
+		BB552CF71D78E85E00C25F8B /* Hue2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB552CF51D78E85E00C25F8B /* Hue2ViewController.xib */; };
+		BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = BB552CF81D78EA0A00C25F8B /* hue_icon1_ico.png */; };
+		BB552CFB1D78EA3600C25F8B /* hue_icon1_ico_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BB552CFA1D78EA3600C25F8B /* hue_icon1_ico_32.png */; };
+		BB552CFE1D78FD6300C25F8B /* Hue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */; };
 		BB63BE8C1D3AB8CE00481CC0 /* CustomSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BE8B1D3AB8CE00481CC0 /* CustomSideMenuController.swift */; };
 		BB63BE8E1D3AD56900481CC0 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB63BE8D1D3AD56900481CC0 /* Notifications.storyboard */; };
 		BB63BE901D3AD5F200481CC0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BE8F1D3AD5F200481CC0 /* NotificationViewController.swift */; };
@@ -187,7 +213,6 @@
 		BBCC66361D491CBB004D35A6 /* water_2_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66021D491CBB004D35A6 /* water_2_icon.png */; };
 		BBCC66371D491CBB004D35A6 /* water_3_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66031D491CBB004D35A6 /* water_3_icon.png */; };
 		BBCC66381D491CBB004D35A6 /* water_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66041D491CBB004D35A6 /* water_icon.png */; };
-		BBCC663A1D494AB2004D35A6 /* EndPointMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66391D494AB2004D35A6 /* EndPointMenuCell.xib */; };
 		BBCC663C1D494C9B004D35A6 /* EndPointMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCC663B1D494C9B004D35A6 /* EndPointMenuCell.swift */; };
 		BBCC663E1D495D4E004D35A6 /* door_lock_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC663D1D495D4E004D35A6 /* door_lock_icon.png */; };
 		BBCC66401D4964A3004D35A6 /* shades_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC663F1D4964A3004D35A6 /* shades_icon.png */; };
@@ -246,6 +271,25 @@
 		BB099A6E1D6586EC009960C4 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
 		BB099A731D667C38009960C4 /* Scenes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Scenes.storyboard; path = Storyboards/Scenes.storyboard; sourceTree = "<group>"; };
 		BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = ViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		BB099A771D6CA7EE009960C4 /* Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scenes.swift; path = Classes/Scenes.swift; sourceTree = "<group>"; };
+		BB099A791D6CA8EA009960C4 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scene.swift; path = Classes/Scene.swift; sourceTree = "<group>"; };
+		BB099A7C1D6CA94A009960C4 /* ScenesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScenesViewController.swift; path = ViewControllers/ScenesViewController.swift; sourceTree = "<group>"; };
+		BB099A7E1D6CB48E009960C4 /* Payload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Payload.swift; path = Classes/Payload.swift; sourceTree = "<group>"; };
+		BB099A841D6CCF47009960C4 /* SceneEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneEditViewController.swift; path = Living/ViewControllers/SceneEditViewController.swift; sourceTree = SOURCE_ROOT; };
+		BB099A8A1D6CD1CF009960C4 /* SceneEndpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneEndpointCell.xib; path = ViewControllers/nibs/SceneEndpointCell.xib; sourceTree = "<group>"; };
+		BB099A8E1D6CD212009960C4 /* SceneEndpointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneEndpointCell.swift; path = ViewControllers/Cells/SceneEndpointCell.swift; sourceTree = "<group>"; };
+		BB099A901D6E02BB009960C4 /* marker.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = marker.png; sourceTree = "<group>"; };
+		BB099A921D70A0CD009960C4 /* HueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueViewController.swift; path = ViewControllers/Endpoints/HueViewController.swift; sourceTree = "<group>"; };
+		BB099A941D70A0E6009960C4 /* HueViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HueViewController.xib; path = ViewControllers/Endpoints/HueViewController.xib; sourceTree = "<group>"; };
+		BB099A961D710760009960C4 /* Trigger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trigger.swift; path = Classes/Trigger.swift; sourceTree = "<group>"; };
+		BB099A981D710CC9009960C4 /* Triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Triggers.swift; path = Classes/Triggers.swift; sourceTree = "<group>"; };
+		BB099A9A1D711075009960C4 /* SensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorViewController.swift; path = ViewControllers/Endpoints/SensorViewController.swift; sourceTree = "<group>"; };
+		BB099A9C1D711093009960C4 /* SensorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SensorViewController.xib; path = ViewControllers/Endpoints/SensorViewController.xib; sourceTree = "<group>"; };
+		BB0DAC961D74AD7900A472B2 /* EndPointMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EndPointMenuCell.xib; path = ViewControllers/nibs/EndPointMenuCell.xib; sourceTree = "<group>"; };
+		BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HueEndpointCell.xib; path = ViewControllers/nibs/HueEndpointCell.xib; sourceTree = "<group>"; };
+		BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VKExpandableButton.swift; path = Libraries/VKExpandableButton.swift; sourceTree = "<group>"; };
+		BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rgb_circle_1.png; sourceTree = "<group>"; };
+		BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueEndpointCell.swift; path = ViewControllers/Cells/HueEndpointCell.swift; sourceTree = "<group>"; };
 		BB3DD89E1D2DA51C0020B11D /* RecoverPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecoverPassword.swift; path = ViewControllers/RecoverPassword.swift; sourceTree = "<group>"; };
 		BB3DD8A01D2DDA770020B11D /* domu_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = domu_home.png; sourceTree = "<group>"; };
 		BB3DD8A21D2DDBB10020B11D /* conectar_btn_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conectar_btn_512.png; sourceTree = "<group>"; };
@@ -268,6 +312,14 @@
 		BB41CE181D2D7FC600682A72 /* LocalAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocalAlertViewController.xib; path = ViewControllers/LoadingViewController/LocalAlertViewController.xib; sourceTree = "<group>"; };
 		BB41CE1C1D2D889B00682A72 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CongratulationsViewController.swift; path = ViewControllers/CongratulationsViewController.swift; sourceTree = "<group>"; };
 		BB41CE1E1D2D970900682A72 /* SelectInitialHubPositionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectInitialHubPositionViewController.swift; path = ViewControllers/SelectInitialHubPositionViewController.swift; sourceTree = "<group>"; };
+		BB552CEE1D78964E00C25F8B /* Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hue.swift; path = Classes/Endpoints/Hue.swift; sourceTree = "<group>"; };
+		BB552CF01D78965D00C25F8B /* HueLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueLight.swift; path = Classes/Endpoints/HueLight.swift; sourceTree = "<group>"; };
+		BB552CF21D78D07A00C25F8B /* HueGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueGroup.swift; path = Classes/Endpoints/HueGroup.swift; sourceTree = "<group>"; };
+		BB552CF41D78E85E00C25F8B /* Hue2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hue2ViewController.swift; path = ViewControllers/Endpoints/Hue2ViewController.swift; sourceTree = "<group>"; };
+		BB552CF51D78E85E00C25F8B /* Hue2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = Hue2ViewController.xib; path = ViewControllers/Endpoints/Hue2ViewController.xib; sourceTree = "<group>"; };
+		BB552CF81D78EA0A00C25F8B /* hue_icon1_ico.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_icon1_ico.png; sourceTree = "<group>"; };
+		BB552CFA1D78EA3600C25F8B /* hue_icon1_ico_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_icon1_ico_32.png; sourceTree = "<group>"; };
+		BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Hue.storyboard; path = Storyboards/Hue.storyboard; sourceTree = "<group>"; };
 		BB63BE8B1D3AB8CE00481CC0 /* CustomSideMenuController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSideMenuController.swift; path = ViewControllers/CustomSideMenuController.swift; sourceTree = "<group>"; };
 		BB63BE8D1D3AD56900481CC0 /* Notifications.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Notifications.storyboard; path = Storyboards/Notifications.storyboard; sourceTree = "<group>"; };
 		BB63BE8F1D3AD5F200481CC0 /* NotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationViewController.swift; path = ViewControllers/NotificationViewController.swift; sourceTree = "<group>"; };
@@ -403,7 +455,6 @@
 		BBCC66021D491CBB004D35A6 /* water_2_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_2_icon.png; sourceTree = "<group>"; };
 		BBCC66031D491CBB004D35A6 /* water_3_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_3_icon.png; sourceTree = "<group>"; };
 		BBCC66041D491CBB004D35A6 /* water_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_icon.png; sourceTree = "<group>"; };
-		BBCC66391D494AB2004D35A6 /* EndPointMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EndPointMenuCell.xib; path = ViewControllers/nibs/EndPointMenuCell.xib; sourceTree = "<group>"; };
 		BBCC663B1D494C9B004D35A6 /* EndPointMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndPointMenuCell.swift; path = ViewControllers/Cells/EndPointMenuCell.swift; sourceTree = "<group>"; };
 		BBCC663D1D495D4E004D35A6 /* door_lock_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_lock_icon.png; sourceTree = "<group>"; };
 		BBCC663F1D4964A3004D35A6 /* shades_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_icon.png; sourceTree = "<group>"; };
@@ -492,6 +543,8 @@
 				BBF93E181D4FF8D7000985AE /* DeviceEditViewController.swift */,
 				BB7A5D581D5104DE00388B78 /* FoundDevicesViewController.swift */,
 				BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */,
+				BB099A7C1D6CA94A009960C4 /* ScenesViewController.swift */,
+				BB099A841D6CCF47009960C4 /* SceneEditViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -506,6 +559,8 @@
 				BBCC665C1D4FCB37004D35A6 /* CollectionParallaxHeader.swift */,
 				BBCC66601D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift */,
 				BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */,
+				BB099A8E1D6CD212009960C4 /* SceneEndpointCell.swift */,
+				BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -513,11 +568,21 @@
 		BB03C7011D234E760023256F /* nibs */ = {
 			isa = PBXGroup;
 			children = (
+				BB0DAC961D74AD7900A472B2 /* EndPointMenuCell.xib */,
+				BB099A8A1D6CD1CF009960C4 /* SceneEndpointCell.xib */,
 				BB03C7021D234E8E0023256F /* PhotoLibraryCell.xib */,
-				BBCC66391D494AB2004D35A6 /* EndPointMenuCell.xib */,
 				BBCC665E1D4FCB76004D35A6 /* MainMenuHeaderView.xib */,
+				BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */,
 			);
 			name = nibs;
+			sourceTree = "<group>";
+		};
+		BB0DACC81D77A0A800A472B2 /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */,
+			);
+			name = Libraries;
 			sourceTree = "<group>";
 		};
 		BB3DD8B41D2F2DF90020B11D /* Devices */ = {
@@ -538,6 +603,7 @@
 				BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */,
 				BBCC66491D4A7344004D35A6 /* Device.storyboard */,
 				BB099A731D667C38009960C4 /* Scenes.storyboard */,
+				BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -587,6 +653,7 @@
 		BBA09B7E1D1A01220074765E /* Living */ = {
 			isa = PBXGroup;
 			children = (
+				BB0DACC81D77A0A800A472B2 /* Libraries */,
 				BB3DD8BB1D31DDCB0020B11D /* Storyboards */,
 				BB03C6EE1D2087540023256F /* ViewControllers */,
 				BBA09B9F1D1C75740074765E /* Resources */,
@@ -631,6 +698,11 @@
 				BBCC65CE1D4814C5004D35A6 /* CategoryEndpoint.swift */,
 				BBCC664D1D4A793F004D35A6 /* DeviceIcons.swift */,
 				BB7A5D561D50FD5B00388B78 /* EndpointResponse.swift */,
+				BB099A771D6CA7EE009960C4 /* Scenes.swift */,
+				BB099A791D6CA8EA009960C4 /* Scene.swift */,
+				BB099A7E1D6CB48E009960C4 /* Payload.swift */,
+				BB099A961D710760009960C4 /* Trigger.swift */,
+				BB099A981D710CC9009960C4 /* Triggers.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -638,6 +710,10 @@
 		BBA09B9F1D1C75740074765E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB552CFA1D78EA3600C25F8B /* hue_icon1_ico_32.png */,
+				BB552CF81D78EA0A00C25F8B /* hue_icon1_ico.png */,
+				BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */,
+				BB099A901D6E02BB009960C4 /* marker.png */,
 				BB099A6B1D6586EC009960C4 /* pause.png */,
 				BB099A6C1D6586EC009960C4 /* play.png */,
 				BB099A6D1D6586EC009960C4 /* skip_to_start.png */,
@@ -699,6 +775,12 @@
 				BB099A641D64C10E009960C4 /* SwitchTableViewCell.xib */,
 				BB099A671D64C215009960C4 /* LevelViewController.swift */,
 				BB099A681D64C215009960C4 /* LevelViewController.xib */,
+				BB099A921D70A0CD009960C4 /* HueViewController.swift */,
+				BB099A941D70A0E6009960C4 /* HueViewController.xib */,
+				BB099A9A1D711075009960C4 /* SensorViewController.swift */,
+				BB099A9C1D711093009960C4 /* SensorViewController.xib */,
+				BB552CF41D78E85E00C25F8B /* Hue2ViewController.swift */,
+				BB552CF51D78E85E00C25F8B /* Hue2ViewController.xib */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -801,6 +883,9 @@
 				BBA66D861D5B8202008971A2 /* LevelEndpoint.swift */,
 				BBA66D881D5B831D008971A2 /* SensorEndpoint.swift */,
 				BBA66D8A1D5B835F008971A2 /* LockEndpoint.swift */,
+				BB552CEE1D78964E00C25F8B /* Hue.swift */,
+				BB552CF01D78965D00C25F8B /* HueLight.swift */,
+				BB552CF21D78D07A00C25F8B /* HueGroup.swift */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -878,6 +963,7 @@
 				BB099A711D6586EC009960C4 /* skip_to_start.png in Resources */,
 				BBAFED4E1D2ADB3700005212 /* created_user_back_min.jpg in Resources */,
 				BBCC665B1D4FC0E2004D35A6 /* areasDOWN_btn.png in Resources */,
+				BB552CFE1D78FD6300C25F8B /* Hue.storyboard in Resources */,
 				BBCC661F1D491CBB004D35A6 /* music_4_icon.png in Resources */,
 				BBCC66181D491CBB004D35A6 /* light_icon.png in Resources */,
 				BB03C6EB1D20784C0023256F /* Living_registro_finalizacion.png in Resources */,
@@ -888,10 +974,12 @@
 				BBCC66191D491CBB004D35A6 /* movement_sensor_2_icon.png in Resources */,
 				BBCC661C1D491CBB004D35A6 /* movement_sensor_icon.png in Resources */,
 				BB03C6E51D206FFF0023256F /* Living_(Registro).png in Resources */,
+				BB552CF71D78E85E00C25F8B /* Hue2ViewController.xib in Resources */,
 				BBCC66151D491CBB004D35A6 /* light_3_icon.png in Resources */,
 				BBAFED481D2ADA2500005212 /* Icon-60@3x.png in Resources */,
 				BBCC660E1D491CBB004D35A6 /* energy_2_icon.png in Resources */,
 				BBA09B8D1D1A01220074765E /* LaunchScreen.storyboard in Resources */,
+				BB0DACC71D778EA300A472B2 /* HueEndpointCell.xib in Resources */,
 				BBCC665F1D4FCB76004D35A6 /* MainMenuHeaderView.xib in Resources */,
 				BBCC660C1D491CBB004D35A6 /* door_icon.png in Resources */,
 				BBCC66211D491CBB004D35A6 /* music_icon.png in Resources */,
@@ -910,11 +998,14 @@
 				BB3DD8BA1D2F30460020B11D /* cerrar_btn.png in Resources */,
 				BBCC662E1D491CBB004D35A6 /* shades_2_icon.png in Resources */,
 				BBCC66561D4FC0E2004D35A6 /* dispositivosDOWN_btn.png in Resources */,
+				BB552CFB1D78EA3600C25F8B /* hue_icon1_ico_32.png in Resources */,
 				BBCC66591D4FC0E2004D35A6 /* dispositivos_btn.png in Resources */,
 				BBAFED4F1D2ADB3700005212 /* default_background.jpg in Resources */,
 				BBCC66241D491CBB004D35A6 /* open_close_sensor_3_icon.png in Resources */,
 				BB03C7031D234E8E0023256F /* PhotoLibraryCell.xib in Resources */,
+				BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */,
 				BBCC662A1D491CBB004D35A6 /* power_outlet_icon.png in Resources */,
+				BB0DAC981D74ADEF00A472B2 /* EndPointMenuCell.xib in Resources */,
 				BB03C6E71D2073F80023256F /* connect-station.png in Resources */,
 				BBCC66121D491CBB004D35A6 /* lamp_3_icon.png in Resources */,
 				BBCC66401D4964A3004D35A6 /* shades_icon.png in Resources */,
@@ -939,7 +1030,6 @@
 				BB63BEA81D3CB62600481CC0 /* Guests.storyboard in Resources */,
 				BBAFED421D2ADA2500005212 /* Icon-Small-50@2x.png in Resources */,
 				BBAFED381D2ADA2500005212 /* Icon-Small.png in Resources */,
-				BBCC663A1D494AB2004D35A6 /* EndPointMenuCell.xib in Resources */,
 				BB099A6A1D64C215009960C4 /* LevelViewController.xib in Resources */,
 				BB099A721D6586EC009960C4 /* end.png in Resources */,
 				BB03C6F81D23237D0023256F /* back_btn.png in Resources */,
@@ -965,6 +1055,7 @@
 				BBAFED3E1D2ADA2500005212 /* Icon-72.png in Resources */,
 				BBCC66381D491CBB004D35A6 /* water_icon.png in Resources */,
 				BB794A781D3D78C2008EBBF3 /* Devices.storyboard in Resources */,
+				BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */,
 				BBCC66271D491CBB004D35A6 /* play_icon.png in Resources */,
 				BBCC662C1D491CBB004D35A6 /* repeat_icon.png in Resources */,
 				BB099A661D64C10E009960C4 /* SwitchTableViewCell.xib in Resources */,
@@ -991,6 +1082,7 @@
 				BB63BEAD1D3CB91800481CC0 /* AddGuestViewController.xib in Resources */,
 				BBCC66291D491CBB004D35A6 /* power_outlet_2_icon.png in Resources */,
 				BBCC66091D491CBB004D35A6 /* cofee_maker_icon.png in Resources */,
+				BB099A911D6E02BB009960C4 /* marker.png in Resources */,
 				BBCC66081D491CBB004D35A6 /* battery.png in Resources */,
 				BBCC660B1D491CBB004D35A6 /* door_2_icon.png in Resources */,
 				BBCC66341D491CBB004D35A6 /* temperature_icon.png in Resources */,
@@ -999,10 +1091,12 @@
 				BB794A7E1D3D886F008EBBF3 /* SelectDeviceViewController.xib in Resources */,
 				BBCC663E1D495D4E004D35A6 /* door_lock_icon.png in Resources */,
 				BBCC66331D491CBB004D35A6 /* switch_icon.png in Resources */,
+				BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */,
 				BB794A7A1D3D78EC008EBBF3 /* Rooms.storyboard in Resources */,
 				BB099A701D6586EC009960C4 /* play.png in Resources */,
 				BBCC661E1D491CBB004D35A6 /* music_3_icon.png in Resources */,
 				BBAFED3D1D2ADA2500005212 /* Icon-60.png in Resources */,
+				BB099A8B1D6CD1CF009960C4 /* SceneEndpointCell.xib in Resources */,
 				BBCC66261D491CBB004D35A6 /* pause_icon.png in Resources */,
 				BBAFED441D2ADA2500005212 /* Icon-60@2x.png in Resources */,
 				BBCC66351D491CBB004D35A6 /* tv_icon.png in Resources */,
@@ -1055,7 +1149,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1065,11 +1159,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB099A991D710CC9009960C4 /* Triggers.swift in Sources */,
 				BB3DD8B31D2F2AF90020B11D /* HomeViewController.swift in Sources */,
 				BB3DD8A71D2EFF950020B11D /* ArSmartUtils.swift in Sources */,
 				BB63BE961D3C2F2000481CC0 /* Guests.swift in Sources */,
 				BBAFED511D2B8E9A00005212 /* TokenManager.swift in Sources */,
 				BB099A691D64C215009960C4 /* LevelViewController.swift in Sources */,
+				BB099A931D70A0CE009960C4 /* HueViewController.swift in Sources */,
 				BB794A871D3E558F008EBBF3 /* Room.swift in Sources */,
 				BB03C6F41D231E7C0023256F /* WelcomeViewController.swift in Sources */,
 				BBCC664C1D4A77B4004D35A6 /* IconSelectionViewController.swift in Sources */,
@@ -1078,11 +1174,15 @@
 				BBCC66631D4FD163004D35A6 /* MainMenuHeaderView.swift in Sources */,
 				BB794A7D1D3D886F008EBBF3 /* SelectDeviceViewController.swift in Sources */,
 				BB3DD89F1D2DA51C0020B11D /* RecoverPassword.swift in Sources */,
+				BB552CEF1D78964E00C25F8B /* Hue.swift in Sources */,
 				BBCC65CB1D481280004D35A6 /* Endpoint.swift in Sources */,
 				BB41CE1F1D2D970900682A72 /* SelectInitialHubPositionViewController.swift in Sources */,
+				BB099A8F1D6CD212009960C4 /* SceneEndpointCell.swift in Sources */,
 				BB3DD8BF1D31DEDB0020B11D /* MyAccountViewController.swift in Sources */,
+				BB099A781D6CA7EE009960C4 /* Scenes.swift in Sources */,
 				BBA09B981D1A03690074765E /* ArSmartApi.swift in Sources */,
 				BBA09B961D1A01510074765E /* User.swift in Sources */,
+				BB552CF11D78965D00C25F8B /* HueLight.swift in Sources */,
 				BB794A811D3E4BE2008EBBF3 /* Action.swift in Sources */,
 				BB099A611D64BEF0009960C4 /* SwitchViewController.swift in Sources */,
 				BB7A5D591D5104DE00388B78 /* FoundDevicesViewController.swift in Sources */,
@@ -1090,10 +1190,15 @@
 				BBA09B821D1A01220074765E /* ViewController.swift in Sources */,
 				BB63BE941D3B0DC000481CC0 /* Event.swift in Sources */,
 				BBA66D931D5BC908008971A2 /* SonosTableViewCell.swift in Sources */,
+				BB099A971D710760009960C4 /* Trigger.swift in Sources */,
 				BBCC66611D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift in Sources */,
 				BB63BEAB1D3CB8ED00481CC0 /* AddGuestViewController.swift in Sources */,
+				BB099A9B1D711075009960C4 /* SensorViewController.swift in Sources */,
 				BBAFED201D2A9CD900005212 /* Hub.swift in Sources */,
 				BBA66D971D5BCA07008971A2 /* LevelTableViewCell.swift in Sources */,
+				BB099A7A1D6CA8EA009960C4 /* Scene.swift in Sources */,
+				BB552CF61D78E85E00C25F8B /* Hue2ViewController.swift in Sources */,
+				BB099A7D1D6CA94A009960C4 /* ScenesViewController.swift in Sources */,
 				BBAFED241D2AA4E600005212 /* Hubs.swift in Sources */,
 				BB64C0521D3EC3B200B5EB12 /* DeviceManager.swift in Sources */,
 				BB64C0501D3EC18E00B5EB12 /* Device.swift in Sources */,
@@ -1107,19 +1212,23 @@
 				BBA09B881D1A01220074765E /* Living.xcdatamodeld in Sources */,
 				BB41CE141D2CA20200682A72 /* LoadingViewController.swift in Sources */,
 				BB63BE8C1D3AB8CE00481CC0 /* CustomSideMenuController.swift in Sources */,
+				BB0DACCE1D77E26800A472B2 /* HueEndpointCell.swift in Sources */,
 				BB794A891D3E580F008EBBF3 /* AddRoomViewController.swift in Sources */,
 				BB03C6F21D20B26B0023256F /* LoginViewController.swift in Sources */,
 				BBA66D8F1D5BBA45008971A2 /* SonosViewController.swift in Sources */,
 				BBCC65CD1D48128C004D35A6 /* Endpoints.swift in Sources */,
 				BBA09B801D1A01220074765E /* AppDelegate.swift in Sources */,
 				BB63BE9C1D3C46DE00481CC0 /* GuestsViewController.swift in Sources */,
+				BB552CF31D78D07A00C25F8B /* HueGroup.swift in Sources */,
 				BB63BE981D3C2F2A00481CC0 /* Guest.swift in Sources */,
 				BBA66D891D5B831D008971A2 /* SensorEndpoint.swift in Sources */,
 				BB3DD8B61D2F2E470020B11D /* NewDeviceViewController.swift in Sources */,
+				BB099A851D6CCF47009960C4 /* SceneEditViewController.swift in Sources */,
 				BBA09B9E1D1C6CF30074765E /* ThemeManager.swift in Sources */,
 				BB794A851D3E555E008EBBF3 /* RoomsViewController.swift in Sources */,
 				BBA66D851D5B81C3008971A2 /* BinaryEndpoint.swift in Sources */,
 				BB794A831D3E4C7B008EBBF3 /* Actions.swift in Sources */,
+				BB099A7F1D6CB48E009960C4 /* Payload.swift in Sources */,
 				BB7A5D571D50FD5B00388B78 /* EndpointResponse.swift in Sources */,
 				BB794A8D1D3E68FF008EBBF3 /* NotificationViewCell.swift in Sources */,
 				BB099A761D66F164009960C4 /* ChangePasswordViewController.swift in Sources */,
@@ -1130,6 +1239,7 @@
 				BBA66D871D5B8202008971A2 /* LevelEndpoint.swift in Sources */,
 				BB41CE1D1D2D889B00682A72 /* CongratulationsViewController.swift in Sources */,
 				BBF93E171D4FEDF6000985AE /* DevicesViewController.swift in Sources */,
+				BB552CEB1D77E62200C25F8B /* VKExpandableButton.swift in Sources */,
 				BB63BE9F1D3C4BAA00481CC0 /* MenuViewController.swift in Sources */,
 				BB63BE901D3AD5F200481CC0 /* NotificationViewController.swift in Sources */,
 				BBCC65CF1D4814C5004D35A6 /* CategoryEndpoint.swift in Sources */,

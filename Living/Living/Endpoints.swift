@@ -32,6 +32,18 @@ class Endpoints{
     
         return endpoints[index]
     }
+    func setStateEndpoint(state:Int, node:Int){
+        
+        for endpoint:Endpoint in self.endpoints{
+            print("Ednpoint Node: ",node)
+            if(endpoint.node == node){
+                endpoint.state = state
+                
+                print("Ednpoint Set: ",node,state)
+            }
+            
+        }
+    }
     
     
     func GetStatusZWavesDevicesTask(hub:Int,token:String, completion: (IsError:Bool,result: String) -> Void){
@@ -170,7 +182,32 @@ class Endpoints{
                                 let error =  json["response"]["ERROR"].stringValue
                                  completion(IsError: true,result: error)
                             }else{
-                            
+                            //TODO: ObtenerJSON y asignar estados.
+                                let devices_status =  json["response"]
+                                for (index,subJson):(String,JSON) in devices_status{
+                                
+                                    
+                                    
+                                    //Node
+                                    let node = subJson["node"].intValue
+                                    let state = subJson["state"][0].intValue
+                                    print("index %d",index)
+                                    self.setStateEndpoint(state, node: node)
+                                    /*
+                                    "sensor" : 0,
+                                    "sleep_cap" : 0,
+                                    "active" : "true",
+                                    "node" : 11,
+                                    "mainCC" : [
+                                    25
+                                    ],
+                                    "state" : [
+                                    0
+                                    ]
+*/
+                                    
+                                    
+                                }
                                 completion(IsError: true,result: "")
                             }
                             
@@ -199,6 +236,7 @@ class Endpoints{
 
     }
     
+
     
     
     func AvailableStatus(token:String, url:String,completion: (IsError:Bool,result: String, Devices:[EndpointResponse]) -> Void){

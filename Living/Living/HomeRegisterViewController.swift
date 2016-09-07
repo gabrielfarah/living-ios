@@ -15,16 +15,26 @@ import EZLoadingActivity
 class HomeRegisterViewController: UIViewController {
     
     
-    let mySpecialNotificationKey = "com.andrewcbancroft.specialNotificationKey"
+    let mySpecialNotificationKey = "com.arsmart.specialNotificationKey"
+    let mySpecialLocationNotificationKey = "com.arsmart.mySpecialLocationNotificationKey"
+    
+    let locationManager = CLLocationManager()
     
     @IBOutlet weak var mapView: GMSMapView!
-
     @IBOutlet weak var btn_continue: UIButton!
     @IBOutlet weak var view_map: UIView!
     @IBOutlet weak var txt_name_home: UITextField!
     @IBOutlet weak var btn_photo: UIButton!
-        @IBOutlet weak var img_place: UIImageView!
-    let locationManager = CLLocationManager()
+    @IBOutlet weak var img_place: UIImageView!
+    
+    
+    
+    var IsPhotoSelected:Bool = false
+    var isLocationSelected:Bool = false
+    
+    var lat:Double = 0.0
+    var lon:Double = 0.0
+    
     
     
     
@@ -35,15 +45,47 @@ class HomeRegisterViewController: UIViewController {
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         
-        //ArSmartApi.sharedApi.token?.CheckTokenTest()
+
         
-     NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeRegisterViewController.updateNotificationSentLabel), name: mySpecialNotificationKey, object: nil)
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeRegisterViewController.updateNotificationSentLabel), name: mySpecialNotificationKey, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeRegisterViewController.updateLocation), name: mySpecialLocationNotificationKey, object: nil)
         
         
     }
     func updateNotificationSentLabel(notification: NSNotification) {
-        img_place.image = notification.object as? UIImage
+        
+        if(notification.object != nil){
+            img_place.image = notification.object as? UIImage
+            IsPhotoSelected = true
+
+        }else{
+            IsPhotoSelected = false
+        }
+        
+
+    }
+    func updateLocation(notification: NSNotification) {
+        
+        if(notification.object != nil){
+            
+            let values:[String:AnyObject] = notification.object as! [String:AnyObject]
+            if((values["hasLocation"]) != nil){
+                isLocationSelected = true
+                lat = values["lat"] as! Double
+                lon = values["lon"] as! Double
+                let myLocation = CLLocation(latitude: lat, longitude: lon)
+                mapView.camera = GMSCameraPosition(target: myLocation.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            }else{
+                isLocationSelected = false
+            }
+            
+            
+        }else{
+            isLocationSelected = false
+        }
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -56,7 +98,7 @@ class HomeRegisterViewController: UIViewController {
         self.navigationController?.navigationBarHidden = true
         btn_continue.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
         btn_continue.layer.borderWidth = 1.0
-        btn_continue.layer.cornerRadius = 5.0
+
         
     }
 
@@ -66,12 +108,43 @@ class HomeRegisterViewController: UIViewController {
     @IBAction func SavePhotoAndContinue(sender: AnyObject) {
         
         if(txt_name_home.text!.isEmpty){
-            let presenter2 = Presentr(presentationType: .Alert)
+            
+            let width = ModalSize.Custom(size: 240)
+            let height = ModalSize.Custom(size: 130)
+            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
             
             presenter2.transitionType = .CrossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.lbl_mensaje.text = "Debe ingresar el nombre de un lugar"
+            vc2.setText("Debe ingresar el nombre de un lugar")
+            
+            
+            
+            
+            
+            
+        }else if(!IsPhotoSelected){
+        
+            let width = ModalSize.Custom(size: 240)
+            let height = ModalSize.Custom(size: 130)
+            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            
+            presenter2.transitionType = .CrossDissolve // Optional
+            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+            vc2.setText("Debe Seleccionar una imágen para su casa")
+        
+        }else if(!isLocationSelected){
+            
+            let width = ModalSize.Custom(size: 240)
+            let height = ModalSize.Custom(size: 130)
+            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            
+            presenter2.transitionType = .CrossDissolve // Optional
+            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+            vc2.setText("Debe especificar donde se encuentra el lugar, por favor presione sobre el mapa para elegir la ubucación.")
+            
         }else{
             ArSmartApi.sharedApi.hub!.name = txt_name_home.text!
             performSegueWithIdentifier("GoPreRegisterHub", sender: nil)
@@ -87,11 +160,19 @@ extension HomeRegisterViewController: CLLocationManagerDelegate {
         if status == .AuthorizedWhenInUse {
             
             // 4
-            locationManager.startUpdatingLocation()
+            if(!isLocationSelected){
+                locationManager.startUpdatingLocation()
+                
+                //5
+                mapView.myLocationEnabled = true
+                mapView.settings.myLocationButton = true
             
-            //5
-            mapView.myLocationEnabled = true
-            mapView.settings.myLocationButton = true
+            }else{
+            let myLocation = CLLocation(latitude: lat, longitude: lon)
+             mapView.camera = GMSCameraPosition(target: myLocation.coordinate, zoom: 15, bearing: 0, viewingAngle: 0)
+            }
+
+            
         }
     }
     

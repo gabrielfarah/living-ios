@@ -32,8 +32,10 @@ class NewUserViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
        // style();
 
-        
-
+        txt_email.text = ""
+        txt_password.text = ""
+        txt_name.text = ""
+        txt_repeat_email.text = ""
         
     }
     override func viewWillAppear(animated: Bool) {
@@ -159,15 +161,14 @@ class NewUserViewController: UIViewController {
                 self.dismissViewControllerAnimated(true, completion: {
                     if(IsError){
                         
-                        
-                        
-                        
-                        let presenter2 = Presentr(presentationType: .Alert)
+                        let width = ModalSize.Custom(size: 240)
+                        let height = ModalSize.Custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
                         
                         presenter2.transitionType = .CrossDissolve // Optional
                         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                        vc2.lbl_mensaje.text = result
+                        vc2.setText(result)
                         
                     }else{
                         

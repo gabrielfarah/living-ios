@@ -16,7 +16,7 @@ import SideMenuController
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    let googleMapsApiKey = "AIzaSyCcT2F5CD3cFJXs6dHoBu9sGkeDFSNgTf0"
+    let googleMapsApiKey = "AIzaSyBmCH6gEyEjyhz0pZy37w-E0GFMnvpBLQo"
     //let oneSignalApiKey = "d5ff3af3-5c26-47a4-908d-874cd24db8b5"
     let oneSignalApiKey = "cbbf953c-0370-4884-9d8a-35bad2b14b98"
 

@@ -43,12 +43,16 @@ class RegisterNewHub:UIViewController {
         
         if(txt_serial.text!.isEmpty){
 
-            let presenter2 = Presentr(presentationType: .Alert)
+
+            let width = ModalSize.Custom(size: 240)
+            let height = ModalSize.Custom(size: 130)
+            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
             
             presenter2.transitionType = .CrossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.lbl_mensaje.text =  "Debe ingresar un número serial"
+            
+            vc2.setText("Debe ingresar un número serial")
 
             return
         }
@@ -86,12 +90,16 @@ class RegisterNewHub:UIViewController {
                         print("Error")
                         
                             let response_string = (json["ERROR"]).rawString()
-                            let presenter2 = Presentr(presentationType: .Alert)
-                            
+                        
+                            let width = ModalSize.Custom(size: 240)
+                            let height = ModalSize.Custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                        
                             presenter2.transitionType = .CrossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                            vc2.lbl_mensaje.text =  response_string
+
+                            vc2.setText(response_string!)
                         
                         
                         

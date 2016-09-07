@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="240" height="130"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M6H-TX-Njl">
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="M6H-TX-Njl">
                     <rect key="frame" x="96" y="69" width="51" height="31"/>
                     <color key="onTintColor" red="0.10804758972878024" green="0.48678877798571418" blue="0.47739683272176181" alpha="1" colorSpace="calibratedRGB"/>
                     <connections>

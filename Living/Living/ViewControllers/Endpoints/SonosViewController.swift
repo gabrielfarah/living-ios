@@ -25,7 +25,7 @@ class SonosViewController: UIViewController {
     @IBOutlet weak var lbl_playlist: UILabel!
     @IBOutlet weak var slider_volume: UISlider!
     
-    
+    var play:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +33,9 @@ class SonosViewController: UIViewController {
         // Do any additional setup after loading the view.
         slider_volume.minimumValue = MIN_VALUE
         slider_volume.maximumValue = MAX_VALUE
+        
+        slider_volume.continuous = false
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -90,15 +93,27 @@ class SonosViewController: UIViewController {
     @IBAction func Play(sender: AnyObject) {
 
         
+        play = (play == true) ? false : true
         
+        if(!play){
+            endpoint.playSonos(hub!, token: token, parameters: [:]) { (IsError, result) in
+                if(IsError){
+                    print("Played Error")
+                }else{
+                    print("Player Success")
+                }
+            }
         
-        endpoint.playSonos(hub!, token: token, parameters: [:]) { (IsError, result) in
-            if(IsError){
-                print("Played Error")
-            }else{
-                print("Player Success")
+        }else{
+            endpoint.pauseSonos(hub!, token: token, parameters: [:]) { (IsError, result) in
+                if(IsError){
+                    print("Played Error")
+                }else{
+                    print("Player Success")
+                }
             }
         }
+
         
     }
     @IBAction func Next(sender: AnyObject) {
@@ -117,7 +132,7 @@ class SonosViewController: UIViewController {
     }
     @IBAction func ValueChange(sender: AnyObject) {
 
-        let volume = ["volume":String(slider_volume.value)]
+        let volume = ["volume":String(Int(slider_volume.value))]
         
         
         endpoint.setVomuneSonos(hub!, token: token, parameters: volume) { (IsError, result) in
