@@ -26,7 +26,9 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
        // style();
-        ArSmartApi.sharedApi.Logout()
+        //ArSmartApi.sharedApi.Logout()
+        
+
         
        // txt_email.text = ""
         //txt_password.text = ""

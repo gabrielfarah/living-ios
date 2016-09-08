@@ -80,7 +80,7 @@
 		BB552CF71D78E85E00C25F8B /* Hue2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB552CF51D78E85E00C25F8B /* Hue2ViewController.xib */; };
 		BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */ = {isa = PBXBuildFile; fileRef = BB552CF81D78EA0A00C25F8B /* hue_icon1_ico.png */; };
 		BB552CFB1D78EA3600C25F8B /* hue_icon1_ico_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BB552CFA1D78EA3600C25F8B /* hue_icon1_ico_32.png */; };
-		BB552CFE1D78FD6300C25F8B /* Hue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */; };
+		BB552CFF1D80C7E900C25F8B /* Hue.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */; };
 		BB63BE8C1D3AB8CE00481CC0 /* CustomSideMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BE8B1D3AB8CE00481CC0 /* CustomSideMenuController.swift */; };
 		BB63BE8E1D3AD56900481CC0 /* Notifications.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB63BE8D1D3AD56900481CC0 /* Notifications.storyboard */; };
 		BB63BE901D3AD5F200481CC0 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BE8F1D3AD5F200481CC0 /* NotificationViewController.swift */; };
@@ -963,7 +963,7 @@
 				BB099A711D6586EC009960C4 /* skip_to_start.png in Resources */,
 				BBAFED4E1D2ADB3700005212 /* created_user_back_min.jpg in Resources */,
 				BBCC665B1D4FC0E2004D35A6 /* areasDOWN_btn.png in Resources */,
-				BB552CFE1D78FD6300C25F8B /* Hue.storyboard in Resources */,
+				BB552CFF1D80C7E900C25F8B /* Hue.storyboard in Resources */,
 				BBCC661F1D491CBB004D35A6 /* music_4_icon.png in Resources */,
 				BBCC66181D491CBB004D35A6 /* light_icon.png in Resources */,
 				BB03C6EB1D20784C0023256F /* Living_registro_finalizacion.png in Resources */,

@@ -78,6 +78,7 @@
                     <connections>
                         <outlet property="btn_login" destination="L2F-bC-AgG" id="i5h-vA-iAv"/>
                         <outlet property="btn_registrarse" destination="ySa-ki-DBS" id="Pn0-7c-SEh"/>
+                        <segue destination="P4i-0p-OVz" kind="show" identifier="userLoggedIn" id="Rvv-8S-THy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -1273,10 +1274,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="domu_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="k63-nT-6j3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="domu_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="k63-nT-6j3">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YOK-Yj-pHM">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YOK-Yj-pHM">
                                 <rect key="frame" x="0.0" y="220" width="320" height="301"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No posees ningún equipo conectado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qN3-El-7Ml">
@@ -1330,7 +1331,7 @@
                                     <constraint firstItem="zVo-Zw-jis" firstAttribute="top" secondItem="qN3-El-7Ml" secondAttribute="bottom" constant="8" symbolic="YES" id="yHv-C5-4iz"/>
                                 </constraints>
                             </view>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qNP-Eu-pwA" userLabel="Icon List">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qNP-Eu-pwA" userLabel="Icon List">
                                 <rect key="frame" x="0.0" y="72" width="320" height="496"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="3" minimumInteritemSpacing="3" id="1f9-Kk-w5b">
@@ -1390,7 +1391,7 @@
                                     <constraint firstAttribute="height" constant="44" id="jiN-Px-W8X"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-dO-ZUj">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RKL-dO-ZUj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hN9-QN-ar4">
@@ -1652,10 +1653,10 @@
         <image name="usuario_icon.png" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Pf1-B0-Uyz"/>
-        <segue reference="pF0-c9-Hjd"/>
+        <segue reference="ZXK-qB-Agj"/>
+        <segue reference="GEc-Yv-IGn"/>
+        <segue reference="Rvv-8S-THy"/>
         <segue reference="nXb-jZ-6fi"/>
-        <segue reference="jac-Ei-s7o"/>
         <segue reference="r2n-qw-6mc"/>
     </inferredMetricsTieBreakers>
 </document>

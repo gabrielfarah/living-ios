@@ -22,11 +22,11 @@ class TokenManager{
     
     init(){
     
-        self.token="";
+        self.token = Defaults["token"].string ?? ""
         self.expire = NSDate()
         self.endpoint = ""
-        self.user = ""
-        self.password = ""
+        self.user = Defaults["user"].string ?? ""
+        self.password = Defaults["password"].string ?? ""
     }
     
     
@@ -45,7 +45,7 @@ class TokenManager{
     }
     func Logout(){
         self.token="";
-         Defaults["token"] = self.token
+        Defaults.removeAll()
     }
     
     
@@ -109,6 +109,9 @@ class TokenManager{
             ]
         
         
+        
+        
+        
         Alamofire.request(.POST,self.endpoint,parameters:parameters,encoding: .JSON)
             .validate()
             .responseJSON { response in
@@ -119,10 +122,17 @@ class TokenManager{
                     let token_result = response.result.value as? NSDictionary
                     self.token = (token_result!["token"] as? String)!
                     Defaults["token"] = self.token
+                    
+                    Defaults["user"] = email
+                    Defaults["password"] = password
+                    
                     self.user = email
                     self.password = password
                     print("[GetApiToken]Token: \(self.token)")
                     completion(isError: false,result: "Ok")
+                    
+                    
+                    
                     
                     
                 case .Failure(let error):
@@ -149,4 +159,11 @@ class TokenManager{
 
 
 }
+extension TokenManager {
+    static let token = DefaultsKey<String?>("token")
+    static let launchCount = DefaultsKey<Int>("launchCount")
+    static let user = DefaultsKey<String?>("user")
+    static let password = DefaultsKey<Int>("password")
+}
+
 

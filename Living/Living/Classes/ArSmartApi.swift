@@ -29,12 +29,39 @@ class ArSmartApi{
         self.host = "http://living.ar-smart.co"
        
         self.hub = Hub()
+        
         self.user = User()
         self.token = TokenManager()
         self.hubs = Hubs()
         self.token?.endpoint = ApiUrl(Api.Auth.ApiTokenAuth)
+        self.loadHub()
         
     }
+    
+    func loadHub(){
+        let dict = Defaults["hub"].dictionary ?? nil
+        print (dict)
+        if dict != nil {
+            self.hub?.fromDict(dict!)
+        }
+        
+        
+    }
+    func setHub(hub:Hub){
+    
+        self.hub = hub
+        //TODO: Save Hub in preferences
+        Defaults["hub"] = self.hub?.toDict()
+    
+    }
+    func getHub()->Hub{
+        
+        return (self.hub ?? nil)!
+        
+        
+    }
+    
+    
     func getToken()->String{
         return (self.token?.GetToken())!;
     
@@ -45,7 +72,13 @@ class ArSmartApi{
     func Logout(){
         self.token!.Logout()
     }
-    
+    func isLoggedIn()->Bool{
+        if self.getToken() == "" {
+            return false
+        }else{
+            return true
+        }
+    }
 
     
     func RegisterUser(email:String, name:String, password:String, completion: (IsError:Bool,result: String) -> Void){
@@ -143,8 +176,8 @@ struct Api {
     
 }
 extension ArSmartApi {
-    static let token = DefaultsKey<String?>("token")
-    static let launchCount = DefaultsKey<Int>("launchCount")
+
+    static let hub = DefaultsKey<AnyObject>("hub")
 }
 
 

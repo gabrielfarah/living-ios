@@ -31,6 +31,11 @@ class MyAccountViewController:UIViewController{
     
     
     @IBAction func Logout(sender: AnyObject) {
+        
+        ArSmartApi.sharedApi.Logout()
+        //TODO:return to login
+        self.parentViewController?.navigationController?.popToRootViewControllerAnimated(true)
+        
     }
     
    

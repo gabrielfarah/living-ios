@@ -106,4 +106,46 @@ class Hub{
         return favorites
     }
     
+    func toDict()->[String:AnyObject] {
+
+        
+
+        
+        let dict_hub:[String:AnyObject] = [
+            "hid" : self.hid,
+            "serial" : self.serial,
+            "mac" : self.serial,
+            "isRegistered" : self.isRegistered,
+            "name" : self.name,
+            "latitude" : self.latitude,
+            "longitude" : self.longitude,
+            "radius" : self.radius,
+
+        ]
+        return dict_hub
+    
+    
+    
+    }
+    
+    func fromDict(dict_hub:NSDictionary) {
+        
+        
+        
+        self.hid = dict_hub["hid"] as! Int
+        self.serial = dict_hub["serial"] as! String
+        self.mac = dict_hub["mac"] as! String
+        self.isRegistered = dict_hub["isRegistered"] as! Bool
+        self.name = dict_hub["name"] as! String
+        self.latitude = dict_hub["latitude"] as! Double
+        self.longitude = dict_hub["longitude"] as! Double
+        self.radius = dict_hub["radius"] as! Double
+        
+
+        
+        
+        
+    }
+    
+    
 }

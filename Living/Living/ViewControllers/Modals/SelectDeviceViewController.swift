@@ -63,7 +63,10 @@ class SelectDeviceViewController: UIViewController {
 
             }
         }
-        ArSmartApi.sharedApi.hub = ArSmartApi.sharedApi.hubs.hubs[indexPath.row]
+
+        
+        ArSmartApi.sharedApi.setHub(ArSmartApi.sharedApi.hubs.hubs[indexPath.row])
+        
         NSNotificationCenter.defaultCenter().postNotificationName("LoadEndpoints", object: nil)
         dismissViewControllerAnimated(true, completion: {
 

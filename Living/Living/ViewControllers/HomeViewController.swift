@@ -83,6 +83,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         self.layout?.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 102)
 
 
+
         
 
         
@@ -92,34 +93,43 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
         can_get_status = true
     
-        if ArSmartApi.sharedApi.hub != nil {
-          
-
-            
-            var timer = NSTimer.every(500.ms) { (timer: NSTimer) in
-                // do something
+        ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
+            if ArSmartApi.sharedApi.hub!.hid == 0 {
                 
                 
                 
-                let width = ModalSize.Custom(size: 240)
-                let height = ModalSize.Custom(size: 243)
-                let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                NSTimer.every(500.ms) { (timer: NSTimer) in
+                    // do something
+                    
+                    
+                    
+                    let width = ModalSize.Custom(size: 240)
+                    let height = ModalSize.Custom(size: 243)
+                    let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                    
+                    presenter.transitionType = .CrossDissolve // Optional
+                    presenter.dismissOnTap = false
+                    let vc = SelectDeviceViewController(nibName: "SelectDeviceViewController", bundle: nil)
+                    self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                    
+                    
+                    
+                    timer.invalidate()
+                    
+                }
                 
-                presenter.transitionType = .CrossDissolve // Optional
-                presenter.dismissOnTap = false
-                let vc = SelectDeviceViewController(nibName: "SelectDeviceViewController", bundle: nil)
-                self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+            }else{
                 
-                
-                
-                timer.invalidate()
-                
+                NSNotificationCenter.defaultCenter().postNotificationName("LoadEndpoints", object: nil)
             }
+            NSTimer.after(3.0.seconds) {
+                self.GetDevicesStatus()
+            }
+        })
         
-        }
-        NSTimer.after(5.0.seconds) {
-            self.GetDevicesStatus()
-        }
+        
+        
+
 
     }
 
@@ -320,7 +330,8 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
-            ArSmartApi.sharedApi.hub = ArSmartApi.sharedApi.hubs.hubs[indexPath]
+            ArSmartApi.sharedApi.setHub(ArSmartApi.sharedApi.hubs.hubs[indexPath])
+            
             self!.hub = ArSmartApi.sharedApi.hub?.hid
             self!.endpoints_list.reloadData()
             self!.GetDevicesStatus()

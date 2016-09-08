@@ -20,7 +20,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        ArSmartApi.sharedApi.PrintTest()
+        btn_login.hidden = true
+        btn_registrarse.hidden = true
 
         
         style()
@@ -38,6 +39,13 @@ class ViewController: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+        if ArSmartApi.sharedApi.isLoggedIn(){
+            print("is logged in")
+            performSegueWithIdentifier("userLoggedIn", sender: nil)
+        }else{
+            btn_registrarse.hidden = false
+            btn_login.hidden = false
+        }
 
 
     }
