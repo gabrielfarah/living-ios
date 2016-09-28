@@ -13,7 +13,7 @@ class PhotoLibraryCell: UICollectionViewCell {
     
     @IBOutlet var itemImageView: UIImageView!
     
-    func setGalleryItem(item:UIImage) {
+    func setGalleryItem(_ item:UIImage) {
         itemImageView.image = item
     }
     

@@ -14,15 +14,15 @@ class CustomSideMenuController: SideMenuController {
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
-        performSegueWithIdentifier("showCenterController1", sender: nil)
-        performSegueWithIdentifier("containSideMenu", sender: nil)
-         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ToggleMenu), name:"ToggleMenu", object: nil)
+        performSegue(withIdentifier: "showCenterController1", sender: nil)
+        performSegue(withIdentifier: "containSideMenu", sender: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(ToggleMenu), name:NSNotification.Name(rawValue: "ToggleMenu"), object: nil)
     }
     func style(){
 
         
     }
-    func ToggleMenu(notification: NSNotification){
+    func ToggleMenu(_ notification: Notification){
         self.toggle()
     }
 }

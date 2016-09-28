@@ -7,25 +7,50 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SensorViewController" customModule="Living" customModuleProvider="target">
             <connections>
+                <outlet property="btn_save" destination="4To-Kk-Ond" id="Vmp-fJ-f46"/>
+                <outlet property="date_picker" destination="Obi-cQ-Wib" id="8LS-jz-JdB"/>
+                <outlet property="img_icon" destination="oWy-mW-BoM" id="3ld-Qz-2Qb"/>
+                <outlet property="lbl_description" destination="RwD-Uc-m8r" id="2Uu-HI-svF"/>
+                <outlet property="lbl_device_name" destination="7GZ-zM-GMf" id="m6i-5b-UzW"/>
+                <outlet property="switch_notification" destination="wTP-8Y-nuA" id="dvl-i1-rgq"/>
                 <outlet property="tableView" destination="X83-Fp-NlR" id="oKV-WF-som"/>
+                <outlet property="txt_time" destination="AID-7a-N13" id="iac-ir-czm"/>
+                <outlet property="txt_time_until" destination="D6d-zh-IYh" id="pN5-0s-ckB"/>
                 <outlet property="view" destination="Lxo-Kg-KA6" id="RFV-jI-bsd"/>
+                <outlet property="weeks_view" destination="sns-Qg-LvP" id="yZa-6N-eQx"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="Lxo-Kg-KA6">
-            <rect key="frame" x="0.0" y="0.0" width="240" height="433"/>
+            <rect key="frame" x="0.0" y="0.0" width="300" height="452"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="X83-Fp-NlR">
-                    <rect key="frame" x="0.0" y="140" width="240" height="225"/>
+                    <rect key="frame" x="8" y="104" width="284" height="190"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="91w-lr-UVP"/>
                         <outlet property="delegate" destination="-1" id="Pzu-66-ZIO"/>
                     </connections>
                 </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre de dispositivo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GZ-zM-GMf">
+                    <rect key="frame" x="68" y="20" width="164" height="35"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lamp_2_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-mW-BoM">
+                    <rect key="frame" x="8" y="8" width="37" height="37"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seleccione la escena que quiere que se active cuando el sensor este activado" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwD-Uc-m8r">
+                    <rect key="frame" x="8" y="59" width="284" height="37"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4To-Kk-Ond">
-                    <rect key="frame" x="0.0" y="388" width="240" height="45"/>
+                    <rect key="frame" x="157" y="404" width="140" height="45"/>
+                    <color key="backgroundColor" red="0.1080475897" green="0.48678877799999998" blue="0.4773968327" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Guardar">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -34,30 +59,51 @@
                         <action selector="CreateTrigger:" destination="-1" eventType="touchUpInside" id="Ub3-IE-es3"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nombre de dispositivo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7GZ-zM-GMf">
-                    <rect key="frame" x="76" y="20" width="164" height="35"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="lamp_2_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="oWy-mW-BoM">
-                    <rect key="frame" x="8" y="8" width="60" height="60"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Seleccione la escena que quiere que se active cuando el sensor este activado" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwD-Uc-m8r">
-                    <rect key="frame" x="8" y="76" width="162" height="56"/>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sns-Qg-LvP" customClass="WeekDaysSegmentedControl" customModule="Living" customModuleProvider="target">
+                    <rect key="frame" x="7" y="357" width="285" height="42"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hora " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AID-7a-N13">
+                    <rect key="frame" x="7" y="302" width="132" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="TextEditingBegin:" destination="-1" eventType="editingDidBegin" id="C7y-dB-OIv"/>
+                    </connections>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hora " textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D6d-zh-IYh">
+                    <rect key="frame" x="147" y="302" width="145" height="47"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="TextEditingBegin:" destination="-1" eventType="editingDidBegin" id="ORr-Pf-4ge"/>
+                    </connections>
+                </textField>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Notificar" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vcT-0R-hJ6">
+                    <rect key="frame" x="8" y="416" width="71" height="21"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="lTH-qe-mQz">
-                    <rect key="frame" x="183" y="101" width="51" height="31"/>
-                    <color key="onTintColor" red="0.079100686100502027" green="0.35637376475820104" blue="0.34949800458565267" alpha="0.72316209529999997" colorSpace="calibratedRGB"/>
+                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wTP-8Y-nuA">
+                    <rect key="frame" x="90" y="412" width="51" height="31"/>
+                    <color key="onTintColor" red="0.079100686099999998" green="0.35637376479999999" blue="0.34949800460000002" alpha="0.72316209529999997" colorSpace="calibratedRGB"/>
                 </switch>
             </subviews>
             <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="293" y="199.5"/>
+            <point key="canvasLocation" x="226" y="192"/>
         </view>
+        <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" id="Obi-cQ-Wib">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="216"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+            <date key="date" timeIntervalSinceReferenceDate="495578439.29277599">
+                <!--2016-09-14 20:40:39 +0000-->
+            </date>
+            <point key="canvasLocation" x="234" y="620"/>
+        </datePicker>
     </objects>
     <resources>
         <image name="lamp_2_icon.png" width="256" height="256"/>

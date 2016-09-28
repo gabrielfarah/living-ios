@@ -46,6 +46,11 @@
 		BB099A991D710CC9009960C4 /* Triggers.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A981D710CC9009960C4 /* Triggers.swift */; };
 		BB099A9B1D711075009960C4 /* SensorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A9A1D711075009960C4 /* SensorViewController.swift */; };
 		BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB099A9C1D711093009960C4 /* SensorViewController.xib */; };
+		BB0D27C01D82F78F00ADBD2E /* HueColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0D27BF1D82F78F00ADBD2E /* HueColorViewController.swift */; };
+		BB0D27C21D831D4300ADBD2E /* cerrar_btn_domu.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0D27C11D831D4300ADBD2E /* cerrar_btn_domu.png */; };
+		BB0D27C51D89C54B00ADBD2E /* SensorLevelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0D27C31D89C54B00ADBD2E /* SensorLevelViewController.swift */; };
+		BB0D27C61D89C54B00ADBD2E /* SensorLevelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0D27C41D89C54B00ADBD2E /* SensorLevelViewController.xib */; };
+		BB0D27C81D89CBEF00ADBD2E /* WeekDaysSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0D27C71D89CBEF00ADBD2E /* WeekDaysSegmentedControl.swift */; };
 		BB0DAC981D74ADEF00A472B2 /* EndPointMenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0DAC961D74AD7900A472B2 /* EndPointMenuCell.xib */; };
 		BB0DACC71D778EA300A472B2 /* HueEndpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */; };
 		BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */; };
@@ -234,9 +239,16 @@
 		BBCC66611D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCC66601D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift */; };
 		BBCC66631D4FD163004D35A6 /* MainMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */; };
 		BBCC66651D4FDFDC004D35A6 /* xbox_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66641D4FDFDC004D35A6 /* xbox_menu.png */; };
+		BBD2A6861D9C287D0081CED2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD2A6851D9C287D0081CED2 /* GLKit.framework */; };
 		BBF93E171D4FEDF6000985AE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E161D4FEDF6000985AE /* DevicesViewController.swift */; };
 		BBF93E191D4FF8D7000985AE /* DeviceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E181D4FF8D7000985AE /* DeviceEditViewController.swift */; };
 		BBF93E1B1D5000AE000985AE /* flecha_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E1A1D5000AE000985AE /* flecha_icon.png */; };
+		BBFC28501D8B188A005E4D2F /* SceneHueEndpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBFC284F1D8B188A005E4D2F /* SceneHueEndpointCell.xib */; };
+		BBFC28521D8B18DF005E4D2F /* SceneHueEndpointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFC28511D8B18DF005E4D2F /* SceneHueEndpointCell.swift */; };
+		BBFC28671D906C40005E4D2F /* Search.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC28631D906C40005E4D2F /* Search.png */; };
+		BBFC28681D906C40005E4D2F /* User.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC28641D906C40005E4D2F /* User.png */; };
+		BBFC28691D906C40005E4D2F /* Home.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC28651D906C40005E4D2F /* Home.png */; };
+		BBFC286A1D906C40005E4D2F /* Menu.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC28661D906C40005E4D2F /* Menu.png */; };
 		E222A27E12CFA081C40A466E /* Pods_Living.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B89D4DAC0C63716437ACD6B7 /* Pods_Living.framework */; };
 /* End PBXBuildFile section */
 
@@ -285,6 +297,11 @@
 		BB099A981D710CC9009960C4 /* Triggers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Triggers.swift; path = Classes/Triggers.swift; sourceTree = "<group>"; };
 		BB099A9A1D711075009960C4 /* SensorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorViewController.swift; path = ViewControllers/Endpoints/SensorViewController.swift; sourceTree = "<group>"; };
 		BB099A9C1D711093009960C4 /* SensorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SensorViewController.xib; path = ViewControllers/Endpoints/SensorViewController.xib; sourceTree = "<group>"; };
+		BB0D27BF1D82F78F00ADBD2E /* HueColorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueColorViewController.swift; path = ViewControllers/Endpoints/HueColorViewController.swift; sourceTree = "<group>"; };
+		BB0D27C11D831D4300ADBD2E /* cerrar_btn_domu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cerrar_btn_domu.png; sourceTree = "<group>"; };
+		BB0D27C31D89C54B00ADBD2E /* SensorLevelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SensorLevelViewController.swift; path = ViewControllers/Endpoints/SensorLevelViewController.swift; sourceTree = "<group>"; };
+		BB0D27C41D89C54B00ADBD2E /* SensorLevelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SensorLevelViewController.xib; path = ViewControllers/Endpoints/SensorLevelViewController.xib; sourceTree = "<group>"; };
+		BB0D27C71D89CBEF00ADBD2E /* WeekDaysSegmentedControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WeekDaysSegmentedControl.swift; path = Libraries/WeekDaysSegmentedControl.swift; sourceTree = "<group>"; };
 		BB0DAC961D74AD7900A472B2 /* EndPointMenuCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EndPointMenuCell.xib; path = ViewControllers/nibs/EndPointMenuCell.xib; sourceTree = "<group>"; };
 		BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HueEndpointCell.xib; path = ViewControllers/nibs/HueEndpointCell.xib; sourceTree = "<group>"; };
 		BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VKExpandableButton.swift; path = Libraries/VKExpandableButton.swift; sourceTree = "<group>"; };
@@ -476,9 +493,16 @@
 		BBCC66601D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CollectionViewSectionHeader.swift; path = ViewControllers/Cells/CollectionViewSectionHeader.swift; sourceTree = "<group>"; };
 		BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuHeaderView.swift; path = ViewControllers/Cells/MainMenuHeaderView.swift; sourceTree = "<group>"; };
 		BBCC66641D4FDFDC004D35A6 /* xbox_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xbox_menu.png; sourceTree = "<group>"; };
+		BBD2A6851D9C287D0081CED2 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
 		BBF93E161D4FEDF6000985AE /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevicesViewController.swift; path = ViewControllers/DevicesViewController.swift; sourceTree = "<group>"; };
 		BBF93E181D4FF8D7000985AE /* DeviceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceEditViewController.swift; path = ViewControllers/DeviceEditViewController.swift; sourceTree = "<group>"; };
 		BBF93E1A1D5000AE000985AE /* flecha_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha_icon.png; sourceTree = "<group>"; };
+		BBFC284F1D8B188A005E4D2F /* SceneHueEndpointCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneHueEndpointCell.xib; path = ViewControllers/nibs/SceneHueEndpointCell.xib; sourceTree = "<group>"; };
+		BBFC28511D8B18DF005E4D2F /* SceneHueEndpointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneHueEndpointCell.swift; path = ViewControllers/Cells/SceneHueEndpointCell.swift; sourceTree = "<group>"; };
+		BBFC28631D906C40005E4D2F /* Search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Search.png; sourceTree = "<group>"; };
+		BBFC28641D906C40005E4D2F /* User.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = User.png; sourceTree = "<group>"; };
+		BBFC28651D906C40005E4D2F /* Home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Home.png; sourceTree = "<group>"; };
+		BBFC28661D906C40005E4D2F /* Menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +510,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBD2A6861D9C287D0081CED2 /* GLKit.framework in Frameworks */,
 				BBA09B9C1D1A10770074765E /* Alamofire.framework in Frameworks */,
 				E222A27E12CFA081C40A466E /* Pods_Living.framework in Frameworks */,
 			);
@@ -506,6 +531,7 @@
 		1E46D9FB75656393310D08D3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBD2A6851D9C287D0081CED2 /* GLKit.framework */,
 				BBA09B9B1D1A10770074765E /* Alamofire.framework */,
 				BBA09B991D1A0FE70074765E /* Alamofire.framework */,
 				B89D4DAC0C63716437ACD6B7 /* Pods_Living.framework */,
@@ -561,6 +587,7 @@
 				BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */,
 				BB099A8E1D6CD212009960C4 /* SceneEndpointCell.swift */,
 				BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */,
+				BBFC28511D8B18DF005E4D2F /* SceneHueEndpointCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -573,6 +600,7 @@
 				BB03C7021D234E8E0023256F /* PhotoLibraryCell.xib */,
 				BBCC665E1D4FCB76004D35A6 /* MainMenuHeaderView.xib */,
 				BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */,
+				BBFC284F1D8B188A005E4D2F /* SceneHueEndpointCell.xib */,
 			);
 			name = nibs;
 			sourceTree = "<group>";
@@ -581,6 +609,7 @@
 			isa = PBXGroup;
 			children = (
 				BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */,
+				BB0D27C71D89CBEF00ADBD2E /* WeekDaysSegmentedControl.swift */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -710,6 +739,11 @@
 		BBA09B9F1D1C75740074765E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BBFC28631D906C40005E4D2F /* Search.png */,
+				BBFC28641D906C40005E4D2F /* User.png */,
+				BBFC28651D906C40005E4D2F /* Home.png */,
+				BBFC28661D906C40005E4D2F /* Menu.png */,
+				BB0D27C11D831D4300ADBD2E /* cerrar_btn_domu.png */,
 				BB552CFA1D78EA3600C25F8B /* hue_icon1_ico_32.png */,
 				BB552CF81D78EA0A00C25F8B /* hue_icon1_ico.png */,
 				BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */,
@@ -781,6 +815,9 @@
 				BB099A9C1D711093009960C4 /* SensorViewController.xib */,
 				BB552CF41D78E85E00C25F8B /* Hue2ViewController.swift */,
 				BB552CF51D78E85E00C25F8B /* Hue2ViewController.xib */,
+				BB0D27BF1D82F78F00ADBD2E /* HueColorViewController.swift */,
+				BB0D27C31D89C54B00ADBD2E /* SensorLevelViewController.swift */,
+				BB0D27C41D89C54B00ADBD2E /* SensorLevelViewController.xib */,
 			);
 			name = Endpoints;
 			sourceTree = "<group>";
@@ -920,12 +957,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "ar-smart";
 				TargetAttributes = {
 					BBA09B7B1D1A01220074765E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = K7RZU5HJ8U;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1002,6 +1040,7 @@
 				BBCC66591D4FC0E2004D35A6 /* dispositivos_btn.png in Resources */,
 				BBAFED4F1D2ADB3700005212 /* default_background.jpg in Resources */,
 				BBCC66241D491CBB004D35A6 /* open_close_sensor_3_icon.png in Resources */,
+				BBFC28501D8B188A005E4D2F /* SceneHueEndpointCell.xib in Resources */,
 				BB03C7031D234E8E0023256F /* PhotoLibraryCell.xib in Resources */,
 				BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */,
 				BBCC662A1D491CBB004D35A6 /* power_outlet_icon.png in Resources */,
@@ -1049,11 +1088,14 @@
 				BBCC66481D496C96004D35A6 /* sensor_icon.png in Resources */,
 				BBCC660D1D491CBB004D35A6 /* door_lock_2_icon.png in Resources */,
 				BBCC66061D491CBB004D35A6 /* alarm_3_icon.png in Resources */,
+				BBFC28691D906C40005E4D2F /* Home.png in Resources */,
 				BB63BE8E1D3AD56900481CC0 /* Notifications.storyboard in Resources */,
 				BBCC66651D4FDFDC004D35A6 /* xbox_menu.png in Resources */,
 				BBCC664A1D4A7344004D35A6 /* Device.storyboard in Resources */,
+				BBFC28671D906C40005E4D2F /* Search.png in Resources */,
 				BBAFED3E1D2ADA2500005212 /* Icon-72.png in Resources */,
 				BBCC66381D491CBB004D35A6 /* water_icon.png in Resources */,
+				BB0D27C21D831D4300ADBD2E /* cerrar_btn_domu.png in Resources */,
 				BB794A781D3D78C2008EBBF3 /* Devices.storyboard in Resources */,
 				BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */,
 				BBCC66271D491CBB004D35A6 /* play_icon.png in Resources */,
@@ -1065,6 +1107,7 @@
 				BBF93E1B1D5000AE000985AE /* flecha_icon.png in Resources */,
 				BBA09BA21D1C75870074765E /* logo_living.png in Resources */,
 				BBAFED3B1D2ADA2500005212 /* Icon.png in Resources */,
+				BBFC28681D906C40005E4D2F /* User.png in Resources */,
 				BBCC66361D491CBB004D35A6 /* water_2_icon.png in Resources */,
 				BB3DD8B11D2F1CE70020B11D /* usuario_icon.png in Resources */,
 				BBCC662B1D491CBB004D35A6 /* previous_icon.png in Resources */,
@@ -1093,11 +1136,13 @@
 				BBCC66331D491CBB004D35A6 /* switch_icon.png in Resources */,
 				BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */,
 				BB794A7A1D3D78EC008EBBF3 /* Rooms.storyboard in Resources */,
+				BB0D27C61D89C54B00ADBD2E /* SensorLevelViewController.xib in Resources */,
 				BB099A701D6586EC009960C4 /* play.png in Resources */,
 				BBCC661E1D491CBB004D35A6 /* music_3_icon.png in Resources */,
 				BBAFED3D1D2ADA2500005212 /* Icon-60.png in Resources */,
 				BB099A8B1D6CD1CF009960C4 /* SceneEndpointCell.xib in Resources */,
 				BBCC66261D491CBB004D35A6 /* pause_icon.png in Resources */,
+				BBFC286A1D906C40005E4D2F /* Menu.png in Resources */,
 				BBAFED441D2ADA2500005212 /* Icon-60@2x.png in Resources */,
 				BBCC66351D491CBB004D35A6 /* tv_icon.png in Resources */,
 				BBCC66131D491CBB004D35A6 /* lamp_icon.png in Resources */,
@@ -1167,6 +1212,7 @@
 				BB099A691D64C215009960C4 /* LevelViewController.swift in Sources */,
 				BB099A931D70A0CE009960C4 /* HueViewController.swift in Sources */,
 				BB794A871D3E558F008EBBF3 /* Room.swift in Sources */,
+				BB0D27C01D82F78F00ADBD2E /* HueColorViewController.swift in Sources */,
 				BB03C6F41D231E7C0023256F /* WelcomeViewController.swift in Sources */,
 				BBCC664C1D4A77B4004D35A6 /* IconSelectionViewController.swift in Sources */,
 				BB03C6F61D2320040023256F /* HomeRegisterViewController.swift in Sources */,
@@ -1181,6 +1227,7 @@
 				BB3DD8BF1D31DEDB0020B11D /* MyAccountViewController.swift in Sources */,
 				BB099A781D6CA7EE009960C4 /* Scenes.swift in Sources */,
 				BBA09B981D1A03690074765E /* ArSmartApi.swift in Sources */,
+				BB0D27C81D89CBEF00ADBD2E /* WeekDaysSegmentedControl.swift in Sources */,
 				BBA09B961D1A01510074765E /* User.swift in Sources */,
 				BB552CF11D78965D00C25F8B /* HueLight.swift in Sources */,
 				BB794A811D3E4BE2008EBBF3 /* Action.swift in Sources */,
@@ -1191,6 +1238,7 @@
 				BB63BE941D3B0DC000481CC0 /* Event.swift in Sources */,
 				BBA66D931D5BC908008971A2 /* SonosTableViewCell.swift in Sources */,
 				BB099A971D710760009960C4 /* Trigger.swift in Sources */,
+				BB0D27C51D89C54B00ADBD2E /* SensorLevelViewController.swift in Sources */,
 				BBCC66611D4FCD9E004D35A6 /* CollectionViewSectionHeader.swift in Sources */,
 				BB63BEAB1D3CB8ED00481CC0 /* AddGuestViewController.swift in Sources */,
 				BB099A9B1D711075009960C4 /* SensorViewController.swift in Sources */,
@@ -1206,6 +1254,7 @@
 				BBCC664E1D4A793F004D35A6 /* DeviceIcons.swift in Sources */,
 				BBF93E191D4FF8D7000985AE /* DeviceEditViewController.swift in Sources */,
 				BBAFED531D2BA8AC00005212 /* RegisterNewHub.swift in Sources */,
+				BBFC28521D8B18DF005E4D2F /* SceneHueEndpointCell.swift in Sources */,
 				BB63BEA11D3C515E00481CC0 /* MenuTableCellTableViewCell.swift in Sources */,
 				BBA66D831D5B7E18008971A2 /* Sonos.swift in Sources */,
 				BB099A651D64C10E009960C4 /* SwitchTableViewCell.swift in Sources */,
@@ -1286,8 +1335,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1331,8 +1382,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1351,6 +1404,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1359,9 +1413,34 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84F8CFB81864F9819067749D /* Pods-Living.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/BTNavigationDropdownMenu\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CSStickyHeaderFlowLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/CollectionViewWaterfallLayout\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/DZNEmptyDataSet\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/IQKeyboardManagerSwift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/JWTDecode\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Localize-Swift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Navajo-Swift\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/Presentr\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SideMenuController\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftHUEColorPicker\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyJSON\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyTimer\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/SwiftyUserDefaults\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/UIColor_Hex_Swift\"",
+					"\"${PODS_ROOT}/GoogleMaps/Subspecs/Base/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleMaps/Subspecs/Maps/Frameworks\"",
+					"\"${PODS_ROOT}/OneSignal/iOS_SDK/Framework\"",
+					"\"$PODS_CONFIGURATION_BUILD_DIR/NVActivityIndicatorView\"",
+				);
 				INFOPLIST_FILE = Living/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1385,8 +1464,6 @@
 					"\"CoreLocation\"",
 					"-framework",
 					"\"CoreText\"",
-					"-framework",
-					"\"EZLoadingActivity\"",
 					"-framework",
 					"\"GLKit\"",
 					"-framework",
@@ -1419,6 +1496,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Living/Living-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1426,9 +1504,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7F2F5EF93871DDE887287CF8 /* Pods-Living.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = Living/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -1452,8 +1532,6 @@
 					"\"CoreLocation\"",
 					"-framework",
 					"\"CoreText\"",
-					"-framework",
-					"\"EZLoadingActivity\"",
 					"-framework",
 					"\"GLKit\"",
 					"-framework",
@@ -1485,6 +1563,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.arsmart.domu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Living/Living-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

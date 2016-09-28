@@ -17,11 +17,12 @@ class AddRoomViewController: UIViewController {
     @IBOutlet weak var txt_email: UITextField!
     @IBOutlet weak var btn_add: UIButton!
     
+    static let AddRoomError = Notification.Name("AddRoomError")
+    static let AddRoomSuccess = Notification.Name("AddRoomSuccess")
     
-    
-    @IBAction func AddGuest(sender: AnyObject) {
+    @IBAction func AddGuest(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true) {
+        dismiss(animated: true) {
             
             let description = self.txt_email.text
             
@@ -30,9 +31,9 @@ class AddRoomViewController: UIViewController {
             let room = Room(room: description!)
             room.save(ArSmartApi.sharedApi.getToken(),hub: ArSmartApi.sharedApi.hub!.hid, completion: { (IsError, result) in
                 if(IsError){
-                    NSNotificationCenter.defaultCenter().postNotificationName("AddRoomError", object: nil)
+                    NotificationCenter.default.post(name:AddRoomViewController.AddRoomError, object: nil)
                 }else{
-                    NSNotificationCenter.defaultCenter().postNotificationName("AddRoomSuccess", object: nil)
+                    NotificationCenter.default.post(name:AddRoomViewController.AddRoomSuccess, object: nil)
                 }
             })
         }

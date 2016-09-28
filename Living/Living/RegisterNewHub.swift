@@ -38,17 +38,17 @@ class RegisterNewHub:UIViewController {
     
     func style(){}
     
-    @IBAction func RegisterHubSerial(sender: AnyObject) {
+    @IBAction func RegisterHubSerial(_ sender: AnyObject) {
         
         
         if(txt_serial.text!.isEmpty){
 
 
-            let width = ModalSize.Custom(size: 240)
-            let height = ModalSize.Custom(size: 130)
-            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
             
-            presenter2.transitionType = .CrossDissolve // Optional
+            presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             
@@ -58,7 +58,7 @@ class RegisterNewHub:UIViewController {
         }
         
         
-            let parameters: [String: AnyObject] = [
+            let parameters: [String: String] = [
                 "custom_name" : ArSmartApi.sharedApi.hub!.name,
                 "serial" : txt_serial.text!,
                 ]
@@ -69,12 +69,12 @@ class RegisterNewHub:UIViewController {
                 "Accept": "application/json"
             ]
             
-            Alamofire.request(.POST,ArSmartApi.sharedApi.ApiUrl(Api.Hubs.CreateHub),parameters:parameters,encoding: .JSON, headers:headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(Api.Hubs.CreateHub),method:.post,parameters:parameters,encoding: JSONEncoding.default, headers:headers)
                 .validate()
                 .responseJSON { response  in
                     switch response.result {
                         
-                    case .Success:
+                    case .success:
                         
                         print(response.response)
                         if let JSON = response.result.value {
@@ -82,20 +82,20 @@ class RegisterNewHub:UIViewController {
                         }
                         // Perfom segue
                         
-                        self.performSegueWithIdentifier("SuccessHubRegister", sender: nil)
-                    case .Failure:
+                        self.performSegue(withIdentifier: "SuccessHubRegister", sender: nil)
+                    case .failure:
                         //completion(result: "Not Ok")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         print("Error")
                         
                             let response_string = (json["ERROR"]).rawString()
                         
-                            let width = ModalSize.Custom(size: 240)
-                            let height = ModalSize.Custom(size: 130)
-                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                         
-                            presenter2.transitionType = .CrossDissolve // Optional
+                            presenter2.transitionType = .crossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
 

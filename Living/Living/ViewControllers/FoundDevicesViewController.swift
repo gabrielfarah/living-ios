@@ -31,17 +31,17 @@ class FoundDevicesViewController: UIViewController {
         
         if(self.endpoints.count>0){
         
-            self.tableView.hidden = false
-            self.lbl_empty.hidden = true
-            self.lbl_founded.hidden = false
+            self.tableView.isHidden = false
+            self.lbl_empty.isHidden = true
+            self.lbl_founded.isHidden = false
         }else{
-            self.tableView.hidden = true
-            self.lbl_empty.hidden = false
-            self.lbl_founded.hidden = true
+            self.tableView.isHidden = true
+            self.lbl_empty.isHidden = false
+            self.lbl_founded.isHidden = true
         }
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         
@@ -52,37 +52,37 @@ class FoundDevicesViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBAction func goBack(sender: AnyObject) {
+    @IBAction func goBack(_ sender: AnyObject) {
         
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return endpoints.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = endpoints[indexPath.row].name
-        cell.detailTextLabel?.text = endpoints[indexPath.row].uid
+        cell.textLabel?.text = endpoints[(indexPath as NSIndexPath).row].name
+        cell.detailTextLabel?.text = endpoints[(indexPath as NSIndexPath).row].uid
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selected_endpoint_index = indexPath.row
-        self.performSegueWithIdentifier("ShowAddNewDevice", sender: nil)
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        selected_endpoint_index = (indexPath as NSIndexPath).row
+        self.performSegue(withIdentifier: "ShowAddNewDevice", sender: nil)
         
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "ShowAddNewDevice") {
             // pass data to next view
-            let destinationVC = segue.destinationViewController as! DeviceEditViewController
+            let destinationVC = segue.destination as! DeviceEditViewController
             let endpoint = endpoints[selected_endpoint_index].CreateEndpoint()
             destinationVC.endpoint = endpoint
             print("end")

@@ -12,10 +12,10 @@ class Event{
 
     var event_description: String
     var user_name: String
-    var datetime: NSDate
+    var datetime: Date
     
     
-    init(description: String, user:String, date: NSDate){
+    init(description: String, user:String, date: Date){
     
         event_description = description
         user_name = user

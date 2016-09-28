@@ -24,14 +24,14 @@
 
 import UIKit
 
-typealias OptionSelectionBlock = (index: Int) -> Void
+typealias OptionSelectionBlock = (_ index: Int) -> Void
 
 enum VKExpandableButtonDirection
 {
-    case Up
-    case Right
-    case Down
-    case Left
+    case up
+    case right
+    case down
+    case left
 }
 
 // MARK: - Init
@@ -41,20 +41,20 @@ class VKExpandableButton: UIView
     // MARK: Declared properties
     var options: [AnyObject]!
     
-    var direction: VKExpandableButtonDirection = .Right
+    var direction: VKExpandableButtonDirection = .right
     
-    var textFont  = UIFont.systemFontOfSize(15.0)
-    var textColor = UIColor.whiteColor(){
+    var textFont  = UIFont.systemFont(ofSize: 15.0)
+    var textColor = UIColor.white{
         didSet {
-            self.button.setTitleColor(self.textColor, forState: .Normal)
+            self.button.setTitleColor(self.textColor, for: UIControlState())
         }
     }
     
-    var expandedTextColor = UIColor.whiteColor()
+    var expandedTextColor = UIColor.white
     
     var autoHideOptions = true
-    var animationDuration: NSTimeInterval = 0.275
-    private var minOptionSize: CGFloat = 60
+    var animationDuration: TimeInterval = 0.275
+    fileprivate var minOptionSize: CGFloat = 60
     
     var imageInsets: UIEdgeInsets = UIEdgeInsetsMake(6, 6, 6, 6)
         {
@@ -63,19 +63,19 @@ class VKExpandableButton: UIView
         }
     }
     
-    var buttonBackgroundColor = UIColor.lightGrayColor()
+    var buttonBackgroundColor = UIColor.lightGray
         {
         didSet {
             self.button.backgroundColor = buttonBackgroundColor
         }
     }
     
-    var expandedButtonBackgroundColor = UIColor.lightGrayColor()
+    var expandedButtonBackgroundColor = UIColor.lightGray
     
-    var selectionColor = UIColor.grayColor()
+    var selectionColor = UIColor.gray
         {
         didSet {
-            self.button.setBackgroundImage(UIImage.imageWithColor(selectionColor), forState: .Highlighted)
+            self.button.setBackgroundImage(UIImage.imageWithColor(selectionColor), for: .highlighted)
         }
     }
     
@@ -93,21 +93,21 @@ class VKExpandableButton: UIView
         {
             if currentValue is String
             {
-                self.button.setTitle(currentValue as? String, forState: .Normal)
-                self.button.setImage(nil, forState: .Normal)
+                self.button.setTitle(currentValue as? String, for: UIControlState())
+                self.button.setImage(nil, for: UIControlState())
             }
             else if currentValue is UIImage
             {
-                self.button.setImage(currentValue as? UIImage, forState: .Normal)
-                self.button.setTitle(nil, forState: .Normal)
+                self.button.setImage(currentValue as? UIImage, for: UIControlState())
+                self.button.setTitle(nil, for: UIControlState())
             }
         }
     }
     
     var optionSelectionBlock: OptionSelectionBlock?
     
-    private var button      = UIButton()
-    private var optionsView = UIView()
+    fileprivate var button      = UIButton()
+    fileprivate var optionsView = UIView()
     
     // MARK: Init
     override init(frame: CGRect)
@@ -131,27 +131,27 @@ class VKExpandableButton: UIView
     /**
      Perform initial setup of `VKExpandableButton` view
      */
-    private func setupView()
+    fileprivate func setupView()
     {
         self.button.frame               = self.bounds
         self.button.titleLabel?.font    = self.textFont
         self.button.layer.cornerRadius  = self.cornerRadius
         self.button.backgroundColor     = self.buttonBackgroundColor
         
-        self.button.imageView?.contentMode  = .ScaleAspectFit
+        self.button.imageView?.contentMode  = .scaleAspectFit
         self.button.imageEdgeInsets         = self.imageInsets
         
-        self.button.titleLabel?.textAlignment = .Center
-        self.button.setTitleColor(self.textColor, forState: .Normal)
+        self.button.titleLabel?.textAlignment = .center
+        self.button.setTitleColor(self.textColor, for: UIControlState())
         
         self.button.titleLabel?.adjustsFontSizeToFitWidth = true
         
-        self.button.setBackgroundImage(UIImage.imageWithColor(selectionColor), forState: .Highlighted)
-        self.button.addTarget(self, action: #selector(VKExpandableButton.showOptions), forControlEvents: .TouchUpInside)
+        self.button.setBackgroundImage(UIImage.imageWithColor(selectionColor), for: .highlighted)
+        self.button.addTarget(self, action: #selector(VKExpandableButton.showOptions), for: .touchUpInside)
         
         self.addSubview(self.button)
         
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor.clear
         self.button.layer.masksToBounds      = true
         self.optionsView.layer.masksToBounds = true
     }
@@ -177,11 +177,11 @@ extension VKExpandableButton
         for option in self.options
         {
             // Prepare frame
-            var frame = CGRectMake(desiredOrigin, 0, initialWidth, optionsView.frame.size.height)
+            var frame = CGRect(x: desiredOrigin, y: 0, width: initialWidth, height: optionsView.frame.size.height)
             
-            if self.direction == .Up || self.direction == .Down
+            if self.direction == .up || self.direction == .down
             {
-                frame = CGRectMake(0, desiredOrigin, initialWidth, optionsView.frame.size.height)
+                frame = CGRect(x: 0, y: desiredOrigin, width: initialWidth, height: optionsView.frame.size.height)
             }
             
             let button = UIButton(frame: frame)
@@ -189,45 +189,45 @@ extension VKExpandableButton
             // Configure button with UIImage option
             if option is UIImage
             {
-                button.setImage(option as? UIImage, forState: .Normal)
-                button.imageView?.contentMode   = .ScaleAspectFit
+                button.setImage(option as? UIImage, for: UIControlState())
+                button.imageView?.contentMode   = .scaleAspectFit
                 button.imageEdgeInsets          = self.imageInsets
             }
                 // Configure button with String option
             else if option is String
             {
-                let textLength = (option as! NSString).sizeWithAttributes([NSFontAttributeName : self.textFont]).width
+                let textLength = (option as! NSString).size(attributes: [NSFontAttributeName : self.textFont]).width
                 
                 if textLength > self.minOptionSize && textLength > self.button.bounds.size.width
                 {
                     button.frame.size.width = textLength
                 }
                 
-                button.setTitle(option as? String, forState: .Normal)
-                button.setTitleColor(self.expandedTextColor, forState: .Normal)
+                button.setTitle(option as? String, for: UIControlState())
+                button.setTitleColor(self.expandedTextColor, for: UIControlState())
             }
             else
             {
                 // Show Unknown option type
-                button.setTitle("UNKNOWN_TYPE", forState: .Normal)
-                button.setTitleColor(UIColor.redColor(), forState: .Normal)
+                button.setTitle("UNKNOWN_TYPE", for: UIControlState())
+                button.setTitleColor(UIColor.red, for: UIControlState())
             }
             
             // Configure button
             button.titleLabel?.font                      = self.textFont
-            button.titleLabel?.textAlignment             = .Center
-            button.backgroundColor                       = UIColor.clearColor()
+            button.titleLabel?.textAlignment             = .center
+            button.backgroundColor                       = UIColor.clear
             button.titleLabel?.adjustsFontSizeToFitWidth = true
             
-            button.setBackgroundImage(UIImage.imageWithColor(self.selectionColor), forState: .Highlighted)
-            button.addTarget(self, action: #selector(VKExpandableButton.onOptionButtonAction), forControlEvents: .TouchUpInside)
+            button.setBackgroundImage(UIImage.imageWithColor(self.selectionColor), for: .highlighted)
+            button.addTarget(self, action: #selector(VKExpandableButton.onOptionButtonAction), for: .touchUpInside)
             button.tag = i
             
             // Add button to 'optionView'
             self.optionsView.addSubview(button)
             
             // Prepare frame and index for next button
-            desiredOrigin += self.direction == .Up || self.direction == .Down ? button.frame.size.height : button.frame.size.width
+            desiredOrigin += self.direction == .up || self.direction == .down ? button.frame.size.height : button.frame.size.width
             i += 1
         }
         
@@ -236,22 +236,21 @@ extension VKExpandableButton
         let size = desiredOrigin
         
         // Show 'optionView'
-        UIView.animateWithDuration(self.animationDuration)
-        {
+        UIView.animate(withDuration: self.animationDuration, animations: {
             self.optionsView.backgroundColor = self.expandedButtonBackgroundColor
             self.optionsView.frame           = self.frame(size: size, direction: self.direction)
-        }
+        })
+        
     }
     
     /**
      Close options view
      - Parameter selectedIndex: Index of selected option button
      */
-    func hideOptions(selectedIndex: Int = 0)
+    func hideOptions(_ selectedIndex: Int = 0)
     {
         // Hide all options buttons except of selected one
-        UIView.animateWithDuration(self.animationDuration / 2)
-        {
+        UIView.animate(withDuration: self.animationDuration / 2, animations: {
             for view in self.optionsView.subviews
             {
                 if view.tag != selectedIndex
@@ -259,15 +258,15 @@ extension VKExpandableButton
                     view.alpha = 0
                 }
             }
-        }
+        })
+        
         
         // Hide
-        UIView.animateWithDuration(self.animationDuration, animations:
+        UIView.animate(withDuration: self.animationDuration, animations:
             {
                 self.optionsView.backgroundColor = self.buttonBackgroundColor
                 self.optionsView.frame           = self.frame
-            })
-        {
+            }, completion: {
             (completed) in
             
             // Remove from superview
@@ -277,7 +276,8 @@ extension VKExpandableButton
             }
             
             self.optionsView.removeFromSuperview()
-        }
+        })
+        
     }
 }
 
@@ -290,28 +290,28 @@ extension VKExpandableButton
      - Parameter direction: Direct of `optionView`
      - Returns: `CGRect` frame for open state of `optionView`
      */
-    private func frame(size size: CGFloat, direction: VKExpandableButtonDirection) -> CGRect
+    fileprivate func frame(size: CGFloat, direction: VKExpandableButtonDirection) -> CGRect
     {
         switch direction
         {
-        case .Up:
-            return CGRectMake(self.frame.origin.x, self.frame.maxY - size, self.frame.size.width, size)
+        case .up:
+            return CGRect(x: self.frame.origin.x, y: self.frame.maxY - size, width: self.frame.size.width, height: size)
             
-        case .Right:
-            return CGRectMake(self.frame.minX, self.frame.origin.y, size, self.frame.size.height)
+        case .right:
+            return CGRect(x: self.frame.minX, y: self.frame.origin.y, width: size, height: self.frame.size.height)
             
-        case .Down:
-            return CGRectMake(self.frame.origin.x, self.frame.origin.y, self.frame.size.width, size)
+        case .down:
+            return CGRect(x: self.frame.origin.x, y: self.frame.origin.y, width: self.frame.size.width, height: size)
             
-        case .Left:
-            return CGRectMake(self.frame.maxX - size, self.frame.origin.y, size, self.frame.size.height)
+        case .left:
+            return CGRect(x: self.frame.maxX - size, y: self.frame.origin.y, width: size, height: self.frame.size.height)
         }
     }
     
     /**
      Selector of `self.button`
      */
-    @objc private func onButtonAction(sender: UIButton)
+    @objc fileprivate func onButtonAction(_ sender: UIButton)
     {
         self.showOptions()
     }
@@ -319,7 +319,7 @@ extension VKExpandableButton
     /**
      Selector for buttons from `optionView`
      */
-    @objc private func onOptionButtonAction(sender: UIButton)
+    @objc fileprivate func onOptionButtonAction(_ sender: UIButton)
     {
         // Update selected value
         self.currentValue = self.options[sender.tag]
@@ -327,15 +327,15 @@ extension VKExpandableButton
         // Perform completion block
         if let completionBlock = self.optionSelectionBlock
         {
-            completionBlock(index: sender.tag)
+            completionBlock(sender.tag)
         }
         
         // Close options view if it is required
         if self.autoHideOptions
         {
-            UIView.animateWithDuration(self.animationDuration, animations:
+            UIView.animate(withDuration: self.animationDuration, animations:
                 {
-                    sender.frame = CGRectMake(0, 0, self.button.frame.size.width, self.button.frame.size.height)
+                    sender.frame = CGRect(x: 0, y: 0, width: self.button.frame.size.width, height: self.button.frame.size.height)
             })
             
             self.hideOptions(sender.tag)
@@ -351,14 +351,14 @@ extension UIImage
      - Parameter color: Specific color
      - Returns: `UIImage` object filled by specific color
      */
-    private class func imageWithColor(color: UIColor) -> UIImage
+    fileprivate class func imageWithColor(_ color: UIColor) -> UIImage
     {
         let size = CGSize(width: 64, height: 64)
-        let rect = CGRectMake(0, 0, size.width, size.height)
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, 0)
         color.setFill()
         UIRectFill(rect)
-        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()
+        let image: UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return image
     }

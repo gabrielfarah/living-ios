@@ -38,11 +38,11 @@ class DeviceEditViewController: UIViewController {
         style()
 
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(RoomSelectedNotification), name:"RoomSelected", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(RoomSelectedNotification), name:NSNotification.Name(rawValue: "RoomSelected"), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SelectIconNewDeviceNotification), name:"SelectIconNewDevice", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SelectIconNewDeviceNotification), name:NSNotification.Name(rawValue: "SelectIconNewDevice"), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +50,7 @@ class DeviceEditViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func AddGuest(sender: AnyObject) {
+    @IBAction func AddGuest(_ sender: AnyObject) {
     }
     
     func style(){
@@ -63,22 +63,22 @@ class DeviceEditViewController: UIViewController {
     
     }
 
-    @IBAction func save(sender: AnyObject) {
+    @IBAction func save(_ sender: AnyObject) {
         
         
         
-        let is_favorite:Bool = switch_favorite.on
+        let is_favorite:Bool = switch_favorite.isOn
         
         endpoint.favorite = (is_favorite) ? 1 : 0
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
         //let presenter = Presentr(presentationType: .Alert)
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
@@ -91,12 +91,12 @@ class DeviceEditViewController: UIViewController {
             endpoint.Create(hub!, token: token, completion: { (IsError, result) in
                 
                 
-                self.dismissViewControllerAnimated(true, completion: {
-                    let width = ModalSize.Custom(size: 240)
-                    let height = ModalSize.Custom(size: 130)
-                    let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                self.dismiss(animated: true, completion: {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 130)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                     
-                    presenter2.transitionType = .CrossDissolve // Optional
+                    presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                     
@@ -129,21 +129,21 @@ class DeviceEditViewController: UIViewController {
 
         
     }
-    @IBAction func gosetIcon(sender: AnyObject) {
+    @IBAction func gosetIcon(_ sender: AnyObject) {
     }
-    @IBAction func goSetArea(sender: AnyObject) {
+    @IBAction func goSetArea(_ sender: AnyObject) {
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "ShowSetRoom") {
             // pass data to next view
-            let destinationVC = segue.destinationViewController as! RoomsViewController
+            let destinationVC = segue.destination as! RoomsViewController
             destinationVC.is_for_selection = true
         }
     }
 
     
-    func RoomSelectedNotification(notification: NSNotification){
+    func RoomSelectedNotification(_ notification: Notification){
         
         let selected_room = notification.object as! Room
         lbl_room_name.text = selected_room.description
@@ -151,11 +151,11 @@ class DeviceEditViewController: UIViewController {
         self.endpoint.is_room_available = true
         
     }
-    func SelectIconNewDeviceNotification(notification: NSNotification){
+    func SelectIconNewDeviceNotification(_ notification: Notification){
         
         let image:String = notification.object as! String
         
-        img_icon.image = UIImage(named:image)!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        img_icon.image = UIImage(named:image)!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         img_icon.tintColor = ThemeManager.init().GetUIColor("#2CC2BE")
         
         //var selected_room = notification.object as! Room

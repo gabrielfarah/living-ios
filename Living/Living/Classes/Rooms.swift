@@ -17,7 +17,7 @@ class Rooms{
     var rooms = [Room]()
     
     
-    func load(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func load(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -26,16 +26,16 @@ class Rooms{
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Rooms), hub)
         
-        Alamofire.request(.GET,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method: .get,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     self.rooms.removeAll()
                     
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     let json = JSON(data: data)
                     
                     
@@ -45,22 +45,22 @@ class Rooms{
                         
                         
                         
-                        let description = subJson.object["description"] as! String
-                        let rid = subJson.object["id"] as! Int
+                        let description = subJson["description"].stringValue
+                        let rid = subJson["id"].intValue
                         
                         let new_room = Room(room:description,rid: rid)
                         
                         self.rooms.append(new_room)
                     }
                     
-                    completion(IsError: false,result: "")
+                    completion( false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     

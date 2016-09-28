@@ -25,7 +25,7 @@ class Hue{
         endpoint = Endpoint()
     }
     
-    func RequestHueInfo(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func RequestHueInfo(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -41,11 +41,11 @@ class Hue{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "type":endpoint.getEndpointTypeString(),
-            "target":"hue",
-            "ip":endpoint.ip_address,
-            "function":"get_ui_info",
-            "parameters":[]
+            "type":endpoint.getEndpointTypeString() as AnyObject,
+            "target":"hue" as AnyObject,
+            "ip":endpoint.ip_address as AnyObject,
+            "function":"get_ui_info" as AnyObject,
+            "parameters":[AnyObject]() as AnyObject,
             
         ]
         
@@ -53,32 +53,27 @@ class Hue{
         
         
         
-        Alamofire.request(.POST,endpoint_url,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint_url, method: .post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers )
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.WaitForHueResponse(token, url: url!, completion: { (IsError, result) in
-                        completion(IsError: IsError,result: result)
+                        completion(IsError,result)
                     })
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     break
                     
                 }
@@ -90,7 +85,7 @@ class Hue{
         
         
     }
-    func WaitForHueResponse(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+    func WaitForHueResponse(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -99,25 +94,25 @@ class Hue{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = NSTimer.every(2.seconds) {
-                            (timer: NSTimer) in
+                        var timer = Timer.every(2.seconds) {
+                            (timer: Timer) in
                             // do something
                             
                             self.WaitForHueResponse(token,url: url, completion: { (IsError, result) in
-                                completion(IsError:IsError,result:result)
+                                completion(IsError,result)
                             })
                             
                             timer.invalidate()
@@ -126,7 +121,7 @@ class Hue{
                         
                     }else if(status == "done"){
                         print("Done..")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         //TODO:Obtener los dos grupos y luces individuales
                         print("Aqui vamos a obtener los hue")
@@ -134,18 +129,19 @@ class Hue{
                         let lights = json["response"]["lights"]
                         self.getAllLights(lights)
                         self.getAllLightsinGroup(groups)
+                        completion(false,"")
                     }
                     
                     
-                    completion(IsError:false,result:"")
                     
-                case .Failure:
+                    
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!)
+                    completion(true,response_string!)
                     
                     
                 }
@@ -160,7 +156,7 @@ class Hue{
         
     }
     
-    func getAllLights(json:JSON){
+    func getAllLights(_ json:JSON){
     
         for (index,subJson):(String, JSON) in json {
             //Do something you want
@@ -183,7 +179,7 @@ class Hue{
                 let brightness = subJson["brightness"].doubleValue
                 let alert = subJson["alert"].stringValue
                 let hue = subJson["hue"].doubleValue
-                let xy = (subJson["hue"][0].doubleValue,subJson["hue"][1].doubleValue)
+                let xy = (subJson["xy"][0].doubleValue,subJson["xy"][1].doubleValue)
                 
                 let l = HueLight(light_id:light_id,reachable:reachable,swversion:swversion,type:type,colorMode:colorMode,on:on,effect:effect,manufacturername:manufacturername,uniqueid:uniqueid,xy:xy,saturation:saturation,name:name,modelid:modelid,brightness:brightness,alert:alert,hue:hue)
                 
@@ -218,7 +214,7 @@ class Hue{
     
     
     }
-    func getAllLightsinGroup(json:JSON){
+    func getAllLightsinGroup(_ json:JSON){
     
     
         
@@ -251,10 +247,10 @@ class Hue{
                 let brightness = subJson2["brightness"].doubleValue
                 let alert = subJson2["alert"].stringValue
                 let hue = subJson2["hue"].doubleValue
-                let xy = (subJson2["hue"][0].doubleValue,subJson2["hue"][1].doubleValue)
+                let xy = (subJson2["xy"][0].doubleValue,subJson2["xy"][1].doubleValue)
                 
                 let l = HueLight(light_id:light_id,reachable:reachable,swversion:swversion,type:type,colorMode:colorMode,on:on,effect:effect,manufacturername:manufacturername,uniqueid:uniqueid,xy:xy,saturation:saturation,name:name,modelid:modelid,brightness:brightness,alert:alert,hue:hue)
-                
+                l.group_id = group.group_id
                 group.lights.append(l)
                 
                 /*{
@@ -288,20 +284,20 @@ class Hue{
     
     }
 
-    func turn_all_on(hub:Int,token:String,rgb:(Double,Double,Double), completion: (IsError:Bool,result: String) -> Void){
+    func turn_all_on(_ hub:Int,token:String,rgb:(Double,Double,Double), completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueHue(hub, token: token, function: "turn_on_all_lights") { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
-    func turn_all_off(hub:Int,token:String,rgb:(Double,Double,Double), completion: (IsError:Bool,result: String) -> Void){
+    func turn_all_off(_ hub:Int,token:String,rgb:(Double,Double,Double), completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueHue(hub, token: token, function: "turn_off_all_lights") { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
     
     
     
-    func setValueHue(hub:Int,token:String,function:String, completion: (IsError:Bool,result: String) -> Void){
+    func setValueHue(_ hub:Int,token:String,function:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -319,11 +315,11 @@ class Hue{
 
         
         let json_parameters: [String: AnyObject]  = [
-            "type":"wifi",
-            "target":"hue",
-            "ip":self.endpoint.ip_address,
-            "function":function,
-            "parameters":[]
+            "type":"wifi" as AnyObject,
+            "target":"hue" as AnyObject,
+            "ip":self.endpoint.ip_address as AnyObject,
+            "function":function as AnyObject,
+            "parameters":[AnyObject]() as AnyObject
             
         ]
         
@@ -331,27 +327,22 @@ class Hue{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion( false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -364,6 +355,64 @@ class Hue{
         
         
     }
+    // Los siguientes metodos se realizaron solo para propositos de prueba
     
     
+    func RequestHueInfo_Test(_ token:String,hub:Int,completion: (_ IsError:Bool,_ result: String) -> Void){
+        
+        
+       /* {
+            "saturation" : 0,
+            "uniqueid" : "00:17:88:01:00:c2:9e:e7-0b",
+            "swversion" : "66009461",
+            "on" : false,
+            "manufacturername" : "Philips",
+            "alert" : "none",
+            "modelid" : "LLC011",
+            "colormode" : "hs",
+            "reachable" : true,
+            "hue" : 0,
+            "effect" : "none",
+            "brightness" : 127,
+            "xy" : [
+            0.435,
+            0.405
+            ],
+            "light_id" : 1,
+            "name" : "LivingColors 1",
+            "type" : "Color light"
+        }*/
+        
+        let hue_light_1 = HueLight(light_id:1,reachable:true,swversion: "66009461",type:"Color light",colorMode:"hs",on:false,effect:"none",manufacturername:"Philips",uniqueid:"00:17:88:01:00:c2:9e:e7-0b",xy:(0.435,0.405),saturation:0,name:"[Lights]LivingColors 1",modelid:"LLC011",brightness:127,alert:"none",hue:0)
+        
+        let hue_light_2 = HueLight(light_id:1,reachable:true,swversion: "66009461",type:"Color light",colorMode:"hs",on:false,effect:"none",manufacturername:"Philips",uniqueid:"00:17:88:01:00:c2:9e:e7-0b",xy:(0.435,0.405),saturation:0,name:"[Group]LivingColors 1",modelid:"LLC011",brightness:127,alert:"none",hue:0)
+        
+        
+        let group = HueGroup()
+        group.group_id = 1
+        group.name = "Grupo 1 - Test"
+        group.lights.append(hue_light_2)
+        
+        self.lights.append(hue_light_1)
+        self.groups.append(group)
+        completion(false,"")
+        
+    }
+    
+    
+    func groupName(_ index:Int)->String{
+        if(self.groups.count<index && index >= 0){
+            return self.groups[index].name
+        }else{
+            return ""
+        }
+    }
+    
+    func groupLightsCount(_ index:Int)->Int{
+        if(self.groups.count>index){
+            return self.groups[index].lights.count
+        }else{
+            return 0
+        }
+    }
 }

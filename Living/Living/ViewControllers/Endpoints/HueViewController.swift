@@ -9,52 +9,89 @@
 import UIKit
 import Foundation
 import SwiftHUEColorPicker
+import DZNEmptyDataSet
+import Presentr
+import SwiftyTimer
+import UIColor_Hex_Swift
 
-class HueViewController: UIViewController, SwiftHUEColorPickerDelegate,UITabBarDelegate  {
 
-    
+class HueViewController: UIViewController,UITabBarDelegate, HueEndpointCellDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
+
+    enum HueListType {
+        case groups
+        case lights
+
+    }
+
     var endpoint:Endpoint?
-    
+    var selectedLight:HueLight?
+    var selectedGroup:HueGroup?
     let token = ArSmartApi.sharedApi.getToken()
     let hub = ArSmartApi.sharedApi.hub?.hid
     var hue:Hue?;
+    var type = HueListType.groups
+    let theme:ThemeManager = ThemeManager()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     
     @IBOutlet weak var tableView: UITableView!
-    
-    
+    @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var buttonLeft: VKExpandableButton!
     @IBOutlet weak var colorPicker: SwiftHUEColorPicker!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.endpoint = ArSmartApi.sharedApi.SelectedEndpoint
         hue = Hue()
         hue!.endpoint = self.endpoint!
         
-        getHueInfo()
         
-        // Do any additional setup after loading the view.
         
-        self.buttonLeft.direction      = .Right
-        self.buttonLeft.options        = ["Off", "On"]
-        self.buttonLeft.currentValue   = self.buttonLeft.options[0]
-        self.buttonLeft.cornerRadius   = self.buttonLeft.frame.size.height / 2
+        let nib = UINib(nibName: "HueEndpointCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: "menuCell")
+        self.tableView.addSubview(self.refreshControl)
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.tableView.tableFooterView = UIView()
+        tabBar.selectedItem = tabBar.items![0]
         
-        self.buttonLeft.optionSelectionBlock = {
-            index in
-            print("[Right] Did select option at index: \(index)")
+
+
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
+                self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+
+        self.title = "Hue Manager"
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Timer.after(500.ms) { 
+            
+        
+            
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+            
+            presenter2.transitionType = .crossDissolve // Optional
+            presenter2.dismissOnTap = false
+            let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
+            self.customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
+            vc.setText( "Un momento por favor...")
+            self.getHueInfo()
+
         }
         
         
-        //colorPicker.delegate = self
-        //colorPicker.direction = SwiftHUEColorPicker.PickerDirection.Horizontal
-        //colorPicker.type = SwiftHUEColorPicker.PickerType.Color
-        
-        
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
-        
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -62,23 +99,27 @@ class HueViewController: UIViewController, SwiftHUEColorPickerDelegate,UITabBarD
     
     func getHueInfo(){
     
+        //hue?.RequestHueInfo_Test(token, hub: hub!, completion: { (IsError, result) in
         hue?.RequestHueInfo(token, hub: hub!, completion: { (IsError, result) in
+            
+            
             if(IsError){
                 print("Error",result)
             }else{
                  print("Success",result)
                 self.tableView.reloadData()
             }
+            self.dismiss(animated: true, completion: {})
         })
     
     }
     // MARK: - SwiftHUEColorPickerDelegate
     
-    func valuePicked(color: UIColor, type: SwiftHUEColorPicker.PickerType) {
+    func valuePicked(_ color: UIColor, type: SwiftHUEColorPicker.PickerType) {
         self.view.backgroundColor = color
         
         switch type {
-        case SwiftHUEColorPicker.PickerType.Color:
+        case SwiftHUEColorPicker.PickerType.color:
 
             break
         default:
@@ -87,47 +128,119 @@ class HueViewController: UIViewController, SwiftHUEColorPickerDelegate,UITabBarD
         }
     }
     
-    func tableView(tableView: UITableView!, titleForHeaderInSection section: Int) -> String!{
-        if(self.hue?.groups.count>0){
-            return (self.hue?.groups[section].name)!
+    func tableView(_ tableView: UITableView!, titleForHeaderInSection section: Int) -> String!{
+        if type == .groups{
+            return self.hue?.groupName(section)
         }else{
-            return ""
+            return "Luces individuales"
         }
     }
     
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if(self.hue?.groups.count>0){
-            return (self.hue?.groups[section].lights.count)!
+        if type == .groups{
+            return (self.hue?.groupLightsCount(section))!
         }else{
-            return 0
+            return (self.hue?.lights.count)!
         }
         
 
       
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell")!
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell") as! HueEndpointCell
+        
+        if type == .groups{
+            //cell.light = self.hue?.groups[indexPath.section].lights[indexPath.row]
+            cell.setLight((self.hue?.groups[(indexPath as NSIndexPath).section].lights[(indexPath as NSIndexPath).row])!)
+            let group = self.hue?.groups[(indexPath as NSIndexPath).section].lights[(indexPath as NSIndexPath).row]
+            cell.lbl_hue?.text = group!.name
+        }else{
+            cell.setLight((self.hue?.lights[(indexPath as NSIndexPath).row])!)
+            //cell.light = self.hue?.lights[indexPath.row]
+            let light = self.hue?.lights[(indexPath as NSIndexPath).row]
+            cell.lbl_hue?.text = light!.name
+        }
+        
+        cell.delegate = self
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        
-        let group = self.hue?.groups[indexPath.section].lights[indexPath.row]
-        
-        cell.textLabel?.text = group!.name
+
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         
 
     }
     
-    func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem) {
+    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         //This method will be called when user changes tab.
         
-        if(item.title == "Grupos"){}else{}
+        if(item.title == "Grupos"){
+            type = .groups
+        }else{
+        
+            type = .lights
+        }
+        tableView.reloadData()
+    }
+    
+    
+    //Delegate HueEndpointCellDelegate
+    func ShowColorPicker(_ light:HueLight){
+        selectedLight = light
+        self.performSegue(withIdentifier: "ShowColorPicker", sender: light)
+        
+    }
+    func ToggleLight(_ light:HueLight){
+        
+        selectedLight = light
+    
+    }
+    func ShowColorPicker_Group(_ group:HueGroup){
+    
+    }
+    func ToggleLight_Group(_ group:HueGroup){
+
+        self.performSegue(withIdentifier: "ShowColorPicker", sender: group)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
+        if (segue.identifier == "ShowColorPicker") {
+            // pass data to next view
+            let destinationVC = segue.destination as! HueColorViewController
+            destinationVC.hueLight = selectedLight
+            destinationVC.endpoint = self.endpoint
+
+            
+        }
+    }
+    @IBAction func CloseHueView(_ sender: AnyObject) {
+        self.dismiss(animated: true) { 
+            
+        }
+    }
+    
+    
+
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Hue"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No hay items registrados"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
     }
     
 }

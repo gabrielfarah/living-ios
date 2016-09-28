@@ -38,7 +38,7 @@ class Sonos:Endpoint{
     }
     
     
-    func GetList(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+    func GetList(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -47,14 +47,14 @@ class Sonos:Endpoint{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get ,encoding:JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
@@ -67,10 +67,10 @@ class Sonos:Endpoint{
                     if(status == "processing"){
                         print("Processing..")
                         self.GetList(token, url: url, completion: { (IsError, result) in
-                            completion(IsError:IsError,result:result)
+                            completion(IsError,result)
                         })
                     }else{
-                        completion(IsError:false,result:"")
+                        completion(false,"")
                     }
                         
                     
@@ -87,13 +87,13 @@ class Sonos:Endpoint{
                     break
                     
                     
-                case .Failure:
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!)
+                    completion(true,response_string!)
                     
                     
                 }
@@ -116,7 +116,7 @@ class Sonos:Endpoint{
     func Next(){}
     func Stop(){}
     func GetUIInfo(){}
-    func SetVolume(volume:Int){}
+    func SetVolume(_ volume:Int){}
     
     
 }

@@ -20,13 +20,14 @@ class ArSmartApi{
     var hub:Hub?
     var hubs:Hubs
     var user:User
+    var SelectedEndpoint:Endpoint?
     
     var device_manager = DeviceManager()
     
     
     static let sharedApi = ArSmartApi()
-    private init(){
-        self.host = "http://living.ar-smart.co"
+    fileprivate init(){
+        self.host = "https://living.ar-smart.co"
        
         self.hub = Hub()
         
@@ -42,12 +43,12 @@ class ArSmartApi{
         let dict = Defaults["hub"].dictionary ?? nil
         print (dict)
         if dict != nil {
-            self.hub?.fromDict(dict!)
+            self.hub?.fromDict(dict! as NSDictionary)
         }
         
         
     }
-    func setHub(hub:Hub){
+    func setHub(_ hub:Hub){
     
         self.hub = hub
         //TODO: Save Hub in preferences
@@ -67,9 +68,24 @@ class ArSmartApi{
     
     }
     
+    func syncHub(){
+    
+        for h:Hub in self.hubs.hubs{
+            if h.hid == self.hub!.hid{
+                self.hub = h
+            }
+        
+        }
+    
+    }
+    
 
     
     func Logout(){
+        
+        self.hub = Hub()
+        self.hubs = Hubs()
+        
         self.token!.Logout()
     }
     func isLoggedIn()->Bool{
@@ -81,31 +97,31 @@ class ArSmartApi{
     }
 
     
-    func RegisterUser(email:String, name:String, password:String, completion: (IsError:Bool,result: String) -> Void){
+    func RegisterUser(_ email:String, name:String, password:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         let parameters: [String: AnyObject] = [
-            "email" : email,
-            "password" : password,
-            "mobile_os":"ios",
-            "first_name":name,
+            "email" : email as AnyObject,
+            "password" : password as AnyObject,
+            "mobile_os":"ios" as AnyObject,
+            "first_name":name as AnyObject,
             ]
         
-        Alamofire.request(.POST,self.ApiUrl(Api.UserManagement.CreateUser),parameters:parameters,encoding: .JSON)
+        Alamofire.request(self.ApiUrl(Api.UserManagement.CreateUser),method:.get,parameters:parameters,encoding: JSONEncoding.default)
         .validate()
         .responseJSON { response  in
             switch response.result {
                 
-                case .Success:
+                case .success:
                     
                     print(response.response)
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
                     }
-                    completion(IsError:false,result: "")
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                    completion(false,"")
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]["email"][0]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
 
                     print("Error")
         
@@ -118,7 +134,7 @@ class ArSmartApi{
     func PrintTest(){
         print("TEST")
     }
-    func ApiUrl(method:String)->String{
+    func ApiUrl(_ method:String)->String{
         return host + method
     }
     

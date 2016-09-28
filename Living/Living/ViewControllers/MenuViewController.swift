@@ -17,7 +17,7 @@ class MenuViewController:UIViewController{
     let menu_items = MenuItems()
     
     let segues = ["showCenterController1","ShowDevicesView","ShowGuestsView","ShowActionsView","ShowRoomsView","ShowScenesView","ShowMyAccountView"]
-    private var previousIndex: NSIndexPath?
+    fileprivate var previousIndex: IndexPath?
     
     
 
@@ -28,29 +28,29 @@ class MenuViewController:UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "menuCell")
         self.tableView.tableFooterView = UIView()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.menu_items.count()
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("menuCell")!
+     func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "menuCell")!
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = menu_items.objectAtIndex(indexPath.row)
+        cell.textLabel?.text = menu_items.objectAtIndex((indexPath as NSIndexPath).row)
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         
         if let index = previousIndex {
-            tableView.deselectRowAtIndexPath(index, animated: true)
+            tableView.deselectRow(at: index, animated: true)
         }
         
-        sideMenuController?.performSegueWithIdentifier(segues[indexPath.row], sender: nil)
+        sideMenuController?.performSegue(withIdentifier: segues[(indexPath as NSIndexPath).row], sender: nil)
         previousIndex = indexPath
     }
     

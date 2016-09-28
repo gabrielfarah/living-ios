@@ -39,7 +39,7 @@ class User{
      
      */
     
-    func Login(email:String, password:String, completion: (IsError:Bool,result: String) -> Void){
+    func Login(_ email:String, password:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
     
         ArSmartApi.sharedApi.token!.CheckToken(email,password: password){
             (isError:Bool, result:String)in
@@ -51,7 +51,7 @@ class User{
             }
             
             
-                completion(IsError: isError,result: result)
+                completion(isError, result)
 
             }
 
@@ -66,7 +66,7 @@ class User{
      
      */
     
-    func ChangePassword(token:String,password_old:String, new_password:String, completion: (IsError:Bool,result: String) -> Void){
+    func ChangePassword(_ token:String,password_old:String, new_password:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         ArSmartApi.sharedApi.token!.CheckToken(self.mEmail!,password: password_old){
             (isError:Bool, result:String)in
@@ -77,32 +77,34 @@ class User{
                 "Accept": "application/json"
             ]
             
-            let parameters: [String: AnyObject] = [
+            let parameters: [String: String] = [
                 "old_password" : password_old,
                 "new_password" : new_password,
                 ]
             
+            let endpoint = ArSmartApi.sharedApi.ApiUrl(Api.UserManagement.ChangePassword1)
+            
             if(!isError){
-                Alamofire.request(.PUT,ArSmartApi.sharedApi.ApiUrl(Api.UserManagement.ChangePassword1),parameters:parameters,headers:headers,encoding: .JSON)
+                Alamofire.request(endpoint, method:.put, parameters:parameters, encoding: JSONEncoding.default, headers:headers)
                     .validate()
                     .responseJSON { response  in
                         switch response.result {
                             
-                        case .Success:
+                        case .success:
                             
                             print(response.response)
                             if let JSON = response.result.value {
                                 print("JSON: \(JSON)")
                                 
                             }
-                            completion(IsError: false,result: "")
+                            completion(false, "")
                             
                             
-                        case .Failure:
-                            let data = NSData(data: response.data!)
+                        case .failure:
+                            let data = NSData(data: response.data!) as Data
                             var json = JSON(data: data)
                             let response_string = (json["ERROR"]).rawString()
-                            completion(IsError:true,result: response_string!)
+                            completion(true,response_string!)
                         }
                         
                         
@@ -110,7 +112,7 @@ class User{
             }else{
                 //TODO: Si es verdadero, cambielo, de lo contrario no
                 
-                completion(IsError: true,result: result)
+                completion(true,result)
             }
             
             
@@ -131,42 +133,42 @@ class User{
      @param completion Funcíon callback
      
      */
-    static func RecoverPassword(email:String, completion: (IsError:Bool,result: String) -> Void){
+    static func RecoverPassword(_ email:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
     
         
         let hasInternet = ArSmartUtils.connectedToNetwork()
         
         if(!hasInternet){
-            completion(IsError:true,result:"The device is offline, check your internet connection")
+            completion(true,"The device is offline, check your internet connection")
             return
         }
         
         
-        let parameters: [String: AnyObject] = [
-            "email" : email,
+        let parameters: [String: String] = [
+            "email" : email ,
             "new_password" : ArSmartUtils.randomText(12,justLowerCase:false),
             ]
 
-        Alamofire.request(.POST,ArSmartApi.sharedApi.ApiUrl(Api.UserManagement.ChangePassword),parameters:parameters,encoding: .JSON)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(Api.UserManagement.ChangePassword),method:.post,parameters:parameters,encoding: JSONEncoding.default)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     print(response.response)
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
                         
                     }
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
 
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                 }
                 
                 

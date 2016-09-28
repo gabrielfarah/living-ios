@@ -14,14 +14,15 @@ import SwiftyTimer
 import CollectionViewWaterfallLayout
 import CSStickyHeaderFlowLayout
 import BTNavigationDropdownMenu
+import UIColor_Hex_Swift
 
-class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHeaderViewDelegate{
+class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHeaderViewDelegate,SensorViewControllerDelegate{
 
-
+    static let LoadEndpoints = Notification.Name("LoadEndpoints")
     
     
     enum HomeViewControllerSectionType {
-        case Endpoints, Scenes, Rooms
+        case endpoints, scenes, rooms
     }
 
     
@@ -36,9 +37,9 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     var theme = ThemeManager()
     var endpoints:NSMutableArray! // <-- Array to hold the fetched images
     var totalEndpointsCountNeeded:Int! // <-- The number of images to fetch
-    var timer_status:NSTimer = NSTimer()
+    var timer_status:Timer = Timer()
     var can_get_status:Bool = false
-    var view_type:HomeViewControllerSectionType = HomeViewControllerSectionType.Endpoints
+    var view_type:HomeViewControllerSectionType = HomeViewControllerSectionType.endpoints
     var rooms:Rooms = Rooms()
     var menuView:BTNavigationDropdownMenu!;
     var selectedEndpointIndex:Int = 0
@@ -46,10 +47,10 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     let token = ArSmartApi.sharedApi.getToken()
     var hub = ArSmartApi.sharedApi.hub?.hid
     var navController:UINavigationController!
-    
+    var presenter2:Presentr?
     var scenes:Scenes = Scenes()
     
-    private var layout : CSStickyHeaderFlowLayout? {
+    fileprivate var layout : CSStickyHeaderFlowLayout? {
         return self.endpoints_list?.collectionViewLayout as? CSStickyHeaderFlowLayout
     }
     
@@ -63,24 +64,24 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, containerView: self.navigationController!.view, title: "Hubs", items: []);
         
         sideMenuController?.delegate = self
-        view_new_endpoints.hidden = true
+        view_new_endpoints.isHidden = true
         
-        let image = UIImage(named: "xbox_menu")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        navigationItem.rightBarButtonItem  = UIBarButtonItem(image:image , style: .Plain, target: self, action:#selector(showNotifications))
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgba:theme.MainColor)
+        let image = UIImage(named: "xbox_menu")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        navigationItem.rightBarButtonItem  = UIBarButtonItem(image:image , style: .plain, target: self, action:#selector(showNotifications))
+        self.navigationController?.navigationBar.tintColor = UIColor.white
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         navController = self.navigationController
         
         style();
         
         // Notifications Registration
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoadEndpoints), name:"LoadEndpoints", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoadEndpoints), name:NSNotification.Name(rawValue: "LoadEndpoints"), object: nil)
         let nib = UINib(nibName: "EndPointMenuCell", bundle: nil)
-        self.endpoints_list.registerNib(nib, forCellWithReuseIdentifier: reuseIdentifier)
+        self.endpoints_list.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
 
-        self.endpoints_list?.registerClass(CollectionParallaxHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "parallaxHeader")
-        self.layout?.parallaxHeaderReferenceSize = CGSizeMake(self.view.frame.size.width, 102)
+        self.endpoints_list?.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "parallaxHeader")
+        self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: 102)
 
 
 
@@ -88,53 +89,75 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
         
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         can_get_status = true
     
+        Timer.every(100.ms) { (timer: Timer) in
+
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        self.presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+        
+        self.presenter2!.transitionType = .crossDissolve // Optional
+        self.presenter2!.dismissOnTap = false
+        let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
+        self.customPresentViewController(self.presenter2!, viewController: vc, animated: true, completion: nil)
+        vc.setText( "Un momento por favor...")
+        
+        
         ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
+            
+        
+            
+            self.dismiss(animated: true, completion: {
+                
+            })
+            
+            
+            ArSmartApi.sharedApi.syncHub()
+            //ArSmartApi.sharedApi.syncHub()
             if ArSmartApi.sharedApi.hub!.hid == 0 {
                 
-                
-                
-                NSTimer.every(500.ms) { (timer: NSTimer) in
-                    // do something
+                Timer.after(1.0.seconds) {
                     
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 243)
+                    let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                     
-                    
-                    let width = ModalSize.Custom(size: 240)
-                    let height = ModalSize.Custom(size: 243)
-                    let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
-                    
-                    presenter.transitionType = .CrossDissolve // Optional
+                    presenter.transitionType = .crossDissolve // Optional
                     presenter.dismissOnTap = false
                     let vc = SelectDeviceViewController(nibName: "SelectDeviceViewController", bundle: nil)
                     self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-                    
-                    
-                    
-                    timer.invalidate()
-                    
+
                 }
+                                    // do something
+                    
+                    
+
+                    
+                    
+                    
+       
                 
             }else{
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("LoadEndpoints", object: nil)
+                NotificationCenter.default.post(name:HomeViewController.LoadEndpoints, object: nil)
             }
-            NSTimer.after(3.0.seconds) {
-                self.GetDevicesStatus()
-            }
-        })
+
+         })
         
-        
+        timer.invalidate()
+            
+        }
         
 
 
     }
 
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
         can_get_status = false
     }
@@ -146,7 +169,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
     
     @IBAction func showNotifications() {
-        sideMenuController?.performSegueWithIdentifier("ShowActionsView", sender: nil)
+        sideMenuController?.performSegue(withIdentifier: "ShowActionsView", sender: nil)
     }
     
     
@@ -158,7 +181,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     func style(){
         
         let navigationBarAppereance = UINavigationBar.appearance()
-        navigationBarAppereance.tintColor = UIColor.whiteColor()
+        navigationBarAppereance.tintColor = UIColor.white
 
         
     }
@@ -172,11 +195,11 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         return colors[index]
     }
     
-    func sideMenuControllerDidHide(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     
-    func sideMenuControllerDidReveal(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     
@@ -185,11 +208,11 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     // MARK: WaterfallLayoutDelegate
     
     // tell the collection view how many cells to make
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if(view_type == HomeViewControllerSectionType.Endpoints){
+        if(view_type == HomeViewControllerSectionType.endpoints){
             return (ArSmartApi.sharedApi.hub?.endpoints.count())!
-        }else if(view_type == HomeViewControllerSectionType.Rooms){
+        }else if(view_type == HomeViewControllerSectionType.rooms){
             return rooms.rooms.count
         }else{
             return (scenes.scenes.count)
@@ -199,39 +222,42 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
     
     // make a cell for each cell index path
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         
         
-        if(view_type == HomeViewControllerSectionType.Endpoints){
+        if(view_type == HomeViewControllerSectionType.endpoints){
             // get a reference to our storyboard cell
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EndPointMenuCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
+            
+            //let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EndPointMenuCell
+            
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
-            let image = UIImage(named:endpoint.ImageNamed())!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setStatus(endpoint)
-            let endpoint_name = String(format:"%@ %d %@",endpoint.name,endpoint.node, endpoint.getEndpointTypeString())
+            let endpoint_name = String(format:"%@ ",endpoint.name)
             cell.setGalleryItem(image, text: endpoint_name)
 
         
             return cell
-        }else if(view_type == HomeViewControllerSectionType.Rooms){
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EndPointMenuCell
+        }else if(view_type == HomeViewControllerSectionType.rooms){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            let room = rooms.rooms[indexPath.item]
+            let room = rooms.rooms[(indexPath as NSIndexPath).item]
             
-            let image = UIImage(named:"lamp_icon")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setGalleryItem(image, text: room.description)
             return cell
         }else{
         
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EndPointMenuCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            let scene = scenes.scenes[indexPath.item]
+            let scene = scenes.scenes[(indexPath as NSIndexPath).item]
             
-            let image = UIImage(named:"lamp_icon")!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setGalleryItem(image, text: scene.name)
             return cell
         }
@@ -239,43 +265,43 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     
     // MARK: - UICollectionViewDelegate protocol
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         
         
         
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
+        print("You selected cell #\((indexPath as NSIndexPath).item)!")
         
-        selectedEndpointIndex = indexPath.item
-        if(view_type == HomeViewControllerSectionType.Endpoints){
+        selectedEndpointIndex = (indexPath as NSIndexPath).item
+        if(view_type == HomeViewControllerSectionType.endpoints){
             
-
             let endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
+            if(endpoint.ui_class_command == "ui-binary-light-zwave"){
+                cell.setColor(UIColor.red)
+            }
             
             
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseIdentifier, forIndexPath: indexPath) as! EndPointMenuCell
             
             cell.setStatus(endpoint)
-            
             print(endpoint.ui_class_command)
-
             ShowEndpointController(endpoint)
             
-        }else if(view_type == HomeViewControllerSectionType.Rooms){
+        }else if(view_type == HomeViewControllerSectionType.rooms){
             
-            let room = rooms.rooms[indexPath.row]
+            let room = rooms.rooms[(indexPath as NSIndexPath).row]
             
             print("Room:",room.description)
         }else{
 
-            let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EndPointMenuCell
-            cell.setColor(UIColor.redColor())
+            let cell = collectionView.cellForItem(at: indexPath) as! EndPointMenuCell
+            cell.setColor(UIColor.red)
             
             
 
             
             
-            let scene = scenes.scenes[indexPath.row]
+            let scene = scenes.scenes[(indexPath as NSIndexPath).row]
             
             scene.run(token, hub: hub!, completion: { (IsError, result) in
                 if(!IsError){
@@ -292,16 +318,16 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
         
     }
-    func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView {
 
-            let view = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "parallaxHeader", forIndexPath: indexPath) as! CollectionParallaxHeader
+            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath) as! CollectionParallaxHeader
         
             view.imageView?.delegate = self
             return view
 
         
     }
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
 
         
         // Set some extra pixels for height due to the margins of the header section.
@@ -310,7 +336,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
 
 
-    func LoadEndpoints(notification: NSNotification){
+    func LoadEndpoints(_ notification: Notification){
         
         
         
@@ -323,10 +349,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         }
         
         
-        menuView = BTNavigationDropdownMenu(navigationController: navController, containerView: navController!.view, title: "Hubs", items: items)
-        menuView.menuTitleColor = UIColor.whiteColor()
-        menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView = BTNavigationDropdownMenu(navigationController: navController, containerView: navController!.view, title:  ArSmartApi.sharedApi.hub!.name, items: items as [AnyObject])
+        menuView.menuTitleColor = UIColor.white
+        menuView.cellTextLabelColor = UIColor.white
         self.navigationItem.titleView = menuView
+        
+
+        
+        
         
         menuView.didSelectItemAtIndexHandler = {[weak self] (indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
@@ -335,16 +365,18 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             self!.hub = ArSmartApi.sharedApi.hub?.hid
             self!.endpoints_list.reloadData()
             self!.GetDevicesStatus()
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "LoadEndpoints"), object: nil)
 
         }
         
     
-        if(ArSmartApi.sharedApi.hub?.endpoints.count()>0){
-            view_new_endpoints.hidden = true
-            endpoints_list.hidden = false
+        if((ArSmartApi.sharedApi.hub?.endpoints.count())!>0){
+            view_new_endpoints.isHidden = true
+            endpoints_list.isHidden = false
         }else{
-            view_new_endpoints.hidden = false
-            endpoints_list.hidden = true
+
+            view_new_endpoints.isHidden = false
+            endpoints_list.isHidden = true
         
         }
         
@@ -356,14 +388,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
     }
     
-    func ShowEndpointController(endpoint:Endpoint){
+    func ShowEndpointController(_ endpoint:Endpoint){
     
         
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         presenter.dismissOnTap = true
         
         
@@ -378,10 +410,24 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
                 break
             case "ui-binary-light-zwave":
-                let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
-                 vc.endpoint = endpoint
+                //let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
+                 //vc.endpoint = endpoint
                 
-                customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                //customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                
+                //TODO hacer directamente el boton
+                hub = ArSmartApi.sharedApi.hub?.hid
+                let value = ( endpoint.state > 0 ) ? 0 : 255;
+                endpoint.state = value
+                endpoints_list.reloadData()
+                endpoint.setValue(hub!, token: token, value: String(value)) { (IsError, result) in
+                    print("Change Value")
+                    if(IsError){
+                        print("Set Command Error")
+                    }else{
+                        print("Set Command Success")
+                    }
+                }
 
                 break
             case "ui-level-light-zwave":
@@ -405,10 +451,10 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
                 break
             case "ui-sonos":
-                let height2 = ModalSize.Custom(size: 195)
-                let presenter2 = Presentr(presentationType: .Custom(width: width, height: height2, center:ModalCenterPosition.Center))
+                let height2 = ModalSize.custom(size: 195)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height2, center:ModalCenterPosition.center))
             
-                presenter2.transitionType = .CrossDissolve // Optional
+                presenter2.transitionType = .crossDissolve // Optional
                 presenter2.dismissOnTap = true
                 let vc = SonosViewController(nibName: "SonosViewController", bundle: nil)
                 vc.endpoint = endpoint
@@ -421,7 +467,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 let vc = HueViewController(nibName: "HueViewController", bundle: nil)
                 vc.endpoint = endpoint
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)*/
-                self.performSegueWithIdentifier("ShowHueController", sender: nil)
+                //self.performSegueWithIdentifier("ShowHueController", sender: nil)
+                
+                let endpoint = ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(selectedEndpointIndex)
+                ArSmartApi.sharedApi.SelectedEndpoint = endpoint
+                
+                sideMenuController?.performSegue(withIdentifier: "ShowHueView", sender: nil)
+                
+                
 
                 break
             case "ui-sensor-motion-zwave":
@@ -432,15 +485,17 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 break
 
             default:
-                let width = ModalSize.Custom(size: 240)
-                let height = ModalSize.Custom(size: 433)
-                let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                let width = ModalSize.custom(size: 300)
+                let height = ModalSize.custom(size: 452)
+                let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                 
-                presenter.transitionType = .CrossDissolve // Optional
+                presenter.transitionType = .crossDissolve // Optional
                 presenter.dismissOnTap = true
                 let vc = SensorViewController(nibName: "SensorViewController", bundle: nil)
+                //let vc = SensorLevelViewController(nibName: "SensorLevelViewController", bundle: nil)
                  vc.endpoint = endpoint
-
+                
+                vc.delegate = self
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
                 break
         
@@ -463,13 +518,15 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
             ArSmartApi.sharedApi.hub?.endpoints.GetStatusZWavesDevicesTask(hub!, token: token, completion: { (IsError, result) in
                 
-                NSTimer.after(5.0.seconds) {
+                Timer.after(3.0.seconds) {
                     self.GetDevicesStatus()
                 }
                 
                 if(!IsError){
                     print(result)
-                    if(result == "processing" || result == ""){}
+                    if(result == "processing" || result == ""){
+                        self.endpoints_list.reloadData()
+                    }
                 }else{
                     //TODO: Que pasa cuando se hace la consulta correctamente, vamos a mmapear los valores de esa respuesta.
                     self.endpoints_list.reloadData()
@@ -488,7 +545,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 
                 
             }else{
-                self.view_type = HomeViewControllerSectionType.Rooms
+                self.view_type = HomeViewControllerSectionType.rooms
                 self.endpoints_list.reloadData()
             }
         }
@@ -501,7 +558,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         can_get_status = true
         GetDevicesStatus()
         print("Devices selected")
-        view_type = HomeViewControllerSectionType.Endpoints
+        view_type = HomeViewControllerSectionType.endpoints
         self.endpoints_list.reloadData()
     }
     func MenuFavoriteSelected() {
@@ -512,7 +569,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
             if(IsError){
             }else{
-                self.view_type = HomeViewControllerSectionType.Scenes
+                self.view_type = HomeViewControllerSectionType.scenes
                 self.endpoints_list.reloadData()
             }
         }
@@ -524,19 +581,39 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         if(segue.identifier == "ShowHueController"){
-            let destinationVC = segue.destinationViewController as! UINavigationController
+            let destinationVC = segue.destination as! UINavigationController
             let root = destinationVC.viewControllers[0] as! HueViewController
             
-            
-            root.endpoint = ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(selectedEndpointIndex)
+            let endpoint = ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(selectedEndpointIndex)
+            root.endpoint = endpoint
         
         }
         
      }
- 
+    //SensorViewControllerDelegate Methods
+    
+    func SensorViewControllerDone(_ IsError: Bool, Result: String) {
+        self.dismiss(animated: true) { 
+            Timer.after(500.milliseconds) {
+            
+                let width = ModalSize.custom(size: 240)
+                let height = ModalSize.custom(size: 80)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                
+                presenter2.transitionType = .crossDissolve // Optional
+                let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                
+                vc2.setText(Result)
+            
+            }
+        }
+    }
+    
+
     
 }

@@ -9,7 +9,7 @@
         <!--Navigation Controller-->
         <scene sceneID="V6q-AW-OCl">
             <objects>
-                <navigationController storyboardIdentifier="HueNavigationController" navigationBarHidden="YES" id="h51-SS-AlP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HueNavigationController" id="h51-SS-AlP" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="nTT-To-lRi">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -42,10 +42,14 @@
                                     <tabBarItem title="Grupos" image="hue_icon1_ico_32.png" id="a3a-RC-NLg"/>
                                     <tabBarItem title="Luces" image="hue_icon1_ico_32.png" id="Dmh-FM-sZZ"/>
                                 </items>
+                                <connections>
+                                    <outlet property="delegate" destination="3UH-bZ-vMo" id="JNG-PL-fqt"/>
+                                </connections>
                             </tabBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="REx-BG-DH5">
-                                <rect key="frame" x="0.0" y="167" width="320" height="352"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="71" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="REx-BG-DH5">
+                                <rect key="frame" x="0.0" y="72" width="320" height="447"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <sections/>
                                 <connections>
                                     <outlet property="dataSource" destination="3UH-bZ-vMo" id="y3F-cX-tXf"/>
                                     <outlet property="delegate" destination="3UH-bZ-vMo" id="0Yh-DH-FLG"/>
@@ -54,22 +58,21 @@
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TII-Gd-H87">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFt-iX-Uhl">
-                                        <rect key="frame" x="8" y="27" width="30" height="30"/>
-                                        <state key="normal" title="Button" image="feed_btn.png"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Living" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jv-ZG-r61">
-                                        <rect key="frame" x="8" y="31" width="304" height="21"/>
-                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hue Lights" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4jv-ZG-r61">
+                                        <rect key="frame" x="10" y="27" width="304" height="21"/>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFt-iX-Uhl">
+                                        <rect key="frame" x="8" y="25" width="25" height="25"/>
+                                        <state key="normal" title="Button" image="cerrar_btn.png"/>
+                                        <connections>
+                                            <action selector="CloseHueView:" destination="3UH-bZ-vMo" eventType="touchUpInside" id="O8v-fs-m0s"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NaR-gZ-vjE" customClass="VKExpandableButton" customModule="Living" customModuleProvider="target">
-                                <rect key="frame" x="211" y="93" width="80" height="44"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -77,18 +80,19 @@
                     <navigationItem key="navigationItem" id="5kv-kc-Of7"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <outlet property="buttonLeft" destination="NaR-gZ-vjE" id="SiF-gN-9Nh"/>
+                        <outlet property="tabBar" destination="7kN-1h-fnh" id="UO3-HN-Geu"/>
                         <outlet property="tableView" destination="REx-BG-DH5" id="vJA-dX-IiM"/>
+                        <segue destination="8ZO-Jp-Cw3" kind="show" identifier="ShowColorPicker" id="ygf-95-Pby"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-lR-iSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-101" y="366"/>
+            <point key="canvasLocation" x="-95" y="366"/>
         </scene>
-        <!--View Controller-->
+        <!--Hue Color View Controller-->
         <scene sceneID="qvT-G1-Gae">
             <objects>
-                <viewController id="8ZO-Jp-Cw3" sceneMemberID="viewController">
+                <viewController id="8ZO-Jp-Cw3" customClass="HueColorViewController" customModule="Living" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="OFD-Ex-X5d"/>
                         <viewControllerLayoutGuide type="bottom" id="6Lt-Oy-p12"/>
@@ -105,9 +109,12 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="Gfk-VE-Cbr"/>
                                         </constraints>
-                                        <state key="normal" title="Button" image="feed_btn.png"/>
+                                        <state key="normal" title="Button" image="back_btn.png"/>
+                                        <connections>
+                                            <action selector="GoBack:" destination="8ZO-Jp-Cw3" eventType="touchUpInside" id="93u-RA-GOc"/>
+                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Living" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06U-v2-37i">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Hue Color" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="06U-v2-37i">
                                         <rect key="frame" x="8" y="31" width="304" height="21"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -126,10 +133,40 @@
                                     <constraint firstItem="oqU-6b-K9K" firstAttribute="top" secondItem="zzd-Cr-peY" secondAttribute="top" constant="27" id="tb3-81-wVS"/>
                                 </constraints>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[Nombre del Hue]" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gmg-UK-aYe">
+                                <rect key="frame" x="58" y="72" width="242" height="53"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qku-5F-4Ld" customClass="SwiftHUEColorPicker" customModule="SwiftHUEColorPicker">
+                                <rect key="frame" x="20" y="162" width="280" height="44"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTC-51-gcJ">
+                                <rect key="frame" x="14" y="81" width="36" height="36"/>
+                                <state key="normal" title="Button" image="hue_icon1.png"/>
+                            </button>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xfa-jw-Shp" customClass="SwiftHUEColorPicker" customModule="SwiftHUEColorPicker">
+                                <rect key="frame" x="20" y="241" width="280" height="44"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Fzs-GP-VJW">
+                                <rect key="frame" x="136" y="359" width="51" height="31"/>
+                                <connections>
+                                    <action selector="TurnLight:" destination="8ZO-Jp-Cw3" eventType="valueChanged" id="lOi-Mp-yvM"/>
+                                </connections>
+                            </switch>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="colorPicker1" destination="Qku-5F-4Ld" id="v9f-L4-5mE"/>
+                        <outlet property="colorPicker2" destination="xfa-jw-Shp" id="G9Q-g0-Zp3"/>
+                        <outlet property="img_hue_light" destination="NTC-51-gcJ" id="aGN-gV-FBe"/>
+                        <outlet property="lbl_hue_name" destination="Gmg-UK-aYe" id="Qfm-yf-gWN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dmH-GP-FcG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +174,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed_btn.png" width="128" height="128"/>
+        <image name="back_btn.png" width="200" height="200"/>
+        <image name="cerrar_btn.png" width="512" height="512"/>
+        <image name="hue_icon1.png" width="193" height="256"/>
         <image name="hue_icon1_ico_32.png" width="24" height="32"/>
     </resources>
 </document>

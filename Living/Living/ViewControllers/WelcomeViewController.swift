@@ -9,7 +9,7 @@
 import Foundation
 
 import UIKit
-import EZLoadingActivity
+
 
 class WelcomeViewController: UIViewController {
     
@@ -37,8 +37,8 @@ class WelcomeViewController: UIViewController {
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
-        btn_continue.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
+        self.navigationController?.isNavigationBarHidden = true
+        btn_continue.layer.borderColor = UIColor("#D1D3D4").cgColor
         btn_continue.layer.borderWidth = 1.0
         btn_continue.layer.cornerRadius = 5.0
     

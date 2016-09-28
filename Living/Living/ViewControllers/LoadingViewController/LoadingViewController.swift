@@ -14,12 +14,11 @@ class LoadingViewController: UIViewController {
 
     @IBOutlet weak var lbl_menssage: UILabel!
     @IBOutlet weak var activity_main: UIActivityIndicatorView!
-    
     @IBOutlet weak var view_loader: UIView!
     
     var dismissAnimated: Bool = true
     var autoDismiss: Bool = false
-    
+    var message:String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,17 +26,25 @@ class LoadingViewController: UIViewController {
         
         let frame = CGRect(x:0,y:0,width:40,height:40)
         
-        let activity_indicator = NVActivityIndicatorView(frame:frame, type:NVActivityIndicatorType.LineScalePulseOutRapid )
+        let activity_indicator = NVActivityIndicatorView(frame:frame, type:NVActivityIndicatorType.lineScalePulseOutRapid )
         view_loader.addSubview(activity_indicator)
-        activity_indicator.startAnimation()
+        activity_indicator.startAnimating()
         
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        lbl_menssage.text = message
+    }
     // MARK: Helper's
     
     func dismiss(){
         guard autoDismiss else { return }
-        dismissViewControllerAnimated(dismissAnimated, completion: nil)
+        self.dismiss(animated: dismissAnimated, completion: nil)
+    }
+    func setText(_ text:String){
+        
+        message = text
+        
     }
     
 }

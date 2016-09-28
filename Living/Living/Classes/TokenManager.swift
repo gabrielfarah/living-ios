@@ -15,7 +15,7 @@ import JWTDecode
 class TokenManager{
     
     var token:String;
-    var expire:NSDate;
+    var expire:Date;
     var endpoint:String;
     var user:String;
     var password:String;
@@ -23,14 +23,14 @@ class TokenManager{
     init(){
     
         self.token = Defaults["token"].string ?? ""
-        self.expire = NSDate()
+        self.expire = Date()
         self.endpoint = ""
         self.user = Defaults["user"].string ?? ""
         self.password = Defaults["password"].string ?? ""
     }
     
     
-    func Expire()->NSDate{
+    func Expire()->Date{
     
         return self.expire
     
@@ -53,11 +53,11 @@ class TokenManager{
     CheckToken("caev03@gmail.com", password: "caev03") { (result) in
         
         do {
-            let jwt = try decode(self.token)
+            let jwt = try decode(jwt: self.token)
             let json = JSON(jwt.body)
             print(json)
             let exp = json["exp"].stringValue
-            let date = NSDate(timeIntervalSince1970: Double(exp)!)
+            let date = Date(timeIntervalSince1970: Double(exp)!)
             print(date)
             
         } catch {
@@ -72,7 +72,7 @@ class TokenManager{
         CheckToken(self.user, password: self.password) { (result) in
             
             do {
-                let jwt = try decode(self.token)
+                let jwt = try decode(jwt: self.token)
                 let json = JSON(jwt.body)
                 print(json)
                 let exp = json["exp"].stringValue
@@ -87,37 +87,37 @@ class TokenManager{
         
     }
     
-    func CheckToken(email:String, password:String, completion: (isError:Bool,result: String) -> Void){
+    func CheckToken(_ email:String, password:String, completion: @escaping (_ isError:Bool,_ result: String) -> Void){
         if (self.token == ""){
             self.GetApiToken(email,password:password ){
                 (isError:Bool,result:String)in
-                completion(isError:isError,result: result)
+                completion(isError,result)
             }
         }else{
-            completion(isError:false, result: "")
+            completion(false, "")
             print("Stored Token:", self.token)
         }
         
     }
-    private func GetApiToken(email:String, password:String,completion: (isError:Bool,result: String) -> Void){
+    fileprivate func GetApiToken(_ email:String, password:String,completion: @escaping (_ isError:Bool,_ result: String) -> Void){
         
         
         
         let parameters: [String: AnyObject] = [
-            "email" : email,
-            "password" : password,
+            "email" : email as AnyObject,
+            "password" : password as AnyObject,
             ]
         
         
         
         
         
-        Alamofire.request(.POST,self.endpoint,parameters:parameters,encoding: .JSON)
+        Alamofire.request(self.endpoint,method:.post,parameters:parameters,encoding: JSONEncoding.default)
             .validate()
             .responseJSON { response in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     let token_result = response.result.value as? NSDictionary
                     self.token = (token_result!["token"] as? String)!
@@ -129,23 +129,23 @@ class TokenManager{
                     self.user = email
                     self.password = password
                     print("[GetApiToken]Token: \(self.token)")
-                    completion(isError: false,result: "Ok")
+                    completion(false,"Ok")
                     
                     
                     
                     
                     
-                case .Failure(let error):
+                case .failure(let error):
                     
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     let final_response = JSON(data: data)
                     let response_string = (final_response["non_field_errors"][0]).rawString()
                     print("Error Api Auth")
                     
                     if(response_string != "null"){
-                        completion(isError:true, result: response_string!)
+                        completion(true,  response_string!)
                     }else{
-                        completion(isError:true, result: error.localizedDescription)
+                        completion(true, error.localizedDescription)
                     }
                     
                     

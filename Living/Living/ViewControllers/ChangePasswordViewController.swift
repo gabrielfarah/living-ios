@@ -23,6 +23,17 @@ class ChangePasswordViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+
+        
+
+        txt_old_password.attributedPlaceholder = NSAttributedString(string:"Antigua contraseña",
+                                                               attributes:[NSForegroundColorAttributeName: UIColor.white])
+        txt_new_password_1.attributedPlaceholder = NSAttributedString(string:"Antigua contraseña",
+                                                                    attributes:[NSForegroundColorAttributeName: UIColor.white])
+        txt_new_password_2.attributedPlaceholder = NSAttributedString(string:"Confirmar contraseña",
+                                                                      attributes:[NSForegroundColorAttributeName: UIColor.white])
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +52,7 @@ class ChangePasswordViewController: UIViewController {
     }
     */
     
-    @IBAction func ChangePassword(sender: AnyObject) {
+    @IBAction func ChangePassword(_ sender: AnyObject) {
         
         //TODO: Validar si la clave vieja es la verdadera
         //TODO: validar que las claves sean iguales
@@ -50,21 +61,21 @@ class ChangePasswordViewController: UIViewController {
         let token = ArSmartApi.sharedApi.getToken()
         if(txt_new_password_1.text == txt_new_password_2.text && txt_new_password_1.text != ""){
             ArSmartApi.sharedApi.user.ChangePassword(token,password_old: txt_old_password.text!, new_password:txt_new_password_1.text!) { (IsError, result) in
-                let width = ModalSize.Custom(size: 240)
-                let height = ModalSize.Custom(size: 130)
-                let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                let width = ModalSize.custom(size: 240)
+                let height = ModalSize.custom(size: 130)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                 
-                presenter2.transitionType = .CrossDissolve // Optional
+                presenter2.transitionType = .crossDissolve // Optional
                 let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                 self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                 vc2.setText(result)
             }
         }else{
-            let width = ModalSize.Custom(size: 240)
-            let height = ModalSize.Custom(size: 130)
-            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
             
-            presenter2.transitionType = .CrossDissolve // Optional
+            presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             vc2.setText("Las contraseñas debe coincidir y no deben ser vacias")

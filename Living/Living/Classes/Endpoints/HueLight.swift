@@ -14,6 +14,7 @@ import SwiftyJSON
 class HueLight{
 
     var light_id:Int
+    var group_id:Int = 0
     var reachable:Bool
     var swversion:String
     var type:String
@@ -64,7 +65,7 @@ class HueLight{
         let x:Double = self.xy.0 // the given x value
         let y:Double =  self.xy.1 // the given y value
         let z:Double = 1.0 - x - y
-        let Y:Double = self.brightness; // The given brightness value
+        let Y:Double = self.brightness / 255; // The given brightness value
         let X:Double = (Y / y) * x;
         let Z:Double = (Y / y) * z;
     
@@ -82,7 +83,7 @@ class HueLight{
         
     }
     //Theory:https://github.com/mikz/PhilipsHueSDKiOS/blob/master/ApplicationDesignNotes/RGB%20to%20xy%20Color%20conversion.md
-    func rgbToXY(r:Double,g:Double,b:Double)->(Double, Double){
+    func rgbToXY(_ r:Double,g:Double,b:Double)->(Double, Double){
         
         /*Apply a gamma correction to the RGB values, which makes the color more vivid and more the like the color displayed on the screen of your device. This gamma correction is also applied to the screen of your computer or phone, thus we need this to create the same color on the light as on screen. This is done by the following formulas:*/
         
@@ -102,7 +103,7 @@ class HueLight{
     }
     
     
-    static func rgbColorCorrection(rgb:(Double,Double,Double))->(Double,Double,Double){
+    static func rgbColorCorrection(_ rgb:(Double,Double,Double))->(Double,Double,Double){
     
         let r = rgb.0
         let g = rgb.1
@@ -115,18 +116,30 @@ class HueLight{
         return (red,green,blue)
     }
     
-    func setColorById(hub:Int,token:String,rgb:(Double,Double,Double), completion: (IsError:Bool,result: String) -> Void){
-        setValueHue(hub, token: token, function: "set_color_to_light_by_id", rgb: rgb) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+    func setColorById(_ hub:Int,token:String,rgb:(Double,Double,Double),ip:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        setValueHue(hub, token: token, function: "set_color_to_light_by_id", rgb: rgb,ip:ip) { (IsError, result) in
+            completion(IsError,result)
         }
     }
-    func setColorByGoup(hub:Int,token:String,rgb:(Double,Double,Double), completion: (IsError:Bool,result: String) -> Void){
-        setValueHue(hub, token: token, function: "set_color_to_light_by_group", rgb: rgb) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+    func setColorByGoup(_ hub:Int,token:String,rgb:(Double,Double,Double),ip:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        setValueHue(hub, token: token, function: "set_color_to_light_by_id", rgb: rgb,ip:ip) { (IsError, result) in
+            completion(IsError,result)
         }
     }
     
-    func setValueHue(hub:Int,token:String,function:String,rgb:(Double,Double,Double), completion: (IsError:Bool,result: String) -> Void){
+    
+    func setTurnOnLight(_ hub:Int,token:String,rgb:(Double,Double,Double),ip:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        setValueHue(hub, token: token, function: "turn_on_light_by_id", rgb: rgb,ip:ip) { (IsError, result) in
+            completion(IsError,result)
+        }
+    }
+    func setTurnOffLight(_ hub:Int,token:String,rgb:(Double,Double,Double),ip:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        setValueHue(hub, token: token, function: "turn_off_light_by_id", rgb: rgb,ip:ip) { (IsError, result) in
+            completion(IsError,result)
+        }
+    }
+    
+    func setValueHue(_ hub:Int,token:String,function:String,rgb:(Double,Double,Double),ip:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -142,42 +155,47 @@ class HueLight{
         
         //[{"type":"wifi","target":"hue","ip":"<IP_DISPOSITIVO>","function":"set_color_to_light_by_id","parameters":["r":100,"g":100,"b":100]}]
         
-        let color_parameters = ["r":rgb_corrected.0,"g":rgb_corrected.1,"b":rgb_corrected.2]
+        var color_parameters = ["r":rgb.0,"g":rgb.1,"b":rgb.2,"light_id":self.light_id] as [String : Any]
+        if (function == "set_color_to_light_by_id"){
+            color_parameters = ["r":rgb.0,"g":rgb.1,"b":rgb.2,"light_id":self.light_id]
+        }else{
+            color_parameters = ["light_id":self.light_id]
+        
+        }
+
         
         let json_parameters: [String: AnyObject]  = [
-            "type":"wifi",
-            "target":"hue",
-            "ip":self.endpoint.ip_address,
-            "function":function,
-            "parameters":color_parameters
+            "type":"wifi" as AnyObject,
+            "target":"hue" as AnyObject,
+            "ip":ip as AnyObject,
+            "function":function as AnyObject,
+            "parameters":color_parameters as AnyObject
+            
             
         ]
-        
+        let json_parameters2 = ["type":"wifi","target":"hue","ip":ip,"function":"turn_on_all_lights","parameters":[]] as [String : Any]
         let array = JSON([json_parameters])
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
+                    
+                    let data = NSData(data: response.data!) as Data
+                    var json = JSON(data: data)
+                    let response_string = (json["message"]).rawString()
+                    completion(false,response_string!)
                     
                     
-                    completion(IsError: false,result: "")
-                    
-                    
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -218,3 +236,4 @@ class HueLight{
     
 
 }
+

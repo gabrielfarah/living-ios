@@ -26,7 +26,7 @@ class SwitchViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    override func viewDidAppear(animated:Bool) {
+    override func viewDidAppear(_ animated:Bool) {
         super.viewDidAppear(animated)
         turnon()
         // Do any additional setup after loading the view.
@@ -51,15 +51,15 @@ class SwitchViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func ValueChanged(sender: AnyObject) {
+    @IBAction func ValueChanged(_ sender: AnyObject) {
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
-        print("Value Changed:%@",swt_control.on )
-        delegate?.ValueChanged(swt_control.on)
+        print("Value Changed:%@",swt_control.isOn )
+        delegate?.ValueChanged(swt_control.isOn)
         //TODO:SetValue
         
-        let value = String((swt_control.on) ? MAX_VALUE : MIN_VALUE)
+        let value = String((swt_control.isOn) ? MAX_VALUE : MIN_VALUE)
         
         endpoint.setValue(hub!, token: token, value: value) { (IsError, result) in
             print("Change Value")
@@ -75,6 +75,6 @@ class SwitchViewController: UIViewController {
 }
 protocol SwitchViewControllerDelegate {
     // protocol definition goes here
-    func ValueChanged(value:Bool)
+    func ValueChanged(_ value:Bool)
     
 }

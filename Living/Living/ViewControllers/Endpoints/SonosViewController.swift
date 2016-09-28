@@ -34,7 +34,7 @@ class SonosViewController: UIViewController {
         slider_volume.minimumValue = MIN_VALUE
         slider_volume.maximumValue = MAX_VALUE
         
-        slider_volume.continuous = false
+        slider_volume.isContinuous = false
         
     }
 
@@ -47,19 +47,19 @@ class SonosViewController: UIViewController {
     func style(){
     
         let origImage = UIImage(named: "play");
-        let tintedImage = origImage?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        btn_play.setImage(tintedImage, forState: .Normal)
-        btn_play.tintColor = UIColor.whiteColor()
+        let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        btn_play.setImage(tintedImage, for: UIControlState())
+        btn_play.tintColor = UIColor.white
         
         let origImage2 = UIImage(named: "skip_to_start");
-        let tintedImage2 = origImage2?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        btn_prev.setImage(tintedImage2, forState: .Normal)
-        btn_prev.tintColor = UIColor.whiteColor()
+        let tintedImage2 = origImage2?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        btn_prev.setImage(tintedImage2, for: UIControlState())
+        btn_prev.tintColor = UIColor.white
         
         let origImage3 = UIImage(named: "end");
-        let tintedImage3 = origImage3?.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
-        btn_next.setImage(tintedImage3, forState: .Normal)
-        btn_next.tintColor = UIColor.whiteColor()
+        let tintedImage3 = origImage3?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        btn_next.setImage(tintedImage3, for: UIControlState())
+        btn_next.tintColor = UIColor.white
         
         
 
@@ -76,7 +76,7 @@ class SonosViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func Prev(sender: AnyObject) {
+    @IBAction func Prev(_ sender: AnyObject) {
         
 
 
@@ -90,7 +90,7 @@ class SonosViewController: UIViewController {
             }
         }
     }
-    @IBAction func Play(sender: AnyObject) {
+    @IBAction func Play(_ sender: AnyObject) {
 
         
         play = (play == true) ? false : true
@@ -116,7 +116,7 @@ class SonosViewController: UIViewController {
 
         
     }
-    @IBAction func Next(sender: AnyObject) {
+    @IBAction func Next(_ sender: AnyObject) {
 
         
         
@@ -130,12 +130,12 @@ class SonosViewController: UIViewController {
         }
         
     }
-    @IBAction func ValueChange(sender: AnyObject) {
+    @IBAction func ValueChange(_ sender: AnyObject) {
 
         let volume = ["volume":String(Int(slider_volume.value))]
         
         
-        endpoint.setVomuneSonos(hub!, token: token, parameters: volume) { (IsError, result) in
+        endpoint.setVomuneSonos(hub!, token: token, parameters: volume as [String : AnyObject]) { (IsError, result) in
             if(IsError){
                 print("Played Error")
             }else{

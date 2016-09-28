@@ -13,18 +13,21 @@ pod 'SwiftHUEColorPicker'
 </pre>
 <b>Manual:</b>
 <pre>
-Copy SwiftHUEColorPicker.swift to your project.
+Copy <i>SwiftHUEColorPicker.swift</i> to your project.
 </pre>
+
+<b>For running in Xcode 8 please use <i>swift-3.0</i> branch.</b>
+
 ## Description
-Supports two modes: horizontal and vertical.</br>
+Supports two modes: <i>horizontal</i> and <i>vertical</i>.</br>
 ![alt tag](https://raw.github.com/maximbilan/SwiftHUEColorPicker/master/img/img2.png)
-</br>Also you can change saturation, brightness and alpha values.
+</br>Also you can change <i>saturation</i>, <i>brightness</i> and <i>alpha</i> values.
 </br>And control has customization. You can customize the label:</br>
 ![alt tag](https://raw.github.com/maximbilan/SwiftHUEColorPicker/master/img/img3.png)
 </br>Or appearance:</br>
 </br>
 ![alt tag](https://raw.github.com/maximbilan/SwiftHUEColorPicker/master/img/img4.png)
-## How to use
+## Using
 You can create from <i>Storyboard</i> or <i>XIB</i>. Or create manually:
 <pre>
 let picker = SwiftHUEColorPicker()

@@ -13,12 +13,12 @@ import SwiftyJSON
 class Endpoint{
 
     enum EndPointType {
-        case Wifi, Zwave
+        case wifi, zwave
     }
 
     var active:Int
     var category:CategoryEndpoint
-    var created_at:NSDate
+    var created_at:Date
     var endpoint_type:EndPointType
     var favorite:Int
     var id:Int
@@ -37,7 +37,7 @@ class Endpoint{
     var state:Int
     var ui_class_command:String
     var uid:String
-    var updated_at:NSDate
+    var updated_at:Date
     var version:String
     var wkup_intv:String
     var is_room_available:Bool
@@ -50,8 +50,8 @@ class Endpoint{
     init(){
         self.active = 0
         self.category = CategoryEndpoint()
-        self.created_at = NSDate()
-        self.endpoint_type = EndPointType.Wifi
+        self.created_at = Date()
+        self.endpoint_type = EndPointType.wifi
         self.favorite = 0
         self.id = 0
         self.image = ""
@@ -69,13 +69,13 @@ class Endpoint{
         self.state = 0
         self.ui_class_command = ""
         self.uid = ""
-        self.updated_at = NSDate()
+        self.updated_at = Date()
         self.version = ""
         self.wkup_intv = "0"
         self.is_room_available = false
     }
     
-    init(active:Int, category:CategoryEndpoint, created_at:NSDate, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:NSDate, version:String?=nil, wkup_intv:String?=nil){
+    init(active:Int, category:CategoryEndpoint, created_at:Date, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:Date, version:String?=nil, wkup_intv:String?=nil){
     
         self.active = active
         self.category = category
@@ -110,7 +110,7 @@ class Endpoint{
         
         self.active = 0
         self.category = CategoryEndpoint()
-        self.created_at = NSDate()
+        self.created_at = Date()
         self.endpoint_type = endpoint_type
         self.favorite = favorite
         self.id = 0
@@ -129,14 +129,14 @@ class Endpoint{
         self.state = 0
         self.ui_class_command = ui_class_command
         self.uid = ""
-        self.updated_at = NSDate()
+        self.updated_at = Date()
         self.version = ""
         self.wkup_intv = "0"
         self.is_room_available = false
     }
     
     
-    func Create(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    func Create(_ hub:Int,token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -147,7 +147,7 @@ class Endpoint{
         
 
         
-        let json_parameters  = JSON([
+        let json_parameters  = [
         
                 "category": ["id":1,"description":"Entertaiment"],
                 "room": self.room.description,
@@ -166,41 +166,31 @@ class Endpoint{
                 "sleep_cap": false,
 
 
-        ])
-        //convert the JSON to a raw String
-        if let string = json_parameters.rawString() {
-            //Do something you want
-            print(string)
-        }
-        
+        ] as [String : Any] 
+
 
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = json_parameters.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint, method: .get, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     // TODO: se debe consultar la url que responde esste tema.
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     
                     
 
-                    completion(IsError: false,result: "")
+                    completion(false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -213,7 +203,7 @@ class Endpoint{
     
     }
     
-    func CheckCreatedResponse(token:String,url:String,completion: (IsError:Bool,result: String) -> Void){
+    func CheckCreatedResponse(_ token:String,url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -222,12 +212,12 @@ class Endpoint{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url),method:.post, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     // TODO: se debe consultar la url que responde esste tema.
                     //let data = NSData(data: response.data!)
@@ -235,14 +225,14 @@ class Endpoint{
 
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -254,33 +244,33 @@ class Endpoint{
     }
     
     
-    func Update(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    func Update(_ hub:Int,token:String,completion: (_ IsError:Bool,_ result: String) -> Void){
         
         
     }
     
-    func Delete(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    func Delete(_ hub:Int,token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         //Z-Wave devices cannot be directly deleted. Send the zwnet_remove command to hub first."
         
-        if(self.endpoint_type == EndPointType.Wifi){
+        if(self.endpoint_type == EndPointType.wifi){
             DeleteWIFI(hub, token: token, completion: { (IsError, result) in
-                completion(IsError: IsError,result: result)
+                completion(IsError,result)
             })
         }else{
             RequestRemoveZWaveToken(token, hub: hub, completion: { (IsError, result) in
-                completion(IsError: IsError,result: result)
+                completion(IsError,result)
             })
         }
     }
     
-    func DeleteZWave(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    func DeleteZWave(_ hub:Int,token:String,completion: (_ IsError:Bool,_ result: String) -> Void){
     
     //Z-Wave devices cannot be directly deleted. Send the zwnet_remove command to hub first."
     }
     
     
-    func DeleteWIFI(hub:Int,token:String,completion: (IsError:Bool,result: String) -> Void){
+    func DeleteWIFI(_ hub:Int,token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -293,27 +283,27 @@ class Endpoint{
 
         
         
-        Alamofire.request(.DELETE,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint,method:.delete ,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     // TODO: se debe consultar la url que responde esste tema.
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     
                     
                     
-                    completion(IsError: false,result: "")
+                    completion( false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true, response_string!)
                     
                     
                     
@@ -323,7 +313,7 @@ class Endpoint{
         }
     }
     
-    func command_level_on(hub:Int,token:String, completion: (IsError:Bool,result: String) -> Void){
+    func command_level_on(_ hub:Int,token:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
     
         if(self.ui_class_command == "ui-switch-binary-zwave"){
         
@@ -336,11 +326,11 @@ class Endpoint{
             
             
             let json_parameters: [String: AnyObject]  = [
-                "type":"zwave",
-                "function":"zwif_level_set",
-                "v":"99",
-                "node":self.node,
-                "parameters":[]
+                "type":"zwave" as AnyObject,
+                "function":"zwif_level_set" as AnyObject,
+                "v":"99" as AnyObject,
+                "node":self.node as AnyObject,
+                "parameters":[AnyObject?]() as AnyObject
                 
             ]
             
@@ -349,27 +339,22 @@ class Endpoint{
             
             
             
-            Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-                let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-                mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-                return (mutableRequest, nil)
-            }))
+            Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding:JSONEncoding.default,headers: headers)
                 .validate()
                 .responseJSON { response  in
                     switch response.result {
                         
-                    case .Success:
+                    case .success:
                         
                         
-                        completion(IsError: false,result: "")
+                        completion( false,"")
                         
                         
-                    case .Failure:
-                        let data = NSData(data: response.data!)
+                    case .failure:
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         let response_string = (json["ERROR"]).rawString()
-                        completion(IsError:true,result: response_string!)
+                        completion(true,response_string!)
                         
                         
                         
@@ -383,7 +368,7 @@ class Endpoint{
     
     }
     
-    func GetLevel(hub:Int,token:String,value:String,function:String, completion: (IsError:Bool,result: String) -> Void){
+    func GetLevel(_ hub:Int,token:String,value:String,function:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -396,11 +381,11 @@ class Endpoint{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "type":self.getEndpointTypeString(),
-            "function":function,
-            "v":value,
-            "node":self.node,
-            "parameters":[]
+            "type":self.getEndpointTypeString() as AnyObject,
+            "function":function as AnyObject,
+            "v":value as AnyObject,
+            "node":self.node as AnyObject,
+            "parameters":[] as AnyObject
             
         ]
         
@@ -409,29 +394,24 @@ class Endpoint{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method: .post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
-                    completion(IsError: false,result: url!)
+                    completion(false, url!)
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true, response_string!)
                     
                     
                     
@@ -445,7 +425,7 @@ class Endpoint{
         
     }
     
-    func SetLevel(hub:Int,token:String,value:String,function:String, completion: (IsError:Bool,result: String) -> Void){
+    func SetLevel(_ hub:Int,token:String,value:String,function:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -458,11 +438,11 @@ class Endpoint{
             
             
             let json_parameters: [String: AnyObject]  = [
-                "type":self.getEndpointTypeString(),
-                "function":function,
-                "v":value,
-                "node":self.node,
-                "parameters":[]
+                "type":self.getEndpointTypeString() as AnyObject,
+                "function":function as AnyObject,
+                "v":value as AnyObject,
+                "node":self.node as AnyObject,
+                "parameters":[] as AnyObject
                 
             ]
             
@@ -471,27 +451,22 @@ class Endpoint{
             
             
             
-            Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-                let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-                mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-                return (mutableRequest, nil)
-            }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
                 .validate()
                 .responseJSON { response  in
                     switch response.result {
                         
-                    case .Success:
+                    case .success:
                         
                         
-                        completion(IsError: false,result: "")
+                        completion( false,"")
                         
                         
-                    case .Failure:
-                        let data = NSData(data: response.data!)
+                    case .failure:
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         let response_string = (json["ERROR"]).rawString()
-                        completion(IsError:true,result: response_string!)
+                        completion(true,response_string!)
                         
                         
                         
@@ -504,7 +479,7 @@ class Endpoint{
         
         
     }
-    func SetLevel(hub:Int,token:String,value:String,function:String,parameters:String, completion: (IsError:Bool,result: String) -> Void){
+    func SetLevel(_ hub:Int,token:String,value:String,function:String,parameters:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -517,11 +492,11 @@ class Endpoint{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "type":self.getEndpointTypeString(),
-            "function":function,
-            "v":value,
-            "node":self.node,
-            "parameters":parameters
+            "type":self.getEndpointTypeString() as AnyObject,
+            "function":function as AnyObject,
+            "v":value as AnyObject,
+            "node":self.node as AnyObject,
+            "parameters":parameters as AnyObject
             
         ]
         
@@ -530,27 +505,22 @@ class Endpoint{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -566,10 +536,10 @@ class Endpoint{
     
     
 
-    func setValue(hub:Int,token:String,value:String, completion: (IsError:Bool,result: String) -> Void){
+    func setValue(_ hub:Int,token:String,value:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
     
 
-        let parameters = []
+        let parameters = [AnyObject]()
     
         let headers = [
             "Authorization": "JWT "+token,
@@ -580,11 +550,11 @@ class Endpoint{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "type":self.getEndpointTypeString(),
-            "function":Endpoint.GetFunctionValue(self.ui_class_command),
-            "v":value,
-            "node":self.node,
-            "parameters":parameters
+            "type":self.getEndpointTypeString() as AnyObject,
+            "function":Endpoint.GetFunctionValue(self.ui_class_command) as AnyObject,
+            "v":value as AnyObject,
+            "node":self.node as AnyObject,
+            "parameters":parameters as AnyObject
             
         ]
         
@@ -592,27 +562,22 @@ class Endpoint{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post ,parameters:json_parameters, encoding:JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -770,7 +735,7 @@ class Endpoint{
     
     }
     
-    static func GetFunctionValue(ui_class_command:String)->String{
+    static func GetFunctionValue(_ ui_class_command:String)->String{
         switch(ui_class_command){
             case "ui-binary-outlet-zwave":
                 return "zwif_switch_set" // bien
@@ -802,18 +767,18 @@ class Endpoint{
     }
     
     
-    static func ConvertType(type:String)->EndPointType{
+    static func ConvertType(_ type:String)->EndPointType{
     
         if(type == "wifi"){
-            return EndPointType.Wifi
+            return EndPointType.wifi
         
         }else{
-            return EndPointType.Zwave
+            return EndPointType.zwave
         }
     
     }
     func getEndpointTypeString()->String{
-        if(self.endpoint_type == EndPointType.Wifi){
+        if(self.endpoint_type == EndPointType.wifi){
             return "wifi"
         }else{
             return "zwave"
@@ -826,33 +791,33 @@ class Endpoint{
     
     
     //TODO: Sonos
-    func playSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func playSonos(_ hub:Int,token:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueSonos(hub, token: token, function: "play", parameters: parameters) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
-    func pauseSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func pauseSonos(_ hub:Int,token:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueSonos(hub, token: token, function: "pause", parameters: parameters) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
-    func nextSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func nextSonos(_ hub:Int,token:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueSonos(hub, token: token, function: "play_next", parameters: parameters) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
-    func prevSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func prevSonos(_ hub:Int,token:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueSonos(hub, token: token, function: "play_previous", parameters: parameters) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
-    func setVomuneSonos(hub:Int,token:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func setVomuneSonos(_ hub:Int,token:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         setValueSonos(hub, token: token, function: "set_volume", parameters: parameters) { (IsError, result) in
-            completion(IsError: IsError,result:result)
+            completion(IsError,result)
         }
     }
     
-    func setValueSonos(hub:Int,token:String,function:String,parameters:[String:AnyObject], completion: (IsError:Bool,result: String) -> Void){
+    func setValueSonos(_ hub:Int,token:String,function:String,parameters:[String:AnyObject], completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
 
         
@@ -865,11 +830,11 @@ class Endpoint{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "type":self.getEndpointTypeString(),
-            "target":"sonos",
-            "ip":ip_address,
-            "function":function,
-            "parameters":parameters
+            "type":self.getEndpointTypeString() as AnyObject,
+            "target":"sonos" as AnyObject,
+            "ip":ip_address as AnyObject,
+            "function":function as AnyObject,
+            "parameters":parameters as AnyObject
             
         ]
         
@@ -877,27 +842,22 @@ class Endpoint{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding:JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(false,response_string!)
                     
                     
                     
@@ -980,7 +940,7 @@ class Endpoint{
     }
     
     
-    func RequestRemoveZWaveToken(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func RequestRemoveZWaveToken(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         
@@ -997,27 +957,27 @@ class Endpoint{
         
         
         
-        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.post,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.WaitForZwaveResponse(token, url: url!, completion: { (IsError, result) in
-                        completion(IsError: IsError,result: result)
+                        completion(IsError, result)
                     })
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     break
                     
                 }
@@ -1030,7 +990,7 @@ class Endpoint{
         
     }
     
-    func WaitForZwaveResponse(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+    func WaitForZwaveResponse(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -1039,25 +999,25 @@ class Endpoint{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get,encoding:  JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = NSTimer.every(2.seconds) {
-                            (timer: NSTimer) in
+                        var timer = Timer.every(2.seconds) {
+                            (timer: Timer) in
                             // do something
                             
                             self.WaitForZwaveResponse(token,url: url, completion: { (IsError, result) in
-                                completion(IsError:IsError,result:result)
+                                completion(IsError,result)
                             })
                             
                             timer.invalidate()
@@ -1066,22 +1026,22 @@ class Endpoint{
                         
                     }else if(status == "done"){
                         print("Done..")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         
                         
                     }
                     
 
-                    completion(IsError:false,result:"")
+                    completion(false,"")
 
-                case .Failure:
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!)
+                    completion(true,response_string!)
                     
                     
                 }

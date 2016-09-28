@@ -15,7 +15,7 @@ class SelectDeviceViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
             self.tableView.reloadData()
@@ -41,34 +41,34 @@ class SelectDeviceViewController: UIViewController {
     }
     */
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ArSmartApi.sharedApi.hubs.hubs.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = ArSmartApi.sharedApi.hubs.hubs[indexPath.row].name
+        cell.textLabel?.text = ArSmartApi.sharedApi.hubs.hubs[(indexPath as NSIndexPath).row].name
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let cell = tableView.cellForRowAtIndexPath(indexPath) {
-            if cell.accessoryType == .Checkmark {
-                cell.accessoryType = .None
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) {
+            if cell.accessoryType == .checkmark {
+                cell.accessoryType = .none
 
             } else {
-                cell.accessoryType = .Checkmark
+                cell.accessoryType = .checkmark
 
             }
         }
 
         
-        ArSmartApi.sharedApi.setHub(ArSmartApi.sharedApi.hubs.hubs[indexPath.row])
+        ArSmartApi.sharedApi.setHub(ArSmartApi.sharedApi.hubs.hubs[(indexPath as NSIndexPath).row])
         
-        NSNotificationCenter.defaultCenter().postNotificationName("LoadEndpoints", object: nil)
-        dismissViewControllerAnimated(true, completion: {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "LoadEndpoints"), object: nil)
+        dismiss(animated: true, completion: {
 
             
         })

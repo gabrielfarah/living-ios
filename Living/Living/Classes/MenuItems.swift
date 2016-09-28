@@ -30,7 +30,7 @@ class MenuItems{
     
     }
     
-    func objectAtIndex(index:Int)->String{
+    func objectAtIndex(_ index:Int)->String{
     
         return self.items[index]
     }

@@ -24,7 +24,7 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
 
     @IBOutlet weak var mapView: GMSMapView!
     
-    func mapView(mapView: GMSMapView!, didTapAtCoordinate coordinate: CLLocationCoordinate2D) {
+    func mapView(_ mapView: GMSMapView!, didTapAt coordinate: CLLocationCoordinate2D) {
         mapView.clear()
         
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")
@@ -47,7 +47,7 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
         mapView.delegate = self
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
-        self.mapView.myLocationEnabled = true
+        self.mapView.isMyLocationEnabled = true
         
         
 
@@ -61,27 +61,27 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
     }
     
 
     
     
-    @IBAction func close(sender: AnyObject) {
+    @IBAction func close(_ sender: AnyObject) {
         
         let location = [
             "lat":lat,
             "lon":lon,
             "hasLocation":has_location
-        ]
+        ] as [String : Any]
         
-        NSNotificationCenter.defaultCenter().postNotificationName(mySpecialLocationNotificationKey, object: location)
-        self.dismissViewControllerAnimated(true) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: mySpecialLocationNotificationKey), object: location)
+        self.dismiss(animated: true) {
             
         }
         
     }
-    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         lat = mapView.camera.target.latitude;
         lon = mapView.camera.target.longitude;
         ArSmartApi.sharedApi.hub!.latitude = lat
@@ -94,21 +94,21 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
 }
 extension SelectInitialHubPositionViewController: CLLocationManagerDelegate {
     // 2
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // 3
-        if status == .AuthorizedWhenInUse {
+        if status == .authorizedWhenInUse {
             
             // 4
             locationManager.startUpdatingLocation()
             
             //5
-            mapView.myLocationEnabled = true
+            mapView.isMyLocationEnabled = true
             mapView.settings.myLocationButton = true
         }
     }
     
     // 6
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             
             has_location = true

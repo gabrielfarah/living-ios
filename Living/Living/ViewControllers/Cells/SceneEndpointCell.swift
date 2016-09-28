@@ -12,7 +12,7 @@ class SceneEndpointCell: UITableViewCell {
     
 
     public enum SceneEndpointCellMode {
-        case Sonos, Level, Switch, Other
+        case sonos, level, `switch`, other
     }
     
     @IBOutlet weak var endpoint_image: UIImageView!
@@ -23,7 +23,7 @@ class SceneEndpointCell: UITableViewCell {
     @IBOutlet weak var endpoint_level_label: UILabel!
     
     
-    var mode:SceneEndpointCellMode = SceneEndpointCellMode.Other
+    var mode:SceneEndpointCellMode = SceneEndpointCellMode.other
     var endpoint:Endpoint = Endpoint()
     
     
@@ -45,7 +45,7 @@ class SceneEndpointCell: UITableViewCell {
 
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         
         // Configure the view for the selected state
@@ -55,61 +55,61 @@ class SceneEndpointCell: UITableViewCell {
     
     func switchMode(){
     
-        endpoint_slider.hidden = true
-        endpoint_level_label.hidden = true
-        endpoint_switch.hidden = false
-        endpoint_switch_label.hidden = false
+        endpoint_slider.isHidden = true
+        endpoint_level_label.isHidden = true
+        endpoint_switch.isHidden = false
+        endpoint_switch_label.isHidden = false
         
         
         
         if(payload_switch.value == 255){
-            endpoint_switch.on = true
+            endpoint_switch.isOn = true
         }else{
-            endpoint_switch.on = false
+            endpoint_switch.isOn = false
         }
-        mode = SceneEndpointCellMode.Switch
+        mode = SceneEndpointCellMode.switch
         
     }
     func levelMode(){
-        endpoint_slider.hidden = false
-        endpoint_level_label.hidden = false
-        endpoint_switch.hidden = true
-        endpoint_switch_label.hidden = true
-        endpoint_slider.continuous = false
+        endpoint_slider.isHidden = false
+        endpoint_level_label.isHidden = false
+        endpoint_switch.isHidden = true
+        endpoint_switch_label.isHidden = true
+        endpoint_slider.isContinuous = false
         endpoint_slider.value = Float(Int(payload_level.value))
-        mode = SceneEndpointCellMode.Level
+        mode = SceneEndpointCellMode.level
         
     }
     
     func sonosMode(){
-        endpoint_slider.hidden = false
-        endpoint_level_label.hidden = false
-        endpoint_switch.hidden = false
-        endpoint_switch_label.hidden = false
-        endpoint_slider.continuous = false
+        endpoint_slider.isHidden = false
+        endpoint_level_label.isHidden = false
+        endpoint_switch.isHidden = false
+        endpoint_switch_label.isHidden = false
+        endpoint_slider.isContinuous = false
         endpoint_slider.value = Float(Int(payload_level.value))
         
         if(payload_switch.value == 255){
-            endpoint_switch.on = true
+            endpoint_switch.isOn = true
         }else{
-            endpoint_switch.on = false
+            endpoint_switch.isOn = false
         }
         
-        mode = SceneEndpointCellMode.Sonos
+        mode = SceneEndpointCellMode.sonos
         
     }
     
     func noneMode(){
-        endpoint_slider.hidden = true
-        endpoint_level_label.hidden = true
-        endpoint_switch.hidden = true
-        endpoint_switch_label.hidden = true
-        mode = SceneEndpointCellMode.Other
+        endpoint_slider.isHidden = true
+        endpoint_level_label.isHidden = true
+        endpoint_switch.isHidden = true
+        endpoint_switch_label.isHidden = true
+        mode = SceneEndpointCellMode.other
     }
-    @IBAction func SwitchChangeValue(sender: AnyObject) {
+    @IBAction func SwitchChangeValue(_ sender: AnyObject) {
         
-        endpoint_switch_label.text = (endpoint_switch.on) ? "Activado" : "Desactivado"
-        payload_switch.value = (endpoint_switch.on) ? 255 : 0
+        endpoint_switch_label.text = (endpoint_switch.isOn) ? "Activado" : "Desactivado"
+        payload_switch.value = (endpoint_switch.isOn) ? 255 : 0
         delegate?.ChangedPayload(self.payload_switch)
         
         if(endpoint.ui_class_command == "ui-sonos"){
@@ -117,7 +117,7 @@ class SceneEndpointCell: UITableViewCell {
         }
         
     }
-    @IBAction func LevelChangeValue(sender: AnyObject) {
+    @IBAction func LevelChangeValue(_ sender: AnyObject) {
         
         
         payload_level.value = Int(endpoint_slider.value)
@@ -135,5 +135,5 @@ class SceneEndpointCell: UITableViewCell {
 }
 
 protocol SceneEndpointCellDelegate {
-    func ChangedPayload(payload:Payload);
+    func ChangedPayload(_ payload:Payload);
 }

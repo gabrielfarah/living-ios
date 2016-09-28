@@ -8,18 +8,24 @@
 
 import Foundation
 import UIKit
+import UIColor_Hex_Swift
 
 class MyAccountViewController:UIViewController{
 
+    
+    var theme = ThemeManager()
     @IBOutlet weak var btn_add_users: UIButton!
-
     @IBOutlet weak var btn_change_password: UIButton!
-
     @IBOutlet weak var btn_logout: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.title = "My Account"
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
     }
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
     
@@ -30,11 +36,11 @@ class MyAccountViewController:UIViewController{
     
     
     
-    @IBAction func Logout(sender: AnyObject) {
+    @IBAction func Logout(_ sender: AnyObject) {
         
         ArSmartApi.sharedApi.Logout()
         //TODO:return to login
-        self.parentViewController?.navigationController?.popToRootViewControllerAnimated(true)
+        self.parent?.navigationController?.popToRootViewController(animated: true)
         
     }
     

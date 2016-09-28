@@ -34,7 +34,7 @@ class LoginViewController: UIViewController {
         //txt_password.text = ""
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         style();
@@ -50,22 +50,22 @@ class LoginViewController: UIViewController {
         
         let img = UIImage()
         self.navigationController?.navigationBar.shadowImage = img
-        self.navigationController?.navigationBar.setBackgroundImage(img, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
     
         self.title = "Ingresar en su cuenta"
-        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .Bordered, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .bordered, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         
-        self.navigationController?.navigationBarHidden = true
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
         
 
             
 
-            btn_login.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
+            btn_login.layer.borderColor = UIColor("#D1D3D4").cgColor
             btn_login.layer.borderWidth = 1.0
             btn_login.layer.cornerRadius = 5.0
             
@@ -74,29 +74,29 @@ class LoginViewController: UIViewController {
         
         
     }
-    @IBAction func Login(sender: AnyObject) {
+    @IBAction func Login(_ sender: AnyObject) {
         
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.lbl_menssage.text = "Autenticando, un momento por favor..."
+        vc.setText("Autenticando, un momento por favor...")
         let mPassword:String = txt_password.text!
         let mEmail:String = txt_email.text!
 
         ArSmartApi.sharedApi.user.Login(mEmail, password: mPassword) { (IsError, result) in
             if(IsError){
                 
-                self.dismissViewControllerAnimated(true, completion: {
-                    let width = ModalSize.Custom(size: 240)
-                    let height = ModalSize.Custom(size: 130)
-                    let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                self.dismiss(animated: true, completion: {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 130)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                     
-                    presenter2.transitionType = .CrossDissolve // Optional
+                    presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
 
@@ -106,9 +106,9 @@ class LoginViewController: UIViewController {
             }else{
                 ArSmartApi.sharedApi.token!.user = mEmail
                 ArSmartApi.sharedApi.token!.user = mPassword
-                self.dismissViewControllerAnimated(true, completion: {
+                self.dismiss(animated: true, completion: {
                     //self.performSegueWithIdentifier("GoLogin", sender: nil)
-                    self.performSegueWithIdentifier("userLogged", sender: nil)
+                    self.performSegue(withIdentifier: "userLogged", sender: nil)
                     
                 })
             }

@@ -32,10 +32,10 @@ class Room{
         self.rid = rid
     }
     
-    func save(token:String,hub:Int, completion:  (IsError:Bool,result: String) -> Void){
+    func save(_ token:String,hub:Int, completion:  @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let parameters: [String: AnyObject] = [
-            "description" : self.description
+            "description" : self.description as AnyObject
         ]
         
         
@@ -49,26 +49,26 @@ class Room{
         
         
         
-        Alamofire.request(.POST,endpoint,parameters:parameters,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method: .post, parameters:parameters,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     print(response.response)
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
                         
                     }
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -79,7 +79,7 @@ class Room{
         
     }
     
-    func delete(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func delete(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -88,22 +88,22 @@ class Room{
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Room), hub,self.rid)
         
-        Alamofire.request(.DELETE,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.delete, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true, response_string!)
                     
                     
                     

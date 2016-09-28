@@ -9,14 +9,24 @@
 import UIKit
 import Presentr
 import SideMenuController
+import DZNEmptyDataSet
 
-class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
 
     
 
     var theme = ThemeManager()
     var items = [String]()
     var guests = Guests()
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
+    
     
     
     @IBOutlet weak var empty_view: UIView!
@@ -28,46 +38,43 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
         super.viewDidLoad()
         sideMenuController?.delegate = self
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.addSubview(self.refreshControl)
         load_guests()
         
-        if (self.guests.guests.count>0){
-            self.tableView.hidden = false
-            self.empty_view.hidden = true
-        }else{
-            self.tableView.hidden = true
-            self.empty_view.hidden = false
-        }
+
         self.tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgba:theme.MainColor)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.title = "Invitados"
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:"AddGuestError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:"AddGuestSuccess", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddGuestError"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddGuestSuccess"), object: nil)
         
     }
-    func methodOfReceivedNotificationError(notification: NSNotification){
+    func methodOfReceivedNotificationError(_ notification: Notification){
         //Take Action on Notification
         
-        let presenter2 = Presentr(presentationType: .Alert)
+        let presenter2 = Presentr(presentationType: .alert)
         
         
-        presenter2.transitionType = .CrossDissolve // Optional
+        presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
         vc2.lbl_mensaje.text = "Error en la operación , por favor vuelva a intentarlo"
     }
-    func methodOfReceivedNotificationSuccess(notification: NSNotification){
+    func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
         
 
         
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
-        presenter2.transitionType = .CrossDissolve // Optional
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+        presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
         vc2.setText("Se adicionó el usuario con éxito")
@@ -79,17 +86,17 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func AddGuest(sender: AnyObject) {
+    @IBAction func AddGuest(_ sender: AnyObject) {
         
-        let width = ModalSize.Custom(size: 280)
-        let height = ModalSize.Custom(size: 132)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.TopCenter))
+        let width = ModalSize.custom(size: 280)
+        let height = ModalSize.custom(size: 132)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.topCenter))
         //presenter.backgroundOpacity = 0.1
         presenter.blurBackground = true
         presenter.dismissOnTap = true
 
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         let vc2 = AddGuestViewController(nibName: "AddGuestViewController", bundle: nil)
         self.customPresentViewController(presenter, viewController: vc2, animated: true, completion: nil)
         vc2.txt_email.becomeFirstResponder()
@@ -106,13 +113,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
         guests.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
             if(!IsError){
                 self.tableView.reloadData()
-                if (self.guests.guests.count>0){
-                    self.tableView.hidden = false
-                    self.empty_view.hidden = true
-                }else{
-                    self.tableView.hidden = true
-                    self.empty_view.hidden = false
-                }
+
 
             }
         }
@@ -121,11 +122,11 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     }
     
     
-    func sideMenuControllerDidHide(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     
-    func sideMenuControllerDidReveal(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     /*
@@ -138,28 +139,28 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     }
     */
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.guests.guests.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = self.guests.guests[indexPath.row].email
+        cell.textLabel?.text = self.guests.guests[(indexPath as NSIndexPath).row].email
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
 
     }
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             
             let presenter: Presentr = {
-                let presenter = Presentr(presentationType: .Alert)
-                presenter.transitionType = TransitionType.CrossDissolve
+                let presenter = Presentr(presentationType: .alert)
+                presenter.transitionType = TransitionType.crossDissolve
                 return presenter
             }()
             
@@ -171,34 +172,34 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
             let controller = Presentr.alertViewController(title: title, body: body)
             
             
-            let deleteAction = AlertAction(title: "Estoy seguro", style: .Destructive) {
+            let deleteAction = AlertAction(title: "Estoy seguro", style: .destructive) {
                 print("Deleted!")
                 // Delete the row from the data source
                 let token = ArSmartApi.sharedApi.getToken()
                 let hub = ArSmartApi.sharedApi.hub?.hid
                 
-                let guest = self.guests.guests[indexPath.row]
+                let guest = self.guests.guests[(indexPath as NSIndexPath).row]
                 guest.delete(token, hub: hub!, completion: { (IsError, result) in
                     
                     if(!IsError){
                         self.load_guests()
                         
-                        NSTimer.after(500.milliseconds) {
-                            let width = ModalSize.Custom(size: 240)
-                            let height = ModalSize.Custom(size: 130)
-                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
-                            presenter2.transitionType = .CrossDissolve // Optional
+                        Timer.after(500.milliseconds) {
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                            presenter2.transitionType = .crossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                             vc2.setText("El invitado ha sido removido")
                         }
                     }else{
                        
-                        NSTimer.after(500.milliseconds) {
-                            let width = ModalSize.Custom(size: 240)
-                            let height = ModalSize.Custom(size: 130)
-                            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
-                            presenter2.transitionType = .CrossDissolve // Optional
+                        Timer.after(500.milliseconds) {
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                            presenter2.transitionType = .crossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                             vc2.setText("Ocurrió un error el usuario no ha sido borrado")
@@ -211,14 +212,14 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
                 })
             }
             
-            let okAction = AlertAction(title: "Cancelar", style: .Cancel){
+            let okAction = AlertAction(title: "Cancelar", style: .cancel){
                 print("Ok!")
             }
             
             controller.addAction(deleteAction)
             controller.addAction(okAction)
             
-            presenter.presentationType = .Alert
+            presenter.presentationType = .alert
             customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
             
             
@@ -227,6 +228,38 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
             
             
         }
+    }
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Guest"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No hay invitados registrados"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let str = "New Guest"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        
+        
+        AddGuest(self)
     }
 
 }

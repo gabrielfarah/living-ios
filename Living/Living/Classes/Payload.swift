@@ -69,9 +69,9 @@ class Payload{
             "endpoint_id" : self.endpoint_id,
             "ip" : self.ip,
             "function" : self.function_name
-        ]
+        ] as [String : Any]
         
-        return payload as! [String : AnyObject]
+        return payload as [String : AnyObject]
 
     }
     
@@ -88,8 +88,8 @@ class Payload{
                 "endpoint_id" : self.endpoint_id,
                 "ip" : self.ip,
                 "function" : self.function_name
-            ]
-            return payload as! [String : AnyObject]
+            ] as [String : Any]
+            return payload as [String : AnyObject]
         }else{
         
             let payload = [
@@ -99,8 +99,8 @@ class Payload{
                 "endpoint_id" : self.endpoint_id,
                 "ip" : self.ip,
                 "function" : self.function_name
-            ]
-            return payload as! [String : AnyObject]
+            ] as [String : Any]
+            return payload as [String : AnyObject]
         }
         
         

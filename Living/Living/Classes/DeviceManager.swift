@@ -29,7 +29,7 @@ class DeviceManager{
      - parameter completion:  Callback function for completion, **return IsError = True if there is an error, false otherwise**
      
      */
-    func RequestAddWifiToken(token:String,hub:Int,completion: (IsError:Bool,result: String, Devices:[EndpointResponse]) -> Void){
+    func RequestAddWifiToken(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String, _ Devices:[EndpointResponse]) -> Void){
             
         let headers = [
             "Authorization": "JWT "+token,
@@ -39,28 +39,28 @@ class DeviceManager{
         self.request_type = "wifi"
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.AddWifi), hub)
-        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.post,encoding: JSONEncoding.default,headers: headers)
         .validate()
         .responseJSON {
             response  in
                     switch response.result {
                         
-                    case .Success:
-                        let data = NSData(data: response.data!)
+                    case .success:
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         let url = (json["url"]).rawString()
                         //completion(IsError:true,result: url!)
                         self.AvailableDevices(token, url: url!, completion: { (IsError, result,devices) in
-                            completion(IsError: IsError,result: result,Devices: devices)
+                            completion( IsError,result,devices)
                         })
                         break
                         
                         
-                    case .Failure:
-                        let data = NSData(data: response.data!)
+                    case .failure:
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         let response_string = (json["detail"]).rawString()
-                        completion(IsError:true,result: response_string!, Devices:[])
+                        completion(true,response_string!,[])
                         break
                         
                     }
@@ -69,7 +69,7 @@ class DeviceManager{
             }
             
     }
-    func RequestAddWifiRequest(token:String,url:String,completion: (IsError:Bool,result: String) -> Void){
+    func RequestAddWifiRequest(_ token:String,url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -77,26 +77,26 @@ class DeviceManager{
         ]
         
 
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
-                    completion(IsError:true,result: url!)
+                    completion(true, url!)
                     
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     break
                     
                 }
@@ -105,7 +105,7 @@ class DeviceManager{
         }
         
     }
-    func RequestAddZWaveToken(token:String,hub:Int,completion: (IsError:Bool,result: String, Devices:[EndpointResponse]) -> Void){
+    func RequestAddZWaveToken(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String, _ Devices:[EndpointResponse]) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -116,28 +116,28 @@ class DeviceManager{
         self.request_type = "zwave"
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.AddZWave), hub)
-        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.post,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.AvailableDevices(token, url: url!, completion: { (IsError, result, devices) in
-                        completion(IsError: IsError,result: result, Devices: devices)
+                        completion(IsError,result, devices)
                     })
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!, Devices: [])
+                    completion(true, response_string!, [])
                     break
                     
                 }
@@ -147,7 +147,7 @@ class DeviceManager{
         
     }
     
-    func RequestRemoveZWaveToken(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func RequestRemoveZWaveToken(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
 
         
@@ -168,27 +168,27 @@ class DeviceManager{
         
         
         
-        Alamofire.request(.POST,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.post,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.WaitForZwaveResponse(token, url: url!, completion: { (IsError, result) in
-                        completion(IsError: IsError,result: result)
+                        completion(IsError,result)
                     })
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true, response_string!)
                     break
                     
                 }
@@ -202,7 +202,7 @@ class DeviceManager{
     }
     
     
-    func RequestAddZWaveRequest(token:String,url:String,completion: (IsError:Bool,result: String) -> Void){
+    func RequestAddZWaveRequest(_ token:String,url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -210,26 +210,26 @@ class DeviceManager{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let url = (json["url"]).rawString()
-                    completion(IsError:true,result: url!)
+                    completion(true,url!)
                     
                     break
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["detail"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     break
                     
                 }
@@ -241,7 +241,7 @@ class DeviceManager{
     
     
     
-    func AvailableDevices(token:String, url:String,completion: (IsError:Bool,result: String, Devices:[EndpointResponse]) -> Void){
+    func AvailableDevices(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String, _ Devices:[EndpointResponse]) -> Void){
         
         
         let headers = [
@@ -250,25 +250,25 @@ class DeviceManager{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get,encoding:JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = NSTimer.every(2.seconds) {
-                            (timer: NSTimer) in
+                        var timer = Timer.every(2.seconds) {
+                            (timer: Timer) in
                             // do something
                             
                             self.AvailableDevices(token,url: url, completion: { (IsError, result, devices) in
-                                completion(IsError:IsError,result:result, Devices: devices)
+                                completion(IsError,result, devices)
                             })
                             
                             timer.invalidate()
@@ -277,19 +277,19 @@ class DeviceManager{
                     
                     }else if(status == "done"){
                         print("Done..")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         
                         var devices = [EndpointResponse]()
                         
-                        for endpoint_response in  json["response"].arrayObject!{
-                            let uid = endpoint_response["uid"]
-                            let manufacturer_name = String(endpoint_response["manufacturer_name"])
-                            let port = endpoint_response["port"]
-                            let endpoint_type = endpoint_response["endpoint_type"]
-                            let ip_address = endpoint_response["ip_address"]
-                            let ui_class_command = endpoint_response["ui_class_command"]
-                            let name = endpoint_response["name"]
+                        for endpoint_response in  json["response"].arrayValue{
+                            let uid = endpoint_response["uid"].stringValue
+                            let manufacturer_name = endpoint_response["manufacturer_name"].stringValue
+                            let port = endpoint_response["port"].intValue
+                            let endpoint_type = endpoint_response["endpoint_type"].stringValue
+                            let ip_address = endpoint_response["ip_address"].stringValue
+                            let ui_class_command = endpoint_response["ui_class_command"].stringValue
+                            let name = endpoint_response["name"].stringValue
                             
                             let object = EndpointResponse()
                             object.uid = uid as! String
@@ -323,7 +323,7 @@ class DeviceManager{
                         
                         
                         
-                        completion(IsError:false,result:"",Devices: devices)
+                        completion(false,"",devices)
                     }
                     
                     
@@ -332,13 +332,13 @@ class DeviceManager{
                     break
                     
                     
-                case .Failure:
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!, Devices: [])
+                    completion(true,response_string!, [])
                     break
                     
                 }
@@ -353,7 +353,7 @@ class DeviceManager{
 
     }
     
-    func WaitForZwaveResponse(token:String, url:String,completion: (IsError:Bool,result: String) -> Void){
+    func WaitForZwaveResponse(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         
         let headers = [
@@ -362,25 +362,25 @@ class DeviceManager{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url), method:.get ,encoding:JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = NSTimer.every(2.seconds) {
-                            (timer: NSTimer) in
+                        var timer = Timer.every(2.seconds) {
+                            (timer: Timer) in
                             // do something
                             
                             self.WaitForZwaveResponse(token,url: url, completion: { (IsError, result) in
-                                completion(IsError:IsError,result:result)
+                                completion(IsError,result)
                             })
                             
                             timer.invalidate()
@@ -389,33 +389,21 @@ class DeviceManager{
                         
                     }else if(status == "done"){
                         print("Done..")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         
                         
                     }
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                    completion(IsError:false,result:"")
-                    
-                    
-                    
-     
-                    
-                    
-                case .Failure:
+
+                    completion(false,"")
+
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!)
+                    completion(true,response_string!)
 
                     
                 }

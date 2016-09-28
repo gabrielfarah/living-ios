@@ -10,10 +10,10 @@ import Foundation
 
 class LockEndpoint:Endpoint{
     
-    private static let MAX_VALUE = 100
-    private static let MIN_VALUE = 0
+    fileprivate static let MAX_VALUE = 100
+    fileprivate static let MIN_VALUE = 0
     
-    func SetLevel(level:Int){}
+    func SetLevel(_ level:Int){}
     func On(){
         self.SetLevel(LockEndpoint.MAX_VALUE)
     }

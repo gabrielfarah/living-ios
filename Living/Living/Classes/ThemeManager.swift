@@ -10,26 +10,26 @@ import Foundation
 import UIKit
 import UIColor_Hex_Swift
 
-public class ThemeManager{
+open class ThemeManager{
     
     
     
     enum ColorLevel{
-        case MainColor,ColorAlto,ColorMedio,ColorBajo1,ColorBajo2,ColorLineas,ColorElementos,ColorSoporte,ColorAlertas,ColorActivar;
+        case mainColor,colorAlto,colorMedio,colorBajo1,colorBajo2,colorLineas,colorElementos,colorSoporte,colorAlertas,colorActivar;
     
     }
     
 
-    public var MainColor:String
-    public var ColorAlto:String
-    public var ColorMedio:String
-    public var ColorBajo1:String
-    public var ColorBajo2:String
-    public var ColorLineas:String
-    public var ColorElementos:String
-    public var ColorSoporte:String
-    public var ColorAlertas:String
-    public var ColorActivar:String
+    open var MainColor:String
+    open var ColorAlto:String
+    open var ColorMedio:String
+    open var ColorBajo1:String
+    open var ColorBajo2:String
+    open var ColorLineas:String
+    open var ColorElementos:String
+    open var ColorSoporte:String
+    open var ColorAlertas:String
+    open var ColorActivar:String
     
     init(){
     
@@ -61,47 +61,47 @@ public class ThemeManager{
     }
     
     
-    func GetUIColor(color:String)->UIColor{
-        return UIColor(rgba:color)
+    func GetUIColor(_ color:String)->UIColor{
+        return UIColor(color)
     }
     
-    func style_button(btn:UIButton,color:ColorLevel){
+    func style_button(_ btn:UIButton,color:ColorLevel){
     
     
         switch color {
-        case .MainColor:
-            btn.backgroundColor = UIColor(rgba:self.MainColor)
+        case .mainColor:
+            btn.backgroundColor = UIColor(self.MainColor)
             break
-        case .ColorAlto:
-            btn.backgroundColor = UIColor(rgba:self.ColorAlto)
+        case .colorAlto:
+            btn.backgroundColor = UIColor(self.ColorAlto)
             break
-        case .ColorMedio:
-            btn.backgroundColor = UIColor(rgba:self.ColorMedio)
+        case .colorMedio:
+            btn.backgroundColor = UIColor(self.ColorMedio)
             break
-        case .ColorBajo1:
-            btn.backgroundColor = UIColor(rgba: self.ColorBajo1)
+        case .colorBajo1:
+            btn.backgroundColor = UIColor( self.ColorBajo1)
             break
-        case .ColorBajo2:
-            btn.backgroundColor = UIColor(rgba:self.ColorBajo2)
+        case .colorBajo2:
+            btn.backgroundColor = UIColor(self.ColorBajo2)
             break
-        case .ColorLineas:
-            btn.backgroundColor = UIColor(rgba:self.ColorLineas)
+        case .colorLineas:
+            btn.backgroundColor = UIColor(self.ColorLineas)
             break
-        case .ColorElementos:
-            btn.backgroundColor = UIColor(rgba:self.ColorElementos)
+        case .colorElementos:
+            btn.backgroundColor = UIColor(self.ColorElementos)
             break
-        case .ColorSoporte:
-            btn.backgroundColor = UIColor(rgba:self.ColorSoporte)
+        case .colorSoporte:
+            btn.backgroundColor = UIColor(self.ColorSoporte)
             break
-        case .ColorAlertas:
-            btn.backgroundColor = UIColor(rgba:self.ColorAlertas)
+        case .colorAlertas:
+            btn.backgroundColor = UIColor(self.ColorAlertas)
             break
-        case .ColorActivar:
-            btn.backgroundColor = UIColor(rgba:self.ColorActivar)
+        case .colorActivar:
+            btn.backgroundColor = UIColor(self.ColorActivar)
             break
             
         default:
-            btn.backgroundColor = UIColor(rgba:self.MainColor)
+            btn.backgroundColor = UIColor(self.MainColor)
             break
         }
         
@@ -109,7 +109,47 @@ public class ThemeManager{
     
     }
     
-    
+    func getColor(_ color:ColorLevel)->UIColor{
+        
+        
+        switch color {
+        case .mainColor:
+            return UIColor(self.MainColor)
+            
+        case .colorAlto:
+            return UIColor(self.ColorAlto)
+
+        case .colorMedio:
+            return UIColor(self.ColorMedio)
+
+        case .colorBajo1:
+            return UIColor( self.ColorBajo1)
+
+        case .colorBajo2:
+            return UIColor(self.ColorBajo2)
+
+        case .colorLineas:
+            return UIColor(self.ColorLineas)
+
+        case .colorElementos:
+            return UIColor(self.ColorElementos)
+
+        case .colorSoporte:
+            return UIColor(self.ColorSoporte)
+
+        case .colorAlertas:
+            return UIColor(self.ColorAlertas)
+
+        case .colorActivar:
+            return UIColor(self.ColorActivar)
+
+            
+
+        }
+        
+        
+        
+    }
 
     
     

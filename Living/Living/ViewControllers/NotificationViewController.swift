@@ -7,34 +7,38 @@
 //
 
 import UIKit
+import DZNEmptyDataSet
 
-class NotificationViewController: UIViewController {
+class NotificationViewController: UIViewController,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
     
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_back: UILabel!
-    @IBOutlet weak var empty_view: UIView!
+
     
     var actions = Actions()
     var theme = ThemeManager()
     
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-         if (self.actions.actions.count>0){
-            self.tableView.hidden = false
-            self.empty_view.hidden = true
-        }else{
-            self.tableView.hidden = true
-            self.empty_view.hidden = false
-        }
+
 
         load_notifications()
         self.tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgba:theme.MainColor)
+        self.tableView.addSubview(self.refreshControl)
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         self.title = "Acciones"
         
         
@@ -62,13 +66,7 @@ class NotificationViewController: UIViewController {
         actions.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
             if(!IsError){
                 self.tableView.reloadData()
-                if (self.actions.actions.count>0){
-                    self.tableView.hidden = false
-                    self.empty_view.hidden = true
-                }else{
-                    self.tableView.hidden = true
-                    self.empty_view.hidden = false
-                }
+                
                 
             }
         }
@@ -76,24 +74,59 @@ class NotificationViewController: UIViewController {
         
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        print(self.actions.actions.count)
         return self.actions.actions.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:NotificationViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as! NotificationViewCell
+    func tableView(_ tableView: UITableView, cellForRowAtIndexPath indexPath: IndexPath) -> UITableViewCell {
+        let cell:NotificationViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! NotificationViewCell
 
-        cell.lbl_date_text.text = self.actions.actions[indexPath.row].created_at
-        cell.lbl_item_text.text = self.actions.actions[indexPath.row].message
 
+
+        let date = ArSmartUtils.ParseDate(self.actions.actions[(indexPath as NSIndexPath).row].created_at)
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateFormat = "MMMM dd yyyy HH:mm"
+        let currentDate = NSDate()
+        
+        let convertedDateString = dateFormatter.string(from: currentDate as Date)
+
+
+        cell.lbl_date_text.text = convertedDateString
+        cell.lbl_item_text.text = self.actions.actions[(indexPath as NSIndexPath).row].message
+        
         
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         
         
     }
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Notificaciones"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No hay notificaciones registradas"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    
+
+    
 
 
 }

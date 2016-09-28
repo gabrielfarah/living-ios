@@ -17,13 +17,19 @@ class Trigger{
     var tid:Int
     var payload:[Payload]?
     var endpoint:Endpoint
+    var modeId:Int = 0
+    var time:Int = 0
+    var time_until:Int = 0
+    var notify:Bool = false
+    
+    var days:[Int] = [Int]()
     
     init(){
         tid = 0
         payload = [Payload]()
         endpoint = Endpoint()
     }
-    func save(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func save(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         let headers = [
             "Authorization": "JWT "+token,
             "Accept": "application/json"
@@ -48,10 +54,12 @@ class Trigger{
         
         let json_parameters: [String: AnyObject]  = [
 
-            "payload":payload_array,
-            "primary_value":1.0,
-            "operand":"equals",
-            "notify": false, // Cuando se active desea la notificacion
+            "mode_id":modeId as AnyObject,
+            "notify":notify as AnyObject,
+            "primary_value":([255.0,255.0] as? AnyObject)!,
+            "days_of_the_week":days as AnyObject,
+            "minute_of_day":[time,time_until] as AnyObject
+
             
         ]
         
@@ -59,29 +67,24 @@ class Trigger{
         
         
         
-        Alamofire.request(.POST,url_endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(url_endpoint, method:.post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"El trigger fue creado con éxito")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = json["ERROR"].dictionary?.first
                     let final_string = response_string!.1[0].stringValue
                     
-                    completion(IsError:true,result:final_string)
+                    completion(true,final_string)
                     
                     
                     

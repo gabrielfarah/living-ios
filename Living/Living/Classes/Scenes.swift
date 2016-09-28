@@ -17,7 +17,7 @@ class Scenes{
     var scenes = [Scene]()
     
     
-    func load(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func load(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -26,16 +26,16 @@ class Scenes{
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Modes), hub)
         
-        Alamofire.request(.GET,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.get, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     self.scenes.removeAll()
                     
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     let json = JSON(data: data)
                     
                     
@@ -45,20 +45,20 @@ class Scenes{
                     for (index,subJson):(String, JSON) in json {
                         //Do something you want
                         
-                        let name = subJson.object["name"] as! String
-                        let sid = subJson.object["id"] as! Int
+                        let name = subJson["name"].stringValue
+                        let sid = subJson["id"].intValue
                         
                         var scene = Scene(name: name,id: sid)
                         for item in subJson["payload"].arrayValue {
                         
 
-                            let type =  item.object["type"] as! String
-                            let node =  item.object["node"] as! Int
-                            let value =  item.object["v"] as! Int
-                            let endpoint_id =  item.object["endpoint_id"] as! Int
-                            let ip =  item.object["ip"] as! String
-                            let function_name =  item.object["function"] as! String
-                            let target =  item.object["target"] as! String
+                            let type =  item["type"].stringValue
+                            let node =  item["node"].intValue
+                            let value =  item["v"].intValue
+                            let endpoint_id =  item["endpoint_id"].intValue
+                            let ip =  item["ip"].stringValue
+                            let function_name =  item["function"].stringValue
+                            let target =  item["target"].stringValue
                             
 
                             
@@ -76,14 +76,14 @@ class Scenes{
                         //self.scenes.append(new_room)
                     }
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     

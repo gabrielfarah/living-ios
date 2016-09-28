@@ -43,28 +43,28 @@ class NewDeviceViewController: UIViewController {
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
 
         
     }
 
-    @IBAction func Close(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) {
+    @IBAction func Close(_ sender: AnyObject) {
+        self.dismiss(animated: true) {
             
         }
         
     }
 
-    @IBAction func AddZWave(sender: AnyObject) {
+    @IBAction func AddZWave(_ sender: AnyObject) {
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
         
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
@@ -72,15 +72,15 @@ class NewDeviceViewController: UIViewController {
         
         ArSmartApi.sharedApi.device_manager.RequestAddZWaveToken(token, hub: hub!) {
             (IsError, result, devices) in
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
                 
                 
                 if(IsError){
                     
 
-                    let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                     
-                    presenter2.transitionType = .CrossDissolve // Optional
+                    presenter2.transitionType = .crossDissolve // Optional
                     presenter2.dismissOnTap = true
                     let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
@@ -89,7 +89,7 @@ class NewDeviceViewController: UIViewController {
                     
                 }else{
                     self.endpoints = devices
-                    self.performSegueWithIdentifier("ShowMeDevices", sender: nil)
+                    self.performSegue(withIdentifier: "ShowMeDevices", sender: nil)
                     
                 }
                 
@@ -98,17 +98,17 @@ class NewDeviceViewController: UIViewController {
         
         
     }
-    @IBAction func AddWifi(sender: AnyObject) {
+    @IBAction func AddWifi(_ sender: AnyObject) {
         
 
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
         //let presenter = Presentr(presentationType: .Alert)
-        let width = ModalSize.Custom(size: 240)
-        let height = ModalSize.Custom(size: 130)
-        let presenter = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
-        presenter.transitionType = .CrossDissolve // Optional
+        presenter.transitionType = .crossDissolve // Optional
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
@@ -118,14 +118,14 @@ class NewDeviceViewController: UIViewController {
         
         ArSmartApi.sharedApi.device_manager.RequestAddWifiToken(token, hub: hub!) { (IsError, result, devices) in
             
-            self.dismissViewControllerAnimated(true, completion: {
+            self.dismiss(animated: true, completion: {
 
                 if(IsError){
                     
 
-                    let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                     
-                    presenter2.transitionType = .CrossDissolve // Optional
+                    presenter2.transitionType = .crossDissolve // Optional
                     presenter2.dismissOnTap = true
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
@@ -135,7 +135,7 @@ class NewDeviceViewController: UIViewController {
                     
                 }else{
                     self.endpoints = devices
-                    self.performSegueWithIdentifier("ShowMeDevices", sender: nil)
+                    self.performSegue(withIdentifier: "ShowMeDevices", sender: nil)
                     
                 }
                 
@@ -146,18 +146,18 @@ class NewDeviceViewController: UIViewController {
         
         
     }
-    @IBAction func goBack(sender: AnyObject) {
+    @IBAction func goBack(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
         
         
     }
     
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if (segue.identifier == "ShowMeDevices") {
             // pass data to next view
-            let destinationVC = segue.destinationViewController as! FoundDevicesViewController
+            let destinationVC = segue.destination as! FoundDevicesViewController
             destinationVC.endpoints = self.endpoints
         
         }

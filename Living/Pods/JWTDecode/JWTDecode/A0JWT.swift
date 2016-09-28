@@ -33,12 +33,12 @@ public class _JWT: NSObject {
     }
 
     /// token header part
-    public var header: [String: AnyObject] {
+    public var header: [String: Any] {
         return self.jwt.header
     }
 
     /// token body part or claims
-    public var body: [String: AnyObject] {
+    public var body: [String: Any] {
         return self.jwt.body
     }
 
@@ -48,8 +48,8 @@ public class _JWT: NSObject {
     }
 
     /// value of the `exp` claim
-    public var expiresAt: NSDate? {
-        return self.jwt.expiresAt
+    public var expiresAt: Date? {
+        return self.jwt.expiresAt as Date?
     }
 
     /// value of the `expired` field
@@ -64,7 +64,7 @@ public class _JWT: NSObject {
 
     :returns: a new instance of `A0JWT` that holds the decode token
     */
-    public class func decode(jwtValue: String) throws -> _JWT {
+    public class func decode(jwt jwtValue: String) throws -> _JWT {
         let jwt = try DecodedJWT(jwt: jwtValue)
         return _JWT(jwt: jwt)
     }

@@ -7,9 +7,6 @@
 //
 
 import Foundation
-
-import UIKit
-import EZLoadingActivity
 import Photos
 
 
@@ -31,9 +28,9 @@ class MainMenuHeaderView: UIViewController  {
         style();
         
         
-        btn_favorites.selected = false
-        btn_devices.selected = true
-        btn_areas.selected = false
+        btn_favorites.isSelected = false
+        btn_devices.isSelected = true
+        btn_areas.isSelected = false
         
         
         
@@ -46,28 +43,28 @@ class MainMenuHeaderView: UIViewController  {
     
     func style(){
         
-        view_main.layer.cornerRadius = 30.0
+        view_main.layer.cornerRadius = 5.0 //30.0
     }
-    @IBAction func SelectedFavorites(sender: AnyObject) {
+    @IBAction func SelectedFavorites(_ sender: AnyObject) {
         
         delegate?.MenuFavoriteSelected()
-        btn_favorites.selected = true
-        btn_devices.selected = false
-        btn_areas.selected = false
+        btn_favorites.isSelected = true
+        btn_devices.isSelected = false
+        btn_areas.isSelected = false
         
     }
-    @IBAction func SelectedDevices(sender: AnyObject) {
+    @IBAction func SelectedDevices(_ sender: AnyObject) {
         delegate?.MenuDevicesSelected()
-        btn_favorites.selected = false
-        btn_devices.selected = true
-        btn_areas.selected = false
+        btn_favorites.isSelected = false
+        btn_devices.isSelected = true
+        btn_areas.isSelected = false
     }
 
-    @IBAction func SelectedRooms(sender: AnyObject) {
+    @IBAction func SelectedRooms(_ sender: AnyObject) {
         delegate?.MenuRoomsSelected()
-        btn_favorites.selected = false
-        btn_devices.selected = false
-        btn_areas.selected = true
+        btn_favorites.isSelected = false
+        btn_devices.isSelected = false
+        btn_areas.isSelected = true
     }
 
 }

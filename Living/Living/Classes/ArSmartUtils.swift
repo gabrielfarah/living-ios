@@ -12,7 +12,7 @@ import SystemConfiguration
 
 class ArSmartUtils{
 
-    static func randomText(length: Int, justLowerCase: Bool = false) -> String {
+    static func randomText(_ length: Int, justLowerCase: Bool = false) -> String {
         var text = ""
         for _ in 1...length {
             var decValue = 0  // ascii decimal value of a character
@@ -32,20 +32,20 @@ class ArSmartUtils{
                 decValue = 32
             }
             // get ASCII character from random decimal value
-            let char = String(UnicodeScalar(decValue))
+            let char = String(describing: UnicodeScalar(decValue))
             text = text + char
             // remove double spaces
-            text = text.stringByReplacingOccurrencesOfString("  ", withString: " ")
+            text = text.replacingOccurrences(of: "  ", with: " ")
         }
         return text
     }
     
-    static func isValidEmail(testStr:String) -> Bool {
+    static func isValidEmail(_ testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(testStr)
+        return emailTest.evaluate(with: testStr)
     }
     
     
@@ -53,14 +53,22 @@ class ArSmartUtils{
         
         var zeroAddress = sockaddr_in()
         
-        zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+        zeroAddress.sin_len = UInt8(MemoryLayout.size(ofValue: zeroAddress))
         
         zeroAddress.sin_family = sa_family_t(AF_INET)
         
-        guard let defaultRouteReachability = withUnsafePointer(&zeroAddress, {
-            SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0))
+        guard let defaultRouteReachability = withUnsafePointer(to: &zeroAddress, {
+            
+            $0.withMemoryRebound(to: sockaddr.self, capacity: 1) {
+                
+                SCNetworkReachabilityCreateWithAddress(nil, $0)
+                
+            }
+            
         }) else {
+            
             return false
+            
         }
         var flags : SCNetworkReachabilityFlags = []
         
@@ -70,20 +78,20 @@ class ArSmartUtils{
             
         }
         
-        let isReachable = flags.contains(.Reachable)
+        let isReachable = flags.contains(.reachable)
         
-        let needsConnection = flags.contains(.ConnectionRequired)
+        let needsConnection = flags.contains(.connectionRequired)
         
         return (isReachable && !needsConnection)
         
     }
     
-    static func ParseDate(date:String)->NSDate{
+    static func ParseDate(_ date:String)->Date{
     
-        let dateFormatter = NSDateFormatter()
+        let dateFormatter = DateFormatter()
         // 2016-07-07T20:09:50.869429Z
         dateFormatter.dateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'A'Z'"/* find out and place date format from http://userguide.icu-project.org/formatparse/datetime */
-        let date_native = dateFormatter.dateFromString(date)
+        let date_native = dateFormatter.date(from: date)
         return date_native!
     
     }

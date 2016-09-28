@@ -38,7 +38,7 @@ class NewUserViewController: UIViewController {
         txt_repeat_email.text = ""
         
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         style();
@@ -54,31 +54,31 @@ class NewUserViewController: UIViewController {
     func style(){
         let img = UIImage()
         self.navigationController?.navigationBar.shadowImage = img
-        self.navigationController?.navigationBar.setBackgroundImage(img, forBarMetrics: UIBarMetrics.Default)
-        self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.tintColor = UIColor.white
         
         
         self.title = "Nueva Cuenta"
-        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .Bordered, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .bordered, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         
         
-        self.navigationController?.navigationBarHidden = true
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.isNavigationBarHidden = true
+        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
         
-        btn_new_account.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
+        btn_new_account.layer.borderColor = UIColor("#D1D3D4").cgColor
         btn_new_account.layer.borderWidth = 1.0
         btn_new_account.layer.cornerRadius = 5.0
         
         
-        let attrs = [NSUnderlineStyleAttributeName : 1,NSForegroundColorAttributeName : UIColor.whiteColor()]
+        let attrs = [NSUnderlineStyleAttributeName : 1,NSForegroundColorAttributeName : UIColor.white] as [String : Any]
         let attributedString = NSMutableAttributedString(string:"")
         
         let buttonTitleStr = NSMutableAttributedString(string:"¿Ya tienes una cuenta?", attributes:attrs)
-        attributedString.appendAttributedString(buttonTitleStr)
-        btn_have_account.setAttributedTitle(attributedString, forState: .Normal)
+        attributedString.append(buttonTitleStr)
+        btn_have_account.setAttributedTitle(attributedString, for: UIControlState())
         
         
     }
@@ -104,28 +104,29 @@ class NewUserViewController: UIViewController {
         
     
     }
-    func isValidPassword(candidate: String) -> Bool {
+    func isValidPassword(_ candidate: String) -> Bool {
         let lengthRule = NJOLengthRule(min: 6, max: 24)
-        let uppercaseRule = NJORequiredCharacterRule(preset: .LowercaseCharacter)
+        let uppercaseRule = NJORequiredCharacterRule(preset: .lowercaseCharacter)
         
         let validator = NJOPasswordValidator(rules: [lengthRule, uppercaseRule])
         
-        let failingRules = validator.validatePassword(candidate)
+        let failingRules = validator.validate(candidate)
+        
         if failingRules == nil {
             return true
         }else{
             return false
         }
     }
-    func isValidEmail(testStr:String) -> Bool {
+    func isValidEmail(_ testStr:String) -> Bool {
         // print("validate calendar: \(testStr)")
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
         
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluateWithObject(testStr)
+        return emailTest.evaluate(with: testStr)
     }
     
-    @IBAction func HaveAnAccount(sender: AnyObject) {
+    @IBAction func HaveAnAccount(_ sender: AnyObject) {
         
 
 
@@ -135,15 +136,15 @@ class NewUserViewController: UIViewController {
         
     }
 
-    @IBAction func RegisterUser(sender: AnyObject) {
+    @IBAction func RegisterUser(_ sender: AnyObject) {
         
         
         
         if(validate_data()){
             
-            let presenter = Presentr(presentationType: .Alert)
+            let presenter = Presentr(presentationType: .alert)
             
-            presenter.transitionType = .CrossDissolve // Optional
+            presenter.transitionType = .crossDissolve // Optional
             let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
             
@@ -158,14 +159,14 @@ class NewUserViewController: UIViewController {
                 (IsError:Bool,result: String) in
                 
                 
-                self.dismissViewControllerAnimated(true, completion: {
+                self.dismiss(animated: true, completion: {
                     if(IsError){
                         
-                        let width = ModalSize.Custom(size: 240)
-                        let height = ModalSize.Custom(size: 130)
-                        let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+                        let width = ModalSize.custom(size: 240)
+                        let height = ModalSize.custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                         
-                        presenter2.transitionType = .CrossDissolve // Optional
+                        presenter2.transitionType = .crossDissolve // Optional
                         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                         vc2.setText(result)
@@ -176,7 +177,7 @@ class NewUserViewController: UIViewController {
                         ArSmartApi.sharedApi.token?.password = mPassword
                         
                         
-                        self.performSegueWithIdentifier("WelcomeSegue", sender: nil)
+                        self.performSegue(withIdentifier: "WelcomeSegue", sender: nil)
                         
                         
                         
@@ -194,32 +195,32 @@ class NewUserViewController: UIViewController {
         }else{
             // Muestra error de datos
             
-            let alert = UIAlertController(title: "Living", message: "Error en el registro de datos", preferredStyle: UIAlertControllerStyle.Alert)
+            let alert = UIAlertController(title: "Living", message: "Error en el registro de datos", preferredStyle: UIAlertControllerStyle.alert)
             
             
             
-            alert.addAction(UIAlertAction(title: "Aceptar", style: .Default, handler: { action in
+            alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { action in
                 switch action.style{
-                case .Default:
+                case .default:
                     print("default")
                     
-                case .Cancel:
+                case .cancel:
                     print("cancel")
                     
-                case .Destructive:
+                case .destructive:
                     print("destructive")
                 }
             }))
-            self.presentViewController(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
             
             
         }
         
     }
 
-    @IBAction func goback(sender: AnyObject) {
+    @IBAction func goback(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
   

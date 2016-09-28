@@ -9,7 +9,6 @@
 import Foundation
 
 import UIKit
-import EZLoadingActivity
 import UIKit
 import Alamofire
 import SwiftyJSON
@@ -43,29 +42,29 @@ class RecoverPassword: UIViewController {
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
-        btn_continue.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
+        self.navigationController?.isNavigationBarHidden = true
+        btn_continue.layer.borderColor = UIColor("#D1D3D4").cgColor
         btn_continue.layer.borderWidth = 1.0
         btn_continue.layer.cornerRadius = 5.0
         
     }
     
-    @IBAction func RecoverPassword(sender: AnyObject) {
+    @IBAction func RecoverPassword(_ sender: AnyObject) {
         
         
         
         User.RecoverPassword(txt_email.text!) { (IsError, result) in
             if(IsError){
             
-                let presenter2 = Presentr(presentationType: .Alert)
+                let presenter2 = Presentr(presentationType: .alert)
                 
-                presenter2.transitionType = .CrossDissolve // Optional
+                presenter2.transitionType = .crossDissolve // Optional
                 let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                 self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                 vc2.lbl_mensaje.text =  result
             
             }else{
-                self.navigationController?.popViewControllerAnimated(true)
+                self.navigationController?.popViewController(animated: true)
             }
         }
         
@@ -73,8 +72,8 @@ class RecoverPassword: UIViewController {
 
         
     }
-    @IBAction func goBack(sender: AnyObject) {
+    @IBAction func goBack(_ sender: AnyObject) {
         
-        self.navigationController?.popViewControllerAnimated(true)
+        self.navigationController?.popViewController(animated: true)
     }
 }

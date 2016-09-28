@@ -49,16 +49,16 @@ class Hub{
         
     }
     
-    func Created(completion: (result: String) -> Void){
+    func Created(_ completion: @escaping (_ result: String) -> Void){
     
         let parameters: [String: AnyObject] = [
-            "serial" : serial,
-            "mac" : mac,
-            "isRegistered":"ios",
-            "name":name,
-            "latitude":latitude,
-            "longitude":longitude,
-            "radius":radius,
+            "serial" : serial as AnyObject,
+            "mac" : mac as AnyObject,
+            "isRegistered":"ios" as AnyObject,
+            "name":name as AnyObject,
+            "latitude":latitude as AnyObject,
+            "longitude":longitude as AnyObject,
+            "radius":radius as AnyObject,
             ]
         
         let token =  ArSmartApi.sharedApi.getToken()
@@ -68,20 +68,20 @@ class Hub{
             "Accept": "application/json"
         ]
         
-        Alamofire.request(.POST,ArSmartApi.sharedApi.ApiUrl(Api.Hubs.CreateHub),parameters:parameters,encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(Api.Hubs.CreateHub),method:.post,parameters:parameters,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     print(response.response)
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
                     }
-                    completion(result: "Ok")
-                case .Failure:
-                    completion(result: "Not Ok")
+                    completion("Ok")
+                case .failure:
+                    completion("Not Ok")
                     print("Error")
                     
                 }
@@ -112,14 +112,14 @@ class Hub{
 
         
         let dict_hub:[String:AnyObject] = [
-            "hid" : self.hid,
-            "serial" : self.serial,
-            "mac" : self.serial,
-            "isRegistered" : self.isRegistered,
-            "name" : self.name,
-            "latitude" : self.latitude,
-            "longitude" : self.longitude,
-            "radius" : self.radius,
+            "hid" : self.hid as AnyObject,
+            "serial" : self.serial as AnyObject,
+            "mac" : self.serial as AnyObject,
+            "isRegistered" : self.isRegistered as AnyObject,
+            "name" : self.name as AnyObject,
+            "latitude" : self.latitude as AnyObject,
+            "longitude" : self.longitude as AnyObject,
+            "radius" : self.radius as AnyObject,
 
         ]
         return dict_hub
@@ -128,7 +128,7 @@ class Hub{
     
     }
     
-    func fromDict(dict_hub:NSDictionary) {
+    func fromDict(_ dict_hub:NSDictionary) {
         
         
         

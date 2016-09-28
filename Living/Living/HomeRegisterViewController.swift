@@ -10,7 +10,6 @@
 import Foundation
 import Presentr
 import UIKit
-import EZLoadingActivity
 
 class HomeRegisterViewController: UIViewController {
     
@@ -48,12 +47,12 @@ class HomeRegisterViewController: UIViewController {
 
         
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeRegisterViewController.updateNotificationSentLabel), name: mySpecialNotificationKey, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeRegisterViewController.updateLocation), name: mySpecialLocationNotificationKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeRegisterViewController.updateNotificationSentLabel), name: NSNotification.Name(rawValue: mySpecialNotificationKey), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HomeRegisterViewController.updateLocation), name: NSNotification.Name(rawValue: mySpecialLocationNotificationKey), object: nil)
         
         
     }
-    func updateNotificationSentLabel(notification: NSNotification) {
+    func updateNotificationSentLabel(_ notification: Notification) {
         
         if(notification.object != nil){
             img_place.image = notification.object as? UIImage
@@ -65,7 +64,7 @@ class HomeRegisterViewController: UIViewController {
         
 
     }
-    func updateLocation(notification: NSNotification) {
+    func updateLocation(_ notification: Notification) {
         
         if(notification.object != nil){
             
@@ -95,25 +94,25 @@ class HomeRegisterViewController: UIViewController {
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
-        btn_continue.layer.borderColor = UIColor(rgba:"#D1D3D4").CGColor
+        self.navigationController?.isNavigationBarHidden = true
+        btn_continue.layer.borderColor = UIColor("#D1D3D4").cgColor
         btn_continue.layer.borderWidth = 1.0
 
         
     }
 
-    @IBAction func addPhoto(sender: AnyObject) {
+    @IBAction func addPhoto(_ sender: AnyObject) {
     }
 
-    @IBAction func SavePhotoAndContinue(sender: AnyObject) {
+    @IBAction func SavePhotoAndContinue(_ sender: AnyObject) {
         
         if(txt_name_home.text!.isEmpty){
             
-            let width = ModalSize.Custom(size: 240)
-            let height = ModalSize.Custom(size: 130)
-            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
             
-            presenter2.transitionType = .CrossDissolve // Optional
+            presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             vc2.setText("Debe ingresar el nombre de un lugar")
@@ -125,29 +124,29 @@ class HomeRegisterViewController: UIViewController {
             
         }else if(!IsPhotoSelected){
         
-            let width = ModalSize.Custom(size: 240)
-            let height = ModalSize.Custom(size: 130)
-            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
             
-            presenter2.transitionType = .CrossDissolve // Optional
+            presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             vc2.setText("Debe Seleccionar una imágen para su casa")
         
         }else if(!isLocationSelected){
             
-            let width = ModalSize.Custom(size: 240)
-            let height = ModalSize.Custom(size: 130)
-            let presenter2 = Presentr(presentationType: .Custom(width: width, height: height, center:ModalCenterPosition.Center))
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
             
-            presenter2.transitionType = .CrossDissolve // Optional
+            presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             vc2.setText("Debe especificar donde se encuentra el lugar, por favor presione sobre el mapa para elegir la ubucación.")
             
         }else{
             ArSmartApi.sharedApi.hub!.name = txt_name_home.text!
-            performSegueWithIdentifier("GoPreRegisterHub", sender: nil)
+            performSegue(withIdentifier: "GoPreRegisterHub", sender: nil)
         }
         
         
@@ -155,16 +154,16 @@ class HomeRegisterViewController: UIViewController {
 }
 extension HomeRegisterViewController: CLLocationManagerDelegate {
     // 2
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         // 3
-        if status == .AuthorizedWhenInUse {
+        if status == .authorizedWhenInUse {
             
             // 4
             if(!isLocationSelected){
                 locationManager.startUpdatingLocation()
                 
                 //5
-                mapView.myLocationEnabled = true
+                mapView.isMyLocationEnabled = true
                 mapView.settings.myLocationButton = true
             
             }else{
@@ -177,7 +176,7 @@ extension HomeRegisterViewController: CLLocationManagerDelegate {
     }
     
     // 6
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
             
             // 7

@@ -15,27 +15,28 @@ import UIColor_Hex_Swift
 class EndPointMenuCell: UICollectionViewCell {
     
     var endpoint:Endpoint = Endpoint();
-        var timer_status:NSTimer = NSTimer()
+        var timer_status:Timer = Timer()
     var theme = ThemeManager()
     
+    @IBOutlet weak var bg_view: UIView!
     @IBOutlet var itemImageView: UIImageView!
     @IBOutlet var itemLabel: UILabel!
     
-    func setGalleryItem(item:UIImage, text:String) {
+    func setGalleryItem(_ item:UIImage, text:String) {
         itemImageView.image = item
         itemLabel.text = text
-        
+        bg_view.layer.cornerRadius = 5.0
         setStatus(endpoint)
         
     }
-    func setColor(color:UIColor) {
+    func setColor(_ color:UIColor) {
         
-        itemImageView.tintColor = UIColor.blueColor()
+        itemImageView.tintColor = UIColor.blue
 
-        var timer = NSTimer.every(500.ms) { (timer: NSTimer) in
+        var timer = Timer.every(500.ms) { (timer: Timer) in
         
-            UIView.animateWithDuration(3.0, animations: {
-                self.itemImageView.tintColor =  UIColor.blackColor()
+            UIView.animate(withDuration: 3.0, animations: {
+                self.itemImageView.tintColor =  UIColor.black
             })
             timer.invalidate()
         
@@ -48,18 +49,19 @@ class EndPointMenuCell: UICollectionViewCell {
 
     }
     
-    func setStatus(endpoint:Endpoint) {
+    func setStatus(_ endpoint:Endpoint) {
         self.endpoint = endpoint
         if(endpoint.state == 0 ){
             //TODO:Apagado
-            itemImageView.tintColor = UIColor(rgba:"#808080")
+            itemImageView.tintColor = UIColor("#808080")
         }else if(endpoint.state == -1 ){
             //TODO:Apagado
-            itemImageView.tintColor = UIColor(rgba:"#D1D3D4")
+            itemImageView.tintColor = UIColor("#D1D3D4")
         }else{
             //TODO:Encendido
-            itemImageView.tintColor = UIColor(rgba:"#2CC2BE")
+            itemImageView.tintColor = UIColor("#2CC2BE")
         }
+        self.setNeedsDisplay()
         
     }
     

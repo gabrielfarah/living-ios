@@ -9,8 +9,10 @@
 import UIKit
 import Presentr
 import SideMenuController
+import DZNEmptyDataSet
 
-class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate {
+class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,
+DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     
     
     
@@ -18,6 +20,15 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
     var items = [String]()
     var rooms = Rooms()
     var selectedEndpoint = 0
+    
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(handleRefresh(_:)), for: UIControlEvents.valueChanged)
+        
+        return refreshControl
+    }()
+    
+    
     
     @IBOutlet weak var empty_view: UIView!
     @IBOutlet weak var tableView: UITableView!
@@ -28,45 +39,39 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
         super.viewDidLoad()
         sideMenuController?.delegate = self
         // Do any additional setup after loading the view.
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        
-        if (ArSmartApi.sharedApi.hub?.endpoints.endpoints.count>0){
-            self.tableView.hidden = false
-            self.empty_view.hidden = true
-        }else{
-            self.tableView.hidden = true
-            self.empty_view.hidden = false
-        }
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.addSubview(self.refreshControl)
+        self.tableView.emptyDataSetSource = self
+        self.tableView.emptyDataSetDelegate = self
         self.tableView.tableFooterView = UIView()
-        self.navigationController?.navigationBar.barTintColor = UIColor(rgba:theme.MainColor)
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
         self.title = "Devices"
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:"AddRoomError", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:"AddRoomSuccess", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddRoomError"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddRoomSuccess"), object: nil)
         
     }
-    func methodOfReceivedNotificationError(notification: NSNotification){
+    func methodOfReceivedNotificationError(_ notification: Notification){
         //Take Action on Notification
         
-        let presenter2 = Presentr(presentationType: .Alert)
+        let presenter2 = Presentr(presentationType: .alert)
         
         
-        presenter2.transitionType = .CrossDissolve // Optional
+        presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
         vc2.lbl_mensaje.text = "Error en la operación , por favor vuelva a intentarlo"
     }
-    func methodOfReceivedNotificationSuccess(notification: NSNotification){
+    func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
         
-        let presenter3 = Presentr(presentationType: .Alert)
+        let presenter3 = Presentr(presentationType: .alert)
         
         
-        presenter3.transitionType = .CrossDissolve // Optional
+        presenter3.transitionType = .crossDissolve // Optional
         let vc3 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter3, viewController: vc3, animated: true, completion: nil)
         vc3.lbl_mensaje.text = "Se adicionó cuarto con éxito"
@@ -82,11 +87,11 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
 
     
     
-    func sideMenuControllerDidHide(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidHide(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     
-    func sideMenuControllerDidReveal(sideMenuController: SideMenuController) {
+    func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
         print(#function)
     }
     /*
@@ -99,12 +104,12 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
      }
      */
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return (ArSmartApi.sharedApi.hub?.endpoints.count())!
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
         
 
         cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
@@ -113,14 +118,14 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
         return cell
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        selectedEndpoint = indexPath.row
-        performSegueWithIdentifier("EditEndpoint", sender: nil)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedEndpoint = (indexPath as NSIndexPath).row
+        performSegue(withIdentifier: "EditEndpoint", sender: nil)
         
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
             
             // Delete the row from the data source
             let token = ArSmartApi.sharedApi.getToken()
@@ -137,21 +142,51 @@ class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITabl
 
         }
     }
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if(segue.identifier == "EditEndpoint"){
             // Create a variable that you want to send
             let endpoint = ArSmartApi.sharedApi.hub?.endpoints.endpoints[selectedEndpoint]
             
             // Create a new variable to store the instance of PlayerTableViewController
-            let destinationVC = segue.destinationViewController as! DeviceEditViewController
+            let destinationVC = segue.destination as! DeviceEditViewController
             destinationVC.endpoint = endpoint!
         
         }
 
     }
-    @IBAction func ShowMenu(sender: AnyObject) {
+    @IBAction func ShowMenu(_ sender: AnyObject) {
         sideMenuController?.toggle()
     }
-
+    func handleRefresh(_ refreshControl: UIRefreshControl) {
+        
+        
+        self.tableView.reloadData()
+        refreshControl.endRefreshing()
+    }
+    func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "Escenas"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
+        let str = "No hay escenas registradas"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    
+    
+    func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
+        let str = "New mode"
+        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+        return NSAttributedString(string: str, attributes: attrs)
+    }
+    
+    func emptyDataSetDidTapButton(_ scrollView: UIScrollView!) {
+        
+        
+        performSegue(withIdentifier: "ShowSceneAdd", sender: nil)
+    }
     
 }

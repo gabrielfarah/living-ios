@@ -29,7 +29,7 @@ class LevelViewController: UIViewController {
         slider_level.minimumValue = MIN_VALUE
         slider_level.maximumValue = MAX_VALUE
         
-        slider_level.continuous = false
+        slider_level.isContinuous = false
         
         // Do any additional setup after loading the view.
     }
@@ -49,7 +49,7 @@ class LevelViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func sliderMoved(sender: AnyObject) {
+    @IBAction func sliderMoved(_ sender: AnyObject) {
         
         //TODO: hacer el llamado
         
@@ -78,6 +78,6 @@ class LevelViewController: UIViewController {
 }
 protocol LevelViewControllerDelegate {
     // protocol definition goes here
-    func ValueChanged(value:Float)
+    func ValueChanged(_ value:Float)
     
 }

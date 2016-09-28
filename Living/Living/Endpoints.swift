@@ -19,7 +19,7 @@ class Endpoints{
     }
     
 
-    func add(endPoint:Endpoint){
+    func add(_ endPoint:Endpoint){
         self.endpoints.append(endPoint)
     }
     
@@ -28,11 +28,19 @@ class Endpoints{
         return self.endpoints.count
         
     }
-    func objectAtIndex(index:Int)->Endpoint{
+    
+    func noSensorEndpoints()->[Endpoint]{
+    
+    
+        return endpoints.filter { $0.isSensor() ==  false }
+    
+    }
+    
+    func objectAtIndex(_ index:Int)->Endpoint{
     
         return endpoints[index]
     }
-    func setStateEndpoint(state:Int, node:Int){
+    func setStateEndpoint(_ state:Int, node:Int){
         
         for endpoint:Endpoint in self.endpoints{
             print("Ednpoint Node: ",node)
@@ -46,7 +54,7 @@ class Endpoints{
     }
     
     
-    func GetStatusZWavesDevicesTask(hub:Int,token:String, completion: (IsError:Bool,result: String) -> Void){
+    func GetStatusZWavesDevicesTask(_ hub:Int,token:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         GetStatusZWavesDevicesTaskUrl(hub, token: token) { (IsError, result) in
             if(!IsError){
@@ -57,7 +65,7 @@ class Endpoints{
                 self.GetStatusZWavesDevicesTaskUrlResponse(hub, token: token, url: result, completion: {
                     (IsError, result) in
                     print("GetStatusZWavesDevicesTaskUrlResponse:"+result)
-                    completion(IsError: IsError,result: result);
+                    completion(IsError,result);
                 })
                 
                 
@@ -73,7 +81,7 @@ class Endpoints{
     
     }
     
-    func GetStatusZWavesDevicesTaskUrl(hub:Int,token:String, completion: (IsError:Bool,result: String) -> Void){
+    func GetStatusZWavesDevicesTaskUrl(_ hub:Int,token:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
     
 
             
@@ -86,9 +94,9 @@ class Endpoints{
 
         let  parameters: [String: String] = [:]
         let json_parameters: [String: AnyObject]  = [
-            "type":"zwave",
-            "function":"zwnet_get_all_status",
-            "parameters":parameters
+            "type":"zwave" as AnyObject,
+            "function":"zwnet_get_all_status" as AnyObject,
+            "parameters":parameters as AnyObject
         
         ]
 
@@ -97,39 +105,30 @@ class Endpoints{
 
         
         
-            Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-                let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-                mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-                return (mutableRequest, nil)
-            }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
                 .validate()
                 .responseJSON { response  in
                     switch response.result {
                         
-                    case .Success:
+                    case .success:
                         if let value = response.result.value {
                             let json = JSON(value)
                             
                             
                             let url = json["url"].stringValue
-                            completion(IsError: false,result:url)
+                            completion(false,url)
                             
-                            print("JSON: \(json)")
+                   
                         }else{
-                            completion(IsError:true,result: "")
+                            completion(true,"")
                         }
-                        
 
                         
-                        
-                        
-                        
-                    case .Failure:
-                        let data = NSData(data: response.data!)
+                    case .failure:
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         let response_string = (json["ERROR"]).rawString()
-                        completion(IsError:true,result: response_string!)
+                        completion(true,response_string!)
                         
                         
                         
@@ -142,7 +141,7 @@ class Endpoints{
     
     }
     
-    func GetStatusZWavesDevicesTaskUrlResponse(hub:Int,token:String,url:String, completion: (IsError:Bool,result: String) -> Void){
+    func GetStatusZWavesDevicesTaskUrlResponse(_ hub:Int,token:String,url:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -151,21 +150,21 @@ class Endpoints{
         
         let endpoint =  String(format:ArSmartApi.sharedApi.ApiUrl(url))
         
-        Alamofire.request(.GET,endpoint,headers: headers, encoding:.JSON)
+        Alamofire.request(endpoint, method: .get, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     if let value = response.result.value {
                         let json = JSON(value)
                         
                         let status = json["status"].stringValue
                         let url = json["url"].stringValue
                         if(status == "processing"){
-                            
+                            print(status)
                             self.GetStatusZWavesDevicesTaskUrlResponse(hub, token: token,url:url, completion: { (IsError, result) in
-                                completion(IsError: IsError,result:result)
+                                completion(IsError,result)
                             })
                             
                             
@@ -178,9 +177,8 @@ class Endpoints{
                                 status = done;
                             }*/
                            //if(response.result)
-                            if(json["response"]["ERROR"]){
-                                let error =  json["response"]["ERROR"].stringValue
-                                 completion(IsError: true,result: error)
+                            if let error = json["response"]["ERROR"].string{
+                                 completion(true,error)
                             }else{
                             //TODO: ObtenerJSON y asignar estados.
                                 let devices_status =  json["response"]
@@ -193,22 +191,11 @@ class Endpoints{
                                     let state = subJson["state"][0].intValue
                                     print("index %d",index)
                                     self.setStateEndpoint(state, node: node)
-                                    /*
-                                    "sensor" : 0,
-                                    "sleep_cap" : 0,
-                                    "active" : "true",
-                                    "node" : 11,
-                                    "mainCC" : [
-                                    25
-                                    ],
-                                    "state" : [
-                                    0
-                                    ]
-*/
+
                                     
                                     
                                 }
-                                completion(IsError: true,result: "")
+                                completion(false, "")
                             }
                             
                            
@@ -216,7 +203,7 @@ class Endpoints{
                         
                         
                     }else{
-                        completion(IsError:true,result: "")
+                        completion(true,"")
                     }
                     
                     
@@ -224,11 +211,11 @@ class Endpoints{
                     
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true,response_string!)
                     
                     
                     
@@ -239,7 +226,7 @@ class Endpoints{
 
     
     
-    func AvailableStatus(token:String, url:String,completion: (IsError:Bool,result: String, Devices:[EndpointResponse]) -> Void){
+    func AvailableStatus(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String, _ Devices:[EndpointResponse]) -> Void){
         
         
         let headers = [
@@ -248,25 +235,25 @@ class Endpoints{
         ]
         
         
-        Alamofire.request(.GET,ArSmartApi.sharedApi.ApiUrl(url),encoding: .JSON,headers: headers)
+        Alamofire.request(ArSmartApi.sharedApi.ApiUrl(url),method:.get, encoding:JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON {
                 response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = NSTimer.every(2.seconds) {
-                            (timer: NSTimer) in
+                        var timer = Timer.every(2.seconds) {
+                            (timer: Timer) in
                             // do something
                             
                             AvailableStatus(token,url: url, completion: { (IsError, result, devices) in
-                                completion(IsError:IsError,result:result, Devices: devices)
+                                completion(IsError,result, devices)
                             })
                             
                             timer.invalidate()
@@ -275,7 +262,7 @@ class Endpoints{
                         
                     }else if(status == "done"){
                         print("Done..")
-                        let data = NSData(data: response.data!)
+                        let data = NSData(data: response.data!) as Data
                         var json = JSON(data: data)
                         
                         
@@ -283,7 +270,7 @@ class Endpoints{
                         
                         
                         
-                        completion(IsError:false,result:"",Devices: [])
+                        completion(false,"", [])
                     }
                     
                     
@@ -292,13 +279,13 @@ class Endpoints{
                     break
                     
                     
-                case .Failure:
+                case .failure:
                     print("error..")
-                    let data = NSData(data: response.data!)
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(IsError:true,result:response_string!, Devices: [])
+                    completion(true,response_string!,[])
                     break
                     
                 }

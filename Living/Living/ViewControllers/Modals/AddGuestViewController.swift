@@ -17,11 +17,13 @@ class AddGuestViewController: UIViewController {
     @IBOutlet weak var txt_email: UITextField!
     @IBOutlet weak var btn_add: UIButton!
     
+    static let AddGuestErrorNotification = Notification.Name("AddGuestError")
+    static let AddGuestSuccessNotification = Notification.Name("AddGuestSuccess")
     
     
-    @IBAction func AddGuest(sender: AnyObject) {
+    @IBAction func AddGuest(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true) {
+        dismiss(animated: true) {
             let email = self.txt_email.text
             
             if(ArSmartUtils.isValidEmail(email!)){
@@ -29,15 +31,15 @@ class AddGuestViewController: UIViewController {
                 let guest = Guest(email: email!)
                 guest.save(ArSmartApi.sharedApi.getToken(),hub: ArSmartApi.sharedApi.hub!.hid, completion: { (IsError, result) in
                     if(IsError){
-                        NSNotificationCenter.defaultCenter().postNotificationName("AddGuestError", object: nil)
+                        NotificationCenter.default.post(name:AddGuestViewController.AddGuestErrorNotification, object: nil)
                     }else{
-                        NSNotificationCenter.defaultCenter().postNotificationName("AddGuestSuccess", object: nil)
+                        NotificationCenter.default.post(name:AddGuestViewController.AddGuestSuccessNotification, object: nil)
                     }
                 })
                 
             }else{
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("AddGuestError", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "AddGuestError"), object: nil)
             }
 
         }

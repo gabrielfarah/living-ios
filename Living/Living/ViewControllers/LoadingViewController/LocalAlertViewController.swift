@@ -23,7 +23,7 @@ class LocalAlertViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         lbl_mensaje.text = message
     }
@@ -33,7 +33,7 @@ class LocalAlertViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func setText(text:String){
+    func setText(_ text:String){
       
         message = text
     
@@ -49,9 +49,9 @@ class LocalAlertViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
-    @IBAction func dismiss(sender: AnyObject) {
+    @IBAction func dismiss(_ sender: AnyObject) {
         
-        dismissViewControllerAnimated(true) { 
+        self.dismiss(animated: true) { 
             
         }
     }

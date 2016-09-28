@@ -9,7 +9,7 @@
         <!--Navigation Controller-->
         <scene sceneID="pcz-p0-TAB">
             <objects>
-                <navigationController storyboardIdentifier="ScenesNavigationController" navigationBarHidden="YES" id="3Ax-D3-fTJ" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ScenesNavigationController" id="3Ax-D3-fTJ" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="1yc-c8-pCH">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -105,7 +105,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Qre-FG-lq1" kind="show" id="bGD-gI-wYR"/>
+                                    <segue destination="Qre-FG-lq1" kind="show" identifier="ShowSceneAdd" id="bGD-gI-wYR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -160,7 +160,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="vPy-dN-dJg"/>
                                         </constraints>
-                                        <state key="normal" image="back_btn.png"/>
+                                        <state key="normal" image="menu"/>
                                         <connections>
                                             <action selector="GoBack:" destination="Qre-FG-lq1" eventType="touchUpInside" id="FfJ-I3-xvf"/>
                                         </connections>
@@ -269,11 +269,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="back_btn.png" width="200" height="200"/>
         <image name="feed_btn.png" width="128" height="128"/>
+        <image name="menu" width="42" height="42"/>
         <image name="play.png" width="64" height="64"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ZeK-WP-fiJ"/>
+        <segue reference="bGD-gI-wYR"/>
     </inferredMetricsTieBreakers>
 </document>

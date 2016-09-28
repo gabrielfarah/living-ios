@@ -59,7 +59,7 @@ class EndpointResponse{
         
         
         
-        let created_at  = NSDate()
+        let created_at  = Date()
         let endpoint_type = Endpoint.ConvertType(self.endpoint_type)
         let favorite = 0
         let id = 0
@@ -79,7 +79,7 @@ class EndpointResponse{
         let state = 0
         let ui_class_command = self.ui_class_command
         let uid = self.uid
-        let updated_at = NSDate()
+        let updated_at = Date()
         let version = ""
         let wkup_intv = ""
         

@@ -69,7 +69,7 @@
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQp-lH-W1X">
                                         <rect key="frame" x="8" y="27" width="30" height="30"/>
-                                        <state key="normal" title="Button" image="feed_btn.png"/>
+                                        <state key="normal" title="Button" image="menu"/>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Living" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BMh-M7-LB7">
                                         <rect key="frame" x="8" y="31" width="304" height="21"/>
@@ -127,6 +127,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed_btn.png" width="128" height="128"/>
+        <image name="menu" width="42" height="42"/>
     </resources>
 </document>

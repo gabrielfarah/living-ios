@@ -39,12 +39,12 @@ class Events{
     func clear(){
         self.json_events.removeAll()
     }
-    func add(event:String){
+    func add(_ event:String){
         self.json_events.append(event)
     }
-    func removeAtIndex(index:Int){
+    func removeAtIndex(_ index:Int){
     
-        self.json_events.removeAtIndex(index)
+        self.json_events.remove(at: index)
     
     }
     func bind(){

@@ -20,6 +20,32 @@ class Scene{
     
     
     
+    struct JSONStringArrayEncoding: ParameterEncoding {
+        private let array: [[String: AnyObject]]
+        
+        init(array: [[String: AnyObject]]) {
+            self.array = array
+        }
+        
+        func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+            var urlRequest1 = urlRequest.urlRequest
+            
+            let data = try JSONSerialization.data(withJSONObject: array, options: [])
+            
+            if urlRequest1?.value(forHTTPHeaderField: "Content-Type") == nil {
+                urlRequest1?.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                
+            }
+            
+            urlRequest1?.httpBody = data
+            
+            return urlRequest1!
+        }
+    }
+    
+    
+    
     init(){
         self.name = ""
         self.sid=0
@@ -44,7 +70,7 @@ class Scene{
     
 
     
-    func save(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func save(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         let headers = [
             "Authorization": "JWT "+token,
             "Accept": "application/json"
@@ -59,9 +85,9 @@ class Scene{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "name":self.name,
-            "payload":payload_array,
-            "timed":self.timed
+            "name":self.name as AnyObject,
+            "payload":payload_array as AnyObject,
+            "timed":self.timed as AnyObject
             
         ]
         
@@ -69,29 +95,24 @@ class Scene{
         
         
         
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding:JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion( false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = json["ERROR"].dictionary?.first
                     let final_string = response_string!.1[0].stringValue
                     
-                    completion(IsError:true,result:final_string)
+                    completion(true,final_string)
                     
                     
                     
@@ -102,7 +123,7 @@ class Scene{
 
     }
     
-    func update(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func update(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         let headers = [
             "Authorization": "JWT "+token,
             "Accept": "application/json"
@@ -117,9 +138,9 @@ class Scene{
         
         
         let json_parameters: [String: AnyObject]  = [
-            "name":self.name,
-            "payload":payload_array,
-            "timed":self.timed
+            "name":self.name as AnyObject,
+            "payload":payload_array as AnyObject,
+            "timed":self.timed as AnyObject
             
         ]
         
@@ -127,29 +148,24 @@ class Scene{
         
         
         
-        Alamofire.request(.PUT,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint, method:.put, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = json["ERROR"].dictionary?.first
                     let final_string = response_string!.1[0].stringValue
                     
-                    completion(IsError:true,result:final_string)
+                    completion(true,final_string)
                     
                     
                     
@@ -161,7 +177,7 @@ class Scene{
     }
     
     
-    func run(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func run(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         let headers = [
             "Authorization": "JWT "+token,
             "Accept": "application/json"
@@ -184,31 +200,26 @@ class Scene{
         
         let array = JSON(payload_array)
         
+        let encoding = JSONStringArrayEncoding(array: payload_array)
         
-        
-        Alamofire.request(.POST,endpoint,headers: headers, parameters:[:], encoding:.Custom({convertible, params in
-            let mutableRequest = convertible.URLRequest.copy() as! NSMutableURLRequest
-            mutableRequest.HTTPBody = array.rawString()!.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-            mutableRequest.setValue("application/json; charset=utf-8", forHTTPHeaderField: "Content-Type")
-            return (mutableRequest, nil)
-        }))
+        Alamofire.request(endpoint, method:.post, parameters:[:], encoding:encoding, headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = json["ERROR"]
                     let final_string = response_string.stringValue
                     
-                    completion(IsError:true,result:final_string)
+                    completion(true,final_string)
                     
                     
                     
@@ -219,7 +230,7 @@ class Scene{
         
     }
     
-    func delete(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func delete(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -228,22 +239,22 @@ class Scene{
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Mode),hub,self.sid)
         
-        Alamofire.request(.DELETE,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method:.delete, encoding:  JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
+                case .success:
                     
                     
-                    completion(IsError: false,result: "")
+                    completion(false,"")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
+                    completion(true, response_string!)
                     
                     
                     

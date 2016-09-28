@@ -16,7 +16,7 @@ class Actions{
     var actions = [Action]()
     
     
-    func load(token:String,hub:Int,completion: (IsError:Bool,result: String) -> Void){
+    func load(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let headers = [
             "Authorization": "JWT "+token,
@@ -25,41 +25,35 @@ class Actions{
         
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Actions), hub)
         
-        Alamofire.request(.GET,endpoint,encoding: .JSON,headers: headers)
+        Alamofire.request(endpoint, method: .get,encoding: JSONEncoding.default,headers: headers)
             .validate()
             .responseJSON { response  in
                 switch response.result {
                     
-                case .Success:
-                    let data = NSData(data: response.data!)
+                case .success:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     
                     
                     //If json is .Dictionary
                     for (_,subJson):(String, JSON) in json {
                         //Do something you want
-                        
-                        
-                        
-                        let message = subJson.object["message"] as! String
-                        let created_at = subJson.object["created_at"] as! String
-                        
-                        
+                    
+                        let message = subJson["message"].stringValue
+                        let created_at = subJson["created_at"].stringValue
                         let new_Action = Action(message:message,created_at:created_at)
-                        
                         self.actions.append(new_Action)
                     }
 
                     
-                    completion(IsError: false,result: "")
+                    completion(false, "")
                     
                     
-                case .Failure:
-                    let data = NSData(data: response.data!)
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
-                    completion(IsError:true,result: response_string!)
-                    
+                    completion(true,response_string!)
                     
                     
                 }

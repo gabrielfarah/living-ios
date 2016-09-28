@@ -36,7 +36,7 @@ class CongratulationsViewController: UIViewController {
     
     func style(){
         
-        self.navigationController?.navigationBarHidden = true
+        self.navigationController?.isNavigationBarHidden = true
 
     }
 }

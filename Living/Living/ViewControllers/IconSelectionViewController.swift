@@ -17,7 +17,6 @@
 import Foundation
 
 import UIKit
-import EZLoadingActivity
 import Photos
 
 
@@ -43,7 +42,7 @@ UINavigationControllerDelegate  {
         fetchPhotos ();
         
         let nib = UINib(nibName: "PhotoLibraryCell", bundle: nil)
-        self.collectionView.registerNib(nib, forCellWithReuseIdentifier: "cell")
+        self.collectionView.register(nib, forCellWithReuseIdentifier: "cell")
         
         
     }
@@ -69,21 +68,21 @@ UINavigationControllerDelegate  {
     
 
     // tell the collection view how many cells to make
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return  self.images.count
     }
     
     // make a cell for each cell index path
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         // get a reference to our storyboard cell
         let identifier = "cell"
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(identifier, forIndexPath: indexPath) as! PhotoLibraryCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath) as! PhotoLibraryCell
         
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
         
-        let img:UIImage = UIImage(named:self.images[indexPath.item])!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
+        let img:UIImage = UIImage(named:self.images[(indexPath as NSIndexPath).item])!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         
         
         //theImageView.image = theImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
@@ -99,34 +98,34 @@ UINavigationControllerDelegate  {
     
     // MARK: - UICollectionViewDelegate protocol
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: IndexPath) {
         // handle tap events
-        print("You selected cell #\(indexPath.item)!")
-        index = indexPath.item
+        print("You selected cell #\((indexPath as NSIndexPath).item)!")
+        index = (indexPath as NSIndexPath).item
         selectImage()
 
     }
 
 
     
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [NSObject : AnyObject]!) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingImage image: UIImage!, editingInfo: [AnyHashable: Any]!) {
         //imagePicked.image = image
         print("Ha escogido una imagen")
         self.selectImage();
-        self.dismissViewControllerAnimated(true, completion: nil);
+        self.dismiss(animated: true, completion: nil);
         
     }
     func selectImage(){
         
         //TODO: Enviar imagen a la vista anterior
         
-        NSNotificationCenter.defaultCenter().postNotificationName(mySpecialNotificationKey, object: self.images[index])
-        self.navigationController?.popViewControllerAnimated(true)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: mySpecialNotificationKey), object: self.images[index])
+        self.navigationController?.popViewController(animated: true)
 
     }
     
-    @IBAction func Close(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true) {
+    @IBAction func Close(_ sender: AnyObject) {
+        self.dismiss(animated: true) {
             
         }
     }
