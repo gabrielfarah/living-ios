@@ -240,6 +240,12 @@
 		BBCC66631D4FD163004D35A6 /* MainMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */; };
 		BBCC66651D4FDFDC004D35A6 /* xbox_menu.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCC66641D4FDFDC004D35A6 /* xbox_menu.png */; };
 		BBD2A6861D9C287D0081CED2 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBD2A6851D9C287D0081CED2 /* GLKit.framework */; };
+		BBDEE59D1D9C6D4400761415 /* DomuAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEE59B1D9C6D4400761415 /* DomuAlertViewController.swift */; };
+		BBDEE59E1D9C6D4400761415 /* DomuAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDEE59C1D9C6D4400761415 /* DomuAlertViewController.xib */; };
+		BBDEE5A01D9F236C00761415 /* SectionHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEE59F1D9F236C00761415 /* SectionHeaderCollectionReusableView.swift */; };
+		BBDEE5A31DA2F59400761415 /* Configure.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBDEE5A21DA2F59400761415 /* Configure.storyboard */; };
+		BBDEE5A51DA2F84F00761415 /* RegisterRouterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDEE5A41DA2F84F00761415 /* RegisterRouterViewController.swift */; };
+		BBDEE5DB1DA5AB5000761415 /* SceneHueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDEE5DA1DA5AB5000761415 /* SceneHueCell.xib */; };
 		BBF93E171D4FEDF6000985AE /* DevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E161D4FEDF6000985AE /* DevicesViewController.swift */; };
 		BBF93E191D4FF8D7000985AE /* DeviceEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF93E181D4FF8D7000985AE /* DeviceEditViewController.swift */; };
 		BBF93E1B1D5000AE000985AE /* flecha_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF93E1A1D5000AE000985AE /* flecha_icon.png */; };
@@ -494,6 +500,16 @@
 		BBCC66621D4FD163004D35A6 /* MainMenuHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainMenuHeaderView.swift; path = ViewControllers/Cells/MainMenuHeaderView.swift; sourceTree = "<group>"; };
 		BBCC66641D4FDFDC004D35A6 /* xbox_menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = xbox_menu.png; sourceTree = "<group>"; };
 		BBD2A6851D9C287D0081CED2 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		BBDEE59B1D9C6D4400761415 /* DomuAlertViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DomuAlertViewController.swift; path = ViewControllers/LoadingViewController/DomuAlertViewController.swift; sourceTree = "<group>"; };
+		BBDEE59C1D9C6D4400761415 /* DomuAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DomuAlertViewController.xib; path = ViewControllers/LoadingViewController/DomuAlertViewController.xib; sourceTree = "<group>"; };
+		BBDEE59F1D9F236C00761415 /* SectionHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SectionHeaderCollectionReusableView.swift; path = ViewControllers/Cells/SectionHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		BBDEE5A11DA2D6E900761415 /* Living.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Living.entitlements; sourceTree = "<group>"; };
+		BBDEE5A21DA2F59400761415 /* Configure.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Configure.storyboard; path = Storyboards/Configure.storyboard; sourceTree = "<group>"; };
+		BBDEE5A41DA2F84F00761415 /* RegisterRouterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegisterRouterViewController.swift; path = ViewControllers/RegisterRouterViewController.swift; sourceTree = "<group>"; };
+		BBDEE5A61DA4176900761415 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		BBDEE5A71DA4176900761415 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BBDEE5A91DA457CD00761415 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		BBDEE5DA1DA5AB5000761415 /* SceneHueCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SceneHueCell.xib; path = ViewControllers/nibs/SceneHueCell.xib; sourceTree = "<group>"; };
 		BBF93E161D4FEDF6000985AE /* DevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DevicesViewController.swift; path = ViewControllers/DevicesViewController.swift; sourceTree = "<group>"; };
 		BBF93E181D4FF8D7000985AE /* DeviceEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceEditViewController.swift; path = ViewControllers/DeviceEditViewController.swift; sourceTree = "<group>"; };
 		BBF93E1A1D5000AE000985AE /* flecha_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha_icon.png; sourceTree = "<group>"; };
@@ -571,6 +587,7 @@
 				BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */,
 				BB099A7C1D6CA94A009960C4 /* ScenesViewController.swift */,
 				BB099A841D6CCF47009960C4 /* SceneEditViewController.swift */,
+				BBDEE5A41DA2F84F00761415 /* RegisterRouterViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -588,6 +605,7 @@
 				BB099A8E1D6CD212009960C4 /* SceneEndpointCell.swift */,
 				BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */,
 				BBFC28511D8B18DF005E4D2F /* SceneHueEndpointCell.swift */,
+				BBDEE59F1D9F236C00761415 /* SectionHeaderCollectionReusableView.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -601,6 +619,7 @@
 				BBCC665E1D4FCB76004D35A6 /* MainMenuHeaderView.xib */,
 				BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */,
 				BBFC284F1D8B188A005E4D2F /* SceneHueEndpointCell.xib */,
+				BBDEE5DA1DA5AB5000761415 /* SceneHueCell.xib */,
 			);
 			name = nibs;
 			sourceTree = "<group>";
@@ -633,6 +652,7 @@
 				BBCC66491D4A7344004D35A6 /* Device.storyboard */,
 				BB099A731D667C38009960C4 /* Scenes.storyboard */,
 				BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */,
+				BBDEE5A21DA2F59400761415 /* Configure.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -644,6 +664,8 @@
 				BB41CE151D2CA2B200682A72 /* LoadingViewController.xib */,
 				BB41CE171D2D7FC600682A72 /* LocalAlertViewController.swift */,
 				BB41CE181D2D7FC600682A72 /* LocalAlertViewController.xib */,
+				BBDEE59B1D9C6D4400761415 /* DomuAlertViewController.swift */,
+				BBDEE59C1D9C6D4400761415 /* DomuAlertViewController.xib */,
 			);
 			name = LoadingView;
 			sourceTree = "<group>";
@@ -682,6 +704,7 @@
 		BBA09B7E1D1A01220074765E /* Living */ = {
 			isa = PBXGroup;
 			children = (
+				BBDEE5A11DA2D6E900761415 /* Living.entitlements */,
 				BB0DACC81D77A0A800A472B2 /* Libraries */,
 				BB3DD8BB1D31DDCB0020B11D /* Storyboards */,
 				BB03C6EE1D2087540023256F /* ViewControllers */,
@@ -1053,6 +1076,7 @@
 				BB03C6ED1D2079880023256F /* button_take_picture.png in Resources */,
 				BBCC66101D491CBB004D35A6 /* energy_sensor_icon.png in Resources */,
 				BBCC66231D491CBB004D35A6 /* open_close_sensor_2_icon.png in Resources */,
+				BBDEE5A31DA2F59400761415 /* Configure.storyboard in Resources */,
 				BBCC66221D491CBB004D35A6 /* next_icon.png in Resources */,
 				BBAFED471D2ADA2500005212 /* Icon-76@2x.png in Resources */,
 				BBA66D941D5BC908008971A2 /* SonosTableViewCell.xib in Resources */,
@@ -1078,11 +1102,13 @@
 				BBCC662F1D491CBB004D35A6 /* shades_3_icon.png in Resources */,
 				BBCC66171D491CBB004D35A6 /* light_5_icon.png in Resources */,
 				BBCC661D1D491CBB004D35A6 /* music_2_icon.png in Resources */,
+				BBDEE5DB1DA5AB5000761415 /* SceneHueCell.xib in Resources */,
 				BBA66D901D5BBA45008971A2 /* SonosViewController.xib in Resources */,
 				BBAFED491D2ADA2600005212 /* iTunesArtwork@2x.png in Resources */,
 				BBCC66051D491CBB004D35A6 /* alarm_2_icon.png in Resources */,
 				BBCC66201D491CBB004D35A6 /* music_5_icon.png in Resources */,
 				BB3DD8B81D2F2F300020B11D /* actualizar_btn.png in Resources */,
+				BBDEE59E1D9C6D4400761415 /* DomuAlertViewController.xib in Resources */,
 				BBCC661A1D491CBB004D35A6 /* movement_sensor_3_icon.png in Resources */,
 				BBCC66371D491CBB004D35A6 /* water_3_icon.png in Resources */,
 				BBCC66481D496C96004D35A6 /* sensor_icon.png in Resources */,
@@ -1219,6 +1245,7 @@
 				BB41CE191D2D7FC600682A72 /* LocalAlertViewController.swift in Sources */,
 				BBCC66631D4FD163004D35A6 /* MainMenuHeaderView.swift in Sources */,
 				BB794A7D1D3D886F008EBBF3 /* SelectDeviceViewController.swift in Sources */,
+				BBDEE59D1D9C6D4400761415 /* DomuAlertViewController.swift in Sources */,
 				BB3DD89F1D2DA51C0020B11D /* RecoverPassword.swift in Sources */,
 				BB552CEF1D78964E00C25F8B /* Hue.swift in Sources */,
 				BBCC65CB1D481280004D35A6 /* Endpoint.swift in Sources */,
@@ -1255,6 +1282,7 @@
 				BBF93E191D4FF8D7000985AE /* DeviceEditViewController.swift in Sources */,
 				BBAFED531D2BA8AC00005212 /* RegisterNewHub.swift in Sources */,
 				BBFC28521D8B18DF005E4D2F /* SceneHueEndpointCell.swift in Sources */,
+				BBDEE5A01D9F236C00761415 /* SectionHeaderCollectionReusableView.swift in Sources */,
 				BB63BEA11D3C515E00481CC0 /* MenuTableCellTableViewCell.swift in Sources */,
 				BBA66D831D5B7E18008971A2 /* Sonos.swift in Sources */,
 				BB099A651D64C10E009960C4 /* SwitchTableViewCell.swift in Sources */,
@@ -1288,6 +1316,7 @@
 				BBA66D871D5B8202008971A2 /* LevelEndpoint.swift in Sources */,
 				BB41CE1D1D2D889B00682A72 /* CongratulationsViewController.swift in Sources */,
 				BBF93E171D4FEDF6000985AE /* DevicesViewController.swift in Sources */,
+				BBDEE5A51DA2F84F00761415 /* RegisterRouterViewController.swift in Sources */,
 				BB552CEB1D77E62200C25F8B /* VKExpandableButton.swift in Sources */,
 				BB63BE9F1D3C4BAA00481CC0 /* MenuViewController.swift in Sources */,
 				BB63BE901D3AD5F200481CC0 /* NotificationViewController.swift in Sources */,
@@ -1306,6 +1335,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				BBA09B841D1A01220074765E /* Base */,
+				BBDEE5A61DA4176900761415 /* es */,
+				BBDEE5A91DA457CD00761415 /* en */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -1314,6 +1345,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BBA09B8C1D1A01220074765E /* Base */,
+				BBDEE5A71DA4176900761415 /* es */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -1325,6 +1357,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1372,6 +1405,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -1416,6 +1450,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Living/Living.entitlements;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
@@ -1507,6 +1542,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Living/Living.entitlements;
 				INFOPLIST_FILE = Living/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

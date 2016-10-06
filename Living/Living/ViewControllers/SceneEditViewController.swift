@@ -29,8 +29,9 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
 
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "SceneEndpointCell", bundle: nil)
-
+        let nib2 = UINib(nibName: "SceneHueEndpointCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "cell")
+        self.tableView.register(nib2, forCellReuseIdentifier: "cellHue")
 
         self.tableView.isEditing = true
         
@@ -70,151 +71,39 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         
-        let cell:SceneEndpointCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as! SceneEndpointCell
-        
         let endpoints = ArSmartApi.sharedApi.hub?.endpoints.noSensorEndpoints()
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         let endpoint = endpoints![indexPath.item]
-        let scene_payload = scene.payload
-        let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-
-        
-        let endpoint_name = String(format:"%@ %d %@",endpoint.name,endpoint.node, endpoint.getEndpointTypeString())
-        cell.endpoint_image.image = image
-        cell.endpoint_name.text = endpoint_name
-        cell.endpoint = endpoint
         
         
+        if endpoint.ui_class_command == "ui-hue"{
         
-        if(endpoint.ui_class_command == "ui-sonos"){
-            
-            // Se necesita verificar si existe dos payloads
-            
-            
-            let target = (endpoint.ui_class_command == "ui-sonos") ? "sonos" : ""
-            if let payload_level = getSonosPayload(endpoint.id,function_name: "set_volume"){
-            
-                if(payload_level.endpoint_id != 0 ){
-                    
-                    let payload = Payload(type:payload_level.type,node:payload_level.node,value:payload_level.value,target:target,endpoint_id:payload_level.endpoint_id,ip:payload_level.ip,function_name:"set_volume",parameters:payload_level.parameters)
-                    cell.payload_level = payload
-                    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-                    
-                }else{
-                    let payload_level = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:target,endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:"set_volume",parameters:[])
-                    
-                    
-                    
-                    cell.payload_level = payload_level
-                    
-                }
-            
-            }else{
-                let payload_level = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:target,endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:"set_volume",parameters:[])
-                
-                
-                cell.payload_level = payload_level
-            
-            }
-            
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "cellHue") as! SceneHueEndpointCell
 
-            if let payload_switch = getSonosPayload(endpoint.id,function_name: "play"){
-                if(payload_switch.endpoint_id != 0){
-                    
-                    let payload = Payload(type:payload_switch.type,node:payload_switch.node,value:payload_switch.value,target:target,endpoint_id:payload_switch.endpoint_id,ip:payload_switch.ip,function_name:"play",parameters:payload_switch.parameters)
-                    cell.payload_switch = payload
-                    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-                    
-                }else{
-                    
-                    
-                    let payload_switch = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:target,endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:"play",parameters:[])
-                    
-                    
-                    cell.payload_switch = payload_switch
-                }
-            }else{
-                let payload_switch = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:target,endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:"play",parameters:[])
-                cell.payload_switch = payload_switch
-
-            }
-
-
+            
+            let cell = SceneHueEndpointCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cellHue")
+            
+            
+            return cell
+        
         }else{
-            if let real_payload = getPayload(endpoint.id){
+            //let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! SceneEndpointCell
+            let cell = SceneEndpointCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+            let scene_payload = scene.payload
+            let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            let endpoint_name = String(format:"%@ %d %@",endpoint.name,endpoint.node, endpoint.getEndpointTypeString())
             
-                if(real_payload.endpoint_id != 0){
-                    let payload = Payload(type:real_payload.type,node:real_payload.node,value:real_payload.value,target:real_payload.target,endpoint_id:real_payload.endpoint_id,ip:real_payload.ip,function_name:real_payload.function_name,parameters:real_payload.parameters)
-                    
-                    
-                    if(endpoint.isSwitch()){
-                        cell.payload_switch = payload
-                    }else if(endpoint.isLevel()){
-                        cell.payload_level = payload
-                    }else{
-                    cell.payload = payload
-                    }
-                    
-                    tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
-                    
-                }else{
-                    
-                    let payload = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:"",endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:endpoint.GetFunctionValue(),parameters:[])
-                    if(endpoint.isSwitch()){
-                        cell.payload_switch = payload
-                    }else if(endpoint.isLevel()){
-                        cell.payload_level = payload
-                    }else{
-                        cell.payload = payload
-                    }
-                    
-                }
-            }else{
-                let payload = Payload(type:endpoint.getEndpointTypeString(),node:endpoint.node,value:0,target:"",endpoint_id:endpoint.id,ip:endpoint.ip_address,function_name:endpoint.GetFunctionValue(),parameters:[])
-                if(endpoint.isSwitch()){
-                    cell.payload_switch = payload
-                }else if(endpoint.isLevel()){
-                    cell.payload_level = payload
-                }else{
-                    cell.payload = payload
-                }
-            }
+            cell.endpoint_image.image = image
+            cell.endpoint_name.text = endpoint_name
+            cell.endpoint = endpoint
+            cell.delegate = self
+            cell.applyPayload(tableView: tableView, indexPath: indexPath,scene:scene)
             
-
-        
-        
+            
+            
+            return cell
         }
-        
-        
-       
-        
 
-
-
-    
-
-        
-        cell.delegate = self
-        
-        
-        
-        if (endpoint.isLevel()){
-            cell.levelMode()
-        }else if(endpoint.isSwitch()){
-            cell.switchMode()
-        }else if(endpoint.isSonos()){
-            cell.sonosMode()
-        }else{
-            cell.noneMode()
-        
-        }
-        
-        
-        
-        //cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        //cell.textLabel?.text = self.scenes.scenes[indexPath.row].name
-        
-        return cell
     }
     
     func tableView( _ tableView : UITableView,  titleForHeaderInSection section: Int)->String

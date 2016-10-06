@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,26 +16,23 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_living.png" translatesAutoresizingMaskIntoConstraints="NO" id="CDN-mK-Ryh">
-                                <rect key="frame" x="40" y="84" width="240" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_living.png" translatesAutoresizingMaskIntoConstraints="NO" id="vNg-sV-BZC">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="128" id="79j-iQ-Zwr"/>
-                                    <constraint firstAttribute="width" constant="240" id="s8c-vD-OZE"/>
+                                    <constraint firstAttribute="height" constant="128" id="BbM-UI-3rd"/>
+                                    <constraint firstAttribute="width" constant="240" id="lVl-bU-2QL"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="CDN-mK-Ryh" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="64" id="KqF-Tk-5x0"/>
-                            <constraint firstItem="CDN-mK-Ryh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Sru-ak-yuD"/>
-                            <constraint firstItem="CDN-mK-Ryh" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="24" id="XcN-lO-rua"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="CDN-mK-Ryh" secondAttribute="bottom" constant="356" id="j8s-xB-2Dl"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vNg-sV-BZC" secondAttribute="trailing" constant="52" id="4Rl-6h-D2d"/>
+                            <constraint firstItem="vNg-sV-BZC" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="51" id="fD2-Z5-9gc"/>
+                            <constraint firstItem="vNg-sV-BZC" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="60" id="mBs-68-dTW"/>
                         </constraints>
                     </view>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

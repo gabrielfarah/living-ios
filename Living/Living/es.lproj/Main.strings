@@ -1,0 +1,180 @@
+
+/* Class = "UIButton"; normalTitle = "Recuperar Contraseña"; ObjectID = "0F9-11-c5w"; */
+"0F9-11-c5w.normalTitle" = "Recuperar Contraseña";
+
+/* Class = "UILabel"; text = "Comienza ahora a automatizar tu hogar y vive más comodo y seguro con Living."; ObjectID = "1HO-e3-74z"; */
+"1HO-e3-74z.text" = "Comienza ahora a automatizar tu hogar y vive más comodo y seguro con Living.";
+
+/* Class = "UILabel"; text = "Ingrese el código incluido en el interior del empaque de su estación central y presione continuar"; ObjectID = "3RS-qS-OeN"; */
+"3RS-qS-OeN.text" = "Ingrese el código incluido en el interior del empaque de su estación central y presione continuar";
+
+/* Class = "UIButton"; normalTitle = "¿Aún no tienes una cuenta?"; ObjectID = "4t0-O6-5js"; */
+"4t0-O6-5js.normalTitle" = "¿Aún no tienes una cuenta?";
+
+/* Class = "UILabel"; text = "Seleccionar Imagen"; ObjectID = "5wK-Oz-OuB"; */
+"5wK-Oz-OuB.text" = "Seleccionar Imagen";
+
+/* Class = "UITextField"; placeholder = "Correo electrónico"; ObjectID = "721-HY-vRD"; */
+"721-HY-vRD.placeholder" = "Correo electrónico";
+
+/* Class = "UITextField"; text = "test@test.com"; ObjectID = "721-HY-vRD"; */
+"721-HY-vRD.text" = "test@test.com";
+
+/* Class = "UILabel"; text = "Living"; ObjectID = "7NN-CK-WUH"; */
+"7NN-CK-WUH.text" = "Living";
+
+/* Class = "UITextField"; placeholder = "Contraseña"; ObjectID = "9QY-kK-bi8"; */
+"9QY-kK-bi8.placeholder" = "Contraseña";
+
+/* Class = "UITextField"; text = "Iqs11203099"; ObjectID = "9QY-kK-bi8"; */
+"9QY-kK-bi8.text" = "Iqs11203099";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9zi-i9-bEp"; */
+"9zi-i9-bEp.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "¿Ya tienes una cuenta?"; ObjectID = "AG7-el-9k2"; */
+"AG7-el-9k2.normalTitle" = "¿Ya tienes una cuenta?";
+
+/* Class = "UITextField"; placeholder = "Correo electrónico"; ObjectID = "B3L-rz-Ps3"; */
+"B3L-rz-Ps3.placeholder" = "Correo electrónico";
+
+/* Class = "UITextField"; text = "nelfa10@yahoo.com"; ObjectID = "B3L-rz-Ps3"; */
+"B3L-rz-Ps3.text" = "nelfa10@yahoo.com";
+
+/* Class = "UIButton"; normalTitle = "Crear Cuenta"; ObjectID = "Edy-vm-kz4"; */
+"Edy-vm-kz4.normalTitle" = "Crear Cuenta";
+
+/* Class = "UIButton"; normalTitle = "+ Adicionar Dispositivo Wifi"; ObjectID = "HrA-vO-TPB"; */
+"HrA-vO-TPB.normalTitle" = "+ Adicionar Dispositivo Wifi";
+
+/* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "KT7-Mg-A8g"; */
+"KT7-Mg-A8g.accessibilityLabel" = "Mapa";
+
+/* Class = "UILabel"; text = "Ubique su hogar en el mapa para que cosas puedan suceder al llegar ó al partir"; ObjectID = "KWf-T4-fia"; */
+"KWf-T4-fia.text" = "Ubique su hogar en el mapa para que cosas puedan suceder al llegar ó al partir";
+
+/* Class = "UIButton"; normalTitle = "Finalizar"; ObjectID = "KgK-yT-gVT"; */
+"KgK-yT-gVT.normalTitle" = "Finalizar";
+
+/* Class = "UIButton"; normalTitle = "Iniciar Sesión"; ObjectID = "L2F-bC-AgG"; */
+"L2F-bC-AgG.normalTitle" = "Iniciar Sesión";
+
+/* Class = "UITextField"; placeholder = "Confirmar correo electrónico"; ObjectID = "LZb-J3-sWa"; */
+"LZb-J3-sWa.placeholder" = "Confirmar correo electrónico";
+
+/* Class = "UITextField"; text = "nelfa10@yahoo.com"; ObjectID = "LZb-J3-sWa"; */
+"LZb-J3-sWa.text" = "nelfa10@yahoo.com";
+
+/* Class = "UILabel"; text = "Felicidades!"; ObjectID = "Lr4-FP-8jc"; */
+"Lr4-FP-8jc.text" = "Felicidades!";
+
+/* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "MgI-8r-sUF"; */
+"MgI-8r-sUF.accessibilityLabel" = "Mapa";
+
+/* Class = "UIButton"; normalTitle = "Listo"; ObjectID = "NOO-WH-R37"; */
+"NOO-WH-R37.normalTitle" = "Listo";
+
+/* Class = "UITextField"; placeholder = "Nombre"; ObjectID = "Nvf-om-E3G"; */
+"Nvf-om-E3G.placeholder" = "Nombre";
+
+/* Class = "UITextField"; text = "Nelson Fajardo"; ObjectID = "Nvf-om-E3G"; */
+"Nvf-om-E3G.text" = "Nelson Fajardo";
+
+/* Class = "UIButton"; normalTitle = "¿Olvido su contraseña?"; ObjectID = "P4q-fJ-Mvv"; */
+"P4q-fJ-Mvv.normalTitle" = "¿Olvido su contraseña?";
+
+/* Class = "UILabel"; text = "Ingrese su contraseña, y le enviaremos un correo"; ObjectID = "P7s-U4-Mdd"; */
+"P7s-U4-Mdd.text" = "Ingrese su contraseña, y le enviaremos un correo";
+
+/* Class = "UILabel"; text = "Nuevo Dispositivo"; ObjectID = "Pzv-es-TYO"; */
+"Pzv-es-TYO.text" = "Nuevo Dispositivo";
+
+/* Class = "UILabel"; text = "Recuperar Contraseña"; ObjectID = "Qn1-9b-IOd"; */
+"Qn1-9b-IOd.text" = "Recuperar Contraseña";
+
+/* Class = "UITextField"; placeholder = "Contraseña"; ObjectID = "TJQ-qI-9AF"; */
+"TJQ-qI-9AF.placeholder" = "Contraseña";
+
+/* Class = "UITextField"; text = "test"; ObjectID = "TJQ-qI-9AF"; */
+"TJQ-qI-9AF.text" = "test";
+
+/* Class = "UITextField"; placeholder = "EJ: LIV463E"; ObjectID = "XB6-k7-2lb"; */
+"XB6-k7-2lb.placeholder" = "EJ: LIV463E";
+
+/* Class = "UILabel"; text = "Está a solo unos pasos de controlar su hogar desde la palma de su mano."; ObjectID = "Y3r-qE-hjh"; */
+"Y3r-qE-hjh.text" = "Está a solo unos pasos de controlar su hogar desde la palma de su mano.";
+
+/* Class = "UIButton"; normalTitle = "+ Adicionar Dispositivo ZWave"; ObjectID = "aUT-yf-N9D"; */
+"aUT-yf-N9D.normalTitle" = "+ Adicionar Dispositivo ZWave";
+
+/* Class = "UILabel"; text = "Conecta la estación central utilizando los cables de red y de poder, incluidos en el empaque. Luego de realizado el proceso presione continuar"; ObjectID = "bBN-sc-cvU"; */
+"bBN-sc-cvU.text" = "Conecta la estación central utilizando los cables de red y de poder, incluidos en el empaque. Luego de realizado el proceso presione continuar";
+
+/* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "eAh-MP-LYm"; */
+"eAh-MP-LYm.accessibilityLabel" = "Mapa";
+
+/* Class = "UIButton"; normalTitle = "Continuar"; ObjectID = "eKS-nb-IA9"; */
+"eKS-nb-IA9.normalTitle" = "Continuar";
+
+/* Class = "UIButton"; normalTitle = "Listo"; ObjectID = "eh2-n7-mTo"; */
+"eh2-n7-mTo.normalTitle" = "Listo";
+
+/* Class = "UILabel"; text = "Hogar"; ObjectID = "g5x-4R-kVY"; */
+"g5x-4R-kVY.text" = "Hogar";
+
+/* Class = "UILabel"; text = "Nueva Cuenta"; ObjectID = "gYS-Om-JhJ"; */
+"gYS-Om-JhJ.text" = "Nueva Cuenta";
+
+/* Class = "UIButton"; normalTitle = "Comenzar"; ObjectID = "gYb-rN-93m"; */
+"gYb-rN-93m.normalTitle" = "Comenzar";
+
+/* Class = "UIButton"; normalTitle = "Continuar"; ObjectID = "h8q-Du-KbM"; */
+"h8q-Du-KbM.normalTitle" = "Continuar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "hN9-QN-ar4"; */
+"hN9-QN-ar4.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Iniciar Sesión"; ObjectID = "mgF-QB-FtY"; */
+"mgF-QB-FtY.normalTitle" = "Iniciar Sesión";
+
+/* Class = "UILabel"; text = "Gracias por registrarse en Living"; ObjectID = "msw-nR-dHk"; */
+"msw-nR-dHk.text" = "Gracias por registrarse en Living";
+
+/* Class = "UILabel"; text = "Escoge ubicación"; ObjectID = "nRI-Af-vH5"; */
+"nRI-Af-vH5.text" = "Escoge ubicación";
+
+/* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "oyk-4c-mVN"; */
+"oyk-4c-mVN.accessibilityLabel" = "Mapa";
+
+/* Class = "UILabel"; text = "No posees ningún equipo conectado"; ObjectID = "qN3-El-7Ml"; */
+"qN3-El-7Ml.text" = "No posees ningún equipo conectado";
+
+/* Class = "UILabel"; text = "Tome ó seleccione una imágen para su hogar"; ObjectID = "r5B-fP-V4v"; */
+"r5B-fP-V4v.text" = "Tome ó seleccione una imágen para su hogar";
+
+/* Class = "UILabel"; text = "Bienvenido!"; ObjectID = "t7J-hW-mrt"; */
+"t7J-hW-mrt.text" = "Bienvenido!";
+
+/* Class = "UIButton"; normalTitle = "Tomar foto"; ObjectID = "tKy-ci-1Gq"; */
+"tKy-ci-1Gq.normalTitle" = "Tomar foto";
+
+/* Class = "UILabel"; text = "Si desea reubicar su hogar, presione durante unos segundos su nueva posición"; ObjectID = "vC9-Tf-SPS"; */
+"vC9-Tf-SPS.text" = "Si desea reubicar su hogar, presione durante unos segundos su nueva posición";
+
+/* Class = "UIButton"; normalTitle = "Continuar"; ObjectID = "wJy-qr-4Mv"; */
+"wJy-qr-4Mv.normalTitle" = "Continuar";
+
+/* Class = "UITextField"; placeholder = "Correo electrónico"; ObjectID = "xZr-IM-AXx"; */
+"xZr-IM-AXx.placeholder" = "Correo electrónico";
+
+/* Class = "UILabel"; text = "Haz conectado correctamente tu estación."; ObjectID = "xar-yF-bbm"; */
+"xar-yF-bbm.text" = "Haz conectado correctamente tu estación.";
+
+/* Class = "UIButton"; normalTitle = "Registrarse"; ObjectID = "ySa-ki-DBS"; */
+"ySa-ki-DBS.normalTitle" = "Registrarse";
+
+/* Class = "UILabel"; text = "Nombra tu hogar"; ObjectID = "yeE-j6-H28"; */
+"yeE-j6-H28.text" = "Nombra tu hogar";
+
+/* Class = "UILabel"; text = "Agrega un nuevo dispositivo"; ObjectID = "zVo-Zw-jis"; */
+"zVo-Zw-jis.text" = "Agrega un nuevo dispositivo";

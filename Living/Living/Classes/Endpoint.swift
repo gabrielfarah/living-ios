@@ -149,7 +149,7 @@ class Endpoint{
         
         let json_parameters  = [
         
-                "category": ["id":1,"description":"Entertaiment"],
+                "category": ["code":self.category.code,"description":self.category.description],
                 "room": self.room.description,
                 "hub": hub,
                 "name": self.name,
@@ -170,8 +170,7 @@ class Endpoint{
 
 
         
-        Alamofire.request(endpoint, method: .get, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
-            .validate()
+        Alamofire.request(endpoint, method: .post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .responseJSON { response  in
                 switch response.result {
                     
@@ -302,7 +301,7 @@ class Endpoint{
                 case .failure:
                     let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
-                    let response_string = (json["ERROR"]).rawString()
+                    let response_string = (json["detail"]).rawString()
                     completion(true, response_string!)
                     
                     

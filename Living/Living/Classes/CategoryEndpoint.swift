@@ -27,4 +27,17 @@ class CategoryEndpoint{
         self.code = code
         
     }
+    
+    init(id:Int, description:String){
+        self.id = id
+        self.description = description
+        self.code = 0
+        
+    }
+    init(code:Int, description:String){
+        self.id = 0
+        self.description = description
+        self.code = code
+        
+    }
 }

@@ -263,7 +263,7 @@ class DeviceManager{
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = Timer.every(2.seconds) {
+                        Timer.every(2.seconds) {
                             (timer: Timer) in
                             // do something
                             
@@ -291,21 +291,24 @@ class DeviceManager{
                             let ui_class_command = endpoint_response["ui_class_command"].stringValue
                             let name = endpoint_response["name"].stringValue
                             
+                            let category_code = endpoint_response["category"]["code"].intValue
+                            let category_description = endpoint_response["category"]["description"].stringValue
+                            
                             let object = EndpointResponse()
-                            object.uid = uid as! String
-                            object.endpoint_type = endpoint_type as! String
-                            object.ui_class_command = ui_class_command as! String
+                            object.uid = uid
+                            object.endpoint_type = endpoint_type
+                            object.ui_class_command = ui_class_command
                             object.manufacturer_name = manufacturer_name
                             //endpoint_response.category = category as! String
-                            
+                            object.category = CategoryEndpoint(code:category_code,description:category_description)
                             
                             if(self.request_type == "wifi"){
-                                object.ip_address = ip_address as! String
-                                object.port = port as! String
-                                object.name = name as! String
+                                object.ip_address = ip_address
+                                object.port = String(port)
+                                object.name = name
                             }else{
           
-                                let name = String(format:"Nuevo dispositivo ZWave encontrado: %@", uid as! String)
+                                let name = String(format:"Nuevo dispositivo ZWave encontrado: %@", uid)
                                 object.name = name
                             }
                             
@@ -375,7 +378,7 @@ class DeviceManager{
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = Timer.every(2.seconds) {
+                        Timer.every(2.seconds) {
                             (timer: Timer) in
                             // do something
                             
@@ -388,14 +391,16 @@ class DeviceManager{
                         }
                         
                     }else if(status == "done"){
-                        print("Done..")
-                        let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        //print("Done..")
+                        //let data = NSData(data: response.data!) as Data
                         
+                        completion(false,"Done")
                         
+                    }else{
+                        completion(false,"")
                     }
 
-                    completion(false,"")
+                    
 
                 case .failure:
                     print("error..")

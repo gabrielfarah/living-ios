@@ -101,7 +101,7 @@ class Hubs{
                                     let port = item["port"].stringValue
                                     let proto_ver = item["proto_ver"].stringValue
                                     //TODO: inicializar
-                                    let room:Room = Room()
+                                    let room:Room = Room(room:item["room"].stringValue)
                                     let sensor = item["sensor"].intValue
                                     let sleep_cap = item["sleep_cap"].boolValue
                                     let state = item["state"].intValue

@@ -17,6 +17,7 @@ class MainMenuHeaderView: UIViewController  {
     @IBOutlet weak var btn_devices: UIButton!
     @IBOutlet weak var btn_areas: UIButton!
     @IBOutlet weak var view_main: UIView!
+    @IBOutlet weak var lbl_room_name: UILabel!
     
     var delegate:MainMenuHeaderViewDelegate?
     

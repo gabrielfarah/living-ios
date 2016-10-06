@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import Presentr
+import Localize_Swift
 
 class LoginViewController: UIViewController {
     
@@ -19,33 +20,31 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var btn_no_account: UIButton!
     
     
-    
-
-    
+    /**
+     viewDidLoad, Inheriht method from UIViewController
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-       // style();
-        //ArSmartApi.sharedApi.Logout()
-        
-
-        
-       // txt_email.text = ""
-        //txt_password.text = ""
     }
-    
+    /**
+     viewWillAppear, Inheriht method from UIViewController
+     */
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Do any additional setup after loading the view, typically from a nib.
         style();
         
     }
-    
+    /**
+     didReceiveMemoryWarning, Inheriht method from UIViewController
+     */
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    /**
+     Metodo que permite aplicar los estilos a la vista actual
+     */
     func style(){
         
         let img = UIImage()
@@ -53,27 +52,25 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.tintColor = UIColor.white
     
-        self.title = "Ingresar en su cuenta"
-        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .bordered, target: nil, action: nil)
+        self.title = "Ingresar en su cuenta".localized()
+        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         
         self.navigationController?.isNavigationBarHidden = true
         self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
-        
-        
 
-            
-
-            btn_login.layer.borderColor = UIColor("#D1D3D4").cgColor
-            btn_login.layer.borderWidth = 1.0
-            btn_login.layer.cornerRadius = 5.0
-            
-        
-        
-        
+        btn_login.layer.borderColor = UIColor("#D1D3D4").cgColor
+        btn_login.layer.borderWidth = 1.0
+        btn_login.layer.cornerRadius = 5.0
         
     }
+    
+    /**
+     Metodo que ejecuta la acción de login.
+     
+     - parameter sender: Objeto que envía la acción en este caso el boton.
+     
+     */
     @IBAction func Login(_ sender: AnyObject) {
         
         let width = ModalSize.custom(size: 240)
@@ -84,7 +81,7 @@ class LoginViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.setText("Autenticando, un momento por favor...")
+        vc.setText("Autenticando, un momento por favor...".localized())
         let mPassword:String = txt_password.text!
         let mEmail:String = txt_email.text!
 

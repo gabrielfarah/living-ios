@@ -17,6 +17,8 @@ class EndPointMenuCell: UICollectionViewCell {
     var endpoint:Endpoint = Endpoint();
         var timer_status:Timer = Timer()
     var theme = ThemeManager()
+    var mode:Int = 0
+    
     
     @IBOutlet weak var bg_view: UIView!
     @IBOutlet var itemImageView: UIImageView!
@@ -28,6 +30,14 @@ class EndPointMenuCell: UICollectionViewCell {
         bg_view.layer.cornerRadius = 5.0
         setStatus(endpoint)
         
+    }
+    func setGalleryItemNoStatus(_ item:UIImage, text:String) {
+        itemImageView.image = item
+        itemLabel.text = text
+        bg_view.layer.cornerRadius = 5.0
+
+        //TODO:Apagado
+        itemImageView.tintColor = UIColor("#808080")
     }
     func setColor(_ color:UIColor) {
         

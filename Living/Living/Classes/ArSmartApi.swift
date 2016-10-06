@@ -105,7 +105,7 @@ class ArSmartApi{
             "first_name":name as AnyObject,
             ]
         
-        Alamofire.request(self.ApiUrl(Api.UserManagement.CreateUser),method:.get,parameters:parameters,encoding: JSONEncoding.default)
+        Alamofire.request(self.ApiUrl(Api.UserManagement.CreateUser),method:.post,parameters:parameters,encoding: JSONEncoding.default)
         .validate()
         .responseJSON { response  in
             switch response.result {

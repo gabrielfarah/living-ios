@@ -147,7 +147,7 @@ class NewUserViewController: UIViewController {
             presenter.transitionType = .crossDissolve // Optional
             let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            
+            vc.setText("Un momento por favor, estamos registrando sus datos")
             
             
             //Hace la conexión

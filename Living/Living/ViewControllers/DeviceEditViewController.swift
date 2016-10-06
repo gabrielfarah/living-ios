@@ -82,8 +82,7 @@ class DeviceEditViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.lbl_menssage.text = "Guardando dispositivo en el hub, un momento por favor..."
-
+        vc.setText("Guardando dispositivo en el hub, un momento por favor...")
         
         
         
@@ -105,6 +104,8 @@ class DeviceEditViewController: UIViewController {
                     if(!IsError){
                         
                         vc2.setText("Se agrego con éxito el dispositivo")
+                        //TODO: Volver al home
+                        self.sideMenuController?.performSegue(withIdentifier: "showCenterController1", sender: nil)
                     }else{
                         vc2.setText(String(format:"Ocurrió un error: %@", result))
             

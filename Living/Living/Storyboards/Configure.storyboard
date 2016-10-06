@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="AQe-BE-PGC">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="c4I-tM-TIs">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yCM-Yc-qAm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="ConfigureViewController" navigationBarHidden="YES" id="AQe-BE-PGC" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ySy-vG-nok">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="hIV-8g-UTk" kind="relationship" relationship="rootViewController" id="cwX-wF-Efi"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-566" y="184"/>
+        </scene>
+        <!--Register Router View Controller-->
+        <scene sceneID="K1i-sM-My5">
+            <objects>
+                <viewController id="hIV-8g-UTk" customClass="RegisterRouterViewController" customModule="Living" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hZE-9p-NOw"/>
+                        <viewControllerLayoutGuide type="bottom" id="BIy-Sk-sxn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9H0-Xj-DLT">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="domu_home.png" translatesAutoresizingMaskIntoConstraints="NO" id="act-FL-8fL"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite SSID del mode" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="L2a-Ye-8uA">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="yaF-Lg-Vl7"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Contraseña" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3e1-xu-QhI">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="Ytm-yR-K7A"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1O1-BW-1tA">
+                                <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="157" id="OnV-Zn-Tqf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Registrar"/>
+                                <connections>
+                                    <action selector="RegisterHub:" destination="hIV-8g-UTk" eventType="touchUpInside" id="5Fr-4w-oPP"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Configuración del hub" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tuw-Fn-Big">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="U7Q-nz-gDK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gD7-w1-4Xd">
+                                <string key="text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eu risus vitae odio lacinia congue. Nullam sit amet blandit dui. Cras non est congue, ornare ante ut, aliquam ligula. </string>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="659-Yu-d0g">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="63" id="5Xa-T3-xgA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
+                                <color key="tintColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Cancelar"/>
+                                <connections>
+                                    <action selector="CancelRegistration:" destination="hIV-8g-UTk" eventType="touchUpInside" id="H9g-W1-cYm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BIy-Sk-sxn" firstAttribute="top" secondItem="659-Yu-d0g" secondAttribute="bottom" constant="223" id="704-xh-fd7"/>
+                            <constraint firstItem="Tuw-Fn-Big" firstAttribute="leading" secondItem="L2a-Ye-8uA" secondAttribute="leading" id="759-7m-P0W"/>
+                            <constraint firstItem="1O1-BW-1tA" firstAttribute="baseline" secondItem="659-Yu-d0g" secondAttribute="firstBaseline" id="7mH-ot-tbv"/>
+                            <constraint firstItem="gD7-w1-4Xd" firstAttribute="leading" secondItem="9H0-Xj-DLT" secondAttribute="leadingMargin" constant="11" id="Ikg-tY-d1P"/>
+                            <constraint firstItem="Tuw-Fn-Big" firstAttribute="top" secondItem="hZE-9p-NOw" secondAttribute="bottom" constant="21" id="JUx-sr-kCl"/>
+                            <constraint firstItem="gD7-w1-4Xd" firstAttribute="trailing" secondItem="L2a-Ye-8uA" secondAttribute="trailing" id="JdH-TW-hyH"/>
+                            <constraint firstItem="3e1-xu-QhI" firstAttribute="trailing" secondItem="1O1-BW-1tA" secondAttribute="trailing" id="Kah-Eb-VtJ"/>
+                            <constraint firstItem="3e1-xu-QhI" firstAttribute="leading" secondItem="659-Yu-d0g" secondAttribute="leading" id="M2s-dd-Set"/>
+                            <constraint firstItem="Tuw-Fn-Big" firstAttribute="leading" secondItem="9H0-Xj-DLT" secondAttribute="leadingMargin" id="Nzu-ur-VPD"/>
+                            <constraint firstItem="act-FL-8fL" firstAttribute="top" secondItem="9H0-Xj-DLT" secondAttribute="top" id="TcM-M7-r85"/>
+                            <constraint firstItem="L2a-Ye-8uA" firstAttribute="top" secondItem="gD7-w1-4Xd" secondAttribute="bottom" constant="36" id="WaF-Hy-lAW"/>
+                            <constraint firstItem="Tuw-Fn-Big" firstAttribute="trailing" secondItem="gD7-w1-4Xd" secondAttribute="trailing" id="XJ5-Td-Z4W"/>
+                            <constraint firstItem="659-Yu-d0g" firstAttribute="baseline" secondItem="1O1-BW-1tA" secondAttribute="firstBaseline" id="a3Y-7e-VdC"/>
+                            <constraint firstItem="act-FL-8fL" firstAttribute="centerY" secondItem="9H0-Xj-DLT" secondAttribute="centerY" id="dJI-iG-eRP"/>
+                            <constraint firstItem="3e1-xu-QhI" firstAttribute="top" secondItem="L2a-Ye-8uA" secondAttribute="bottom" constant="8" symbolic="YES" id="dmA-gr-rKS"/>
+                            <constraint firstItem="1O1-BW-1tA" firstAttribute="leading" secondItem="659-Yu-d0g" secondAttribute="trailing" constant="8" symbolic="YES" id="g4b-uY-iGn"/>
+                            <constraint firstItem="659-Yu-d0g" firstAttribute="top" secondItem="3e1-xu-QhI" secondAttribute="bottom" constant="8" symbolic="YES" id="iOJ-JL-iLe"/>
+                            <constraint firstItem="L2a-Ye-8uA" firstAttribute="leading" secondItem="3e1-xu-QhI" secondAttribute="leading" id="j3m-VO-fxv"/>
+                            <constraint firstItem="act-FL-8fL" firstAttribute="centerX" secondItem="L2a-Ye-8uA" secondAttribute="centerX" id="klC-pJ-B5e"/>
+                            <constraint firstItem="act-FL-8fL" firstAttribute="leading" secondItem="9H0-Xj-DLT" secondAttribute="leading" id="ksf-KH-dyk"/>
+                            <constraint firstItem="659-Yu-d0g" firstAttribute="top" secondItem="1O1-BW-1tA" secondAttribute="top" id="loo-RN-bGV"/>
+                            <constraint firstItem="gD7-w1-4Xd" firstAttribute="top" secondItem="Tuw-Fn-Big" secondAttribute="bottom" constant="8" symbolic="YES" id="mHy-n3-1E2"/>
+                            <constraint firstItem="L2a-Ye-8uA" firstAttribute="trailing" secondItem="3e1-xu-QhI" secondAttribute="trailing" id="myt-Xf-aTx"/>
+                            <constraint firstAttribute="trailing" secondItem="act-FL-8fL" secondAttribute="trailing" id="yvO-yk-v7T"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jmn-R6-ngo"/>
+                    <connections>
+                        <outlet property="btn_cancelar" destination="659-Yu-d0g" id="uXH-kV-hlb"/>
+                        <outlet property="btn_register" destination="1O1-BW-1tA" id="Eua-Fm-W5z"/>
+                        <outlet property="txt_password" destination="3e1-xu-QhI" id="bOO-GM-cAG"/>
+                        <outlet property="txt_ssid" destination="L2a-Ye-8uA" id="qf4-Jt-xiC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="heb-bs-frH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="213.59999999999999" y="183.95802098950526"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="domu_home.png" width="640" height="1001"/>
+    </resources>
+</document>

@@ -34,6 +34,11 @@ class MyAccountViewController:UIViewController{
     }
     
     
+    @IBAction func ConfigureHub(_ sender: AnyObject) {
+    
+        self.performSegue(withIdentifier: "GoConfigure", sender: nil)
+    
+    }
     
     
     @IBAction func Logout(_ sender: AnyObject) {

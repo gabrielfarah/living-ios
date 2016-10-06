@@ -90,9 +90,9 @@ class NotificationViewController: UIViewController,DZNEmptyDataSetSource, DZNEmp
         let dateFormatter = DateFormatter()
         
         dateFormatter.dateFormat = "MMMM dd yyyy HH:mm"
-        let currentDate = NSDate()
+ 
         
-        let convertedDateString = dateFormatter.string(from: currentDate as Date)
+        let convertedDateString = dateFormatter.string(from: date as Date)
 
 
         cell.lbl_date_text.text = convertedDateString

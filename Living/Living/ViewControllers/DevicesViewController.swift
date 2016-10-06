@@ -12,7 +12,7 @@ import SideMenuController
 import DZNEmptyDataSet
 
 class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,
-DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
+DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
     
     
     
@@ -20,6 +20,8 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     var items = [String]()
     var rooms = Rooms()
     var selectedEndpoint = 0
+    
+
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -33,6 +35,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     @IBOutlet weak var empty_view: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_add_guest: UIButton!
+    
     
     
     override func viewDidLoad() {
@@ -63,7 +66,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.lbl_mensaje.text = "Error en la operación , por favor vuelva a intentarlo"
+        vc2.setText("Error en la operación , por favor vuelva a intentarlo")
     }
     func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
@@ -74,7 +77,8 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
         presenter3.transitionType = .crossDissolve // Optional
         let vc3 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter3, viewController: vc3, animated: true, completion: nil)
-        vc3.lbl_mensaje.text = "Se adicionó cuarto con éxito"
+
+        vc3.setText("Se adicionó cuarto con éxito")
        
     }
     override func didReceiveMemoryWarning() {
@@ -127,18 +131,21 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
-            // Delete the row from the data source
-            let token = ArSmartApi.sharedApi.getToken()
-            let hub = ArSmartApi.sharedApi.hub?.hid
-            ArSmartApi.sharedApi.hub?.endpoints.endpoints[indexPath.row].Delete(hub!, token: token, completion: { (IsError, result) in
-                if(!IsError){
-                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                    tableView.reloadData()
-                    
-                    
-                }else{
-                }
-            })
+            selectedEndpoint = indexPath.row
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+
+            
+            
+            presenter2.transitionType = .crossDissolve // Optional
+            let vc2 = DomuAlertViewController(nibName: "DomuAlertViewController", bundle: nil)
+            vc2.delegate = self
+            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+            vc2.setText(text: "Está seguro que desea eliminar este dispositivo?")
+            
+            
+
 
         }
     }
@@ -188,5 +195,48 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate{
         
         performSegue(withIdentifier: "ShowSceneAdd", sender: nil)
     }
+    
+    // DomuAlertViewDelegate Methods
+    func DomuAlert_Cancel() {
+        self.dismiss(animated: true) {
+            
+        }
+        
+    }
+    func DomuAlert_OK() {
+        
+        self.dismiss(animated: true) {
+            // Delete the row from the data source
+            let token = ArSmartApi.sharedApi.getToken()
+            let hub = ArSmartApi.sharedApi.hub?.hid
+            ArSmartApi.sharedApi.hub?.endpoints.endpoints[self.selectedEndpoint].Delete(hub!, token: token, completion: { (IsError, result) in
+                if(!IsError){
+                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                    self.tableView.reloadData()
+                    
+                    
+                }else{
+                    
+                    Timer.after(500.milliseconds){
+                        let width = ModalSize.custom(size: 240)
+                        let height = ModalSize.custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                        
+                        
+                        presenter2.transitionType = .crossDissolve // Optional
+                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                        vc2.setText(result)
+                    }
+
+                    
+                }
+            })
+        }
+
+        
+    }
+    
+    
     
 }

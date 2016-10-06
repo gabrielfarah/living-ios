@@ -68,7 +68,7 @@ class NewDeviceViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.lbl_menssage.text = "Buscando dispositivos ZWave , un momento por favor..."
+        vc.setText("Buscando dispositivos ZWave , un momento por favor...")
         
         ArSmartApi.sharedApi.device_manager.RequestAddZWaveToken(token, hub: hub!) {
             (IsError, result, devices) in
@@ -112,8 +112,7 @@ class NewDeviceViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.lbl_menssage.text = "Buscando dispositivos Wifi, un momento por favor..."
-        
+        vc.setText("Buscando dispositivos Wifi, un momento por favor...")
         
         
         ArSmartApi.sharedApi.device_manager.RequestAddWifiToken(token, hub: hub!) { (IsError, result, devices) in

@@ -36,6 +36,13 @@ class Endpoints{
     
     }
     
+    func inRoom(room:Room)->[Endpoint]{
+        
+        
+        return endpoints.filter { $0.room.description ==  room.description }
+        
+    }
+    
     func objectAtIndex(_ index:Int)->Endpoint{
     
         return endpoints[index]

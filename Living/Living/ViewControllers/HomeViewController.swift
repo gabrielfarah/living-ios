@@ -30,7 +30,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     @IBOutlet weak var endpoints_list: UICollectionView!
     @IBOutlet weak var view_new_endpoints: UIView!
     
-    
+    var room_name = ""
     
     /* Class Variables*/
     let reuseIdentifier = "collectionmainmenucell" // also enter this string as the cell identifier in the storyboard
@@ -49,6 +49,8 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     var navController:UINavigationController!
     var presenter2:Presentr?
     var scenes:Scenes = Scenes()
+    
+    var selectedRoom:Room = Room()
     
     fileprivate var layout : CSStickyHeaderFlowLayout? {
         return self.endpoints_list?.collectionViewLayout as? CSStickyHeaderFlowLayout
@@ -83,6 +85,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         self.endpoints_list?.register(CollectionParallaxHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "parallaxHeader")
         self.layout?.parallaxHeaderReferenceSize = CGSize(width: self.view.frame.size.width, height: 102)
 
+        
 
 
         
@@ -117,7 +120,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
             
             ArSmartApi.sharedApi.syncHub()
-            //ArSmartApi.sharedApi.syncHub()
+
             if ArSmartApi.sharedApi.hub!.hid == 0 {
                 
                 Timer.after(1.0.seconds) {
@@ -132,14 +135,6 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                     self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
 
                 }
-                                    // do something
-                    
-                    
-
-                    
-                    
-                    
-       
                 
             }else{
                 
@@ -211,7 +206,17 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         if(view_type == HomeViewControllerSectionType.endpoints){
-            return (ArSmartApi.sharedApi.hub?.endpoints.count())!
+            
+            if(selectedRoom.rid == 0){
+                  return (ArSmartApi.sharedApi.hub?.endpoints.count())!
+            }else{
+                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
+                return endpoints_temp!.count
+            }
+            
+      
+            
+            
         }else if(view_type == HomeViewControllerSectionType.rooms){
             return rooms.rooms.count
         }else{
@@ -220,7 +225,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
 
     }
-    
+
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -233,7 +238,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
             
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            let endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            
+            var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            if selectedRoom.rid != 0{
+                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
+                endpoint = (endpoints_temp?[indexPath.row])!
+            }
+            
+
             let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setStatus(endpoint)
             let endpoint_name = String(format:"%@ ",endpoint.name)
@@ -248,7 +260,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             let room = rooms.rooms[(indexPath as NSIndexPath).item]
             
             let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            cell.setGalleryItem(image, text: room.description)
+            cell.setGalleryItemNoStatus(image, text: room.description)
             return cell
         }else{
         
@@ -258,7 +270,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             let scene = scenes.scenes[(indexPath as NSIndexPath).item]
             
             let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            cell.setGalleryItem(image, text: scene.name)
+            cell.setGalleryItemNoStatus(image, text: scene.name)
             return cell
         }
     }
@@ -275,7 +287,15 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         selectedEndpointIndex = (indexPath as NSIndexPath).item
         if(view_type == HomeViewControllerSectionType.endpoints){
             
-            let endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            
+
+            if selectedRoom.rid != 0 {
+                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
+                endpoint = (endpoints_temp?[indexPath.row])!
+            }
+            
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
             if(endpoint.ui_class_command == "ui-binary-light-zwave"){
                 cell.setColor(UIColor.red)
@@ -290,8 +310,12 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         }else if(view_type == HomeViewControllerSectionType.rooms){
             
             let room = rooms.rooms[(indexPath as NSIndexPath).row]
-            
+            selectedRoom = room
             print("Room:",room.description)
+            //TODO: Filtrar por cuartos
+            self.room_name = room.description
+            RoomSelected()
+            
         }else{
 
             let cell = collectionView.cellForItem(at: indexPath) as! EndPointMenuCell
@@ -323,6 +347,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath) as! CollectionParallaxHeader
         
             view.imageView?.delegate = self
+        view.imageView?.lbl_room_name.text = self.room_name
             return view
 
         
@@ -501,11 +526,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
         
         }
-        
 
-
-
-    
     }
     
 
@@ -514,7 +535,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     func GetDevicesStatus(){
 
         
-        if(can_get_status){
+        if(can_get_status && view_type == HomeViewControllerSectionType.endpoints ){
 
             ArSmartApi.sharedApi.hub?.endpoints.GetStatusZWavesDevicesTask(hub!, token: token, completion: { (IsError, result) in
                 
@@ -542,7 +563,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         can_get_status = false
         rooms.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
             if(IsError){
-                
+                //TODO: Manejo de errores
                 
             }else{
                 self.view_type = HomeViewControllerSectionType.rooms
@@ -560,11 +581,23 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         print("Devices selected")
         view_type = HomeViewControllerSectionType.endpoints
         self.endpoints_list.reloadData()
+        selectedRoom = Room()
+        room_name = ""
+    }
+    func RoomSelected() {
+        can_get_status = true
+        GetDevicesStatus()
+        print("Devices selected")
+        view_type = HomeViewControllerSectionType.endpoints
+        self.endpoints_list.reloadData()
+        
+
+        
     }
     func MenuFavoriteSelected() {
         can_get_status = false
         print("Favorites selected")
-        
+         room_name = ""
         
         scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
             if(IsError){
