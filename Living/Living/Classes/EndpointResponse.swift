@@ -20,7 +20,7 @@ class EndpointResponse{
     var endpoint_type:String
     var ip_address:String
     var ui_class_command:String
-    
+    var node:Int
     
     init(){
     
@@ -32,8 +32,9 @@ class EndpointResponse{
         self.ip_address = ""
         self.ui_class_command = ""
         self.name = ""
+        self.node = 0
     }
-    init(uid:String,manufacturer_name:String, category:CategoryEndpoint, endpoint_classes:[String], port:String, endpoint_type:String, ip_address:String, ui_class_command:String,name:String){
+    init(uid:String,manufacturer_name:String, category:CategoryEndpoint, endpoint_classes:[String], port:String, endpoint_type:String, ip_address:String, ui_class_command:String,name:String,node:Int){
         
         self.uid = uid
         self.manufacturer_name = manufacturer_name
@@ -43,22 +44,16 @@ class EndpointResponse{
         self.ip_address = ip_address
         self.ui_class_command = ui_class_command
         self.name = name
+        self.node = node
     }
     
 
     
     func CreateEndpoint()->Endpoint{
     
-        let e_name = self.name
-        
-        
-        let active = 0
-        
 
+        let active = 0
         let category = self.category
-        
-        
-        
         let created_at  = Date()
         let endpoint_type = Endpoint.ConvertType(self.endpoint_type)
         let favorite = 0
@@ -68,7 +63,7 @@ class EndpointResponse{
         let lib_type = ""
         let manufacturer_name = self.manufacturer_name
         let name = self.name
-        let node = 0
+        let node = self.node
         let pid = ""
         let port = self.port
         let proto_ver = ""
@@ -82,6 +77,7 @@ class EndpointResponse{
         let updated_at = Date()
         let version = ""
         let wkup_intv = ""
+        
         
         let endpoint = Endpoint(active: active, category: category, created_at: created_at, endpoint_type: endpoint_type, favorite: favorite, id: id, image: image, ip_address: ip_address, lib_type: lib_type, manufacturer_name: manufacturer_name, name: name, node: node, pid: pid, port: port, proto_ver: proto_ver, room: room, sensor: sensor, sleep_cap: sleep_cap, state: state, ui_class_command: ui_class_command, uid: uid, updated_at: updated_at, version: version, wkup_intv: wkup_intv)
         

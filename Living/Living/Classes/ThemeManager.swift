@@ -99,10 +99,7 @@ open class ThemeManager{
         case .colorActivar:
             btn.backgroundColor = UIColor(self.ColorActivar)
             break
-            
-        default:
-            btn.backgroundColor = UIColor(self.MainColor)
-            break
+
         }
         
     

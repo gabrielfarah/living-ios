@@ -64,7 +64,7 @@ class HueColorViewController: UIViewController, SwiftHUEColorPickerDelegate {
         let image = UIImage(named: "hue_icon1.png")?.withRenderingMode(.alwaysTemplate)
         img_hue_light.setImage(image, for: UIControlState())
         let xycolor = hueLight!.xyToRgb()
-        let red = CGFloat(xycolor.0) / 255
+        _ = CGFloat(xycolor.0) / 255
         let color = UIColor(red: CGFloat(xycolor.0),green:CGFloat(xycolor.1),blue:CGFloat(xycolor.2),alpha:1)
         img_hue_light.tintColor = UIColor(red: CGFloat(xycolor.0),green:CGFloat(xycolor.1),blue:CGFloat(xycolor.2),alpha:1)
         
@@ -117,7 +117,7 @@ class HueColorViewController: UIViewController, SwiftHUEColorPickerDelegate {
         let hub = ArSmartApi.sharedApi.hub?.hid
         
 
-        let numComponents = self.color!.cgColor.numberOfComponents;
+        _ = self.color!.cgColor.numberOfComponents;
 
         let components = self.color!.cgColor.components;
         
@@ -144,8 +144,7 @@ class HueColorViewController: UIViewController, SwiftHUEColorPickerDelegate {
     }
 
     @IBAction func GoBack(_ sender: AnyObject) {
-        
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     @IBAction func TurnLight(_ sender: UISwitch) {
         
@@ -153,7 +152,7 @@ class HueColorViewController: UIViewController, SwiftHUEColorPickerDelegate {
         let hub = ArSmartApi.sharedApi.hub?.hid
         
         
-        let numComponents = self.color!.cgColor.numberOfComponents;
+        _ = self.color!.cgColor.numberOfComponents;
         
         let components = self.color!.cgColor.components;
         

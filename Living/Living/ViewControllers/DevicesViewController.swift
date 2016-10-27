@@ -12,7 +12,7 @@ import SideMenuController
 import DZNEmptyDataSet
 
 class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,
-DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
+DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate, DeviceCellControllerDelegate{
     
     
     
@@ -32,7 +32,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
     
     
     
-    @IBOutlet weak var empty_view: UIView!
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_add_guest: UIButton!
     
@@ -47,14 +47,19 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
         self.tableView.tableFooterView = UIView()
+        self.tableView.rowHeight = 60.0
+        
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
-        
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        
-        
         self.title = "Devices"
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddRoomError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddRoomSuccess"), object: nil)
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.isNavigationBarHidden = false
+        
         
     }
     func methodOfReceivedNotificationError(_ notification: Notification){
@@ -113,11 +118,13 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
+        let cell:DeviceCellController = tableView.dequeueReusableCell(withIdentifier: "CellDevice")! as! DeviceCellController
         
-
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = ArSmartApi.sharedApi.hub?.endpoints.endpoints[indexPath.row].name
+        cell.selectedEndpoint = indexPath.row
+        cell.lbl_name?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        cell.lbl_name?.text = ArSmartApi.sharedApi.hub?.endpoints.endpoints[indexPath.row].name
+        cell.lbl_type?.text = ArSmartApi.sharedApi.hub?.endpoints.endpoints[indexPath.row].getEndpointTypeString()
+        cell.delegate = self
         
         return cell
     }
@@ -128,7 +135,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
         
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    /*func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             
             selectedEndpoint = indexPath.row
@@ -148,7 +155,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
 
 
         }
-    }
+    }*/
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         if(segue.identifier == "EditEndpoint"){
             // Create a variable that you want to send
@@ -157,6 +164,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
             // Create a new variable to store the instance of PlayerTableViewController
             let destinationVC = segue.destination as! DeviceEditViewController
             destinationVC.endpoint = endpoint!
+            destinationVC.isNewEndpoint = false
         
         }
 
@@ -209,34 +217,72 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate{
             // Delete the row from the data source
             let token = ArSmartApi.sharedApi.getToken()
             let hub = ArSmartApi.sharedApi.hub?.hid
+            
+            
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+            
+            presenter.transitionType = .crossDissolve // Optional
+            presenter.dismissOnTap = false
+            let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
+            self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+            vc.setText("Eliminando, un momento por favor...".localized())
+            
+            
+            
             ArSmartApi.sharedApi.hub?.endpoints.endpoints[self.selectedEndpoint].Delete(hub!, token: token, completion: { (IsError, result) in
-                if(!IsError){
-                    //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                    self.tableView.reloadData()
-                    
-                    
-                }else{
-                    
-                    Timer.after(500.milliseconds){
-                        let width = ModalSize.custom(size: 240)
-                        let height = ModalSize.custom(size: 130)
-                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+              print("1"+result)
+                self.dismiss(animated: true, completion: {
+                    if(!IsError){
+                        //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        
+                        ArSmartApi.sharedApi.hubs.load(token, completion: { (IsError, result) in
+                            self.tableView.reloadData()
+                        })
                         
                         
-                        presenter2.transitionType = .crossDissolve // Optional
-                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                        vc2.setText(result)
+                        
+                        
+                    }else{
+                        
+                        Timer.after(500.milliseconds){
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                            
+                            
+                            presenter2.transitionType = .crossDissolve // Optional
+                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                            let message = (result == "0") ? "El dispositivo no fue eliminado." : result
+                            vc2.setText(message)
+                        }
+                        
+                        
                     }
 
-                    
-                }
+                })
+                
             })
         }
 
         
     }
     
-    
+    func TryDeleteDevice(selectedIndex:Int) {
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+        
+        self.selectedEndpoint = selectedIndex
+        
+        presenter2.transitionType = .crossDissolve // Optional
+        let vc2 = DomuAlertViewController(nibName: "DomuAlertViewController", bundle: nil)
+        vc2.delegate = self
+        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+        vc2.setText(text: "Está seguro que desea eliminar este dispositivo?")
+
+    }
     
 }

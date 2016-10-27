@@ -56,17 +56,13 @@ class Trigger{
 
             "mode_id":modeId as AnyObject,
             "notify":notify as AnyObject,
-            "primary_value":([255.0,255.0] as? AnyObject)!,
+            "primary_value":[255.0,255.0] as AnyObject,
             "days_of_the_week":days as AnyObject,
             "minute_of_day":[time,time_until] as AnyObject
 
             
         ]
-        
-        let array = JSON(json_parameters)
-        
-        
-        
+
         Alamofire.request(url_endpoint, method:.post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in

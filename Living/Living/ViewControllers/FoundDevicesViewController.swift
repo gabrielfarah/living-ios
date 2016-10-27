@@ -16,7 +16,7 @@ class FoundDevicesViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_back: UIView!
     
-    @IBOutlet weak var lbl_empty: UILabel!
+
     @IBOutlet weak var lbl_founded: UILabel!
     @IBOutlet weak var view_header: UIView!
     var endpoints:[EndpointResponse] = [EndpointResponse]()
@@ -32,11 +32,11 @@ class FoundDevicesViewController: UIViewController {
         if(self.endpoints.count>0){
         
             self.tableView.isHidden = false
-            self.lbl_empty.isHidden = true
+
             self.lbl_founded.isHidden = false
         }else{
             self.tableView.isHidden = true
-            self.lbl_empty.isHidden = false
+
             self.lbl_founded.isHidden = true
         }
     }
@@ -55,7 +55,7 @@ class FoundDevicesViewController: UIViewController {
     @IBAction func goBack(_ sender: AnyObject) {
         
         
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
         
     }
     
@@ -74,7 +74,28 @@ class FoundDevicesViewController: UIViewController {
     
     func tableView(_ tableView: UITableView, didSelectRowAtIndexPath indexPath: IndexPath) {
         selected_endpoint_index = (indexPath as NSIndexPath).row
-        self.performSegue(withIdentifier: "ShowAddNewDevice", sender: nil)
+        
+        // verificar si el endpoint ya existe
+        let endpoint = endpoints[(indexPath as NSIndexPath).row]
+        if (ArSmartApi.sharedApi.hub?.endpoints.hasEndpoint(endpoint_id: endpoint.node))!{
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+            
+            presenter.transitionType = .crossDissolve // Optional
+            presenter.dismissOnTap = true
+            let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+            customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+            vc.setText("Este dispositivo ya se encuentra registrado...")
+            return
+        
+        }else{
+            self.performSegue(withIdentifier: "ShowAddNewDevice", sender: nil)
+        }
+        
+        
+        
+        
         
         
     }

@@ -32,7 +32,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SideMenuController.preferences.drawing.sidePanelWidth = 300
         SideMenuController.preferences.drawing.centerPanelShadow = true
         SideMenuController.preferences.animating.statusBarBehaviour = .showUnderlay
-
+        SideMenuController.preferences.interaction.swipingEnabled = false
+        // Configure tracker from GoogleService-Info.plist.
+        var configureError:NSError?
+        GGLContext.sharedInstance().configureWithError(&configureError)
+        assert(configureError == nil, "Error configuring Google services: \(configureError)")
+        
+        // Optional: configure GAI options.
+        let gai = GAI.sharedInstance()
+        gai?.trackUncaughtExceptions = true  // report uncaught exceptions
+        gai?.logger.logLevel = GAILogLevel.verbose  // remove before app release
 
         
         OneSignal.initWithLaunchOptions(launchOptions, appId: oneSignalApiKey) { (result) in
@@ -48,8 +57,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 fullMessage =  fullMessage! + "\nPressed ButtonId:\(actionSelected)"
             }
             
-            let alertView = UIAlertView(title: messageTitle, message: fullMessage, delegate: nil, cancelButtonTitle: "Close")
-            alertView.show()
+            //let alertView = UIAlertView(title: messageTitle, message: fullMessage, delegate: nil, cancelButtonTitle: "Close")
+            let alertView = UIAlertController(title: "messageTitle", message: fullMessage, preferredStyle: UIAlertControllerStyle.alert)
+            self.window?.rootViewController?.present(alertView, animated: true, completion: nil)
         }
     
         //OneSignal.defaultClient().enableInAppAlertNotification(true)

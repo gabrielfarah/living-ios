@@ -140,7 +140,7 @@ class SensorViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDat
     
     @IBAction func CreateTrigger(_ sender: AnyObject) {
         
-        let days =  weeks_view.getDaysArray()
+        _ =  weeks_view.getDaysArray()
 
         
         let scene = scenes.scenes[0]

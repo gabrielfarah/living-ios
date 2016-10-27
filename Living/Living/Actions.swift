@@ -32,7 +32,7 @@ class Actions{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    let json = JSON(data: data)
                     
                     
                     //If json is .Dictionary

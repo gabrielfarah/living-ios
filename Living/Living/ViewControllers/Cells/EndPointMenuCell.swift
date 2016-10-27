@@ -31,6 +31,9 @@ class EndPointMenuCell: UICollectionViewCell {
         setStatus(endpoint)
         
     }
+    
+    
+    
     func setGalleryItemNoStatus(_ item:UIImage, text:String) {
         itemImageView.image = item
         itemLabel.text = text
@@ -43,9 +46,9 @@ class EndPointMenuCell: UICollectionViewCell {
         
         itemImageView.tintColor = UIColor.blue
 
-        var timer = Timer.every(500.ms) { (timer: Timer) in
+        _ = Timer.every(500.ms) { (timer: Timer) in
         
-            UIView.animate(withDuration: 3.0, animations: {
+            UIView.animate(withDuration:2.0, animations: {
                 self.itemImageView.tintColor =  UIColor.black
             })
             timer.invalidate()

@@ -15,6 +15,30 @@ class Endpoints{
 
     var endpoints = [Endpoint]()
     
+    struct JSONStringArrayEncoding: ParameterEncoding {
+        private let array: [[String: AnyObject]]
+        
+        init(array: [[String: AnyObject]]) {
+            self.array = array
+        }
+        
+        func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
+            var urlRequest1 = urlRequest.urlRequest
+            
+            let data = try JSONSerialization.data(withJSONObject: array, options: [])
+            
+            if urlRequest1?.value(forHTTPHeaderField: "Content-Type") == nil {
+                urlRequest1?.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                
+                
+            }
+            
+            urlRequest1?.httpBody = data
+            
+            return urlRequest1!
+        }
+    }
+    
     init(){
     }
     
@@ -47,6 +71,18 @@ class Endpoints{
     
         return endpoints[index]
     }
+    
+    func hasEndpoint(endpoint_id:Int)->Bool{
+        let e =  endpoints.filter { $0.node ==  endpoint_id }
+        
+        if e.count > 0{
+            return true
+        }else{
+            return false
+        }
+    }
+    
+    
     func setStateEndpoint(_ state:Int, node:Int){
         
         for endpoint:Endpoint in self.endpoints{
@@ -74,15 +110,9 @@ class Endpoints{
                     print("GetStatusZWavesDevicesTaskUrlResponse:"+result)
                     completion(IsError,result);
                 })
-                
-                
-                
-                
-                
-                
-                
+
             }else{
-            
+                print("Error")
             }
         }
     
@@ -107,12 +137,10 @@ class Endpoints{
         
         ]
 
-        let array = JSON([json_parameters])
-    
 
+        let encoding = JSONStringArrayEncoding(array: [json_parameters])
         
-        
-        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
+        Alamofire.request(endpoint,method:.post, parameters:[:], encoding: encoding,headers: headers)
                 .validate()
                 .responseJSON { response  in
                     switch response.result {
@@ -255,7 +283,7 @@ class Endpoints{
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = Timer.every(2.seconds) {
+                        _ = Timer.every(2.seconds) {
                             (timer: Timer) in
                             // do something
                             
@@ -270,12 +298,7 @@ class Endpoints{
                     }else if(status == "done"){
                         print("Done..")
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
-                        
-                        
-                        
-                        
-                        
+                        _ = JSON(data: data)
                         
                         completion(false,"", [])
                     }

@@ -48,9 +48,7 @@ class Hue{
             "parameters":[AnyObject]() as AnyObject,
             
         ]
-        
-        let array = JSON([json_parameters])
-        
+
         
         
         Alamofire.request(endpoint_url, method: .post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers )
@@ -107,7 +105,7 @@ class Hue{
                     
                     if(status == "processing"){
                         print("Processing..")
-                        var timer = Timer.every(2.seconds) {
+                        _ = Timer.every(2.seconds) {
                             (timer: Timer) in
                             // do something
                             
@@ -158,12 +156,8 @@ class Hue{
     
     func getAllLights(_ json:JSON){
     
-        for (index,subJson):(String, JSON) in json {
+        for (_,subJson):(String, JSON) in json {
             //Do something you want
-            
-
-                
-                print("test")
                 let light_id = subJson["light_id"].intValue
                 let name = subJson["name"].stringValue
                 let reachable = subJson["reachable"].boolValue
@@ -221,14 +215,14 @@ class Hue{
         
         //If json is .Array
         //The `index` is 0..<json.count's string value
-        for (index,subJson):(String, JSON) in json {
+        for (_,subJson):(String, JSON) in json {
             //Do something you want
             
-            var group = HueGroup()
+            let group = HueGroup()
             group.group_id = subJson["group_id"].intValue
             group.name = subJson["name"].stringValue
             
-            for (index,subJson2):(String, JSON) in subJson["lights"] {
+            for (_,subJson2):(String, JSON) in subJson["lights"] {
                 //Do something you want
                 
                 print("test")
@@ -322,11 +316,8 @@ class Hue{
             "parameters":[AnyObject]() as AnyObject
             
         ]
-        
-        let array = JSON([json_parameters])
-        
-        
-        
+
+    
         Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response  in

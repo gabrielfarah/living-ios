@@ -11,7 +11,9 @@ import Presentr
 import SideMenuController
 import DZNEmptyDataSet
 
-class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DeviceCellControllerDelegate, DomuAlertViewControllerDelegate {
+
+
     
     
     
@@ -19,6 +21,9 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     var items = [String]()
     var rooms = Rooms()
     var selected_room = Room()
+    var selected_room_index = 0
+    
+    
     var is_for_selection = false
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -39,8 +44,9 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         super.viewDidLoad()
         sideMenuController?.delegate = self
         // Do any additional setup after loading the view.
-        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
          self.tableView.addSubview(self.refreshControl)
+        self.tableView.rowHeight = 60.0
         load_rooms()
 
         self.tableView.tableFooterView = UIView()
@@ -149,11 +155,19 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell:UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "cell")! as UITableViewCell
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = self.rooms.rooms[(indexPath as NSIndexPath).row].description
+
+        
+        let cell:DeviceCellController = self.tableView.dequeueReusableCell(withIdentifier: "CellDevice")! as! DeviceCellController
+        
+        cell.selectedEndpoint = indexPath.row
+        cell.lbl_name?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        cell.lbl_name?.text = self.rooms.rooms[(indexPath as NSIndexPath).row].description
+        cell.lbl_type?.text = ""
+        cell.delegate = self
         
         return cell
+        
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -171,7 +185,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
             }
             selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
             NotificationCenter.default.post(name: Notification.Name(rawValue: "RoomSelected"), object: selected_room)
-            self.navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
             
             
         }else{
@@ -179,65 +193,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         }
         
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            let presenter: Presentr = {
-            let presenter = Presentr(presentationType: .alert)
-            presenter.transitionType = TransitionType.crossDissolve
-            return presenter
-            }()
-            
-            
 
-            let title = "Está seguro?"
-            let body = "No se puede deshacer esta acción"
-            
-            let controller = Presentr.alertViewController(title: title, body: body)
-
-            
-            let deleteAction = AlertAction(title: "Estoy seguro", style: .destructive) {
-                print("Deleted!")
-                // Delete the row from the data source
-                let token = ArSmartApi.sharedApi.getToken()
-                let hub = ArSmartApi.sharedApi.hub?.hid
-                
-                let room = self.rooms.rooms[(indexPath as NSIndexPath).row]
-                room.delete(token, hub: hub!, completion: { (IsError, result) in
-                    self.load_rooms()
-                    
-                    Timer.after(500.milliseconds) {
-                        let width = ModalSize.custom(size: 240)
-                        let height = ModalSize.custom(size: 80)
-                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                        presenter2.transitionType = .crossDissolve // Optional
-                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                        vc2.setText("El cuarto ha sido eliminado")
-                    }
-                    
-                    
-
-                })
-            }
-            
-            let okAction = AlertAction(title: "Cancelar", style: .cancel){
-                print("Ok!")
-            }
-            
-            controller.addAction(deleteAction)
-            controller.addAction(okAction)
-            
-            presenter.presentationType = .alert
-            customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
-            
-            
-
-            
-            
-            
-        }
-    }
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         
@@ -269,6 +225,56 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         
         
         self.AddGuest(self)
+    }
+    
+    func TryDeleteDevice(selectedIndex:Int) {
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+        
+        self.selected_room_index = selectedIndex
+        
+        presenter2.transitionType = .crossDissolve // Optional
+        let vc2 = DomuAlertViewController(nibName: "DomuAlertViewController", bundle: nil)
+        vc2.delegate = self
+        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+        vc2.setText(text: "Está seguro que desea eliminar este cuarto?")
+        
+    }
+    internal func DomuAlert_Cancel() {
+        self.dismiss(animated: true) {
+        }
+    }
+    func DomuAlert_OK() {
+        
+        self.dismiss(animated: true) {
+
+            
+            let token = ArSmartApi.sharedApi.getToken()
+            let hub = ArSmartApi.sharedApi.hub?.hid
+            
+            let room = self.rooms.rooms[self.selected_room_index]
+            room.delete(token, hub: hub!, completion: { (IsError, result) in
+                self.load_rooms()
+                
+                Timer.after(500.milliseconds) {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 80)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    vc2.setText("El cuarto ha sido eliminado")
+                }
+                
+                
+                
+            })
+            
+
+        }
+        
+        
     }
     
     

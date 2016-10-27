@@ -45,7 +45,7 @@ class MyAccountViewController:UIViewController{
         
         ArSmartApi.sharedApi.Logout()
         //TODO:return to login
-        self.parent?.navigationController?.popToRootViewController(animated: true)
+        _ = self.parent?.navigationController?.popToRootViewController(animated: true)
         
     }
     

@@ -286,6 +286,7 @@ class DeviceManager{
                             let uid = endpoint_response["uid"].stringValue
                             let manufacturer_name = endpoint_response["manufacturer_name"].stringValue
                             let port = endpoint_response["port"].intValue
+                            let node = endpoint_response["node"].intValue
                             let endpoint_type = endpoint_response["endpoint_type"].stringValue
                             let ip_address = endpoint_response["ip_address"].stringValue
                             let ui_class_command = endpoint_response["ui_class_command"].stringValue
@@ -296,6 +297,7 @@ class DeviceManager{
                             
                             let object = EndpointResponse()
                             object.uid = uid
+                            object.node = node
                             object.endpoint_type = endpoint_type
                             object.ui_class_command = ui_class_command
                             object.manufacturer_name = manufacturer_name

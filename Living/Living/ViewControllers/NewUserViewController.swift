@@ -59,7 +59,7 @@ class NewUserViewController: UIViewController {
         
         
         self.title = "Nueva Cuenta"
-        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .bordered, target: nil, action: nil)
+        let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         
         
@@ -219,8 +219,7 @@ class NewUserViewController: UIViewController {
     }
 
     @IBAction func goback(_ sender: AnyObject) {
-        
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
   

@@ -251,7 +251,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             let endpoint_name = String(format:"%@ ",endpoint.name)
             cell.setGalleryItem(image, text: endpoint_name)
 
-        
+            cell.itemImageView.layer.removeAllAnimations()
             return cell
         }else if(view_type == HomeViewControllerSectionType.rooms){
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
@@ -261,6 +261,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
             let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setGalleryItemNoStatus(image, text: room.description)
+            cell.itemImageView.layer.removeAllAnimations()
             return cell
         }else{
         
@@ -271,6 +272,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
             let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setGalleryItemNoStatus(image, text: scene.name)
+            cell.itemImageView.layer.removeAllAnimations()
             return cell
         }
     }
@@ -458,7 +460,9 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             case "ui-level-light-zwave":
                 let vc = LevelViewController(nibName: "LevelViewController", bundle: nil)
                 vc.endpoint = endpoint
+                
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                vc.slider_level.setValue(Float(endpoint.state), animated: false)
                 vc.lbl_name.text = endpoint.name
                 break
             case "ui-sensor-open-close-zwave":
@@ -475,6 +479,23 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
 
                 break
+            
+            case "ui-switch-multilevel-zwave":
+                //let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
+                //vc.endpoint = endpoint
+                //customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                
+                let vc = LevelViewController(nibName: "LevelViewController", bundle: nil)
+                vc.endpoint = endpoint
+                
+                customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                vc.lbl_name.text = endpoint.name
+                vc.slider_level.setValue(Float(endpoint.state), animated: false)
+                break
+                
+                
+
+            
             case "ui-sonos":
                 let height2 = ModalSize.custom(size: 195)
                 let presenter2 = Presentr(presentationType: .custom(width: width, height: height2, center:ModalCenterPosition.center))
@@ -493,35 +514,45 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 vc.endpoint = endpoint
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)*/
                 //self.performSegueWithIdentifier("ShowHueController", sender: nil)
-                
                 let endpoint = ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(selectedEndpointIndex)
                 ArSmartApi.sharedApi.SelectedEndpoint = endpoint
-                
                 sideMenuController?.performSegue(withIdentifier: "ShowHueView", sender: nil)
                 
                 
 
                 break
             case "ui-sensor-motion-zwave":
-                let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
-                 vc.endpoint = endpoint
 
+                let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
+                vc.endpoint = endpoint
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                break
+            
+            
+            case "ui-sensor-binary-zwave":
+            
+                let width = ModalSize.custom(size: 300)
+                let height = ModalSize.custom(size: 452)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                let vc = SensorViewController(nibName: "SensorViewController", bundle: nil)
+                vc.endpoint = endpoint
+                customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
                 break
 
             default:
-                let width = ModalSize.custom(size: 300)
-                let height = ModalSize.custom(size: 452)
-                let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                hub = ArSmartApi.sharedApi.hub?.hid
+                let value = ( endpoint.state > 0 ) ? 0 : 255;
+                endpoint.state = value
+                endpoints_list.reloadData()
+                endpoint.setValue(hub!, token: token, value: String(value)) { (IsError, result) in
+                    print("Change Value")
+                    if(IsError){
+                        print("Set Command Error")
+                    }else{
+                        print("Set Command Success")
+                    }
+                }
                 
-                presenter.transitionType = .crossDissolve // Optional
-                presenter.dismissOnTap = true
-                let vc = SensorViewController(nibName: "SensorViewController", bundle: nil)
-                //let vc = SensorLevelViewController(nibName: "SensorLevelViewController", bundle: nil)
-                 vc.endpoint = endpoint
-                
-                vc.delegate = self
-                customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
                 break
         
         

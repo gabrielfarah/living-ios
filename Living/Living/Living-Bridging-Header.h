@@ -6,3 +6,4 @@
 #import <OneSignal/OneSignal.h>
 #import <CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.h>
 #import <DZNEmptyDataSet/UIScrollView+EmptyDataSet.h>
+#import <Google/Analytics.h>

@@ -42,13 +42,13 @@ class Scenes{
 
                     
                     //If json is .Dictionary
-                    for (index,subJson):(String, JSON) in json {
+                    for (_,subJson):(String, JSON) in json {
                         //Do something you want
                         
                         let name = subJson["name"].stringValue
                         let sid = subJson["id"].intValue
                         
-                        var scene = Scene(name: name,id: sid)
+                        let scene = Scene(name: name,id: sid)
                         for item in subJson["payload"].arrayValue {
                         
 

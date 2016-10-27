@@ -29,7 +29,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     
     
     
-    @IBOutlet weak var empty_view: UIView!
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_add_guest: UIButton!
     

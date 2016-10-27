@@ -35,6 +35,7 @@ class SonosViewController: UIViewController {
         slider_volume.maximumValue = MAX_VALUE
         
         slider_volume.isContinuous = false
+        load_play_list()
         
     }
 
@@ -65,6 +66,26 @@ class SonosViewController: UIViewController {
 
         //image = theImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)
         //theImageView.tintColor = UIColor.redColor()
+    }
+    
+    func load_play_list(){
+    
+        //TODO: Cargar la listal sonos
+        endpoint.GetPlayListSonos { (IsError, result) in
+            if(IsError){
+            
+            }else{
+                self.lbl_playlist.text = result
+            }
+        }
+        endpoint.GetInfoSonos{ (IsError, result) in
+            if(IsError){
+                
+            }else{
+                //self.lbl_playlist.text = result
+            }
+        }
+    
     }
 
     /*

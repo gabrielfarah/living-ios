@@ -11,7 +11,7 @@ import Presentr
 import SideMenuController
 import DZNEmptyDataSet
 
-class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
+class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DeviceCellControllerDelegate, DomuAlertViewControllerDelegate{
     
     
     
@@ -25,8 +25,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         
         return refreshControl
     }()
-    
-    @IBOutlet weak var empty_view: UIView!
+
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var btn_add_guest: UIButton!
     
@@ -39,6 +38,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         self.tableView.addSubview(self.refreshControl)
         self.tableView.emptyDataSetSource = self
         self.tableView.emptyDataSetDelegate = self
+        self.tableView.rowHeight = 60
         
 
         self.tableView.tableFooterView = UIView()
@@ -118,14 +118,18 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         //let cell:UITableViewCell = tableView.dequeueReusableCellWithIdentifier("cell")! as UITableViewCell
         
 
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
+
         
+        let cell:DeviceCellController = tableView.dequeueReusableCell(withIdentifier: "CellDevice")! as! DeviceCellController
         
-        
-        cell.textLabel?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
-        cell.textLabel?.text = self.scenes.scenes[(indexPath as NSIndexPath).row].name
+        cell.selectedEndpoint = indexPath.row
+        cell.lbl_name?.font = UIFont(name: "HelveticaNeue-Light", size: 15)
+        cell.lbl_name?.text = self.scenes.scenes[(indexPath as NSIndexPath).row].name
+        cell.lbl_type?.text = ""
+        cell.delegate = self
         
         return cell
+        
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -133,80 +137,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         performSegue(withIdentifier: "ShowSceneEdit", sender: nil)
         
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            
-            let presenter: Presentr = {
-                let presenter = Presentr(presentationType: .alert)
-                presenter.transitionType = TransitionType.crossDissolve
-                return presenter
-            }()
-            
-            
-            
-            let title = "Está seguro?"
-            let body = "No se puede deshacer esta acción"
-            
-            let controller = Presentr.alertViewController(title: title, body: body)
-            
-            
-            let deleteAction = AlertAction(title: "Estoy seguro", style: .destructive) {
-                print("Deleted!")
-                // Delete the row from the data source
-                let token = ArSmartApi.sharedApi.getToken()
-                let hub = ArSmartApi.sharedApi.hub?.hid
-                
-                let scene = self.scenes.scenes[(indexPath as NSIndexPath).row]
-                scene.delete(token, hub: hub!, completion: { (IsError, result) in
-                    
-                    if(!IsError){
-                        self.loadScenes()
-                        
-                        Timer.after(500.milliseconds) {
-                            let width = ModalSize.custom(size: 240)
-                            let height = ModalSize.custom(size: 130)
-                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                            presenter2.transitionType = .crossDissolve // Optional
-                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                            vc2.setText("La escena ha sido eliminada")
-                        }
-                    }else{
-                        
-                        Timer.after(500.milliseconds) {
-                            let width = ModalSize.custom(size: 240)
-                            let height = ModalSize.custom(size: 130)
-                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                            presenter2.transitionType = .crossDissolve // Optional
-                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                            vc2.setText("Ocurrió un error el usuario no ha sido borrado")
-                        }
-                    }
-                    
-                    
-                    
-                    
-                })
-            }
-            
-            let okAction = AlertAction(title: "Cancelar", style: .cancel){
-                print("Ok!")
-            }
-            
-            controller.addAction(deleteAction)
-            controller.addAction(okAction)
-            
-            presenter.presentationType = .alert
-            customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
-            
-            
-            
-            
-            
-            
-        }
-    }
+
 
     
     func loadScenes(){
@@ -276,6 +207,66 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         
         performSegue(withIdentifier: "ShowSceneAdd", sender: nil)
     }
-    
+    func TryDeleteDevice(selectedIndex:Int) {
+        let width = ModalSize.custom(size: 240)
+        let height = ModalSize.custom(size: 130)
+        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+        
+        self.selectedScene = selectedIndex
+        
+        presenter2.transitionType = .crossDissolve // Optional
+        let vc2 = DomuAlertViewController(nibName: "DomuAlertViewController", bundle: nil)
+        vc2.delegate = self
+        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+        vc2.setText(text: "Está seguro que desea eliminar esta escena?")
+        
+    }
+    internal func DomuAlert_Cancel() {
+        self.dismiss(animated: true) {
+        }
+    }
+    func DomuAlert_OK() {
+        
+        self.dismiss(animated: true) {
+        
+        let token = ArSmartApi.sharedApi.getToken()
+        let hub = ArSmartApi.sharedApi.hub?.hid
+        
+        let scene = self.scenes.scenes[self.selectedScene]
+        scene.delete(token, hub: hub!, completion: { (IsError, result) in
+            
+            if(!IsError){
+                self.loadScenes()
+                
+                Timer.after(500.milliseconds) {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 130)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    vc2.setText("La escena ha sido eliminada")
+                }
+            }else{
+                
+                Timer.after(500.milliseconds) {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 130)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    vc2.setText(result)
+                }
+            }
+            
+            
+            
+            
+        })
+        }
+
+        
+    }
     
 }

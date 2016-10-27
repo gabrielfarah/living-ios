@@ -18,6 +18,7 @@ class Payload{
     var ip:String
     var function_name:String
     var parameters:[String] = [String]()
+    var rgb:(Double,Double,Double)
     
 /*
     "parameters" : {
@@ -40,7 +41,7 @@ class Payload{
         self.ip = ""
         self.function_name = ""
         self.parameters = []
-        
+        self.rgb = (0,0,0)
         
     }
     init(type:String,node:Int,value:Int,target:String,endpoint_id:Int,ip:String,function_name:String,parameters:[String]){
@@ -53,8 +54,21 @@ class Payload{
         self.ip = ip
         self.function_name = function_name
         self.parameters = parameters
-        
+        self.rgb = (0,0,0)
     
+    }
+    init(type:String,node:Int,value:Int,target:String,endpoint_id:Int,ip:String,function_name:String,parameters:[String],rgb:(Double,Double,Double)){
+        
+        self.type = type
+        self.node = node
+        self.value = value
+        self.target = target
+        self.endpoint_id = endpoint_id
+        self.ip = ip
+        self.function_name = function_name
+        self.parameters = parameters
+        self.rgb = rgb
+        
     }
     
     func getDictionary()->[String:AnyObject]{
@@ -102,13 +116,23 @@ class Payload{
             ] as [String : Any]
             return payload as [String : AnyObject]
         }
-        
-        
 
+    }
+    
+    func getDictionaryIfIsHue()->[String:AnyObject]{
         
+        //turn_on_all_lights
+        //let json_parameters2 = ["type":"wifi","target":"hue","ip":ip,"function":"turn_on_all_lights","parameters":[]] as [String : Any]
+            let payload = [
+                "parameters" :[],
+                "type" : self.type,
+                "target" : "hue",
+                "endpoint_id" : self.endpoint_id,
+                "ip" : self.ip,
+                "function" : self.function_name
+                ] as [String : Any]
+            return payload as [String : AnyObject]
         
         
     }
-    
-
 }

@@ -51,7 +51,7 @@ class Events{
     
         for item in self.json_events{
         
-            let json = JSON(item)
+            _ = JSON(item)
            // var event = Event(json.)
         
         }

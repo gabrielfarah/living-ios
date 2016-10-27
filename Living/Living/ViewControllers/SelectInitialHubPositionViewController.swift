@@ -24,7 +24,7 @@ class SelectInitialHubPositionViewController:UIViewController, GMSMapViewDelegat
 
     @IBOutlet weak var mapView: GMSMapView!
     
-    func mapView(_ mapView: GMSMapView!, didTapAt coordinate: CLLocationCoordinate2D) {
+    func mapView(_ mapView: GMSMapView, didTapAt coordinate: CLLocationCoordinate2D) {
         mapView.clear()
         
         print("You tapped at \(coordinate.latitude), \(coordinate.longitude)")

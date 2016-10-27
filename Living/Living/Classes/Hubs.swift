@@ -73,20 +73,14 @@ class Hubs{
 
                                 for item in subJson["endpoints"].arrayValue {
                                     
-                                    let e_name = item["name"].stringValue
+                                    _ = item["name"].stringValue
                                     
                                     
                                     let active = item["active"].intValue
-  
-                                    
                                     let cat_id = item["category"]["id"].intValue
                                     let cat_desc = item["category"]["description"].stringValue
                                     let cat_code = item["category"]["code"].intValue
-                                    
                                     let category = CategoryEndpoint(id: cat_id,description: cat_desc,code: cat_code)
-                                    
-                                    
-                                    
                                     let created_at  = ArSmartUtils.ParseDate(item["created_at"].stringValue)
                                     let endpoint_type = Endpoint.ConvertType(item["endpoint_type"].stringValue)
                                     let favorite = item["favorite"].intValue

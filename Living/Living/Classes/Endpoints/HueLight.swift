@@ -151,7 +151,7 @@ class HueLight{
         let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.CommandsSet), hub)
         
 
-        var rgb_corrected = HueLight.rgbColorCorrection(rgb)
+        //var rgb_corrected = HueLight.rgbColorCorrection(rgb)
         
         //[{"type":"wifi","target":"hue","ip":"<IP_DISPOSITIVO>","function":"set_color_to_light_by_id","parameters":["r":100,"g":100,"b":100]}]
         
@@ -173,10 +173,7 @@ class HueLight{
             
             
         ]
-        let json_parameters2 = ["type":"wifi","target":"hue","ip":ip,"function":"turn_on_all_lights","parameters":[]] as [String : Any]
-        let array = JSON([json_parameters])
-        
-        
+
         
         Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
             .validate()

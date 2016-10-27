@@ -16,14 +16,9 @@ class CollectionParallaxHeader: UICollectionReusableView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
-        
         self.clipsToBounds = true
-        
-        let bounds = CGRect(x: 0, y: 0, width: frame.maxX, height: frame.maxY)
-        
-        
+        _ = CGRect(x: 0, y: 0, width: frame.maxX, height: frame.maxY)
         imageView = MainMenuHeaderView()
-
         self.addSubview(imageView!.view)
     }
     

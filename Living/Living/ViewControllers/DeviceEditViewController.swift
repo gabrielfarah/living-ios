@@ -22,12 +22,10 @@ class DeviceEditViewController: UIViewController {
     @IBOutlet weak var btn_rooms: UIView!
     @IBOutlet weak var view_border_image: UIView!
     @IBOutlet weak var switch_favorite: UISwitch!
-    
     @IBOutlet weak var img_icon: UIImageView!
     
     
     var isNewEndpoint:Bool = true
-    
     var endpoint = Endpoint()
 
     
@@ -65,11 +63,23 @@ class DeviceEditViewController: UIViewController {
 
     @IBAction func save(_ sender: AnyObject) {
         
+        let name:String = txt_name.text!
+        
+        if name == "" {
+            let width = ModalSize.custom(size: 240)
+            let height = ModalSize.custom(size: 130)
+            let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+            
+            presenter.transitionType = .crossDissolve // Optional
+            presenter.dismissOnTap = true
+            let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+            customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+            vc.setText("El nombre del dispositivo no puede estar vacio.")
+            return
+        }
         
         
-        let is_favorite:Bool = switch_favorite.isOn
-        
-        endpoint.favorite = (is_favorite) ? 1 : 0
+        endpoint.favorite = 0
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
@@ -85,6 +95,8 @@ class DeviceEditViewController: UIViewController {
         vc.setText("Guardando dispositivo en el hub, un momento por favor...")
         
         
+        
+        endpoint.name = name
         
         if(isNewEndpoint){
             endpoint.Create(hub!, token: token, completion: { (IsError, result) in
@@ -119,12 +131,28 @@ class DeviceEditViewController: UIViewController {
 
         }else{
             endpoint.Update(hub!, token: token, completion: { (IsError, result) in
-                if(IsError){
                 
-                }else{
-                
-                
-                }
+                self.dismiss(animated: true, completion: {
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 130)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    
+                    
+                    
+                    if(!IsError){
+                        
+                        vc2.setText("Se editó con éxito el dispositivo")
+                    }else{
+                        vc2.setText(String(format:"Ocurrió un error: %@", result))
+                        
+                    }
+                    
+                    
+                })
             })
         }
 
@@ -160,7 +188,7 @@ class DeviceEditViewController: UIViewController {
         img_icon.tintColor = ThemeManager.init().GetUIColor("#2CC2BE")
         
         //var selected_room = notification.object as! Room
-        self.endpoint.image = image
+        self.endpoint.image = Endpoint.NameImages(name: image) 
         
         
     }

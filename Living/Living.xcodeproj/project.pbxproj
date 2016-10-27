@@ -55,6 +55,8 @@
 		BB0DACC71D778EA300A472B2 /* HueEndpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACC61D778EA300A472B2 /* HueEndpointCell.xib */; };
 		BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */; };
 		BB0DACCE1D77E26800A472B2 /* HueEndpointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */; };
+		BB32D7471DC14E9200EA41FB /* play_32.png in Resources */ = {isa = PBXBuildFile; fileRef = BB32D7461DC14E9200EA41FB /* play_32.png */; };
+		BB32D7491DC17CF100EA41FB /* SonosInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32D7481DC17CF100EA41FB /* SonosInfo.swift */; };
 		BB3DD89F1D2DA51C0020B11D /* RecoverPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3DD89E1D2DA51C0020B11D /* RecoverPassword.swift */; };
 		BB3DD8A11D2DDA770020B11D /* domu_home.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8A01D2DDA770020B11D /* domu_home.png */; };
 		BB3DD8A31D2DDBB10020B11D /* conectar_btn_512.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8A21D2DDBB10020B11D /* conectar_btn_512.png */; };
@@ -102,7 +104,9 @@
 		BB63BEAD1D3CB91800481CC0 /* AddGuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB63BEAC1D3CB91800481CC0 /* AddGuestViewController.xib */; };
 		BB64C0501D3EC18E00B5EB12 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB64C04F1D3EC18E00B5EB12 /* Device.swift */; };
 		BB64C0521D3EC3B200B5EB12 /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB64C0511D3EC3B200B5EB12 /* DeviceManager.swift */; };
-		BB794A781D3D78C2008EBBF3 /* Devices.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB794A771D3D78C2008EBBF3 /* Devices.storyboard */; };
+		BB6A2A1A1DBA84AB0032A51A /* Trash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6A2A191DBA84AB0032A51A /* Trash.png */; };
+		BB6A2A1C1DBA85090032A51A /* DeviceCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6A2A1B1DBA85090032A51A /* DeviceCellController.swift */; };
+		BB6A2A1E1DBA90B10032A51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB6A2A1D1DBA90B10032A51A /* GoogleService-Info.plist */; };
 		BB794A7A1D3D78EC008EBBF3 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */; };
 		BB794A7D1D3D886F008EBBF3 /* SelectDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB794A7B1D3D886F008EBBF3 /* SelectDeviceViewController.swift */; };
 		BB794A7E1D3D886F008EBBF3 /* SelectDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB794A7C1D3D886F008EBBF3 /* SelectDeviceViewController.xib */; };
@@ -313,6 +317,8 @@
 		BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VKExpandableButton.swift; path = Libraries/VKExpandableButton.swift; sourceTree = "<group>"; };
 		BB0DACCB1D77DFF100A472B2 /* rgb_circle_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rgb_circle_1.png; sourceTree = "<group>"; };
 		BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueEndpointCell.swift; path = ViewControllers/Cells/HueEndpointCell.swift; sourceTree = "<group>"; };
+		BB32D7461DC14E9200EA41FB /* play_32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play_32.png; sourceTree = "<group>"; };
+		BB32D7481DC17CF100EA41FB /* SonosInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SonosInfo.swift; path = Classes/SonosInfo.swift; sourceTree = "<group>"; };
 		BB3DD89E1D2DA51C0020B11D /* RecoverPassword.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecoverPassword.swift; path = ViewControllers/RecoverPassword.swift; sourceTree = "<group>"; };
 		BB3DD8A01D2DDA770020B11D /* domu_home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = domu_home.png; sourceTree = "<group>"; };
 		BB3DD8A21D2DDBB10020B11D /* conectar_btn_512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = conectar_btn_512.png; sourceTree = "<group>"; };
@@ -359,7 +365,9 @@
 		BB63BEAC1D3CB91800481CC0 /* AddGuestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddGuestViewController.xib; path = ViewControllers/Modals/AddGuestViewController.xib; sourceTree = "<group>"; };
 		BB64C04F1D3EC18E00B5EB12 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Classes/Device.swift; sourceTree = "<group>"; };
 		BB64C0511D3EC3B200B5EB12 /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceManager.swift; path = Classes/DeviceManager.swift; sourceTree = "<group>"; };
-		BB794A771D3D78C2008EBBF3 /* Devices.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Devices.storyboard; path = Storyboards/Devices.storyboard; sourceTree = "<group>"; };
+		BB6A2A191DBA84AB0032A51A /* Trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trash.png; sourceTree = "<group>"; };
+		BB6A2A1B1DBA85090032A51A /* DeviceCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceCellController.swift; path = ViewControllers/Cells/DeviceCellController.swift; sourceTree = "<group>"; };
+		BB6A2A1D1DBA90B10032A51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Rooms.storyboard; path = Storyboards/Rooms.storyboard; sourceTree = "<group>"; };
 		BB794A7B1D3D886F008EBBF3 /* SelectDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectDeviceViewController.swift; path = ViewControllers/Modals/SelectDeviceViewController.swift; sourceTree = "<group>"; };
 		BB794A7C1D3D886F008EBBF3 /* SelectDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectDeviceViewController.xib; path = ViewControllers/Modals/SelectDeviceViewController.xib; sourceTree = "<group>"; };
@@ -606,6 +614,7 @@
 				BB0DACCD1D77E26800A472B2 /* HueEndpointCell.swift */,
 				BBFC28511D8B18DF005E4D2F /* SceneHueEndpointCell.swift */,
 				BBDEE59F1D9F236C00761415 /* SectionHeaderCollectionReusableView.swift */,
+				BB6A2A1B1DBA85090032A51A /* DeviceCellController.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -647,7 +656,6 @@
 				BB63BEA71D3CB62600481CC0 /* Guests.storyboard */,
 				BB3DD8BC1D31DDF80020B11D /* MyAccount.storyboard */,
 				BB63BE8D1D3AD56900481CC0 /* Notifications.storyboard */,
-				BB794A771D3D78C2008EBBF3 /* Devices.storyboard */,
 				BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */,
 				BBCC66491D4A7344004D35A6 /* Device.storyboard */,
 				BB099A731D667C38009960C4 /* Scenes.storyboard */,
@@ -704,6 +712,7 @@
 		BBA09B7E1D1A01220074765E /* Living */ = {
 			isa = PBXGroup;
 			children = (
+				BB6A2A1D1DBA90B10032A51A /* GoogleService-Info.plist */,
 				BBDEE5A11DA2D6E900761415 /* Living.entitlements */,
 				BB0DACC81D77A0A800A472B2 /* Libraries */,
 				BB3DD8BB1D31DDCB0020B11D /* Storyboards */,
@@ -755,6 +764,7 @@
 				BB099A7E1D6CB48E009960C4 /* Payload.swift */,
 				BB099A961D710760009960C4 /* Trigger.swift */,
 				BB099A981D710CC9009960C4 /* Triggers.swift */,
+				BB32D7481DC17CF100EA41FB /* SonosInfo.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -762,6 +772,8 @@
 		BBA09B9F1D1C75740074765E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BB32D7461DC14E9200EA41FB /* play_32.png */,
+				BB6A2A191DBA84AB0032A51A /* Trash.png */,
 				BBFC28631D906C40005E4D2F /* Search.png */,
 				BBFC28641D906C40005E4D2F /* User.png */,
 				BBFC28651D906C40005E4D2F /* Home.png */,
@@ -1046,6 +1058,7 @@
 				BBCC66211D491CBB004D35A6 /* music_icon.png in Resources */,
 				BB3DD8AF1D2F1CE70020B11D /* nuevo(home)_btn.png in Resources */,
 				BBCC66471D496C96004D35A6 /* hue_icon2.png in Resources */,
+				BB32D7471DC14E9200EA41FB /* play_32.png in Resources */,
 				BBAFED431D2ADA2500005212 /* Icon@2x.png in Resources */,
 				BBA66D981D5BCA07008971A2 /* LevelTableViewCell.xib in Resources */,
 				BBCC660A1D491CBB004D35A6 /* default_icon.png in Resources */,
@@ -1070,6 +1083,7 @@
 				BB0DAC981D74ADEF00A472B2 /* EndPointMenuCell.xib in Resources */,
 				BB03C6E71D2073F80023256F /* connect-station.png in Resources */,
 				BBCC66121D491CBB004D35A6 /* lamp_3_icon.png in Resources */,
+				BB6A2A1E1DBA90B10032A51A /* GoogleService-Info.plist in Resources */,
 				BBCC66401D4964A3004D35A6 /* shades_icon.png in Resources */,
 				BBCC66461D496C96004D35A6 /* hue_icon1.png in Resources */,
 				BBCC66161D491CBB004D35A6 /* light_4_icon.png in Resources */,
@@ -1122,7 +1136,6 @@
 				BBAFED3E1D2ADA2500005212 /* Icon-72.png in Resources */,
 				BBCC66381D491CBB004D35A6 /* water_icon.png in Resources */,
 				BB0D27C21D831D4300ADBD2E /* cerrar_btn_domu.png in Resources */,
-				BB794A781D3D78C2008EBBF3 /* Devices.storyboard in Resources */,
 				BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */,
 				BBCC66271D491CBB004D35A6 /* play_icon.png in Resources */,
 				BBCC662C1D491CBB004D35A6 /* repeat_icon.png in Resources */,
@@ -1169,6 +1182,7 @@
 				BB099A8B1D6CD1CF009960C4 /* SceneEndpointCell.xib in Resources */,
 				BBCC66261D491CBB004D35A6 /* pause_icon.png in Resources */,
 				BBFC286A1D906C40005E4D2F /* Menu.png in Resources */,
+				BB6A2A1A1DBA84AB0032A51A /* Trash.png in Resources */,
 				BBAFED441D2ADA2500005212 /* Icon-60@2x.png in Resources */,
 				BBCC66351D491CBB004D35A6 /* tv_icon.png in Resources */,
 				BBCC66131D491CBB004D35A6 /* lamp_icon.png in Resources */,
@@ -1300,9 +1314,11 @@
 				BB63BE981D3C2F2A00481CC0 /* Guest.swift in Sources */,
 				BBA66D891D5B831D008971A2 /* SensorEndpoint.swift in Sources */,
 				BB3DD8B61D2F2E470020B11D /* NewDeviceViewController.swift in Sources */,
+				BB32D7491DC17CF100EA41FB /* SonosInfo.swift in Sources */,
 				BB099A851D6CCF47009960C4 /* SceneEditViewController.swift in Sources */,
 				BBA09B9E1D1C6CF30074765E /* ThemeManager.swift in Sources */,
 				BB794A851D3E555E008EBBF3 /* RoomsViewController.swift in Sources */,
+				BB6A2A1C1DBA85090032A51A /* DeviceCellController.swift in Sources */,
 				BBA66D851D5B81C3008971A2 /* BinaryEndpoint.swift in Sources */,
 				BB794A831D3E4C7B008EBBF3 /* Actions.swift in Sources */,
 				BB099A7F1D6CB48E009960C4 /* Payload.swift in Sources */,
@@ -1451,6 +1467,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Living/Living.entitlements;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Alamofire\"",
@@ -1543,6 +1560,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Living/Living.entitlements;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Living/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

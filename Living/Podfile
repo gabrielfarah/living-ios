@@ -11,11 +11,11 @@ target 'Living' do
   pod 'SwiftyJSON'
   pod 'SwiftyUserDefaults'
   pod 'UIColor_Hex_Swift'
-  pod 'Presentr', :git => 'https://github.com/IcaliaLabs/Presentr.git', :branch => 'swift3_gm'
+  pod 'Presentr'
 
   pod 'IQKeyboardManagerSwift'
   pod 'Navajo-Swift'
- 
+  pod 'Google/Analytics' 
   pod 'GoogleMaps'
   pod 'CollectionViewWaterfallLayout', :git => 'https://github.com/ostatnicky/CollectionViewWaterfallLayout.git', :branch => 'feature/swift3'
   

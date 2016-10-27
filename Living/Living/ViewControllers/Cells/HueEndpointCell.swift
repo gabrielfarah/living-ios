@@ -48,12 +48,7 @@ class HueEndpointCell: UITableViewCell {
         btn_hue.setImage(image, for: UIControlState())
         
         let xycolor = light.xyToRgb()
-        
-        
-        let red = CGFloat(xycolor.0) / 255
-        
         btn_hue.tintColor = UIColor(red: CGFloat(xycolor.0),green:CGFloat(xycolor.1),blue:CGFloat(xycolor.2),alpha:1)
-    
         self.light = light
         
     }

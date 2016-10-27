@@ -146,10 +146,7 @@ class NewDeviceViewController: UIViewController {
         
     }
     @IBAction func goBack(_ sender: AnyObject) {
-        
-        self.navigationController?.popViewController(animated: true)
-        
-        
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     

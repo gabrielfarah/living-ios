@@ -120,7 +120,7 @@ UINavigationControllerDelegate  {
         //TODO: Enviar imagen a la vista anterior
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: mySpecialNotificationKey), object: self.images[index])
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
 
     }
     

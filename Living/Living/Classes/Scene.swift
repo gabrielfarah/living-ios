@@ -91,8 +91,7 @@ class Scene{
             
         ]
         
-        let array = JSON(json_parameters)
-        
+ 
         
         
         Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding:JSONEncoding.default,headers: headers)
@@ -144,7 +143,7 @@ class Scene{
             
         ]
         
-        let array = JSON(json_parameters)
+
         
         
         
@@ -188,7 +187,9 @@ class Scene{
         for command:Payload in payload{
             
             if(command.target == "sonos"){
-                        payload_array.append(command.getDictionary())
+                payload_array.append(command.getDictionary())
+            }else if(command.target == "hue"){
+                payload_array.append(command.getDictionaryIfIsHue())
             }else{
                         payload_array.append(command.getDictionary())
             }
@@ -196,9 +197,6 @@ class Scene{
 
         }
         
-
-        
-        let array = JSON(payload_array)
         
         let encoding = JSONStringArrayEncoding(array: payload_array)
         
@@ -253,7 +251,7 @@ class Scene{
                 case .failure:
                     let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
-                    let response_string = (json["ERROR"]).rawString()
+                    let response_string = (json["detail"]).rawString()
                     completion(true, response_string!)
                     
                     

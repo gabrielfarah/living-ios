@@ -31,6 +31,8 @@ class LevelViewController: UIViewController {
         
         slider_level.isContinuous = false
         
+        
+        
         // Do any additional setup after loading the view.
     }
 
