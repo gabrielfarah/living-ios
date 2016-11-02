@@ -175,7 +175,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
             .responseJSON { response in
                 switch response.result {
                     
-                case .success:
+                default:
                     self.dismiss(animated: true, completion: {
                         let width = ModalSize.custom(size: 240)
                         let height = ModalSize.custom(size: 130)
@@ -184,25 +184,12 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
                         presenter2.transitionType = .crossDissolve // Optional
                         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-
-                        vc2.setText("Se configuró con éxito...")
+                        
+                        vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone")
                     })
                     print("success")
                     
-                    
-                    
-                case .failure(let error):
-                    self.dismiss(animated: true, completion: {
-                        
-                        // No necesariamente, se perdio la conexión
-                        
-                        // Aqui mensaje de debe esperar que se prenda el boton
 
-                        
-                        let tracker = GAI.sharedInstance().defaultTracker
-                        let eventTracker: NSObject = GAIDictionaryBuilder.createException(withDescription: error.localizedDescription, withFatal: false).build()
-                        tracker?.send(eventTracker as! [NSObject : AnyObject])
-                    })
 
                     
                     

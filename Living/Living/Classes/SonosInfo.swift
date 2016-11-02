@@ -16,17 +16,21 @@ class SonosInfo{
     var volume:Int = 0
     var mute:Bool = false
     var current_track:[String:String] = [:]
+    var playlists:[String:String] = [:]
+    var state:String = ""
+
     
-    func addTrack(json:JSON){
-    
-        
+    func addCurrentTrackTrack(json:JSON){
         for (key,subJson):(String, JSON) in json {
             //Do something you want
             self.current_track[key] = subJson.stringValue
         }
-        
-
-    
+    }
+    func addTrackPlaylist(json:JSON){
+        for (key,subJson):(String, JSON) in json {
+            //Do something you want
+            self.playlists[key] = subJson.stringValue
+        }
     }
     
    /* {

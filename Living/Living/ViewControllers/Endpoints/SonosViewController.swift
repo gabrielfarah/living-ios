@@ -35,7 +35,8 @@ class SonosViewController: UIViewController {
         slider_volume.maximumValue = MAX_VALUE
         
         slider_volume.isContinuous = false
-        load_play_list()
+        self.lbl_playlist.text = "Cargando..."
+       
         
     }
 
@@ -44,6 +45,13 @@ class SonosViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+ 
+        super.viewDidAppear(animated)
+        load_play_list()
+        
+    
+    }
     
     func style(){
     
@@ -69,20 +77,54 @@ class SonosViewController: UIViewController {
     }
     
     func load_play_list(){
-    
+        
         //TODO: Cargar la listal sonos
-        endpoint.GetPlayListSonos { (IsError, result) in
+        /*endpoint.GetPlayListSonos { (IsError, result) in
             if(IsError){
             
             }else{
                 self.lbl_playlist.text = result
             }
-        }
-        endpoint.GetInfoSonos{ (IsError, result) in
+        }*/
+        endpoint.GetInfoSonos{ (IsError, result, info) in
             if(IsError){
                 
             }else{
+                
+                if info == nil{
+                    return
+                }
                 //self.lbl_playlist.text = result
+                self.slider_volume.value = Float((info?.volume)!)
+                self.lbl_playlist.text = info?.current_track["title"]
+                //if (playerstate == "PLAYING" or playerstate == "STOPPED" or playerstate == "PAUSED_PLAYBACK") then
+                
+                if info?.state == "PLAYING"{
+                    
+                    let origImage = UIImage(named: "pause");
+                    let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                    self.btn_play.setImage(tintedImage, for: UIControlState())
+                    self.btn_play.tintColor = UIColor.white
+                
+                }else if info?.state == "STOPPED"{
+                    
+                    let origImage = UIImage(named: "play");
+                    let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                    self.btn_play.setImage(tintedImage, for: UIControlState())
+                    self.btn_play.tintColor = UIColor.white
+                
+                }else{
+                    let origImage = UIImage(named: "play");
+                    let tintedImage = origImage?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                    self.btn_play.setImage(tintedImage, for: UIControlState())
+                    self.btn_play.tintColor = UIColor.white
+                }
+                
+                Timer.after(2.seconds, {
+                    self.load_play_list()
+                })
+                
+                
             }
         }
     
@@ -122,6 +164,7 @@ class SonosViewController: UIViewController {
                     print("Played Error")
                 }else{
                     print("Player Success")
+                    self.load_play_list()
                 }
             }
         
@@ -131,6 +174,7 @@ class SonosViewController: UIViewController {
                     print("Played Error")
                 }else{
                     print("Player Success")
+                    self.load_play_list()
                 }
             }
         }
@@ -139,14 +183,12 @@ class SonosViewController: UIViewController {
     }
     @IBAction func Next(_ sender: AnyObject) {
 
-        
-        
-        
         endpoint.nextSonos(hub!, token: token, parameters: [:]) { (IsError, result) in
             if(IsError){
                 print("Played Error")
             }else{
                 print("Player Success")
+                self.load_play_list()
             }
         }
         
@@ -161,6 +203,7 @@ class SonosViewController: UIViewController {
                 print("Played Error")
             }else{
                 print("Player Success")
+                self.load_play_list()
             }
         }
         

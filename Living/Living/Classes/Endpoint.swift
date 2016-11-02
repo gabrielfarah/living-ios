@@ -1008,7 +1008,7 @@ class Endpoint{
     }
     
     
-    func GetInfoSonos(completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+    func GetInfoSonos(completion: @escaping (_ IsError:Bool,_ result: String, _ info:SonosInfo?) -> Void){
         
         let hub:Int = (ArSmartApi.sharedApi.hub?.hid)!
         let token:String = ArSmartApi.sharedApi.getToken()
@@ -1016,12 +1016,12 @@ class Endpoint{
         getValueSonos(hub, token: token, function: "get_ui_info", parameters: [:]) { (IsError, result) in
             if(IsError){
                 print("Error")
-                completion(IsError,result)
+                completion(IsError,result,nil)
             }else{
                 print("No Error")
                 //TODO: Check Url
-                self.GetInfo(token, url: result, completion: { (IsError, result) in
-                    completion(IsError,result)
+                self.GetInfo(token, url: result, completion: { (IsError, result, info) in
+                    completion(IsError,result,info)
                 })
                 
                 
@@ -1082,7 +1082,7 @@ class Endpoint{
         }
         
     }
-    func GetInfo(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+    func GetInfo(_ token:String, url:String,completion: @escaping (_ IsError:Bool,_ result: String, _ info:SonosInfo?) -> Void){
         
         
         let headers = [
@@ -1104,12 +1104,32 @@ class Endpoint{
                     
                     if(status == "processing"){
                         print("Processing..")
-                        self.GetInfo(token, url: url, completion: { (IsError, result) in
-                            completion(IsError,result)
+                        self.GetInfo(token, url: url, completion: { (IsError, result, info) in
+                            completion(IsError,result, info)
                         })
                     }else{
 
-                        completion(false,"")
+                        let data = NSData(data: response.data!) as Data
+                        var json = JSON(data: data)
+
+                        
+                        //TODO:hacer el mapping de la informacion
+                        let play_mode:String = json["response"]["play_mode"].rawString()!
+                        let player_name:String = json["response"]["player_name"].rawString()!
+                        let volume:Int = json["response"]["volume"].intValue
+                        let mute:Bool = json["response"]["mute"].boolValue
+                        let state:String = json["response"]["state"].rawString()!
+                        
+                        let info = SonosInfo()
+                        info.play_mode = play_mode
+                        info.player_name = player_name
+                        info.volume = volume
+                        info.mute = mute
+                        info.state = state
+                        info.addCurrentTrackTrack(json: json["response"]["current_track"])
+                        info.addTrackPlaylist(json: json["response"]["playlist"])
+                        
+                        completion(false,"", info)
                     }
                     
                     break
@@ -1121,7 +1141,7 @@ class Endpoint{
                     var json = JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
-                    completion(true,response_string!)
+                    completion(true,response_string!,nil)
                     
                     
                 }

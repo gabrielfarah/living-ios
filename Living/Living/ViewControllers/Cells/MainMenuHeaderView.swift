@@ -46,6 +46,21 @@ class MainMenuHeaderView: UIViewController  {
         
         view_main.layer.cornerRadius = 5.0 //30.0
     }
+    
+    func block_all(){
+    
+        btn_favorites.isEnabled = false
+        btn_devices.isEnabled = false
+        btn_areas.isEnabled = false
+
+    }
+    func unblock_all(){
+        
+        btn_favorites.isEnabled = true
+        btn_devices.isEnabled = true
+        btn_areas.isEnabled = true
+        
+    }
     @IBAction func SelectedFavorites(_ sender: AnyObject) {
         
         delegate?.MenuFavoriteSelected()

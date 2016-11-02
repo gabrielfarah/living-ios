@@ -109,14 +109,32 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         self.customPresentViewController(self.presenter2!, viewController: vc, animated: true, completion: nil)
         vc.setText( "Un momento por favor...")
         
+            
         
+            
         ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
             
-        
-            
-            self.dismiss(animated: true, completion: {
+            self.scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
+                if(IsError){
+                }else{
+                    
+                }
                 
-            })
+                self.rooms.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
+                    if(IsError){
+                        //TODO: Manejo de errores
+                        
+                    }else{
+
+                    }
+                    
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                }
+            }
+            
+          
             
             
             ArSmartApi.sharedApi.syncHub()
@@ -147,7 +165,9 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
         }
         
-
+       
+        
+ 
 
     }
 
@@ -322,13 +342,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
             let cell = collectionView.cellForItem(at: indexPath) as! EndPointMenuCell
             cell.setColor(UIColor.red)
-            
-            
-
-            
-            
             let scene = scenes.scenes[(indexPath as NSIndexPath).row]
-            
             scene.run(token, hub: hub!, completion: { (IsError, result) in
                 if(!IsError){
 
@@ -470,14 +484,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                  vc.endpoint = endpoint
 
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-
+                vc.lbl_name.text = endpoint.name
                 break
             case "ui-lock-zwave":
                 let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
                  vc.endpoint = endpoint
 
                 customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-
+                vc.lbl_name.text = endpoint.name
                 break
             
             case "ui-switch-multilevel-zwave":
@@ -531,12 +545,15 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             
             case "ui-sensor-binary-zwave":
             
-                let width = ModalSize.custom(size: 300)
+               /* let width = ModalSize.custom(size: 300)
                 let height = ModalSize.custom(size: 452)
                 let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
                 let vc = SensorViewController(nibName: "SensorViewController", bundle: nil)
                 vc.endpoint = endpoint
-                customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
+                customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)*/
+                
+                //TODO: Se deja para la siguiente version.
+                
                 break
 
             default:
@@ -577,11 +594,26 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 if(!IsError){
                     print(result)
                     if(result == "processing" || result == ""){
-                        self.endpoints_list.reloadData()
+                        
+                        
+
+                            // Bounce back to the main thread to update the UI
+                            DispatchQueue.main.async {
+                                self.endpoints_list.reloadData()
+                            }
+                        
+                        
+                        
+             
                     }
                 }else{
                     //TODO: Que pasa cuando se hace la consulta correctamente, vamos a mmapear los valores de esa respuesta.
-                    self.endpoints_list.reloadData()
+
+                        // Bounce back to the main thread to update the UI
+                        DispatchQueue.main.async {
+                            self.endpoints_list.reloadData()
+                        }
+                    
                 }
             })
         }
@@ -592,15 +624,10 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     func MenuRoomsSelected() {
         print("Room selected")
         can_get_status = false
-        rooms.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
-            if(IsError){
-                //TODO: Manejo de errores
-                
-            }else{
-                self.view_type = HomeViewControllerSectionType.rooms
-                self.endpoints_list.reloadData()
-            }
-        }
+        
+        self.view_type = HomeViewControllerSectionType.rooms
+        self.endpoints_list.reloadData()
+
         
 
         
@@ -608,19 +635,24 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
     func MenuDevicesSelected() {
         can_get_status = true
-        GetDevicesStatus()
+        
         print("Devices selected")
         view_type = HomeViewControllerSectionType.endpoints
+       self.view_new_endpoints.clearsContextBeforeDrawing = true
         self.endpoints_list.reloadData()
+        
+
         selectedRoom = Room()
         room_name = ""
+        GetDevicesStatus()
     }
+    
+    // Esta funcion permite mostrar los devices d
     func RoomSelected() {
         can_get_status = true
-        GetDevicesStatus()
-        print("Devices selected")
         view_type = HomeViewControllerSectionType.endpoints
         self.endpoints_list.reloadData()
+        
         
 
         
@@ -629,14 +661,10 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         can_get_status = false
         print("Favorites selected")
          room_name = ""
+        self.view_type = HomeViewControllerSectionType.scenes
+        self.endpoints_list.reloadData()
         
-        scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
-            if(IsError){
-            }else{
-                self.view_type = HomeViewControllerSectionType.scenes
-                self.endpoints_list.reloadData()
-            }
-        }
+
         
         
     }
