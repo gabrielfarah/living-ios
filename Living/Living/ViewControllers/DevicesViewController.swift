@@ -175,8 +175,12 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
     func handleRefresh(_ refreshControl: UIRefreshControl) {
         
         
-        self.tableView.reloadData()
-        refreshControl.endRefreshing()
+        ArSmartApi.sharedApi.getHubs { (IsError, result) in
+            self.tableView.reloadData()
+            refreshControl.endRefreshing()
+        }
+
+        
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Escenas"
@@ -237,9 +241,9 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
                     if(!IsError){
                         //tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
                         
-                        ArSmartApi.sharedApi.hubs.load(token, completion: { (IsError, result) in
+                        ArSmartApi.sharedApi.getHubs { (IsError, result) in
                             self.tableView.reloadData()
-                        })
+                        }
                         
                         
                         

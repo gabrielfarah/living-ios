@@ -19,6 +19,7 @@ class TokenManager{
     var endpoint:String;
     var user:String;
     var password:String;
+    var exp_date:Date;
     
     init(){
     
@@ -27,6 +28,10 @@ class TokenManager{
         self.endpoint = ""
         self.user = Defaults["user"].string ?? ""
         self.password = Defaults["password"].string ?? ""
+        
+        self.exp_date = Defaults["exp_date"].date ?? Date()
+
+        
     }
     
     
@@ -58,6 +63,7 @@ class TokenManager{
             print(json)
             let exp = json["exp"].stringValue
             let date = Date(timeIntervalSince1970: Double(exp)!)
+            self.exp_date = date
             print(date)
             
         } catch {
@@ -77,6 +83,7 @@ class TokenManager{
                 print(json)
                 let exp = json["exp"].stringValue
                 let date = NSDate(timeIntervalSince1970: Double(exp)!)
+                
                 print(date)
                 
             } catch {
@@ -91,24 +98,42 @@ class TokenManager{
         if (self.token == ""){
             self.GetApiToken(email,password:password ){
                 (isError:Bool,result:String)in
+                
+                
                 completion(isError,result)
             }
         }else{
-            completion(false, "")
+            
+    
+            
+            if exp_date < Date(){
+                self.GetApiToken(email,password:password ){
+                    (isError:Bool,result:String)in
+                    
+                    
+                    completion(isError,result)
+                }
+            
+            }else{
+            
+                completion(false, "")
+            }
+            
+            
+            
             print("Stored Token:", self.token)
         }
         
     }
-    fileprivate func GetApiToken(_ email:String, password:String,completion: @escaping (_ isError:Bool,_ result: String) -> Void){
-        
-        
-        
+    
+    
+    func refresh_token(_ email:String, password:String,completion: @escaping (_ isError:Bool,_ result: String) -> Void){
+
+    
         let parameters: [String: AnyObject] = [
             "email" : email as AnyObject,
             "password" : password as AnyObject,
             ]
-        
-        
         
         
         
@@ -154,6 +179,83 @@ class TokenManager{
                 
                 
         }
+    
+    }
+    
+    fileprivate func GetApiToken(_ email:String, password:String,completion: @escaping (_ isError:Bool,_ result: String) -> Void){
+        
+        
+        
+        let parameters: [String: AnyObject] = [
+            "email" : email as AnyObject,
+            "password" : password as AnyObject,
+            ]
+        
+        
+        
+        
+        
+        Alamofire.request(self.endpoint,method:.post,parameters:parameters,encoding: JSONEncoding.default)
+            .validate()
+            .responseJSON { response in
+                switch response.result {
+                    
+                case .success:
+                    
+                    let token_result = response.result.value as? NSDictionary
+                    self.token = (token_result!["token"] as? String)!
+ 
+                    
+                    do {
+                        let jwt = try decode(jwt: self.token)
+                        let json = JSON(jwt.body)
+                        print(json)
+                        let exp = json["exp"].stringValue
+                        let date = Date(timeIntervalSince1970: Double(exp)!)
+                        self.exp_date = date
+                        print(date)
+                        Defaults["exp_date"] = self.exp_date
+                        
+                    } catch {
+                        print("Failed to decode JWT: \(error)")
+                    }
+                    
+                    Defaults["token"] = self.token
+                    
+                    Defaults["user"] = email
+                    Defaults["password"] = password
+                    
+                    self.user = email
+                    self.password = password
+                
+   
+                    
+                    
+                    completion(false,"Ok")
+                    
+                    
+       
+                    
+                    
+                case .failure(let error):
+                    
+                    let data = NSData(data: response.data!) as Data
+                    let final_response = JSON(data: data)
+                    let response_string = (final_response["non_field_errors"][0]).rawString()
+                    print("Error Api Auth")
+                    
+                    if(response_string != "null"){
+                        completion(true,  response_string!)
+                    }else{
+                        completion(true, error.localizedDescription)
+                    }
+                    
+                    
+                }
+                
+                
+                
+        }
         
     }
 
@@ -164,6 +266,7 @@ extension TokenManager {
     static let launchCount = DefaultsKey<Int>("launchCount")
     static let user = DefaultsKey<String?>("user")
     static let password = DefaultsKey<Int>("password")
+    static let exp_date = DefaultsKey<Int>("exp_date")
 }
 
 

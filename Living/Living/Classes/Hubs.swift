@@ -19,6 +19,17 @@ class Hubs{
     
     }
 
+    func getHub(id:Int)->Hub?{
+    
+        if let i = hubs.index(where: {$0.hid == id}) {
+            return hubs[i]
+        }else{
+        
+            return nil
+        }
+    
+    }
+    
     
     func load(_ token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
             

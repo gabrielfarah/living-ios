@@ -216,7 +216,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Room.swift"
-                  timestampString = "499785470.624237"
+                  timestampString = "499795491.86627"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -231,7 +231,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Room.swift"
-                  timestampString = "499785470.627353"
+                  timestampString = "499795491.868536"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "106"
@@ -264,7 +264,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/ViewControllers/Modals/AddGuestViewController.swift"
-                  timestampString = "499785470.641149"
+                  timestampString = "499795491.873249"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -279,7 +279,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/ViewControllers/Modals/AddGuestViewController.swift"
-                  timestampString = "499785470.645491"
+                  timestampString = "499795491.875806"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -294,7 +294,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/ViewControllers/Modals/AddGuestViewController.swift"
-                  timestampString = "499785470.64807"
+                  timestampString = "499795491.878337"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "20"
@@ -359,11 +359,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Living/ViewControllers/Endpoints/SonosViewController.swift"
-            timestampString = "499785469.863246"
+            timestampString = "499787519.880829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "204"
+            endingLineNumber = "204"
             landmarkName = "ValueChange(_:)"
             landmarkType = "7">
             <Locations>
@@ -375,11 +375,11 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/ViewControllers/Endpoints/SonosViewController.swift"
-                  timestampString = "499785470.666814"
+                  timestampString = "499795491.892771"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "201"
-                  endingLineNumber = "201"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
                   offsetFromSymbolStart = "867">
                </Location>
                <Location
@@ -390,11 +390,11 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/ViewControllers/Endpoints/SonosViewController.swift"
-                  timestampString = "499785470.669756"
+                  timestampString = "499795491.895232"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "202"
-                  endingLineNumber = "202"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
                   offsetFromSymbolStart = "53">
                </Location>
             </Locations>
@@ -455,7 +455,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Classes/Endpoint.swift"
-                  timestampString = "499785470.680944"
+                  timestampString = "499795491.905094"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1283"
@@ -470,7 +470,7 @@
                   moduleName = "Living"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Classes/Endpoint.swift"
-                  timestampString = "499785470.683756"
+                  timestampString = "499795491.907823"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "1283"
@@ -487,11 +487,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Living/ViewControllers/Endpoints/SonosViewController.swift"
-            timestampString = "499785469.863246"
+            timestampString = "499787519.880829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "166"
-            endingLineNumber = "166"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
             landmarkName = "Play(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -503,11 +503,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Living/ViewControllers/Endpoints/SonosViewController.swift"
-            timestampString = "499785469.863246"
+            timestampString = "499787519.880829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "Prev(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -519,12 +519,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Living/ViewControllers/Endpoints/SonosViewController.swift"
-            timestampString = "499785469.863246"
+            timestampString = "499787519.880829"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "176"
-            endingLineNumber = "176"
+            startingLineNumber = "179"
+            endingLineNumber = "179"
             landmarkName = "Play(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Living/Classes/TokenManager.swift"
+            timestampString = "499794800.976108"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "CheckToken(_:password:completion:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Living.TokenManager.CheckToken (Swift.String, password : Swift.String, completion : (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()"
+                  moduleName = "Living"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Classes/TokenManager.swift"
+                  timestampString = "499795491.925382"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "474">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Living.TokenManager.(CheckToken (Swift.String, password : Swift.String, completion : (Swift.Bool, Swift.String) -&gt; ()) -&gt; ()).(closure #2)"
+                  moduleName = "Living"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/nfajardo/Projects/BelmontStudio/Clientes/arsmart/Living/Living/Classes/TokenManager.swift"
+                  timestampString = "499795491.927711"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "114"
+                  endingLineNumber = "114"
+                  offsetFromSymbolStart = "50">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Living/Classes/TokenManager.swift"
+            timestampString = "499794803.188831"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "119"
+            endingLineNumber = "119"
+            landmarkName = "CheckToken(_:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -276,7 +276,7 @@ class Endpoint{
             "Authorization": "JWT "+token,
             "Accept": "application/json"
         ]
-        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Endpoints), hub)
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Endpoint), hub, self.id)
         
         
         

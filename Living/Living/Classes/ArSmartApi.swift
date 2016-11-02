@@ -61,9 +61,24 @@ class ArSmartApi{
         
         
     }
+    func getHubs(completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        
+        
+        self.hubs.load(self.getToken(), completion: { (IsError, result) in
+            
+            
+            ArSmartApi.sharedApi.hub = ArSmartApi.sharedApi.hubs.getHub(id: ArSmartApi.sharedApi.getHub().hid)
+            
+            completion(IsError,result)
+        })
+        
     
+    }
     
     func getToken()->String{
+        
+
+        
         return (self.token?.GetToken())!;
     
     }

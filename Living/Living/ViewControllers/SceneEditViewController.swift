@@ -93,7 +93,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             
             //let scene_payload = scene.payload
             let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            let endpoint_name = String(format:"%@ %d %@",endpoint.name,endpoint.node, endpoint.getEndpointTypeString())
+            let endpoint_name = String(format:"%@ %@",endpoint.name, endpoint.getEndpointTypeString())
             
             cell.endpoint_image.image = image
             cell.endpoint_name.text = endpoint_name
@@ -107,7 +107,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             //let cell = SceneEndpointCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "cell")
             //let scene_payload = scene.payload
             let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            let endpoint_name = String(format:"%@ %d %@",endpoint.name,endpoint.node, endpoint.getEndpointTypeString())
+            let endpoint_name = String(format:"%@ %@",endpoint.name, endpoint.getEndpointTypeString())
             
             cell.endpoint_image.image = image
             cell.endpoint_name.text = endpoint_name

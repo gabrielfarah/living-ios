@@ -95,7 +95,10 @@ class SonosViewController: UIViewController {
                     return
                 }
                 //self.lbl_playlist.text = result
-                self.slider_volume.value = Float((info?.volume)!)
+
+                
+                 self.slider_volume.setValue(Float((info?.volume)!), animated: true)
+                
                 self.lbl_playlist.text = info?.current_track["title"]
                 //if (playerstate == "PLAYING" or playerstate == "STOPPED" or playerstate == "PAUSED_PLAYBACK") then
                 

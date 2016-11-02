@@ -174,8 +174,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
             .validate()
             .responseJSON { response in
                 switch response.result {
-                    
-                default:
+                case .success(let JSON):
                     self.dismiss(animated: true, completion: {
                         let width = ModalSize.custom(size: 240)
                         let height = ModalSize.custom(size: 130)
@@ -185,9 +184,37 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
                         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                         
-                        vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone")
+                        vc2.setText("Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app.")
                     })
-                    print("success")
+                    break
+                //do json stuff
+                case .failure(let error):
+                    
+                    
+                    if error._code == NSURLErrorTimedOut {
+                        //timeout
+                        self.dismiss(animated: true, completion: {
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                            
+                            presenter2.transitionType = .crossDissolve // Optional
+                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                            
+                            vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone")
+                        })
+                    }else{
+                     self.dismiss(animated: true, completion: { })
+                    
+                    }
+                    
+
+                    
+                    break
+
+
+                    
                     
 
 

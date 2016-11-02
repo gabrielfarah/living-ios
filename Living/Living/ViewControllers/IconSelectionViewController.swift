@@ -24,7 +24,7 @@ class IconSelectionViewController: UIViewController,UICollectionViewDataSource,U
 UINavigationControllerDelegate  {
     
     let mySpecialNotificationKey = "SelectIconNewDevice"
-    
+    var theme = ThemeManager()
     
     @IBOutlet weak var btn_continue: UIButton!
     @IBOutlet weak var btn_camera: UIButton!
@@ -43,6 +43,11 @@ UINavigationControllerDelegate  {
         
         let nib = UINib(nibName: "PhotoLibraryCell", bundle: nil)
         self.collectionView.register(nib, forCellWithReuseIdentifier: "cell")
+        
+        self.title = "Select Icons"
+        self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
+        
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
     }
