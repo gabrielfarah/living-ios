@@ -119,6 +119,7 @@
 		BB794A8D1D3E68FF008EBBF3 /* NotificationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB794A8C1D3E68FF008EBBF3 /* NotificationViewCell.swift */; };
 		BB7A5D571D50FD5B00388B78 /* EndpointResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A5D561D50FD5B00388B78 /* EndpointResponse.swift */; };
 		BB7A5D591D5104DE00388B78 /* FoundDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A5D581D5104DE00388B78 /* FoundDevicesViewController.swift */; };
+		BBA05A291DE50A37000914DB /* genstrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA05A281DE50A37000914DB /* genstrings.swift */; };
 		BBA09B801D1A01220074765E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA09B7F1D1A01220074765E /* AppDelegate.swift */; };
 		BBA09B821D1A01220074765E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA09B811D1A01220074765E /* ViewController.swift */; };
 		BBA09B851D1A01220074765E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA09B831D1A01220074765E /* Main.storyboard */; };
@@ -380,6 +381,7 @@
 		BB794A8C1D3E68FF008EBBF3 /* NotificationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationViewCell.swift; path = ViewControllers/Cells/NotificationViewCell.swift; sourceTree = "<group>"; };
 		BB7A5D561D50FD5B00388B78 /* EndpointResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndpointResponse.swift; path = Classes/EndpointResponse.swift; sourceTree = "<group>"; };
 		BB7A5D581D5104DE00388B78 /* FoundDevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoundDevicesViewController.swift; path = ViewControllers/FoundDevicesViewController.swift; sourceTree = "<group>"; };
+		BBA05A281DE50A37000914DB /* genstrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = genstrings.swift; sourceTree = "<group>"; };
 		BBA09B7C1D1A01220074765E /* Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Living.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA09B7F1D1A01220074765E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBA09B811D1A01220074765E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 		BBA09B731D1A01220074765E = {
 			isa = PBXGroup;
 			children = (
+				BBA05A281DE50A37000914DB /* genstrings.swift */,
 				BBA09B7E1D1A01220074765E /* Living */,
 				BBA09B7D1D1A01220074765E /* Products */,
 				1E46D9FB75656393310D08D3 /* Frameworks */,
@@ -1293,6 +1296,7 @@
 				BB64C0501D3EC18E00B5EB12 /* Device.swift in Sources */,
 				BBA66D8B1D5B835F008971A2 /* LockEndpoint.swift in Sources */,
 				BBCC664E1D4A793F004D35A6 /* DeviceIcons.swift in Sources */,
+				BBA05A291DE50A37000914DB /* genstrings.swift in Sources */,
 				BBF93E191D4FF8D7000985AE /* DeviceEditViewController.swift in Sources */,
 				BBAFED531D2BA8AC00005212 /* RegisterNewHub.swift in Sources */,
 				BBFC28521D8B18DF005E4D2F /* SceneHueEndpointCell.swift in Sources */,

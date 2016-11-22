@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SystemConfiguration
 import SwiftyJSON
+import Localize_Swift
 
 class User{
     
@@ -139,7 +140,7 @@ class User{
         let hasInternet = ArSmartUtils.connectedToNetwork()
         
         if(!hasInternet){
-            completion(true,"The device is offline, check your internet connection")
+            completion(true,"The device is offline, check your internet connection".localized())
             return
         }
         

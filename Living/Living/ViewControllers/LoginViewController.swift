@@ -52,7 +52,7 @@ class LoginViewController: UIViewController {
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
         self.navigationController?.navigationBar.tintColor = UIColor.white
     
-        self.title = "Ingresar en su cuenta".localized()
+        self.title = "Account".localized()
         let backButton = UIBarButtonItem(title: "Home/Return or nohing", style: .plain, target: nil, action: nil)
         navigationItem.backBarButtonItem = backButton
         
@@ -81,7 +81,7 @@ class LoginViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.setText("Autenticando, un momento por favor...".localized())
+        vc.setText("Login, one moment please...".localized())
         let mPassword:String = txt_password.text!
         let mEmail:String = txt_email.text!
 

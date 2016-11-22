@@ -231,7 +231,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
             presenter.dismissOnTap = false
             let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
             self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            vc.setText("Eliminando, un momento por favor...".localized())
+            vc.setText("Deleting, one moment please".localized())
             
             
             

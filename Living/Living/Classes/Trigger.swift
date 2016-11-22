@@ -71,7 +71,7 @@ class Trigger{
                 case .success:
                     
                     
-                    completion(false,"El trigger fue creado con éxito")
+                    completion(false,"The trigger was created successfully".localized())
                     
                     
                 case .failure:
