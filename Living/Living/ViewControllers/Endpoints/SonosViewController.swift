@@ -27,6 +27,8 @@ class SonosViewController: UIViewController {
     
     var play:Bool = false
     
+    var canRequest:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -48,10 +50,17 @@ class SonosViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
  
         super.viewDidAppear(animated)
+        canRequest = true
         load_play_list()
         
     
     }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        canRequest = false
+    }
+    
     
     func style(){
     
@@ -124,7 +133,10 @@ class SonosViewController: UIViewController {
                 }
                 
                 Timer.after(2.seconds, {
-                    self.load_play_list()
+                    if self.canRequest{
+                        self.load_play_list()
+                    }
+                    
                 })
                 
                 

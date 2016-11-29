@@ -12,6 +12,8 @@ class LocalAlertViewController: UIViewController {
 
     @IBOutlet weak var lbl_mensaje: UILabel!
     
+    var delegate: LocalAlertViewControllerDelegate?
+    
     var message:String = ""
     
     
@@ -51,9 +53,19 @@ class LocalAlertViewController: UIViewController {
     */
     @IBAction func dismiss(_ sender: AnyObject) {
         
-        self.dismiss(animated: true) { 
+        self.dismiss(animated: true) {
+            
+          
+            self.delegate?.DismissAlert()
+            
             
         }
     }
 
+}
+protocol LocalAlertViewControllerDelegate {
+    // protocol definition goes here
+    func DismissAlert()
+    
+    
 }

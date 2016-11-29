@@ -92,7 +92,7 @@ class Payload{
     func getDictionaryIfIsSonos()->[String:AnyObject]{
     
 
-        if(function_name == "setVolume"){
+        if(function_name == "set_volume"){
             let payload = [
                 "parameters" :[
                     "volume":self.value
@@ -106,13 +106,16 @@ class Payload{
             return payload as [String : AnyObject]
         }else{
         
+            let fn:String = (self.value == 255) ?"play":"stop"
+            
+            
             let payload = [
                 "parameters" :[:],
                 "type" : self.type,
                 "target" : "sonos",
                 "endpoint_id" : self.endpoint_id,
                 "ip" : self.ip,
-                "function" : self.function_name
+                "function" : fn
             ] as [String : Any]
             return payload as [String : AnyObject]
         }

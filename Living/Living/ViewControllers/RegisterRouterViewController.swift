@@ -11,7 +11,7 @@ import Alamofire
 import Presentr
 import Localize_Swift
 
-class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, LocalAlertViewControllerDelegate {
 
     
     var tzs:[String] = [String]()
@@ -205,7 +205,19 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
                             vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone".localized())
                         })
                     }else{
-                     self.dismiss(animated: true, completion: { })
+                        self.dismiss(animated: true, completion: {
+                            let width = ModalSize.custom(size: 240)
+                            let height = ModalSize.custom(size: 130)
+                            let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                            
+                            presenter2.transitionType = .crossDissolve // Optional
+                            let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                            vc2.delegate = self
+                            self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                            
+                            vc2.setText("Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app.".localized())
+                        })
+
                     
                     }
                     
@@ -249,6 +261,10 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         selected_tz = tzs[row]
         txt_timezone.text = selected_tz
+    }
+    
+    func DismissAlert() {
+        sideMenuController?.performSegue(withIdentifier: "showCenterController1", sender: nil)
     }
 
 

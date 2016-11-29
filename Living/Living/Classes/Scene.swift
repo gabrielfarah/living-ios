@@ -161,10 +161,20 @@ class Scene{
                 case .failure:
                     let data = NSData(data: response.data!) as Data
                     var json = JSON(data: data)
-                    let response_string = json["ERROR"].dictionary?.first
-                    let final_string = response_string!.1[0].stringValue
                     
-                    completion(true,final_string)
+                    if json["detail"].exists(){
+                        
+                        let response_string = json["detail"].stringValue
+
+                        completion(true,response_string)
+                    }else if json["ERROR"].exists(){
+                        
+                        let response_string = json["ERROR"].dictionary?.first
+                        let final_string = response_string!.1[0].stringValue
+                        
+                        completion(true,final_string)
+                    }
+         
                     
                     
                     
@@ -187,7 +197,7 @@ class Scene{
         for command:Payload in payload{
             
             if(command.target == "sonos"){
-                payload_array.append(command.getDictionary())
+                payload_array.append(command.getDictionaryIfIsSonos())
             }else if(command.target == "hue"){
                 payload_array.append(command.getDictionaryIfIsHue())
             }else{

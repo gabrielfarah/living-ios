@@ -10,7 +10,7 @@ import UIKit
 import Presentr
 import SideMenuController
 
-class DeviceEditViewController: UIViewController {
+class DeviceEditViewController: UIViewController,LocalAlertViewControllerDelegate {
     
     
     
@@ -116,6 +116,9 @@ class DeviceEditViewController: UIViewController {
                     if(!IsError){
                         
                         vc2.setText("Device was sucessfully added".localized())
+                        vc2.delegate = self
+                        
+                        
                         //TODO: Volver al home
                         self.sideMenuController?.performSegue(withIdentifier: "showCenterController1", sender: nil)
                     }else{
@@ -139,6 +142,7 @@ class DeviceEditViewController: UIViewController {
                     
                     presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    vc2.delegate = self
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                     
                     
@@ -206,6 +210,10 @@ class DeviceEditViewController: UIViewController {
         }
         
     
+    }
+    
+    func DismissAlert() {
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
