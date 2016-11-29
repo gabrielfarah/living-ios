@@ -10,6 +10,7 @@ import UIKit
 import Presentr
 import SideMenuController
 import DZNEmptyDataSet
+import Localize_Swift
 
 class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DeviceCellControllerDelegate, DomuAlertViewControllerDelegate {
 
@@ -75,7 +76,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
         
-        vc2.setText("Error en la operación , por favor vuelva a intentarlo")
+        vc2.setText("Operation failed, please try again...".localized())
         
         
     }
@@ -87,7 +88,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.setText("Se adicionó cuarto con éxito")
+        vc2.setText("Romm added sucecesfully...".localized())
         
 
         load_rooms()
@@ -238,7 +239,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         let vc2 = DomuAlertViewController(nibName: "DomuAlertViewController", bundle: nil)
         vc2.delegate = self
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.setText(text: "Está seguro que desea eliminar este cuarto?")
+        vc2.setText(text: "¿Are you sure you want to delete this room?".localized())
         
     }
     internal func DomuAlert_Cancel() {
@@ -264,7 +265,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
                     presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText("El cuarto ha sido eliminado")
+                    vc2.setText("The room has been remove succesfully...".localized())
                 }
                 
                 

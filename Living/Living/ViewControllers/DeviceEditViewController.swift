@@ -74,7 +74,7 @@ class DeviceEditViewController: UIViewController {
             presenter.dismissOnTap = true
             let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            vc.setText("El nombre del dispositivo no puede estar vacio.")
+            vc.setText("The device name cant be empty...".localized())
             return
         }
         
@@ -92,7 +92,7 @@ class DeviceEditViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.setText("Guardando dispositivo en el hub, un momento por favor...")
+        vc.setText("Saving device in the hub, one moment please...".localized())
         
         
         
@@ -115,11 +115,11 @@ class DeviceEditViewController: UIViewController {
                     
                     if(!IsError){
                         
-                        vc2.setText("Se agrego con éxito el dispositivo")
+                        vc2.setText("Device was sucessfully added".localized())
                         //TODO: Volver al home
                         self.sideMenuController?.performSegue(withIdentifier: "showCenterController1", sender: nil)
                     }else{
-                        vc2.setText(String(format:"Ocurrió un error: %@", result))
+                        vc2.setText(String(format:"error: %@".localized(), result))
             
                     }
                     
@@ -145,9 +145,9 @@ class DeviceEditViewController: UIViewController {
                     
                     if(!IsError){
                         
-                        vc2.setText("Se editó con éxito el dispositivo")
+                        vc2.setText("Device was sucessfully updated.".localized())
                     }else{
-                        vc2.setText(String(format:"Ocurrió un error: %@", result))
+                        vc2.setText(String(format:"error: %@".localized(), result))
                         
                     }
                     

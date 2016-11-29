@@ -10,6 +10,7 @@ import UIKit
 import Presentr
 import SideMenuController
 import DZNEmptyDataSet
+import Localize_Swift
 
 class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,DZNEmptyDataSetSource, DZNEmptyDataSetDelegate  {
 
@@ -64,7 +65,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.lbl_mensaje.text = "Error en la operación , por favor vuelva a intentarlo"
+        vc2.lbl_mensaje.text = "Error, please try again...".localized()
     }
     func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
@@ -77,7 +78,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.setText("Se adicionó el usuario con éxito")
+        vc2.setText("User added sucessfully...".localized())
         
         load_guests()
     }
@@ -166,13 +167,13 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
             
             
             
-            let title = "Está seguro?"
-            let body = "No se puede deshacer esta acción"
+            let title = "Are you sure?".localized()
+            let body = "You can't undo this action".localized()
             
             let controller = Presentr.alertViewController(title: title, body: body)
             
             
-            let deleteAction = AlertAction(title: "Estoy seguro", style: .destructive) {
+            let deleteAction = AlertAction(title: "Im sure".localized(), style: .destructive) {
                 print("Deleted!")
                 // Delete the row from the data source
                 let token = ArSmartApi.sharedApi.getToken()
@@ -191,7 +192,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
                             presenter2.transitionType = .crossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                            vc2.setText("El invitado ha sido removido")
+                            vc2.setText("Guest has been removed successfully ...".localized())
                         }
                     }else{
                        
@@ -202,7 +203,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
                             presenter2.transitionType = .crossDissolve // Optional
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                            vc2.setText("Ocurrió un error el usuario no ha sido borrado")
+                            vc2.setText("error, please try again".localized())
                         }
                     }
 
@@ -212,7 +213,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
                 })
             }
             
-            let okAction = AlertAction(title: "Cancelar", style: .cancel){
+            let okAction = AlertAction(title: "Cancel".localized(), style: .cancel){
                 print("Ok!")
             }
             
@@ -237,13 +238,13 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Guest"
+        let str = "Guest".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "No hay invitados registrados"
+        let str = "There is no registered guest".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
@@ -251,7 +252,7 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let str = "New Guest"
+        let str = "New Guest".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
         return NSAttributedString(string: str, attributes: attrs)
     }

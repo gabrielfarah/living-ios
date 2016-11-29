@@ -11,7 +11,9 @@ class GenStrings {
     let excludedFileNames = ["genstrings.swift"]
     var regularExpresions = [String:NSRegularExpression]()
 
-    let localizedRegex = "(?<=\")([^\"]*)(?=\".(localized|localizedFormat))|(?<(Localized|NSLocalizedString)\\(\")([^\"]*?)(?=\"))"
+
+    
+    let localizedRegex = "(?<=\")([^\"]*)(?=\".(localized|localizedFormat))|(?<=(Localized|NSLocalizedString)\\(\")([^\"]*?)(?=\")"
 
     enum GenstringsError: Error {
         case Error
@@ -120,6 +122,7 @@ let genStrings = GenStrings()
 if CommandLine.arguments.count > 1 {
     let path = CommandLine.arguments[1]
     genStrings.perform(path: path)
+    
 } else {
     genStrings.perform()
 }

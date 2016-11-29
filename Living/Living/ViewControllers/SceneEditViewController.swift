@@ -8,6 +8,8 @@
 
 import UIKit
 import Presentr
+import Localize_Swift
+
 
 class SceneEditViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SceneEndpointCellDelegate {
 
@@ -279,7 +281,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
                     presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText("Escena creada con éxito")
+                    vc2.setText("Scene succesfully created...".localized())
                 
                 }
             }
@@ -293,7 +295,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("El nombre de la escena no puede estar vacio")
+            vc2.setText("The scene cant be empty...".localized())
             
         }
         
@@ -341,7 +343,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
                     presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText("Escena actualizada con éxito")
+                    vc2.setText("Scene has been updated...".localized())
                     
 
                     
@@ -357,7 +359,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("El nombre de la escena no puede estar vacio")
+            vc2.setText("The scene's name can't be empty...".localized())
             
         }
         
@@ -475,10 +477,10 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         scene.run(token, hub: hub!) { (IsError, result) in
             if(!IsError){
                 self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                vc2.setText("Se ejecutó la escena")
+                vc2.setText("The scene was performed...".localized())
             }else{
                 self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                vc2.setText("Hubó un problema en la escena")
+                vc2.setText("There is a problem running the scene....".localized())
             }
         }
     }

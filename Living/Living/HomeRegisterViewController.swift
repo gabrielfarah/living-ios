@@ -10,6 +10,7 @@
 import Foundation
 import Presentr
 import UIKit
+import Localize_Swift
 
 class HomeRegisterViewController: UIViewController {
     
@@ -115,7 +116,7 @@ class HomeRegisterViewController: UIViewController {
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("Debe ingresar el nombre de un lugar")
+            vc2.setText("You must write the location's name".localized())
             
             
             
@@ -131,7 +132,7 @@ class HomeRegisterViewController: UIViewController {
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("Debe Seleccionar una imágen para su casa")
+            vc2.setText("You must chose an image for your location ...".localized())
         
         }else if(!isLocationSelected){
             
@@ -142,7 +143,7 @@ class HomeRegisterViewController: UIViewController {
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("Debe especificar donde se encuentra el lugar, por favor presione sobre el mapa para elegir la ubucación.")
+            vc2.setText("You must specify where is the location, please find your place in the map just dragging to it...".localized())
             
         }else{
             ArSmartApi.sharedApi.hub!.name = txt_name_home.text!

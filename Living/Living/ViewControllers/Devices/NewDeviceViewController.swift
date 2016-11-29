@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 import Presentr
+import Localize_Swift
+
 
 class NewDeviceViewController: UIViewController {
     
@@ -68,7 +70,7 @@ class NewDeviceViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.setText("Buscando dispositivos ZWave , un momento por favor...")
+        vc.setText("Looking for a Zwave device, one moment please...".localized())
         
         ArSmartApi.sharedApi.device_manager.RequestAddZWaveToken(token, hub: hub!) {
             (IsError, result, devices) in
@@ -84,7 +86,7 @@ class NewDeviceViewController: UIViewController {
                     presenter2.dismissOnTap = true
                     let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
-                    vc.setText("No se encontraron dispositivos ZWave conectados, en caso de que sea un error por favor vuelva a intentarlo")
+                    vc.setText("No connected ZWave devices found, in case it is an error please try again".localized())
                     
                     
                 }else{
@@ -112,7 +114,7 @@ class NewDeviceViewController: UIViewController {
         presenter.dismissOnTap = false
         let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-        vc.setText("Buscando dispositivos Wifi, un momento por favor...")
+        vc.setText("Searching for Wifi devices, one moment please ...".localized())
         
         
         ArSmartApi.sharedApi.device_manager.RequestAddWifiToken(token, hub: hub!) { (IsError, result, devices) in
@@ -129,7 +131,7 @@ class NewDeviceViewController: UIViewController {
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
 
-                    vc2.setText("No se encontraron dispositivos Wifi conectados, en caso de que sea un error por favor vuelva a intentarlo")
+                    vc2.setText("No connected Wifi devices found, in case it is an error please try again".localized())
                     
                     
                 }else{

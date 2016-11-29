@@ -71,7 +71,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.setText("Error en la operación , por favor vuelva a intentarlo")
+        vc2.setText("Error, please try again...".localized())
     }
     func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
@@ -83,7 +83,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
         let vc3 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter3, viewController: vc3, animated: true, completion: nil)
 
-        vc3.setText("Se adicionó cuarto con éxito")
+        vc3.setText("Room successfully added...".localized())
        
     }
     override func didReceiveMemoryWarning() {

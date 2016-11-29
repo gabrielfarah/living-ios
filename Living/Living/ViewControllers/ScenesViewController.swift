@@ -47,7 +47,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
-        self.title = "Scenes"
+        self.title = "Scenes".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddRoomError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddRoomSuccess"), object: nil)
         
@@ -69,7 +69,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.lbl_mensaje.text = "Error en la operación , por favor vuelva a intentarlo"
+        vc2.lbl_mensaje.text = "Error, please try again...".localized()
     }
     func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
@@ -80,7 +80,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         presenter3.transitionType = .crossDissolve // Optional
         let vc3 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter3, viewController: vc3, animated: true, completion: nil)
-        vc3.lbl_mensaje.text = "Se adicionó cuarto con éxito"
+        vc3.lbl_mensaje.text = "The scene has been created succesfully...".localized()
         
     }
     override func didReceiveMemoryWarning() {
@@ -183,13 +183,13 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
     
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Escenas"
+        let str = "Scenes".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "No hay escenas registradas"
+        let str = "There is no scenes...".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
@@ -197,7 +197,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
 
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let str = "New mode"
+        let str = "New mode".localized()
         let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
         return NSAttributedString(string: str, attributes: attrs)
     }
@@ -245,7 +245,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
                     presenter2.transitionType = .crossDissolve // Optional
                     let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                     self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText("La escena ha sido eliminada")
+                    vc2.setText("The scene has been removed...".localized())
                 }
             }else{
                 

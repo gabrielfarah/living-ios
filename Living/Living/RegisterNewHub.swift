@@ -11,7 +11,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Presentr
-
+import Localize_Swift
 
 class RegisterNewHub:UIViewController {
 
@@ -52,7 +52,7 @@ class RegisterNewHub:UIViewController {
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             
-            vc2.setText("Debe ingresar un número serial")
+            vc2.setText("You must write a serial code...".localized())
 
             return
         }

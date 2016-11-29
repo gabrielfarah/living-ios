@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 import Presentr
-
+import Localize_Swift
 
 class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -104,11 +104,11 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
 //self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             
-            vc2.setText("No se puede conectar al Hub, por favor intente de nuevo")
+            vc2.setText("Can not connect to Hub, please try again".localized())
             
             
             let tracker = GAI.sharedInstance().defaultTracker
-            let eventTracker: NSObject = GAIDictionaryBuilder.createException(withDescription: "La ip no es alcanzable", withFatal: false).build()
+            let eventTracker: NSObject = GAIDictionaryBuilder.createException(withDescription: "The IP is not reachable".localized(), withFatal: false).build()
             tracker?.send(eventTracker as! [NSObject : AnyObject])
             
             //return
@@ -127,7 +127,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             
-            vc2.setText("El SSID no puede estar vacio")
+            vc2.setText("The SSID can not be empty".localized())
         
             return
         }
@@ -142,7 +142,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
             
-            vc2.setText("Debe escoger una zona horaria")
+            vc2.setText("You must choose a time zone".localized())
             
             return
         }
@@ -166,7 +166,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
         let vc2 = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
         
-        vc2.setText("Un momento por favor...")
+        vc2.setText("One moment please...".localized())
 
         
         
@@ -184,7 +184,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
                         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                         
-                        vc2.setText("Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app.")
+                        vc2.setText("Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app.".localized())
                     })
                     break
                 //do json stuff
@@ -202,7 +202,7 @@ class RegisterRouterViewController: UIViewController, UIPickerViewDelegate, UIPi
                             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
                             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
                             
-                            vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone")
+                            vc2.setText("Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone".localized())
                         })
                     }else{
                      self.dismiss(animated: true, completion: { })

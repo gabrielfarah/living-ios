@@ -27,11 +27,11 @@ class ChangePasswordViewController: UIViewController {
 
         
 
-        txt_old_password.attributedPlaceholder = NSAttributedString(string:"Antigua contraseña",
+        txt_old_password.attributedPlaceholder = NSAttributedString(string:"Old password".localized(),
                                                                attributes:[NSForegroundColorAttributeName: UIColor.white])
-        txt_new_password_1.attributedPlaceholder = NSAttributedString(string:"Antigua contraseña",
+        txt_new_password_1.attributedPlaceholder = NSAttributedString(string:"New Password".localized(),
                                                                     attributes:[NSForegroundColorAttributeName: UIColor.white])
-        txt_new_password_2.attributedPlaceholder = NSAttributedString(string:"Confirmar contraseña",
+        txt_new_password_2.attributedPlaceholder = NSAttributedString(string:"Confirn new password".localized(),
                                                                       attributes:[NSForegroundColorAttributeName: UIColor.white])
         
     }
@@ -78,7 +78,7 @@ class ChangePasswordViewController: UIViewController {
             presenter2.transitionType = .crossDissolve // Optional
             let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-            vc2.setText("Las contraseñas debe coincidir y no deben ser vacias")
+            vc2.setText("The password must be the same...".localized())
         }
         
 

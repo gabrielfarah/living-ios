@@ -9,7 +9,7 @@ import UIKit
 import Foundation
 import Presentr
 import Navajo_Swift
-
+import Localize_Swift
 
 class NewUserViewController: UIViewController {
     
@@ -147,7 +147,7 @@ class NewUserViewController: UIViewController {
             presenter.transitionType = .crossDissolve // Optional
             let vc = LoadingViewController(nibName: "LoadingViewController", bundle: nil)
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            vc.setText("Un momento por favor, estamos registrando sus datos")
+            vc.setText("One moment please, we are registering your data".localized())
             
             
             //Hace la conexión
@@ -195,7 +195,7 @@ class NewUserViewController: UIViewController {
         }else{
             // Muestra error de datos
             
-            let alert = UIAlertController(title: "Living", message: "Error en el registro de datos", preferredStyle: UIAlertControllerStyle.alert)
+            let alert = UIAlertController(title: "Living", message: "Error in data logging...", preferredStyle: UIAlertControllerStyle.alert)
             
             
             

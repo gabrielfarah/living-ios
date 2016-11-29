@@ -9,6 +9,7 @@
 import UIKit
 import Foundation
 import Presentr
+import Localize_Swift
 
 class FoundDevicesViewController: UIViewController {
 
@@ -86,7 +87,7 @@ class FoundDevicesViewController: UIViewController {
             presenter.dismissOnTap = true
             let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            vc.setText("Este dispositivo ya se encuentra registrado...")
+            vc.setText("This device is already registered...".localized())
             return
         
         }else{

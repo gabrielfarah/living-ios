@@ -178,3 +178,115 @@
 
 /* Class = "UILabel"; text = "Agrega un nuevo dispositivo"; ObjectID = "zVo-Zw-jis"; */
 "zVo-Zw-jis.text" = "Agrega un nuevo dispositivo";
+
+
+
+
+"Account" = "Account";
+"Deleting, one moment please" = "Deleting, one moment please";
+"Login, one moment please..." = "Login, one moment please...";
+"Malformed jwt token \(jwt) has \(parts) parts when it should have 3 parts" = "Malformed jwt token \(jwt) has \(parts) parts when it should have 3 parts";
+"Malformed jwt token, failed to decode base64Url value \(value)" = "Malformed jwt token, failed to decode base64Url value \(value)";
+"Malformed jwt token, failed to parse JSON value from base64Url \(value)" = "Malformed jwt token, failed to parse JSON value from base64Url \(value)";
+"NAVAJO_ALLOWED_CHARACTER_ERROR" = "NAVAJO_ALLOWED_CHARACTER_ERROR";
+"NAVAJO_BLOCK_ERROR" = "NAVAJO_BLOCK_ERROR";
+"NAVAJO_DICTIONARYWORD_ERROR" = "NAVAJO_DICTIONARYWORD_ERROR";
+"NAVAJO_LENGTH_ERROR" = "NAVAJO_LENGTH_ERROR";
+"NAVAJO_PREDICATE_ERROR" = "NAVAJO_PREDICATE_ERROR";
+"NAVAJO_REASONABLE" = "NAVAJO_REASONABLE";
+"NAVAJO_REGEX_ERROR" = "NAVAJO_REGEX_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR" = "NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR" = "NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR" = "NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR";
+"NAVAJO_STRONG" = "NAVAJO_STRONG";
+"NAVAJO_VERY_STRONG" = "NAVAJO_VERY_STRONG";
+"NAVAJO_VERY_WEAK" = "NAVAJO_VERY_WEAK";
+"NAVAJO_WEAK" = "NAVAJO_WEAK";
+"Saving device in the hub, one moment please..." = "Saving device in the hub, one moment please...";
+"The device is offline, check your internet connection" = "The device is offline, check your internet connection";
+"The device name cant be empty..." = "The device name cant be empty...";
+"The trigger was created successfully" = "The trigger was created successfully";
+
+iMac:Living nfajardo$ ./genstrings.swift
+"Account" = "Account";
+"Are you sure?" = "Are you sure?";
+"Can not connect to Hub, please try again" = "Can not connect to Hub, please try again";
+"Cancel" = "Cancel";
+"Confirn new password" = "Confirn new password";
+"Deleting, one moment please" = "Deleting, one moment please";
+"Device was sucessfully added" = "Device was sucessfully added";
+"Device was sucessfully updated." = "Device was sucessfully updated.";
+"Error, please try again..." = "Error, please try again...";
+"Guest" = "Guest";
+"Guest has been removed successfully ..." = "Guest has been removed successfully ...";
+"Im sure" = "Im sure";
+"Login, one moment please..." = "Login, one moment please...";
+"Looking for a Zwave device, one moment please..." = "Looking for a Zwave device, one moment please...";
+"Malformed jwt token \(jwt) has \(parts) parts when it should have 3 parts" = "Malformed jwt token \(jwt) has \(parts) parts when it should have 3 parts";
+"Malformed jwt token, failed to decode base64Url value \(value)" = "Malformed jwt token, failed to decode base64Url value \(value)";
+"Malformed jwt token, failed to parse JSON value from base64Url \(value)" = "Malformed jwt token, failed to parse JSON value from base64Url \(value)";
+"NAVAJO_ALLOWED_CHARACTER_ERROR" = "NAVAJO_ALLOWED_CHARACTER_ERROR";
+"NAVAJO_BLOCK_ERROR" = "NAVAJO_BLOCK_ERROR";
+"NAVAJO_DICTIONARYWORD_ERROR" = "NAVAJO_DICTIONARYWORD_ERROR";
+"NAVAJO_LENGTH_ERROR" = "NAVAJO_LENGTH_ERROR";
+"NAVAJO_PREDICATE_ERROR" = "NAVAJO_PREDICATE_ERROR";
+"NAVAJO_REASONABLE" = "NAVAJO_REASONABLE";
+"NAVAJO_REGEX_ERROR" = "NAVAJO_REGEX_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR" = "NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR" = "NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR" = "NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR";
+"NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR";
+"NAVAJO_STRONG" = "NAVAJO_STRONG";
+"NAVAJO_VERY_STRONG" = "NAVAJO_VERY_STRONG";
+"NAVAJO_VERY_WEAK" = "NAVAJO_VERY_WEAK";
+"NAVAJO_WEAK" = "NAVAJO_WEAK";
+"New Guest" = "New Guest";
+"New Password" = "New Password";
+"New mode" = "New mode";
+"No connected Wifi devices found, in case it is an error please try again" = "No connected Wifi devices found, in case it is an error please try again";
+"No connected ZWave devices found, in case it is an error please try again" = "No connected ZWave devices found, in case it is an error please try again";
+"Old password" = "Old password";
+"One moment please, we are registering your data" = "One moment please, we are registering your data";
+"One moment please..." = "One moment please...";
+"Operation failed, please try again..." = "Operation failed, please try again...";
+"Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone" = "Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone";
+"Romm added sucecesfully..." = "Romm added sucecesfully...";
+"Room successfully added..." = "Room successfully added...";
+"Saving device in the hub, one moment please..." = "Saving device in the hub, one moment please...";
+"Scene has been updated..." = "Scene has been updated...";
+"Scene succesfully created..." = "Scene succesfully created...";
+"Scenes" = "Scenes";
+"Searching for Wifi devices, one moment please ..." = "Searching for Wifi devices, one moment please ...";
+"The IP is not reachable" = "The IP is not reachable";
+"The SSID can not be empty" = "The SSID can not be empty";
+"The device is offline, check your internet connection" = "The device is offline, check your internet connection";
+"The device name cant be empty..." = "The device name cant be empty...";
+"The password must be the same..." = "The password must be the same...";
+"The room has been remove succesfully..." = "The room has been remove succesfully...";
+"The scene cant be empty..." = "The scene cant be empty...";
+"The scene has been created succesfully..." = "The scene has been created succesfully...";
+"The scene has been removed..." = "The scene has been removed...";
+"The scene was performed..." = "The scene was performed...";
+"The scene's name can't be empty..." = "The scene's name can't be empty...";
+"The trigger was created successfully" = "The trigger was created successfully";
+"There is a problem running the scene...." = "There is a problem running the scene....";
+"There is no registered guest" = "There is no registered guest";
+"There is no scenes..." = "There is no scenes...";
+"This device is already registered..." = "This device is already registered...";
+"User added sucessfully..." = "User added sucessfully...";
+"Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app." = "Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app.";
+"You can't undo this action" = "You can't undo this action";
+"You must choose a time zone" = "You must choose a time zone";
+"You must chose an image for your location ..." = "You must chose an image for your location ...";
+"You must specify where is the location, please find your place in the map just dragging to it..." = "You must specify where is the location, please find your place in the map just dragging to it...";
+"You must write a serial code..." = "You must write a serial code...";
+"You must write the location's name" = "You must write the location's name";
+"error, please try again" = "error, please try again";
+"error: %@" = "error: %@";
+"¿Are you sure you want to delete this room?" = "¿Are you sure you want to delete this room?";
+
+
+
