@@ -39,7 +39,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     var totalEndpointsCountNeeded:Int! // <-- The number of images to fetch
     var timer_status:Timer = Timer()
     var can_get_status:Bool = false
-    var view_type:HomeViewControllerSectionType = HomeViewControllerSectionType.endpoints
+    var view_type:HomeViewControllerSectionType = HomeViewControllerSectionType.scenes
     var rooms:Rooms = Rooms()
     var menuView:BTNavigationDropdownMenu!;
     var selectedEndpointIndex:Int = 0
@@ -87,7 +87,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
         
 
-
+        self.endpoints_list!.addGestureRecognizer(UILongPressGestureRecognizer(target: self, action: #selector(handleLongGesture)))
         
 
         
@@ -110,56 +110,13 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         vc.setText( "Un momento por favor...")
         
             
-        
+        //TODO: Actualizar el token aqui....
             
-        ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
             
-            self.scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
-                if(IsError){
-                }else{
-                    
-                }
-                
-                self.rooms.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
-                    if(IsError){
-                        //TODO: Manejo de errores
-                        
-                    }else{
 
-                    }
-                    
-                    self.dismiss(animated: true, completion: {
-                        
-                    })
-                }
-            }
             
-          
-            
-            
-            ArSmartApi.sharedApi.syncHub()
-
-            if ArSmartApi.sharedApi.hub!.hid == 0 {
-                
-                Timer.after(1.0.seconds) {
-                    
-                    let width = ModalSize.custom(size: 240)
-                    let height = ModalSize.custom(size: 243)
-                    let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                    
-                    presenter.transitionType = .crossDissolve // Optional
-                    presenter.dismissOnTap = false
-                    let vc = SelectDeviceViewController(nibName: "SelectDeviceViewController", bundle: nil)
-                    self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-
-                }
-                
-            }else{
-                
-                NotificationCenter.default.post(name:HomeViewController.LoadEndpoints, object: nil)
-            }
-
-         })
+            self.init_load()
+         
         
         timer.invalidate()
             
@@ -171,6 +128,69 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
     }
 
+    
+    func init_load(){
+        
+        
+        self.scenes.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
+            if(IsError){
+            }else{
+                
+            }
+
+            ArSmartApi.sharedApi.hubs.load(ArSmartApi.sharedApi.getToken(),completion: { (IsError, result) in
+                
+                
+                self.rooms.load(ArSmartApi.sharedApi.getToken(), hub: ArSmartApi.sharedApi.hub!.hid) { (IsError, result) in
+                    if(IsError){
+                        //TODO: Manejo de errores
+                        
+                    }else{
+                        
+                    }
+                    
+                    self.dismiss(animated: true, completion: {
+                        
+                    })
+                }
+                
+                
+                
+                ArSmartApi.sharedApi.syncHub()
+                
+                if ArSmartApi.sharedApi.hub!.hid == 0 {
+                    
+                    Timer.after(1.0.seconds) {
+                        
+                        let width = ModalSize.custom(size: 240)
+                        let height = ModalSize.custom(size: 243)
+                        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                        
+                        presenter.transitionType = .crossDissolve // Optional
+                        presenter.dismissOnTap = false
+                        let vc = SelectDeviceViewController(nibName: "SelectDeviceViewController", bundle: nil)
+                        self.customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                        
+                    }
+                    
+                }else{
+                    
+                    NotificationCenter.default.post(name:HomeViewController.LoadEndpoints, object: nil)
+                }
+                
+            })
+            
+            
+            
+   
+        }
+        
+    
+        
+    
+    }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -223,79 +243,28 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     // MARK: WaterfallLayoutDelegate
     
     // tell the collection view how many cells to make
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    
+    
+    func handleLongGesture(gesture: UILongPressGestureRecognizer) {
         
-        if(view_type == HomeViewControllerSectionType.endpoints){
+        switch(gesture.state) {
             
-            if(selectedRoom.rid == 0){
-                  return (ArSmartApi.sharedApi.hub?.endpoints.count())!
-            }else{
-                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
-                return endpoints_temp!.count
+        case UIGestureRecognizerState.began:
+            guard let selectedIndexPath = self.endpoints_list.indexPathForItem(at: gesture.location(in: self.endpoints_list)) else {
+                break
             }
-            
-      
-            
-            
-        }else if(view_type == HomeViewControllerSectionType.rooms){
-            return rooms.rooms.count
-        }else{
-            return (scenes.scenes.count)
-        }
-        
-
-    }
-
-    // make a cell for each cell index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAtIndexPath indexPath: IndexPath) -> UICollectionViewCell {
-        
-        
-        if(view_type == HomeViewControllerSectionType.endpoints){
-            // get a reference to our storyboard cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
-            
-            //let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EndPointMenuCell
-            
-            
-            // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            
-            var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
-            if selectedRoom.rid != 0{
-                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
-                endpoint = (endpoints_temp?[indexPath.row])!
-            }
-            
-
-            let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            cell.setStatus(endpoint)
-            let endpoint_name = String(format:"%@ ",endpoint.name)
-            cell.setGalleryItem(image, text: endpoint_name)
-
-            cell.itemImageView.layer.removeAllAnimations()
-            return cell
-        }else if(view_type == HomeViewControllerSectionType.rooms){
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
-            
-            // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            let room = rooms.rooms[(indexPath as NSIndexPath).item]
-            
-            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            cell.setGalleryItemNoStatus(image, text: room.description)
-            cell.itemImageView.layer.removeAllAnimations()
-            return cell
-        }else{
-        
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
-            
-            // Use the outlet in our custom class to get a reference to the UILabel in the cell
-            let scene = scenes.scenes[(indexPath as NSIndexPath).item]
-            
-            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
-            cell.setGalleryItemNoStatus(image, text: scene.name)
-            cell.itemImageView.layer.removeAllAnimations()
-            return cell
+            endpoints_list.beginInteractiveMovementForItem(at: selectedIndexPath)
+        case UIGestureRecognizerState.changed:
+            endpoints_list.updateInteractiveMovementTargetPosition(gesture.location(in: gesture.view!))
+        case UIGestureRecognizerState.ended:
+            endpoints_list.endInteractiveMovement()
+        default:
+            endpoints_list.cancelInteractiveMovement()
         }
     }
+    
+    
+    
     
     // MARK: - UICollectionViewDelegate protocol
     
@@ -358,23 +327,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
         
     }
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: IndexPath) -> UICollectionReusableView {
 
-            let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath) as! CollectionParallaxHeader
-        
-            view.imageView?.delegate = self
-        view.imageView?.lbl_room_name.text = self.room_name
-            return view
-
-        
-    }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-
-        
-        // Set some extra pixels for height due to the margins of the header section.
-        //This value should be the sum of the vertical spacing you set in the autolayout constraints for the label. + 16 worked for me as I have 8px for top and bottom constraints.
-        return CGSize(width: collectionView.frame.width, height: 113)
-    }
 
 
     func LoadEndpoints(_ notification: Notification){
@@ -423,7 +376,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
 
 
-        GetDevicesStatus()
+        //GetDevicesStatus()
         
         self.endpoints_list.reloadData()
         
@@ -472,11 +425,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
                 break
             case "ui-level-light-zwave":
+                let height2 = ModalSize.custom(size: 369)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height2, center:ModalCenterPosition.center))
                 let vc = LevelViewController(nibName: "LevelViewController", bundle: nil)
                 vc.endpoint = endpoint
                 
-                customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-                vc.slider_level.setValue(Float(endpoint.state), animated: false)
+                customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
+                //vc.slider_level.setValue(Float(endpoint.state), animated: false)
+                
                 vc.lbl_name.text = endpoint.name
                 break
             case "ui-sensor-open-close-zwave":
@@ -498,13 +454,14 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
                 //let vc = SwitchViewController(nibName: "SwitchViewController", bundle: nil)
                 //vc.endpoint = endpoint
                 //customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-                
+                let height2 = ModalSize.custom(size: 369)
+                let presenter2 = Presentr(presentationType: .custom(width: width, height: height2, center:ModalCenterPosition.center))
                 let vc = LevelViewController(nibName: "LevelViewController", bundle: nil)
                 vc.endpoint = endpoint
                 
-                customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
+                customPresentViewController(presenter2, viewController: vc, animated: true, completion: nil)
                 vc.lbl_name.text = endpoint.name
-                vc.slider_level.setValue(Float(endpoint.state), animated: false)
+                //vc.slider_level.setValue(Float(endpoint.state), animated: false)
                 break
                 
                 
@@ -587,7 +544,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
             ArSmartApi.sharedApi.hub?.endpoints.GetStatusZWavesDevicesTask(hub!, token: token, completion: { (IsError, result) in
                 
-                Timer.after(3.0.seconds) {
+                Timer.after(10.0.seconds) {
                     self.GetDevicesStatus()
                 }
                 
@@ -644,7 +601,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
 
         selectedRoom = Room()
         room_name = ""
-        GetDevicesStatus()
+        //GetDevicesStatus()
     }
     
     // Esta funcion permite mostrar los devices d
@@ -707,5 +664,155 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
     
 
+    
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if(view_type == HomeViewControllerSectionType.endpoints){
+            
+            if(selectedRoom.rid == 0){
+                return (ArSmartApi.sharedApi.hub?.endpoints.count())!
+            }else{
+                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
+                return endpoints_temp!.count
+            }
+            
+            
+            
+            
+        }else if(view_type == HomeViewControllerSectionType.rooms){
+            return rooms.rooms.count
+        }else{
+            return (scenes.scenes.count)
+        }
+        
+        
+    }
+
+    
+    func collectionView(_ collectionView: UICollectionView, moveItemAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        print("MOVING!")
+        if(view_type == HomeViewControllerSectionType.endpoints){
+            
+            
+            //var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            //TODO: Aqui se cambian, probablemente se deberia actualizar el orden aqui mismo.
+            let temp = ArSmartApi.sharedApi.hub?.endpoints.endpoints.remove(at: sourceIndexPath.item)
+            ArSmartApi.sharedApi.hub?.endpoints.endpoints.insert(temp!, at: destinationIndexPath.item)
+            
+           
+            
+        
+            ArSmartApi.sharedApi.hub?.endpoints.saveEndpointsSort(ArSmartApi.sharedApi.hub!.hid, token: ArSmartApi.sharedApi.getToken(), completion: { (IsError, response) in
+                
+            })
+            
+        }else if (view_type == HomeViewControllerSectionType.rooms){
+            
+            
+            //var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            //TODO: Aqui se cambian, probablemente se deberia actualizar el orden aqui mismo.
+            let temp = rooms.rooms.remove(at: sourceIndexPath.item)
+            rooms.rooms.insert(temp, at: destinationIndexPath.item)
+            
+            
+            
+            
+            rooms.saveSort(ArSmartApi.sharedApi.hub!.hid, token: ArSmartApi.sharedApi.getToken(), completion: { (IsError, response) in
+                
+            })
+            
+        }else if (view_type == HomeViewControllerSectionType.scenes){
+            
+            
+            //var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            //TODO: Aqui se cambian, probablemente se deberia actualizar el orden aqui mismo.
+            let temp = scenes.scenes.remove(at: sourceIndexPath.item)
+            scenes.scenes.insert(temp, at: destinationIndexPath.item)
+            
+            
+            
+            
+            scenes.saveSort(ArSmartApi.sharedApi.hub!.hid, token: ArSmartApi.sharedApi.getToken(), completion: { (IsError, response) in
+                
+            })
+            
+        }
+        
+    }
+    // make a cell for each cell index path
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        
+        if(view_type == HomeViewControllerSectionType.endpoints){
+            // get a reference to our storyboard cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
+            
+            //let cell = collectionView.cellForItemAtIndexPath(indexPath) as! EndPointMenuCell
+            
+            
+            // Use the outlet in our custom class to get a reference to the UILabel in the cell
+            
+            var endpoint = (ArSmartApi.sharedApi.hub?.endpoints.objectAtIndex(indexPath.item))!
+            if selectedRoom.rid != 0{
+                let endpoints_temp = ArSmartApi.sharedApi.hub?.endpoints.inRoom(room: selectedRoom)
+                endpoint = (endpoints_temp?[indexPath.row])!
+            }
+            
+            
+            let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.setStatus(endpoint)
+            let endpoint_name = String(format:"%@ ",endpoint.name)
+            cell.setGalleryItem(image, text: endpoint_name)
+            cell.isEndpoint = true
+            
+            cell.itemImageView.layer.removeAllAnimations()
+            return cell
+        }else if(view_type == HomeViewControllerSectionType.rooms){
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
+            cell.isEndpoint = false
+            // Use the outlet in our custom class to get a reference to the UILabel in the cell
+            let room = rooms.rooms[(indexPath as NSIndexPath).item]
+            
+            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.setGalleryItemNoStatus(image, text: room.description)
+            cell.setHeaderColor(color: room.color)
+            cell.itemImageView.layer.removeAllAnimations()
+            
+            return cell
+        }else{
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! EndPointMenuCell
+             cell.isEndpoint = false
+            // Use the outlet in our custom class to get a reference to the UILabel in the cell
+            let scene = scenes.scenes[(indexPath as NSIndexPath).item]
+            
+            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            cell.setGalleryItemNoStatus(image, text: scene.name)
+            cell.setHeaderColor(real_color: UIColor.clear)
+            cell.itemImageView.layer.removeAllAnimations()
+            return cell
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        
+        let view = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "parallaxHeader", for: indexPath) as! CollectionParallaxHeader
+        
+        view.imageView?.delegate = self
+        view.imageView?.lbl_room_name.text = self.room_name
+        return view
+        
+        
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        
+        
+        // Set some extra pixels for height due to the margins of the header section.
+        //This value should be the sum of the vertical spacing you set in the autolayout constraints for the label. + 16 worked for me as I have 8px for top and bottom constraints.
+        return CGSize(width: collectionView.frame.width, height: 113)
+    }
     
 }

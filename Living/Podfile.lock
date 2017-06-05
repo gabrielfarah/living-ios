@@ -1,44 +1,42 @@
 PODS:
-  - Alamofire (4.0.1)
+  - Alamofire (4.4.0)
   - BTNavigationDropdownMenu (0.4.1)
+  - CircularSlider (1.1.2)
   - CollectionViewWaterfallLayout (0.2.2)
   - CSStickyHeaderFlowLayout (0.2.11)
   - DZNEmptyDataSet (1.8.1)
-  - FirebaseAnalytics (3.4.4):
-    - FirebaseCore (~> 3.4)
+  - FirebaseAnalytics (3.9.0):
+    - FirebaseCore (~> 3.6)
     - FirebaseInstanceID (~> 1.0)
-    - GoogleInterchangeUtilities (~> 1.2)
-    - GoogleSymbolUtilities (~> 1.1)
-  - FirebaseCore (3.4.3):
-    - GoogleInterchangeUtilities (~> 1.2)
-    - GoogleUtilities (~> 1.2)
-  - FirebaseInstanceID (1.0.8)
-  - Google/Analytics (3.0.3):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseCore (3.6.0):
+    - GoogleToolboxForMac/NSData+zlib (~> 2.1)
+  - FirebaseInstanceID (1.0.10):
+    - FirebaseCore (~> 3.6)
+  - Google/Analytics (3.1.0):
     - Google/Core
     - GoogleAnalytics (~> 3.12)
-  - Google/Core (3.0.3):
+  - Google/Core (3.1.0):
     - FirebaseAnalytics (~> 3.2)
   - GoogleAnalytics (3.17.0)
-  - GoogleInterchangeUtilities (1.2.2):
-    - GoogleSymbolUtilities (~> 1.1)
-  - GoogleMaps (2.1.0):
-    - GoogleMaps/Maps (= 2.1.0)
-  - GoogleMaps/Base (2.1.0)
-  - GoogleMaps/Maps (2.1.0):
-    - GoogleMaps/Base (= 2.1.0)
-  - GoogleSymbolUtilities (1.1.2)
-  - GoogleUtilities (1.3.2):
-    - GoogleSymbolUtilities (~> 1.1)
-  - IQKeyboardManagerSwift (4.0.6)
+  - GoogleMaps (2.3.0):
+    - GoogleMaps/Maps (= 2.3.0)
+  - GoogleMaps/Base (2.3.0)
+  - GoogleMaps/Maps (2.3.0):
+    - GoogleMaps/Base
+  - GoogleToolboxForMac/Defines (2.1.1)
+  - GoogleToolboxForMac/NSData+zlib (2.1.1):
+    - GoogleToolboxForMac/Defines (= 2.1.1)
+  - IQKeyboardManagerSwift (4.0.10)
   - JWTDecode (2.0.0)
-  - Localize-Swift (1.6)
-  - Navajo-Swift (0.2.0)
-  - NVActivityIndicatorView (3.0)
-  - OneSignal (2.1.16)
-  - Presentr (1.0.1)
-  - SideMenuController (0.2.0)
+  - Localize-Swift (1.7.1)
+  - Navajo-Swift (1.0.0)
+  - NVActivityIndicatorView (3.6.1)
+  - OneSignal (2.5.4)
+  - Presentr (1.2.3)
+  - SideMenuController (0.2.4)
   - SwiftHUEColorPicker (0.3.0)
-  - SwiftyJSON (3.1.1)
+  - SwiftyJSON (3.1.4)
   - SwiftyTimer (2.0.0)
   - SwiftyUserDefaults (3.0.0)
   - UIColor_Hex_Swift (3.0.2)
@@ -46,6 +44,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 4.0)
   - BTNavigationDropdownMenu (from `https://github.com/PhamBaTho/BTNavigationDropdownMenu.git`, branch `swift-3.0`)
+  - CircularSlider
   - CollectionViewWaterfallLayout (from `https://github.com/ostatnicky/CollectionViewWaterfallLayout.git`, branch `feature/swift3`)
   - CSStickyHeaderFlowLayout
   - DZNEmptyDataSet
@@ -82,34 +81,33 @@ CHECKOUT OPTIONS:
     :git: https://github.com/ostatnicky/CollectionViewWaterfallLayout.git
 
 SPEC CHECKSUMS:
-  Alamofire: 7682d43245de14874acd142ec137b144aa1dd335
+  Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
   BTNavigationDropdownMenu: 093f3cbfad1572f2c222bdf8d17584d1e13380d4
+  CircularSlider: 448f9f7723b845ccd470dac41981feb192e20c50
   CollectionViewWaterfallLayout: b4f9aabad89609696ea3f6dceff956dd58e2bae4
   CSStickyHeaderFlowLayout: e9bcb1762413f49d7d09e5bd0ae5efd1100116b7
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FirebaseAnalytics: 0533a00b681e08fd0b2cd0444b7ddf0ef9fd7a1a
-  FirebaseCore: 5a885548bbc5f0c410b04f8e9ac9d73ff1221907
-  FirebaseInstanceID: ba1e640935235e5fac39dfa816fe7660e72e1a8a
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  FirebaseAnalytics: e5fe8486efc01bec33f6bf82e2fa9fce4b124052
+  FirebaseCore: 9691ee2ade70c098d7cf92440f4303f16d83ca75
+  FirebaseInstanceID: b9eedd6846fb5e1f0f7279e1deaa7a7e4cf8392e
+  Google: 98da4b1a60ed0beb80a290387a28333406a1eb90
   GoogleAnalytics: f42cc53a87a51fe94334821868d9c8481ff47a7b
-  GoogleInterchangeUtilities: d5bc4d88d5b661ab72f9d70c58d02ca8c27ad1f7
-  GoogleMaps: 06589b9a38097bce0cd6e90f0fd9b5e4b4a9344c
-  GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
-  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
-  IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
+  GoogleMaps: 340a6a0bebd17c2db8abcd3921976c7c53c86cb8
+  GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   JWTDecode: 178e47e5d28d3abcff778bacced8342858cd6cb5
-  Localize-Swift: d34c70b34ffb1468b2942c3f0b5c1dfd9119877e
-  Navajo-Swift: d42d9ef9df04f506a6e08e7d51488eafa6a9b719
-  NVActivityIndicatorView: 81953b5e65093ba79edf4fe7268e002039ca5268
-  OneSignal: 7a4272f857d3005949f83a373868c5c98d02f203
-  Presentr: d031e73e45b5fb18e4807e839aafc53b06d65306
-  SideMenuController: fe6ce032847d4021ac5ead7ee1b05364df5739e7
+  Localize-Swift: 6cabc1087c0e910e77bfa87c2ed3f65c80c0b2df
+  Navajo-Swift: b5ccdf31f5b21e4944a418c5dfe891c8e571f7c7
+  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  OneSignal: da994bcf6a2efbdceaf71e389e1d05245c562899
+  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
+  SideMenuController: b463d2b3aa58e2afe57f57a07938fa9a647894ca
   SwiftHUEColorPicker: 5c5e177051432f3d29f495ae7ae478849cdda953
-  SwiftyJSON: f0be2e604f83e8405a624e9f891898bf6ed4e019
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyTimer: 2efd74b060d69ad4f1496baf5bbedbe132125fcf
   SwiftyUserDefaults: 0f1d45fc3aafb9064dac661e367f8f83fe21a4b4
   UIColor_Hex_Swift: 95f718452092a3efc8a827dffd2c04d3237be02d
 
-PODFILE CHECKSUM: 0cef7533fe518d4e9137990137a277620e290b2f
+PODFILE CHECKSUM: 6e45482b01cc53b76df088fad3d62e82be29cc44
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.1

@@ -41,7 +41,11 @@ class Endpoint{
     var version:String
     var wkup_intv:String
     var is_room_available:Bool
-    
+    var orden:Int
+    var color:String
+    var max_value:Int
+    var min_value:Int
+    var sig_type:String
     
     struct JSONStringArrayEncoding: ParameterEncoding {
         private let array: [[String: AnyObject]]
@@ -96,9 +100,16 @@ class Endpoint{
         self.version = ""
         self.wkup_intv = "0"
         self.is_room_available = false
+        
+        self.orden = 0
+        self.color = "#FFFFFF"
+        self.max_value = 100
+        self.min_value = 0
+        self.sig_type = ""
+        
     }
     
-    init(active:Int, category:CategoryEndpoint, created_at:Date, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:Date, version:String?=nil, wkup_intv:String?=nil){
+    init(active:Int, category:CategoryEndpoint, created_at:Date, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:Date, version:String?=nil, wkup_intv:String?=nil,orden:Int,color:String,max_value:Int,min_value:Int,sig_type:String){
     
         self.active = active
         self.category = category
@@ -125,6 +136,13 @@ class Endpoint{
         self.version = version ?? ""
         self.wkup_intv = wkup_intv ?? "0"
         self.is_room_available = true
+        
+        
+        self.orden = orden
+        self.color = color
+        self.max_value = max_value
+        self.min_value = min_value
+        self.sig_type = sig_type
     
     }
     
@@ -156,6 +174,12 @@ class Endpoint{
         self.version = ""
         self.wkup_intv = "0"
         self.is_room_available = false
+        
+        self.orden = 0
+        self.color = "#FFFFFF"
+        self.max_value = 100
+        self.min_value = 0
+        self.sig_type = ""
     }
     
     
@@ -188,6 +212,7 @@ class Endpoint{
                 //"ip_address": self.ip_address,
                 "port": self.port,
                 "sleep_cap": false,
+                "color": color,
 
 
         ] as [String : Any]

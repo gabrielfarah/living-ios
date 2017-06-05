@@ -66,6 +66,10 @@ class SceneEndpointCell: UITableViewCell {
         }else{
             endpoint_switch.isOn = false
         }
+        
+        endpoint_switch_label.text = (endpoint_switch.isOn) ? "Activado" : "Desactivado"
+
+        
         mode = SceneEndpointCellMode.switch
         
     }
@@ -176,6 +180,8 @@ class SceneEndpointCell: UITableViewCell {
                         self.payload_level = payload
                     }else{
                         self.payload = payload
+                        self.payload_level = payload
+                        self.payload_switch = payload
                     }
                     
                     tableView.selectRow(at: indexPath, animated: true, scrollPosition: UITableViewScrollPosition.none)
@@ -189,6 +195,8 @@ class SceneEndpointCell: UITableViewCell {
                         self.payload_level = payload
                     }else{
                         self.payload = payload
+                        self.payload_level = payload
+                        self.payload_switch = payload
                     }
                     
                 }
@@ -200,6 +208,8 @@ class SceneEndpointCell: UITableViewCell {
                     self.payload_level = payload
                 }else{
                     self.payload = payload
+                    self.payload_level = payload
+                    self.payload_switch = payload
                 }
             }
             
@@ -217,7 +227,9 @@ class SceneEndpointCell: UITableViewCell {
         }else if(endpoint.isSonos()){
             self.sonosMode()
         }else{
-            self.noneMode()
+            
+            self.switchMode()
+            //self.noneMode()
         }
 
     

@@ -18,6 +18,38 @@ class Actions{
     
     func load(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
+        
+        let _email = ArSmartApi.sharedApi.token?.user
+        let _pwd = ArSmartApi.sharedApi.token?.password
+        
+        let expired = ArSmartApi.sharedApi.token?.exp_date
+        let now = Date()
+        
+        if(now < expired!){
+            self.load2(token,hub: hub, completion: { (IsError, result) in
+                completion(IsError,result);
+            })
+        }else{
+            ArSmartApi.sharedApi.token?.refresh_token(_email!, password: _pwd!, completion: { (IsError, result) in
+                if(IsError){
+                    //TODO: Que hacer si hay error
+                    completion(true,"Token no valido");
+                    
+                }else{
+                    self.load2(token,hub: hub, completion: { (IsError, result) in
+                        completion(IsError,result);
+                    })
+                }
+            })
+        }
+        
+        
+    }
+    
+    
+    
+    func load2(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        
         let headers = [
             "Authorization": "JWT "+token,
             "Accept": "application/json"

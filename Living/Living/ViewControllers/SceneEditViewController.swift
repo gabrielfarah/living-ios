@@ -235,7 +235,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBAction func SaveScene(_ sender: AnyObject) {
         
         if(editMode){
-            Update()
+            Update(silent: false)
         }else{
             Save()
         }
@@ -305,7 +305,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         
     }
     
-    func Update(){
+    func Update(silent:Bool){
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid
         
@@ -323,29 +323,31 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
             scene.update(token, hub: hub!) { (IsError, result) in
                 if(IsError){
                     
-                    
-                    let width = ModalSize.custom(size: 240)
-                    let height = ModalSize.custom(size: 130)
-                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                    
-                    presenter2.transitionType = .crossDissolve // Optional
-                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText(result)
+                    if (!silent) {
+                        let width = ModalSize.custom(size: 240)
+                        let height = ModalSize.custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                        
+                        presenter2.transitionType = .crossDissolve // Optional
+                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                        vc2.setText(result)
+                    }
+                   
                     
                     
                 }else{
-                    
-                    let width = ModalSize.custom(size: 240)
-                    let height = ModalSize.custom(size: 130)
-                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-                    
-                    presenter2.transitionType = .crossDissolve // Optional
-                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-                    vc2.setText("Scene has been updated...".localized())
-                    
-
+                    if (!silent) {
+                        let width = ModalSize.custom(size: 240)
+                        let height = ModalSize.custom(size: 130)
+                        let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                        
+                        presenter2.transitionType = .crossDissolve // Optional
+                        let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                        self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                        vc2.setText("Scene has been updated...".localized())
+                        
+                    }
                     
                     
                 }
@@ -432,8 +434,9 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         
 
-        
-        
+        if(editMode){
+            Update(silent: true)
+        }
         
     }
     

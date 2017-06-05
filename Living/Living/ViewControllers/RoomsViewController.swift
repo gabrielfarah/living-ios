@@ -69,7 +69,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         
         
         let width = ModalSize.custom(size: 240)
-        let height = ModalSize.custom(size: 80)
+        let height = ModalSize.custom(size: 120)
         let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         
         presenter2.transitionType = .crossDissolve // Optional
@@ -83,12 +83,12 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     func methodOfReceivedNotificationSuccess(_ notification: Notification){
         //Take Action on Notification
         let width = ModalSize.custom(size: 240)
-        let height = ModalSize.custom(size: 80)
+        let height = ModalSize.custom(size: 120)
         let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         presenter2.transitionType = .crossDissolve // Optional
         let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
         self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
-        vc2.setText("Romm added sucecesfully...".localized())
+        vc2.setText("Room added succesfully...".localized())
         
 
         load_rooms()
@@ -100,12 +100,13 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     
     @IBAction func AddGuest(_ sender: AnyObject) {
         
-        let width = ModalSize.custom(size: 280)
-        let height = ModalSize.custom(size: 132)
-        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.topCenter))
+        let width = ModalSize.custom(size: 293)
+        let height = ModalSize.custom(size: 308)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         //presenter.backgroundOpacity = 0.1
         presenter.blurBackground = true
-        presenter.dismissOnTap = true
+        presenter.dismissOnTap = false
+        presenter.dismissOnSwipe = true
         
         
         presenter.transitionType = .crossDissolve // Optional

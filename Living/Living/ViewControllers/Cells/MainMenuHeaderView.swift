@@ -29,8 +29,8 @@ class MainMenuHeaderView: UIViewController  {
         style();
         
         
-        btn_favorites.isSelected = false
-        btn_devices.isSelected = true
+        btn_favorites.isSelected = true
+        btn_devices.isSelected = false
         btn_areas.isSelected = false
         
         

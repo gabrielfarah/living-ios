@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -11,59 +13,50 @@
             <connections>
                 <outlet property="btn_add" destination="qQA-0P-2AI" id="iEe-la-w5i"/>
                 <outlet property="lbl_title" destination="s2w-II-CC8" id="rbf-aR-55g"/>
+                <outlet property="picker" destination="K7R-P4-XxC" id="aRJ-3E-Dgg"/>
                 <outlet property="txt_email" destination="XNn-xP-il2" id="tYV-Q1-Ff5"/>
                 <outlet property="view" destination="bbB-ea-yek" id="Cxf-SP-onV"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="bbB-ea-yek">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="132"/>
+            <rect key="frame" x="0.0" y="0.0" width="293" height="308"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Adicionar Nuevo Cuarto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2w-II-CC8">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="16" id="mpw-V9-XjL"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite correo electrónico" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XNn-xP-il2">
-                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="44" id="ID5-SG-26R"/>
-                    </constraints>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Digite nombre del cuarto" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="XNn-xP-il2">
+                    <rect key="frame" x="8" y="95" width="277" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.95685279190000005" green="0.95685279190000005" blue="0.95685279190000005" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="sRGB"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQA-0P-2AI">
-                    <constraints>
-                        <constraint firstAttribute="height" constant="30" id="ejC-jd-ZTf"/>
-                    </constraints>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQA-0P-2AI">
+                    <rect key="frame" x="8" y="271" width="277" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                     <state key="normal" title="Aceptar">
-                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="AddGuest:" destination="-1" eventType="touchUpInside" id="9ah-b8-RTh"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K7R-P4-XxC" customClass="SwiftHUEColorPicker" customModule="SwiftHUEColorPicker">
+                    <rect key="frame" x="8" y="161" width="277" height="54"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" red="0.95685279187817263" green="0.95685279187817263" blue="0.95685279187817263" alpha="0.60000002379999995" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" fixedFrame="YES" text="Adicionar Nuevo Cuarto" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2w-II-CC8">
+                    <rect key="frame" x="8" y="8" width="277" height="31"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="20"/>
+                    <color key="textColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="0.72316209529999997" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstItem="XNn-xP-il2" firstAttribute="top" secondItem="s2w-II-CC8" secondAttribute="bottom" constant="8" id="96E-GW-CCf"/>
-                <constraint firstItem="s2w-II-CC8" firstAttribute="leading" secondItem="bbB-ea-yek" secondAttribute="leadingMargin" id="ANj-ye-Fj8"/>
-                <constraint firstItem="qQA-0P-2AI" firstAttribute="top" secondItem="XNn-xP-il2" secondAttribute="bottom" constant="8" symbolic="YES" id="GGV-cJ-aGf"/>
-                <constraint firstItem="qQA-0P-2AI" firstAttribute="leading" secondItem="bbB-ea-yek" secondAttribute="leadingMargin" id="SPU-8q-GnO"/>
-                <constraint firstItem="s2w-II-CC8" firstAttribute="trailing" secondItem="bbB-ea-yek" secondAttribute="trailingMargin" id="Vg2-dH-6en"/>
-                <constraint firstItem="XNn-xP-il2" firstAttribute="top" secondItem="s2w-II-CC8" secondAttribute="bottom" constant="8" id="f2I-aS-Blk"/>
-                <constraint firstAttribute="trailing" secondItem="XNn-xP-il2" secondAttribute="trailing" constant="8" id="mVF-I4-3VS"/>
-                <constraint firstItem="qQA-0P-2AI" firstAttribute="trailing" secondItem="bbB-ea-yek" secondAttribute="trailingMargin" id="nCR-uk-qaS"/>
-                <constraint firstItem="XNn-xP-il2" firstAttribute="leading" secondItem="bbB-ea-yek" secondAttribute="leading" constant="8" id="rEZ-MK-0yC"/>
-                <constraint firstAttribute="bottomMargin" secondItem="qQA-0P-2AI" secondAttribute="bottom" constant="8" id="z7I-WG-Qdv"/>
-            </constraints>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="308" y="245"/>
+            <point key="canvasLocation" x="294.5" y="333"/>
         </view>
     </objects>
 </document>

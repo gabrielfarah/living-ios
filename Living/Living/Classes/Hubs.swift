@@ -29,9 +29,40 @@ class Hubs{
         }
     
     }
+
     
     
     func load(_ token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+    
+        
+        let _email = ArSmartApi.sharedApi.token?.user
+        let _pwd = ArSmartApi.sharedApi.token?.password
+        
+        let expired = ArSmartApi.sharedApi.token?.exp_date
+        let now = Date()
+        
+        if(now < expired!){
+            self.load2(token, completion: { (IsError, result) in
+                completion(IsError,result);
+            })
+        }else{
+            ArSmartApi.sharedApi.token?.refresh_token(_email!, password: _pwd!, completion: { (IsError, result) in
+                if(IsError){
+                    //TODO: Que hacer si hay error
+                    completion(true,"Token no valido");
+                    
+                }else{
+                    self.load2(token, completion: { (IsError, result) in
+                        completion(IsError,result);
+                    })
+                }
+            })
+        }
+        
+        
+    }
+    
+    func load2(_ token:String,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
             
             
             let headers = [
@@ -69,6 +100,10 @@ class Hubs{
                                 let longitude = subJson["longitude"].doubleValue
                                 let radius = subJson["radius"].doubleValue
                                 
+                                let project_info_id = subJson["project_info"]["id"].intValue
+                                let project_info_name = subJson["project_info"]["name"].stringValue
+                                let project_info_color = subJson["project_info"]["color"].stringValue
+                                
                                 
                                 if(name == ""){
                                     name = "[No Name]"
@@ -76,7 +111,7 @@ class Hubs{
                                 }
                               
 
-                                let new_hub = Hub(hid:hid,serial:serial,mac:mac,isRegistered:isRegistered,name:name,latitude:latitude,longitude:longitude,radius:radius)
+                                let new_hub = Hub(hid:hid,serial:serial,mac:mac,isRegistered:isRegistered,name:name,latitude:latitude,longitude:longitude,radius:radius, project_info_id:project_info_id, project_info_name:project_info_name,project_info_color:project_info_color)
                                 
                                 
                                 
@@ -115,13 +150,24 @@ class Hubs{
                                     let updated_at = ArSmartUtils.ParseDate(item["updated_at"].stringValue)
                                     let version = item["version"].stringValue
                                     let wkup_intv = item["wkup_intv"].stringValue
+                                    
+                                    
+                                    
+                                    
+                                    let orden = item["orden"].intValue
+                                    let color = item["color"].stringValue
+                                    let max_value = item["max_value"].intValue
+                                    let min_value = item["min_value"].intValue
+                                    let sig_type = item["sig_type"].stringValue
+                                    
+                                    
                                     if(ui_class_command == "ui-sonos"){
-                                        let endpoint = Sonos(active: active, category: category, created_at: created_at, endpoint_type: endpoint_type, favorite: favorite, id: id, image: image, ip_address: ip_address, lib_type: lib_type, manufacturer_name: manufacturer_name, name: name, node: node, pid: pid, port: port, proto_ver: proto_ver, room: room, sensor: sensor, sleep_cap: sleep_cap, state: state, ui_class_command: ui_class_command, uid: uid, updated_at: updated_at, version: version, wkup_intv: wkup_intv)
+                                        let endpoint = Sonos(active: active, category: category, created_at: created_at, endpoint_type: endpoint_type, favorite: favorite, id: id, image: image, ip_address: ip_address, lib_type: lib_type, manufacturer_name: manufacturer_name, name: name, node: node, pid: pid, port: port, proto_ver: proto_ver, room: room, sensor: sensor, sleep_cap: sleep_cap, state: state, ui_class_command: ui_class_command, uid: uid, updated_at: updated_at, version: version, wkup_intv: wkup_intv,orden:orden,color:color,max_value:max_value,min_value:min_value,sig_type:sig_type)
                                         new_hub.endpoints.add(endpoint)
                                     
                                     }else{
                                     
-                                        let endpoint = Endpoint(active: active, category: category, created_at: created_at, endpoint_type: endpoint_type, favorite: favorite, id: id, image: image, ip_address: ip_address, lib_type: lib_type, manufacturer_name: manufacturer_name, name: name, node: node, pid: pid, port: port, proto_ver: proto_ver, room: room, sensor: sensor, sleep_cap: sleep_cap, state: state, ui_class_command: ui_class_command, uid: uid, updated_at: updated_at, version: version, wkup_intv: wkup_intv)
+                                        let endpoint = Endpoint(active: active, category: category, created_at: created_at, endpoint_type: endpoint_type, favorite: favorite, id: id, image: image, ip_address: ip_address, lib_type: lib_type, manufacturer_name: manufacturer_name, name: name, node: node, pid: pid, port: port, proto_ver: proto_ver, room: room, sensor: sensor, sleep_cap: sleep_cap, state: state, ui_class_command: ui_class_command, uid: uid, updated_at: updated_at, version: version, wkup_intv: wkup_intv,orden:orden,color:color,max_value:max_value,min_value:min_value,sig_type:sig_type)
                                         new_hub.endpoints.add(endpoint)
                                         
                                     }
@@ -131,7 +177,7 @@ class Hubs{
                        
                                     
                                 }
-
+                                new_hub.endpoints.setSort()
                                 self.hubs.append(new_hub)
                             }
 

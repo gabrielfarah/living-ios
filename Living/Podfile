@@ -29,4 +29,6 @@ target 'Living' do
   pod 'Localize-Swift' 
   pod 'SwiftHUEColorPicker'  
   pod 'DZNEmptyDataSet'
+  pod 'CircularSlider'
+
 end

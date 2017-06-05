@@ -15,7 +15,7 @@ class Scene{
     var name:String = ""
     var sid:Int = 0
     var timed:Bool = false
-    
+    var order:Int = 0
     var payload:[Payload] = [Payload]()
     
     

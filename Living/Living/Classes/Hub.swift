@@ -22,6 +22,12 @@ class Hub{
     var longitude:Double
     var radius:Double
     
+    
+    var project_info_id:Int
+    var project_info_name:String
+    var project_info_color:String
+
+    
     var endpoints:Endpoints
     
     init(){
@@ -34,6 +40,11 @@ class Hub{
         self.longitude = 0.0
         self.radius = 100.0
         self.endpoints = Endpoints()
+        
+        
+        self.project_info_id = 0
+        self.project_info_name = ""
+        self.project_info_color = "#2CC2BE"
     }
     
     init(hid:Int,serial:String,mac:String,isRegistered:Bool,name:String,latitude:Double,longitude:Double,radius:Double){
@@ -46,6 +57,26 @@ class Hub{
         self.longitude = longitude
         self.radius = radius
         self.endpoints = Endpoints()
+        
+        self.project_info_id = 0
+        self.project_info_name = ""
+        self.project_info_color = "#2CC2BE"
+
+    }
+    init(hid:Int,serial:String,mac:String,isRegistered:Bool,name:String,latitude:Double,longitude:Double,radius:Double, project_info_id:Int, project_info_name:String,project_info_color:String){
+        self.hid = hid
+        self.serial = serial
+        self.mac = mac
+        self.isRegistered = isRegistered
+        self.name = name
+        self.latitude = latitude
+        self.longitude = longitude
+        self.radius = radius
+        self.endpoints = Endpoints()
+        
+        self.project_info_id = project_info_id
+        self.project_info_name = project_info_name
+        self.project_info_color = project_info_color
         
     }
     
@@ -120,6 +151,9 @@ class Hub{
             "latitude" : self.latitude as AnyObject,
             "longitude" : self.longitude as AnyObject,
             "radius" : self.radius as AnyObject,
+            "project_info_id" : self.project_info_id as AnyObject,
+            "project_info_name" : self.project_info_name as AnyObject,
+            "project_info_color" : self.project_info_color as AnyObject,
 
         ]
         return dict_hub
@@ -141,10 +175,18 @@ class Hub{
         self.longitude = dict_hub["longitude"] as! Double
         self.radius = dict_hub["radius"] as! Double
         
-
+        self.project_info_id = dict_hub["project_info_id"] as! Int
+        self.project_info_name = dict_hub["project_info_name"] as! String
+        self.project_info_color = dict_hub["project_info_color"] as! String
         
         
         
+    }
+    
+    func saveOrder(){
+    
+        //TODO: Obtener orden del endpoint
+    
     }
     
     

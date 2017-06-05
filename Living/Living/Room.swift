@@ -16,32 +16,43 @@ class Room{
     
     var description:String
     var rid:Int
-    
+    var color:String
+    var order:Int
     
     init(){
         self.description = ""
         self.rid = 0
+        self.color = ""
+        self.order = 0
         
     }
     init(room:String){
         self.description = room
         self.rid = 0
+        self.color = ""
+        self.order = 0
     }
     init(room:String,rid:Int){
         self.description = room
         self.rid = rid
+        self.color = ""
+        self.order = 0
     }
     
     func save(_ token:String,hub:Int, completion:  @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         let parameters: [String: AnyObject] = [
-            "description" : self.description as AnyObject
+            "description" : self.description as AnyObject,
+            "color" : self.color as AnyObject,
+            "orden" : self.order as AnyObject,
+            "image" : "lamp_icon" as AnyObject
         ]
         
         
         let headers = [
             "Authorization": "JWT "+token,
-            "Accept": "application/json"
+            "Accept": "application/json",
+            "Accept-Language":"es-es",
         ]
         
         

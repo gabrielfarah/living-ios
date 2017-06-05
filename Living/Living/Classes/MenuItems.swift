@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+import Localize_Swift
 
 class MenuItems{
 
@@ -16,13 +16,13 @@ class MenuItems{
     
     
     init(){
-        items.append("Home")
-        items.append("Devices")
-        items.append("Guests")
-        items.append("Actions")
-        items.append("Rooms")
-        items.append("Scenes")
-        items.append("My Account")
+        items.append("Home".localized())
+        items.append("Devices".localized())
+        items.append("Guests".localized())
+        items.append("Actions".localized())
+        items.append("Rooms".localized())
+        items.append("Scenes".localized())
+        items.append("My Account".localized())
     }
     
     func count()->Int{

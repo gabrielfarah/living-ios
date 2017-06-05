@@ -97,6 +97,98 @@ class Endpoints{
     }
     
     
+    
+    
+    
+    func setSort(){
+        
+        
+        if endpoints.count>0{
+            for i in 0...(endpoints.count - 1){
+                let e = endpoints[i]
+                e.orden = i
+            }
+        }
+
+        
+    
+    
+    }
+    
+    func saveEndpointsSort(_ hub:Int,token:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
+        
+        
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json"
+        ]
+        
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.EndpointsPatch), hub)
+        
+        var ids = [Int]()
+        var orden = [Int]()
+        
+        for i in 0...(endpoints.count - 1){
+            ids.append(endpoints[i].id)
+            orden.append(endpoints[i].orden)
+        }
+        
+        
+        let joiner = ","
+        let elements1 = ids
+        let elements2 = orden
+        let joinedStrings1 = elements1.map({ String(describing: $0) }).joined(separator: joiner)
+        let joinedStrings2 = elements2.map({ String(describing: $0) }).joined(separator: joiner)
+        
+        
+        let  parameters: [String: String] = [:]
+        let json_parameters: [String: String]  = [
+            "ids":joinedStrings1 as String,
+            "orden":joinedStrings2 as String,
+
+            
+        ]
+        
+
+        
+        Alamofire.request(endpoint,method:.post, parameters:json_parameters, encoding: JSONEncoding.default,headers: headers)
+            .validate()
+            .responseJSON { response  in
+                switch response.result {
+                    
+                case .success:
+                    if let value = response.result.value {
+                        let json = JSON(value)
+                        
+                        
+                        let url = json["url"].stringValue
+                        completion(false,url)
+                        
+                        
+                    }else{
+                        completion(true,"")
+                    }
+                    
+                    
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
+                    var json = JSON(data: data)
+                    let response_string = (json["ERROR"]).rawString()
+                    completion(true,response_string!)
+                    
+                    
+                    
+                }
+                
+                
+        }
+        
+        
+        
+    }
+    
+    
     func GetStatusZWavesDevicesTask(_ hub:Int,token:String, completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         
         GetStatusZWavesDevicesTaskUrl(hub, token: token) { (IsError, result) in

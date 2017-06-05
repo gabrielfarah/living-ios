@@ -11,6 +11,7 @@ import CoreData
 import IQKeyboardManagerSwift
 import SideMenuController
 
+import Localize_Swift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -25,6 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         IQKeyboardManager.sharedManager().enable = true
         GMSServices.provideAPIKey(googleMapsApiKey)
+        
+        
+        Localize.availableLanguages(true)
+        let a = Localize.availableLanguages()
+        Localize.setCurrentLanguage("es")
+
         
         let image = UIImage(named: "Menu")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
         SideMenuController.preferences.drawing.menuButtonImage = image

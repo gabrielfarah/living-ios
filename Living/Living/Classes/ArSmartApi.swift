@@ -65,10 +65,7 @@ class ArSmartApi{
         
         
         self.hubs.load(self.getToken(), completion: { (IsError, result) in
-            
-            
             ArSmartApi.sharedApi.hub = ArSmartApi.sharedApi.hubs.getHub(id: ArSmartApi.sharedApi.getHub().hid)
-            
             completion(IsError,result)
         })
         
@@ -76,8 +73,6 @@ class ArSmartApi{
     }
     
     func getToken()->String{
-        
-
         
         return (self.token?.GetToken())!;
     
@@ -201,6 +196,11 @@ struct Api {
         static let Modes = "/v1/hubs/%d/modes/"
         static let Mode = "/v1/hubs/%d/modes/%d/"
         static let Triggers = "/v1/hubs/%d/endpoints/%d/triggers/"
+        
+        
+        static let EndpointsPatch = "/v1/hubs/%d/endpointspatch/"
+        static let RoomsPatch = "/v1/hubs/%d/roomspatch/"
+        static let ModesPatch = "/v1/hubs/%d/modespatch/"
     }
 
     
