@@ -58,10 +58,13 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
         
-        self.title = "Rooms"
+        self.title = "Rooms".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddRoomError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddRoomSuccess"), object: nil)
         
+        
+        
+      
     }
     func methodOfReceivedNotificationError(_ notification: Notification){
         //Take Action on Notification
@@ -100,19 +103,19 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     
     @IBAction func AddGuest(_ sender: AnyObject) {
         
-        let width = ModalSize.custom(size: 293)
-        let height = ModalSize.custom(size: 308)
-        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-        //presenter.backgroundOpacity = 0.1
-        presenter.blurBackground = true
-        presenter.dismissOnTap = false
-        presenter.dismissOnSwipe = true
-        
-        
-        presenter.transitionType = .crossDissolve // Optional
-        let vc2 = AddRoomViewController(nibName: "AddRoomViewController", bundle: nil)
-        self.customPresentViewController(presenter, viewController: vc2, animated: true, completion: nil)
-        vc2.txt_email.becomeFirstResponder()
+//        let width = ModalSize.custom(size: 293)
+//        let height = ModalSize.custom(size: 308)
+//        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+//        //presenter.backgroundOpacity = 0.1
+//        presenter.blurBackground = true
+//        presenter.dismissOnTap = false
+//        presenter.dismissOnSwipe = true
+//        
+//        
+//        presenter.transitionType = .crossDissolve // Optional
+//        let vc2 = AddRoomViewController(nibName: "AddRoomViewController", bundle: nil)
+//        self.customPresentViewController(presenter, viewController: vc2, animated: true, completion: nil)
+//        vc2.txt_email.becomeFirstResponder()
         
         
 
@@ -278,6 +281,8 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         
         
     }
+    
+
     
     
 }

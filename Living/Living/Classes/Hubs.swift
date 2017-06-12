@@ -141,7 +141,11 @@ class Hubs{
                                     let port = item["port"].stringValue
                                     let proto_ver = item["proto_ver"].stringValue
                                     //TODO: inicializar
-                                    let room:Room = Room(room:item["room"].stringValue)
+                                    var room:Room?
+                                    if item["room"]["id"].exists(){
+                                        room = Room(color:item["room"]["color"].stringValue ,rid:item["room"]["id"].int!)
+                                    }
+                                    
                                     let sensor = item["sensor"].intValue
                                     let sleep_cap = item["sleep_cap"].boolValue
                                     let state = item["state"].intValue
@@ -177,7 +181,8 @@ class Hubs{
                        
                                     
                                 }
-                                new_hub.endpoints.setSort()
+                                
+                                new_hub.endpoints.endpoints = new_hub.endpoints.endpoints.sorted{$0.orden < $1.orden}
                                 self.hubs.append(new_hub)
                             }
 

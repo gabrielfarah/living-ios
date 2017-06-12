@@ -19,7 +19,7 @@ import UIColor_Hex_Swift
 class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHeaderViewDelegate,SensorViewControllerDelegate{
 
     static let LoadEndpoints = Notification.Name("LoadEndpoints")
-    
+    static let LoadInfo = Notification.Name("LoadInfo")
     
     enum HomeViewControllerSectionType {
         case endpoints, scenes, rooms
@@ -78,6 +78,7 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         
         // Notifications Registration
         NotificationCenter.default.addObserver(self, selector: #selector(LoadEndpoints), name:NSNotification.Name(rawValue: "LoadEndpoints"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(init_load), name:NSNotification.Name(rawValue: "LoadInfo"), object: nil)
         let nib = UINib(nibName: "EndPointMenuCell", bundle: nil)
         self.endpoints_list.register(nib, forCellWithReuseIdentifier: reuseIdentifier)
 
@@ -357,9 +358,12 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             ArSmartApi.sharedApi.setHub(ArSmartApi.sharedApi.hubs.hubs[indexPath])
             
             self!.hub = ArSmartApi.sharedApi.hub?.hid
-            self!.endpoints_list.reloadData()
-            self!.GetDevicesStatus()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "LoadEndpoints"), object: nil)
+            
+            self?.init_load()
+            
+            //self!.endpoints_list.reloadData()
+            //self!.GetDevicesStatus()
+            //NotificationCenter.default.post(name: Notification.Name(rawValue: "LoadEndpoints"), object: nil)
 
         }
         
@@ -367,18 +371,20 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
         if((ArSmartApi.sharedApi.hub?.endpoints.count())!>0){
             view_new_endpoints.isHidden = true
             endpoints_list.isHidden = false
+            
         }else{
 
             view_new_endpoints.isHidden = false
             endpoints_list.isHidden = true
+            
         
         }
-        
+        self.endpoints_list.reloadData()
 
 
         //GetDevicesStatus()
         
-        self.endpoints_list.reloadData()
+        
         
     }
     
@@ -616,7 +622,6 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
     }
     func MenuFavoriteSelected() {
         can_get_status = false
-        print("Favorites selected")
          room_name = ""
         self.view_type = HomeViewControllerSectionType.scenes
         self.endpoints_list.reloadData()
@@ -765,9 +770,14 @@ extension HomeViewController: UICollectionViewDataSource {
             
             let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
             cell.setStatus(endpoint)
-            let endpoint_name = String(format:"%@ ",endpoint.name)
-            cell.setGalleryItem(image, text: endpoint_name)
+            let endpoint_name = String(format:"%@",endpoint.name)
             cell.isEndpoint = true
+            cell.setGalleryItem(image, text: endpoint_name)
+            if endpoint.room  != nil {
+                cell.setHeaderColor(color: endpoint.room?.color)
+            }else{
+                cell.setHeaderColor(real_color:UIColor.clear)
+            }
             
             cell.itemImageView.layer.removeAllAnimations()
             return cell
@@ -777,7 +787,12 @@ extension HomeViewController: UICollectionViewDataSource {
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let room = rooms.rooms[(indexPath as NSIndexPath).item]
             
-            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            var image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            if room.image != "" {
+                image = UIImage(named:room.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            }
+            
+            
             cell.setGalleryItemNoStatus(image, text: room.description)
             cell.setHeaderColor(color: room.color)
             cell.itemImageView.layer.removeAllAnimations()
@@ -790,8 +805,14 @@ extension HomeViewController: UICollectionViewDataSource {
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let scene = scenes.scenes[(indexPath as NSIndexPath).item]
             
-            let image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            var image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            if scene.image != "" {
+                image = UIImage(named:scene.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            }
+            
+            
             cell.setGalleryItemNoStatus(image, text: scene.name)
+
             cell.setHeaderColor(real_color: UIColor.clear)
             cell.itemImageView.layer.removeAllAnimations()
             return cell

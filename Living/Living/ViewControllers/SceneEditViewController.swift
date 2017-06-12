@@ -25,6 +25,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     var selectedScene = 0
     var payloads:[Payload] = [Payload]()
     
+    @IBOutlet weak var img_icon: UIImageView!
     
     
     override func viewDidLoad() {
@@ -33,6 +34,9 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         // Do any additional setup after loading the view.
         let nib = UINib(nibName: "SceneEndpointCell", bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: "cell")
+        
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(SelectIconNewDeviceNotification), name:NSNotification.Name(rawValue: "SelectIconNewDevice"), object: nil)
 
         self.tableView.isEditing = true
         
@@ -50,7 +54,9 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
         
-        
+        if scene.image != "" {
+            img_icon.image = UIImage(named:scene.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        }
         
         initPayloads()
         
@@ -490,6 +496,21 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
     
     @IBAction func GoBack(_ sender: AnyObject) {
         _ = self.navigationController?.popViewController(animated: true)
+    }
+    @IBAction func goSelectIcon(_ sender: Any) {
+    }
+    
+    func SelectIconNewDeviceNotification(_ notification: Notification){
+        
+        let image:String = notification.object as! String
+        
+        img_icon.image = UIImage(named:image)!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        img_icon.tintColor = ThemeManager.init().GetUIColor("#2CC2BE")
+        
+        //var selected_room = notification.object as! Room
+        //self.endpoint.image = Endpoint.NameImages(name: image)
+        
+        self.scene.image = Scene.NameImages(name: image)
     }
 
 }

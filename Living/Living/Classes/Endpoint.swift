@@ -31,7 +31,7 @@ class Endpoint{
     var pid:String
     var port:String
     var proto_ver:String
-    var room:Room
+    var room:Room?
     var sensor:Int
     var sleep_cap:Bool
     var state:Int
@@ -109,7 +109,7 @@ class Endpoint{
         
     }
     
-    init(active:Int, category:CategoryEndpoint, created_at:Date, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:Date, version:String?=nil, wkup_intv:String?=nil,orden:Int,color:String,max_value:Int,min_value:Int,sig_type:String){
+    init(active:Int, category:CategoryEndpoint, created_at:Date, endpoint_type:EndPointType, favorite:Int, id:Int, image:String, ip_address:String?=nil, lib_type:String?=nil, manufacturer_name:String, name:String, node:Int?=nil, pid:String?=nil, port:String?=nil, proto_ver:String?=nil, room:Room?, sensor:Int, sleep_cap:Bool, state:Int?=nil, ui_class_command:String, uid:String, updated_at:Date, version:String?=nil, wkup_intv:String?=nil,orden:Int,color:String,max_value:Int,min_value:Int,sig_type:String){
     
         self.active = active
         self.category = category
@@ -197,7 +197,7 @@ class Endpoint{
         var json_parameters  = [
         
                 "category": ["code":self.category.code,"description":self.category.description],
-                "room": self.room.description,
+                "room": self.room?.description,
                 "hub": hub,
                 "name": self.name,
                 "manufacturer_name": self.manufacturer_name,
@@ -308,7 +308,7 @@ class Endpoint{
         var json_parameters  = [
             
             "category": ["code":self.category.code,"description":self.category.description],
-            "room": self.room.description,
+            "room": self.room?.description,
             "hub": hub,
             "name": self.name,
             "manufacturer_name": self.manufacturer_name,

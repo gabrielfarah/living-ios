@@ -63,7 +63,7 @@ class Endpoints{
     func inRoom(room:Room)->[Endpoint]{
         
         
-        return endpoints.filter { $0.room.description ==  room.description }
+        return endpoints.filter { $0.room!.description ==  room.description }
         
     }
     
@@ -131,7 +131,7 @@ class Endpoints{
         
         for i in 0...(endpoints.count - 1){
             ids.append(endpoints[i].id)
-            orden.append(endpoints[i].orden)
+            orden.append(i)
         }
         
         
@@ -142,7 +142,7 @@ class Endpoints{
         let joinedStrings2 = elements2.map({ String(describing: $0) }).joined(separator: joiner)
         
         
-        let  parameters: [String: String] = [:]
+        let  _: [String: String] = [:]
         let json_parameters: [String: String]  = [
             "ids":joinedStrings1 as String,
             "orden":joinedStrings2 as String,

@@ -52,8 +52,7 @@ class Guest{
                 switch response.result {
                     
                 case .success:
-                    
-                    print(response.response)
+            
                     if let JSON = response.result.value {
                         print("JSON: \(JSON)")
                         

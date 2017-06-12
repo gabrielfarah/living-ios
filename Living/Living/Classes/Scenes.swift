@@ -79,10 +79,11 @@ class Scenes{
                         let name = subJson["name"].stringValue
                         let sid = subJson["id"].intValue
                         let order = subJson["orden"].intValue
-                        
+                        let image =  subJson["image"].stringValue
                         
                         let scene = Scene(name: name,id: sid)
                         scene.order = order
+                        scene.image = image
                         for item in subJson["payload"].arrayValue {
                         
 
@@ -93,7 +94,7 @@ class Scenes{
                             let ip =  item["ip"].stringValue
                             let function_name =  item["function"].stringValue
                             let target =  item["target"].stringValue
-                          
+                         
 
                             
                             let payload = Payload(type: type,node:node,value:value,target:target,endpoint_id:endpoint_id,ip:ip,function_name:function_name,parameters:[])
@@ -104,14 +105,15 @@ class Scenes{
 
                         self.scenes.append(scene)
                         // Aqui se ordenan por orden alfabetico
-                        self.scenes = self.scenes.sorted(by: {$0.name < $1.name})
+                       
 
                         
                         //let new_room = Room(room:description,rid: rid)
                         
                         //self.scenes.append(new_room)
                     }
-                    self.setSort()
+                    
+                    self.scenes = self.scenes.sorted(by: {$0.order < $1.order})
                     completion(false,"")
                     
                     
@@ -132,10 +134,12 @@ class Scenes{
     
     func setSort(){
         if scenes.count>0{
+            
             for i in 0...(scenes.count - 1){
                 let e = scenes[i]
                 e.order = i
             }
+            
         }
 
         
@@ -159,7 +163,7 @@ class Scenes{
         
         for i in 0...(scenes.count - 1){
             ids.append(scenes[i].sid)
-            orden.append(scenes[i].order)
+            orden.append(i)
         }
         
         
@@ -170,7 +174,7 @@ class Scenes{
         let joinedStrings2 = elements2.map({ String(describing: $0) }).joined(separator: joiner)
         
         
-        let  parameters: [String: String] = [:]
+        let  _: [String: String] = [:]
         let json_parameters: [String: String]  = [
             "ids":joinedStrings1 as String,
             "orden":joinedStrings2 as String,
@@ -190,8 +194,8 @@ class Scenes{
                         let json = JSON(value)
                         
                         
-                        let url = json["url"].stringValue
-                        completion(false,url)
+                       
+                        completion(false,"")
                         
                         
                     }else{

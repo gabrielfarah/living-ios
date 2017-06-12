@@ -3,13 +3,13 @@
 "0vP-Tu-lGb.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Domu"; ObjectID = "116-YR-XUz"; */
-"116-YR-XUz.text" = "Domu";
+"116-YR-XUz.text" = "Bien Tu";
 
 /* Class = "UILabel"; text = "Nuevo Dispositivo"; ObjectID = "19m-qD-a3d"; */
 "19m-qD-a3d.text" = "Nuevo Dispositivo";
 
 /* Class = "UILabel"; text = "Domu"; ObjectID = "2WN-b1-mZZ"; */
-"2WN-b1-mZZ.text" = "Domu";
+"2WN-b1-mZZ.text" = "Bien Tu";
 
 /* Class = "UIButton"; normalTitle = "Choose icon"; ObjectID = "3P7-eT-LXF"; */
 "3P7-eT-LXF.normalTitle" = "Choose icon";
@@ -18,13 +18,13 @@
 "5jb-5n-7J2.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Choose Area"; ObjectID = "6Me-Rr-Dne"; */
-"6Me-Rr-Dne.normalTitle" = "Choose Area";
+"6Me-Rr-Dne.normalTitle" = "Escoge Area";
 
 /* Class = "UIButton"; normalTitle = "+ New Room"; ObjectID = "6tL-83-7Dy"; */
-"6tL-83-7Dy.normalTitle" = "+ New Room";
+"6tL-83-7Dy.normalTitle" = "+ Nueva Habitación Room";
 
 /* Class = "UILabel"; text = "Devices"; ObjectID = "8Sm-U0-TmF"; */
-"8Sm-U0-TmF.text" = "Devices";
+"8Sm-U0-TmF.text" = "Dispositivos";
 
 /* Class = "UILabel"; text = "Title"; ObjectID = "A6n-Fr-a5r"; */
 "A6n-Fr-a5r.text" = "Title";
@@ -33,10 +33,10 @@
 "CoL-iQ-5Xu.text" = "Label";
 
 /* Class = "UITextField"; placeholder = "Device Name"; ObjectID = "I9p-Fh-1qG"; */
-"I9p-Fh-1qG.placeholder" = "Device Name";
+"I9p-Fh-1qG.placeholder" = "Nombre dispositivo";
 
 /* Class = "UITextField"; placeholder = "Choose Signal Type"; ObjectID = "QAP-Kk-qTT"; */
-"QAP-Kk-qTT.placeholder" = "Choose Signal Type";
+"QAP-Kk-qTT.placeholder" = "Escoge tipo de señal";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "UOV-5T-u31"; */
 "UOV-5T-u31.normalTitle" = "Button";
@@ -45,19 +45,19 @@
 "UyO-tW-riF.normalTitle" = "Select Icon";
 
 /* Class = "UIButton"; normalTitle = "+ New Device"; ObjectID = "WNe-gn-lUn"; */
-"WNe-gn-lUn.normalTitle" = "+ New Device";
+"WNe-gn-lUn.normalTitle" = "+ Nuevo dispositivo";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Y2V-VE-08z"; */
 "Y2V-VE-08z.normalTitle" = "Button";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "Y9J-co-pS6"; */
-"Y9J-co-pS6.normalTitle" = "Save";
+"Y9J-co-pS6.normalTitle" = "Guardar";
 
 /* Class = "UILabel"; text = "Devices"; ObjectID = "bxv-MR-Yjs"; */
-"bxv-MR-Yjs.text" = "Devices";
+"bxv-MR-Yjs.text" = "Dispositivos";
 
 /* Class = "UIButton"; normalTitle = "+ Add ZWAVE Device"; ObjectID = "dqe-5i-1Ju"; */
-"dqe-5i-1Ju.normalTitle" = "+ Add ZWAVE Device";
+"dqe-5i-1Ju.normalTitle" = "+ Adicionar dispositivo ZWAVE";
 
 /* Class = "UILabel"; text = "Subtitle"; ObjectID = "eZ8-l0-bhN"; */
 "eZ8-l0-bhN.text" = "Subtitle";
@@ -69,7 +69,7 @@
 "nMr-cW-4VK.text" = "Label";
 
 /* Class = "UIButton"; normalTitle = "+ Add WIFI Device"; ObjectID = "qHY-Im-M4u"; */
-"qHY-Im-M4u.normalTitle" = "+ Add WIFI Device";
+"qHY-Im-M4u.normalTitle" = "+ Adicionar dispositivo WIFI";
 
 /* Class = "UILabel"; text = "Estos fueron los dispositivos encontrados en el hub"; ObjectID = "qm7-J9-dKl"; */
 "qm7-J9-dKl.text" = "Estos fueron los dispositivos encontrados en el hub";

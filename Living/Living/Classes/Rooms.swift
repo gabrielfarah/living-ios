@@ -77,13 +77,14 @@ class Rooms{
                         let description = subJson["description"].stringValue
                         let rid = subJson["id"].intValue
                         let color = subJson["color"].stringValue
-                        
+                        let image = subJson["image"].stringValue
                         let new_room = Room(room:description,rid: rid)
                         new_room.color = color
+                        new_room.image = image
                         
                         self.rooms.append(new_room)
                     }
-                    self.setSort()
+                    self.rooms = self.rooms.sorted(by: {$0.order < $1.order})
                     completion( false, "")
                     
                     
@@ -133,7 +134,7 @@ class Rooms{
         
         for i in 0...(rooms.count - 1){
             ids.append(rooms[i].rid)
-            orden.append(rooms[i].order)
+            orden.append(i)
         }
         
         

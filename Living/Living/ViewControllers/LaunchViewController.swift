@@ -49,11 +49,12 @@ class LaunchViewController: UIViewController {
             let url:NSURL? = NSURL(string: url_string)
             let data:NSData? = NSData(contentsOf : url! as URL)
             
+            // TODO: encaso de que sea vacio pasar.
+            if data != nil{
+                let image = UIImage(data : data! as Data)
+                image_logo.image = image
+            }
             
-            let image = UIImage(data : data! as Data)
-            
-            
-            image_logo.image = image
         }
 
         

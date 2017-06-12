@@ -1,327 +1,112 @@
-
 /* Class = "UIButton"; normalTitle = "Recover Password"; ObjectID = "0F9-11-c5w"; */
-"0F9-11-c5w.normalTitle" = "Recover Password";
-
+"0F9-11-c5w.normalTitle" = "Recuperar contraseña";
 /* Class = "UILabel"; text = "Start now to automate your home and live more comfortable and safe with Domu."; ObjectID = "1HO-e3-74z"; */
-"1HO-e3-74z.text" = "Start now to automate your home and live more comfortable and safe with Domu.";
-
+"1HO-e3-74z.text" = "Comience ahora a automatizar su hogar y vivir más cómodo y seguro con Domu.";
 /* Class = "UILabel"; text = "Enter the code included inside the packaging of its central station and press continue"; ObjectID = "3RS-qS-OeN"; */
-"3RS-qS-OeN.text" = "Enter the code included inside the packaging of its central station and press continue";
-
+"3RS-qS-OeN.text" = "Introduzca el código incluido dentro del embalaje de su estación central y pulse Continuar";
 /* Class = "UIButton"; normalTitle = "¿Don't have an account?"; ObjectID = "4t0-O6-5js"; */
-"4t0-O6-5js.normalTitle" = "¿Don't have an account?";
-
+"4t0-O6-5js.normalTitle" = "¿No tienes una cuenta?";
 /* Class = "UILabel"; text = "Select Image"; ObjectID = "5wK-Oz-OuB"; */
-"5wK-Oz-OuB.text" = "Select Image";
-
+"5wK-Oz-OuB.text" = "Seleccionar imagen";
 /* Class = "UITextField"; placeholder = "Correo electrónico"; ObjectID = "721-HY-vRD"; */
 "721-HY-vRD.placeholder" = "Correo electrónico";
-
 /* Class = "UITextField"; placeholder = "Password"; ObjectID = "9QY-kK-bi8"; */
-"9QY-kK-bi8.placeholder" = "Password";
-
+"9QY-kK-bi8.placeholder" = "Contraseña";
 /* Class = "UITextField"; text = "Iqs11203099"; ObjectID = "9QY-kK-bi8"; */
 "9QY-kK-bi8.text" = "Iqs11203099";
-
 /* Class = "UILabel"; text = "Label"; ObjectID = "9zi-i9-bEp"; */
-"9zi-i9-bEp.text" = "Label";
-
+"9zi-i9-bEp.text" = "Etiqueta";
 /* Class = "UIButton"; normalTitle = "¿Do you have an account?"; ObjectID = "AG7-el-9k2"; */
-"AG7-el-9k2.normalTitle" = "¿Do you have an account?";
-
+"AG7-el-9k2.normalTitle" = "¿Tiene usted una cuenta?";
 /* Class = "UITextField"; placeholder = "email"; ObjectID = "B3L-rz-Ps3"; */
-"B3L-rz-Ps3.placeholder" = "email";
-
+"B3L-rz-Ps3.placeholder" = "correo electrónico";
 /* Class = "UITextField"; text = "nelfa10@yahoo.com"; ObjectID = "B3L-rz-Ps3"; */
-"B3L-rz-Ps3.text" = "nelfa10@yahoo.com";
-
+"B3L-rz-Ps3.text" = "Nelfa10@yahoo.com";
 /* Class = "UIButton"; normalTitle = "Create Account"; ObjectID = "Edy-vm-kz4"; */
-"Edy-vm-kz4.normalTitle" = "Create Account";
-
+"Edy-vm-kz4.normalTitle" = "Crear una cuenta";
 /* Class = "UIButton"; normalTitle = "+ Add Wifi Device"; ObjectID = "HrA-vO-TPB"; */
-"HrA-vO-TPB.normalTitle" = "+ Add Wifi Device";
-
+"HrA-vO-TPB.normalTitle" = "+ Añadir dispositivo Wi-Fi";
 /* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "KT7-Mg-A8g"; */
 "KT7-Mg-A8g.accessibilityLabel" = "Mapa";
-
 /* Class = "UILabel"; text = "Set your place in the map"; ObjectID = "KWf-T4-fia"; */
-"KWf-T4-fia.text" = "Set your place in the map";
-
+"KWf-T4-fia.text" = "Establezca su lugar en el mapa";
 /* Class = "UIButton"; normalTitle = "Start "; ObjectID = "KgK-yT-gVT"; */
-"KgK-yT-gVT.normalTitle" = "Start ";
-
+"KgK-yT-gVT.normalTitle" = "comienzo ";
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "L2F-bC-AgG"; */
-"L2F-bC-AgG.normalTitle" = "Login";
-
+"L2F-bC-AgG.normalTitle" = "Iniciar sesión";
 /* Class = "UITextField"; placeholder = "Repeat email"; ObjectID = "LZb-J3-sWa"; */
-"LZb-J3-sWa.placeholder" = "Repeat email";
-
+"LZb-J3-sWa.placeholder" = "Repite el correo electrónico";
 /* Class = "UITextField"; text = "nelfa10@yahoo.com"; ObjectID = "LZb-J3-sWa"; */
-"LZb-J3-sWa.text" = "nelfa10@yahoo.com";
-
+"LZb-J3-sWa.text" = "Nelfa10@yahoo.com";
 /* Class = "UILabel"; text = "Congratulations!"; ObjectID = "Lr4-FP-8jc"; */
-"Lr4-FP-8jc.text" = "Congratulations!";
-
+"Lr4-FP-8jc.text" = "¡Felicitaciones!";
 /* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "MgI-8r-sUF"; */
 "MgI-8r-sUF.accessibilityLabel" = "Mapa";
-
 /* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "NOO-WH-R37"; */
-"NOO-WH-R37.normalTitle" = "Ok";
-
+"NOO-WH-R37.normalTitle" = "De acuerdo";
 /* Class = "UITextField"; placeholder = "Name"; ObjectID = "Nvf-om-E3G"; */
-"Nvf-om-E3G.placeholder" = "Name";
-
+"Nvf-om-E3G.placeholder" = "Nombre";
 /* Class = "UITextField"; text = "Nelson Fajardo"; ObjectID = "Nvf-om-E3G"; */
 "Nvf-om-E3G.text" = "Nelson Fajardo";
-
 /* Class = "UIButton"; normalTitle = "¿Forgot your password?"; ObjectID = "P4q-fJ-Mvv"; */
-"P4q-fJ-Mvv.normalTitle" = "¿Forgot your password?";
-
+"P4q-fJ-Mvv.normalTitle" = "¿Olvidaste tu contraseña?";
 /* Class = "UILabel"; text = " Enter your email address and we'll help you reset your password"; ObjectID = "P7s-U4-Mdd"; */
-"P7s-U4-Mdd.text" = " Enter your email address and we'll help you reset your password";
-
+"P7s-U4-Mdd.text" = " Ingrese su dirección de correo electrónico y le ayudaremos a restablecer su contraseña";
 /* Class = "UILabel"; text = "Add New Device"; ObjectID = "Pzv-es-TYO"; */
-"Pzv-es-TYO.text" = "Add New Device";
-
+"Pzv-es-TYO.text" = "Agregar nuevo dispositivo";
 /* Class = "UILabel"; text = "Recover password"; ObjectID = "Qn1-9b-IOd"; */
-"Qn1-9b-IOd.text" = "Recover password";
-
+"Qn1-9b-IOd.text" = "Recuperar contraseña";
 /* Class = "UITextField"; placeholder = "Contraseña"; ObjectID = "TJQ-qI-9AF"; */
 "TJQ-qI-9AF.placeholder" = "Contraseña";
-
 /* Class = "UITextField"; placeholder = "EJ: LIV463E"; ObjectID = "XB6-k7-2lb"; */
 "XB6-k7-2lb.placeholder" = "EJ: LIV463E";
-
 /* Class = "UILabel"; text = "You are just a few steps to control your home from the palm of your hand."; ObjectID = "Y3r-qE-hjh"; */
-"Y3r-qE-hjh.text" = "You are just a few steps to control your home from the palm of your hand.";
-
+"Y3r-qE-hjh.text" = "Usted está a sólo unos pasos para controlar su casa desde la palma de su mano.";
 /* Class = "UIButton"; normalTitle = "+ Add zWave Device"; ObjectID = "aUT-yf-N9D"; */
-"aUT-yf-N9D.normalTitle" = "+ Add zWave Device";
-
+"aUT-yf-N9D.normalTitle" = "+ Añadir dispositivo zWave";
 /* Class = "UILabel"; text = "Connects the central station using network cables and power included in the package. After completed the process press continue"; ObjectID = "bBN-sc-cvU"; */
-"bBN-sc-cvU.text" = "Connects the central station using network cables and power included in the package. After completed the process press continue";
-
+"bBN-sc-cvU.text" = "Conecta la estación central utilizando los cables de red y la alimentación incluida en el paquete. Después de completar la prensa de proceso, continúe";
 /* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "eAh-MP-LYm"; */
 "eAh-MP-LYm.accessibilityLabel" = "Mapa";
-
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "eKS-nb-IA9"; */
-"eKS-nb-IA9.normalTitle" = "Continue";
-
+"eKS-nb-IA9.normalTitle" = "Continuar";
 /* Class = "UIButton"; normalTitle = "Ok"; ObjectID = "eh2-n7-mTo"; */
-"eh2-n7-mTo.normalTitle" = "Ok";
-
+"eh2-n7-mTo.normalTitle" = "De acuerdo";
 /* Class = "UILabel"; text = "Home"; ObjectID = "g5x-4R-kVY"; */
-"g5x-4R-kVY.text" = "Home";
-
+"g5x-4R-kVY.text" = "Casa";
 /* Class = "UILabel"; text = "New Account"; ObjectID = "gYS-Om-JhJ"; */
-"gYS-Om-JhJ.text" = "New Account";
-
+"gYS-Om-JhJ.text" = "Nueva cuenta";
 /* Class = "UIButton"; normalTitle = "Start"; ObjectID = "gYb-rN-93m"; */
-"gYb-rN-93m.normalTitle" = "Start";
-
+"gYb-rN-93m.normalTitle" = "comienzo";
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "h8q-Du-KbM"; */
-"h8q-Du-KbM.normalTitle" = "Continue";
-
+"h8q-Du-KbM.normalTitle" = "Continuar";
 /* Class = "UIButton"; normalTitle = "Log In"; ObjectID = "mgF-QB-FtY"; */
-"mgF-QB-FtY.normalTitle" = "Log In";
-
+"mgF-QB-FtY.normalTitle" = "Iniciar sesión";
 /* Class = "UILabel"; text = "Thanks for register in Domu"; ObjectID = "msw-nR-dHk"; */
-"msw-nR-dHk.text" = "Thanks for register in Domu";
-
+"msw-nR-dHk.text" = "Gracias por registrarse en Domu";
 /* Class = "UILabel"; text = "Set your position"; ObjectID = "nRI-Af-vH5"; */
-"nRI-Af-vH5.text" = "Set your position";
-
+"nRI-Af-vH5.text" = "Establezca su posición";
 /* Class = "UIView"; accessibilityLabel = "Mapa"; ObjectID = "oyk-4c-mVN"; */
 "oyk-4c-mVN.accessibilityLabel" = "Mapa";
-
 /* Class = "UILabel"; text = "You dont have any connected device"; ObjectID = "qN3-El-7Ml"; */
-"qN3-El-7Ml.text" = "You dont have any connected device";
-
+"qN3-El-7Ml.text" = "No tienes ningún dispositivo conectado";
 /* Class = "UILabel"; text = "Select an image for your place"; ObjectID = "r5B-fP-V4v"; */
-"r5B-fP-V4v.text" = "Select an image for your place";
-
+"r5B-fP-V4v.text" = "Seleccione una imagen para su lugar";
 /* Class = "UILabel"; text = "Welcome!"; ObjectID = "t7J-hW-mrt"; */
-"t7J-hW-mrt.text" = "Welcome!";
-
+"t7J-hW-mrt.text" = "¡Bienvenido!";
 /* Class = "UIButton"; normalTitle = "        Take Picture"; ObjectID = "tKy-ci-1Gq"; */
-"tKy-ci-1Gq.normalTitle" = "        Take Picture";
-
+"tKy-ci-1Gq.normalTitle" = "        Tomar la foto";
 /* Class = "UILabel"; text = "If you want to relocate your home, press and hold the new position"; ObjectID = "vC9-Tf-SPS"; */
-"vC9-Tf-SPS.text" = "If you want to relocate your home, press and hold the new position";
-
+"vC9-Tf-SPS.text" = "Si desea reubicar su casa, mantenga presionada la nueva posición";
 /* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "wJy-qr-4Mv"; */
-"wJy-qr-4Mv.normalTitle" = "Continue";
-
+"wJy-qr-4Mv.normalTitle" = "Continuar";
 /* Class = "UITextField"; placeholder = "email"; ObjectID = "xZr-IM-AXx"; */
-"xZr-IM-AXx.placeholder" = "email";
-
+"xZr-IM-AXx.placeholder" = "correo electrónico";
 /* Class = "UILabel"; text = "The station is connected correctly"; ObjectID = "xar-yF-bbm"; */
-"xar-yF-bbm.text" = "The station is connected correctly";
-
+"xar-yF-bbm.text" = "La estación está conectada correctamente";
 /* Class = "UIButton"; normalTitle = "Register"; ObjectID = "ySa-ki-DBS"; */
-"ySa-ki-DBS.normalTitle" = "Register";
-
+"ySa-ki-DBS.normalTitle" = "Registro";
 /* Class = "UILabel"; text = "Name your place"; ObjectID = "yeE-j6-H28"; */
-"yeE-j6-H28.text" = "Name your place";
-
+"yeE-j6-H28.text" = "Nombre su lugar";
 /* Class = "UILabel"; text = "Add new device"; ObjectID = "zVo-Zw-jis"; */
-"zVo-Zw-jis.text" = "Add new device";
-
-"Are you sure?" = "¿Estás seguro?";
-"Can not connect to Hub, please try again" = "No se puede conectar al Hub, inténtalo de nuevo.";
-"Cancel" = "Cancelar";
-"Confirn new password" = "Confirmar nueva contraseña";
-"Deleting, one moment please" = "Deleting, un momento por favor";
-"Device was sucessfully added" = "El dispositivo se agregó correctamente";
-"Device was sucessfully updated." = "El dispositivo se actualizó correctamente.";
-"Error, please try again..." = "Error, vuelve a intentarlo ...";
-"Guest" = "Huésped";
-"Guest has been removed successfully ..." = "El invitado ha sido eliminado correctamente ...";
-"Im sure" = "Estoy seguro";
-"Login, one moment please..." = "Login, un momento por favor ...";
-"Looking for a Zwave device, one moment please..." = "¿Buscas un dispositivo Zwave, un momento por favor ...";
-"NAVAJO_ALLOWED_CHARACTER_ERROR" = "NAVAJO_ALLOWED_CHARACTER_ERROR";
-"NAVAJO_BLOCK_ERROR" = "NAVAJO_BLOCK_ERROR";
-"NAVAJO_DICTIONARYWORD_ERROR" = "NAVAJO_DICTIONARYWORD_ERROR";
-"NAVAJO_LENGTH_ERROR" = "NAVAJO_LENGTH_ERROR";
-"NAVAJO_PREDICATE_ERROR" = "NAVAJO_PREDICATE_ERROR";
-"NAVAJO_REASONABLE" = "NAVAJO_REASONABLE";
-"NAVAJO_REGEX_ERROR" = "NAVAJO_REGEX_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR" = "NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR" = "NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR" = "NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR";
-"NAVAJO_STRONG" = "NAVAJO_STRONG";
-"NAVAJO_VERY_STRONG" = "NAVAJO_VERY_STRONG";
-"NAVAJO_VERY_WEAK" = "NAVAJO_VERY_WEAK";
-"NAVAJO_WEAK" = "NAVAJO_WEAK";
-"New Guest" = "Nuevo invitado";
-"New Password" = "nueva contraseña";
-"New mode" = "Nuevo modo";
-"No connected Wifi devices found, in case it is an error please try again" = "No se han encontrado dispositivos Wifi conectados, en caso de que sea un error, inténtalo de nuevo.";
-"No connected ZWave devices found, in case it is an error please try again" = "No se han encontrado dispositivos ZWave conectados, en caso de que sea un error, inténtelo de nuevo.";
-"Old password" = "Contraseña anterior";
-"One moment please, we are registering your data" = "Un momento por favor, estamos registrando sus datos";
-"One moment please..." = "Un momento por favor...";
-"Operation failed, please try again..." = "Error en la operación: inténtalo de nuevo ...";
-"Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone" = "Asegúrese de que su teléfono WIFI esté activo y conectado a la red Domu-AP. También asegúrese de desactivar momentáneamente los datos móviles en su teléfono";
-"Room added succesfully..." = "Habitación añadida con éxito ...";
-"Room successfully added..." = "Habitación añadida con éxito ...";
-"Saving device in the hub, one moment please..." = "Saving device in the hub, un momento por favor ...";
-"Scene has been updated..." = "La escena se ha actualizado ...";
-"Scene succesfully created..." = "Escena creada con éxito ...";
-"Scenes" = "Escenas";
-"Searching for Wifi devices, one moment please ..." = "Wifi, un momento por favor ...";
-"The IP is not reachable" = "El IP no es accesible";
-"The SSID can not be empty" = "El SSID no puede estar vacío";
-"The color cant be empty..." = "El color no puede estar vacío ...";
-"The device is offline, check your internet connection" = "El dispositivo está desconectado, comprueba tu conexión a Internet";
-"The device name cant be empty..." = "El nombre del dispositivo no puede estar vacío ...";
-"The password must be the same..." = "La contraseña debe ser la misma ...";
-"The room has been remove succesfully..." = "La habitación ha sido quitar con éxito ...";
-"The scene cant be empty..." = "La escena no puede estar vacía ...";
-"The scene has been created succesfully..." = "La escena ha sido creada con éxito ...";
-"The scene has been removed..." = "La escena se ha eliminado ...";
-"The scene was performed..." = "La escena fue realizada ...";
-"The scene's name can't be empty..." = "El nombre de la escena no puede estar vacío ...";
-"The trigger was created successfully" = "El disparador se creó correctamente";
-"There is a problem running the scene...." = "Hay un problema corriendo la escena ....";
-"There is no registered guest" = "No hay ningún usuario registrado";
-"There is no scenes..." = "No hay escenas ...";
-"This device is already registered..." = "Este dispositivo ya está registrado ...";
-"User added sucessfully..." = "Usuario añadido con éxito ...";
-"Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app." = "Espere un minuto hasta que el icono de Internet en la parte frontal del dispositivo se vuelva verde. Una vez que el led se vuelva verde, presione el botón Continuar en la aplicación.";
-"You can't undo this action" = "No se puede deshacer esta acción";
-"You must choose a time zone" = "Debe elegir una zona horaria";
-"You must chose an image for your location ..." = "Debe elegir una imagen para su ubicación ...";
-"You must specify where is the location, please find your place in the map just dragging to it..." = "Debes especificar dónde está la ubicación, por favor encuentra tu lugar en el mapa simplemente arrastrándolo ...";
-"You must write a serial code..." = "Debe escribir un código de serie ...";
-"You must write the location's name" = "Debe escribir el nombre de la ubicación";
-"error, please try again" = "Error, inténtalo de nuevo";
-"error: %@" = "Error: %@";
-"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar esta habitación?";
-"Account" = "Cuenta";
-"Actions" = "Comportamiento";
-"Are you sure?" = "¿Estás seguro?";
-"Can not connect to Hub, please try again" = "No se puede conectar al Hub, inténtalo de nuevo.";
-"Cancel" = "Cancelar";
-"Confirn new password" = "Confirmar nueva contraseña";
-"Deleting, one moment please" = "Deleting, un momento por favor";
-"Device was sucessfully added" = "El dispositivo se agregó correctamente";
-"Device was sucessfully updated." = "El dispositivo se actualizó correctamente.";
-"Devices" = "Dispositivos";
-"Error, please try again..." = "Error, vuelve a intentarlo ...";
-"Guest" = "Invitado";
-"Guest has been removed successfully ..." = "El invitado ha sido eliminado correctamente ...";
-"Guests" = "Invitados";
-"Home" = "Inicio";
-"Im sure" = "Estoy seguro";
-"Login, one moment please..." = "Login, un momento por favor ...";
-"Looking for a Zwave device, one moment please..." = "¿Buscas un dispositivo Zwave, un momento por favor ...";
-"My Account" = "Mi cuenta";
-"NAVAJO_ALLOWED_CHARACTER_ERROR" = "NAVAJO_ALLOWED_CHARACTER_ERROR";
-"NAVAJO_BLOCK_ERROR" = "NAVAJO_BLOCK_ERROR";
-"NAVAJO_DICTIONARYWORD_ERROR" = "NAVAJO_DICTIONARYWORD_ERROR";
-"NAVAJO_LENGTH_ERROR" = "NAVAJO_LENGTH_ERROR";
-"NAVAJO_PREDICATE_ERROR" = "NAVAJO_PREDICATE_ERROR";
-"NAVAJO_REASONABLE" = "NAVAJO_REASONABLE";
-"NAVAJO_REGEX_ERROR" = "NAVAJO_REGEX_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR" = "NAVAJO_REQUIRED_CHARACTER_DECIMAL_DIGIT_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_LOWERCASE_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR" = "NAVAJO_REQUIRED_CHARACTER_REQUIRED_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR" = "NAVAJO_REQUIRED_CHARACTER_SYMBOL_ERROR";
-"NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR" = "NAVAJO_REQUIRED_CHARACTER_UPPERCASE_ERROR";
-"NAVAJO_STRONG" = "NAVAJO_STRONG";
-"NAVAJO_VERY_STRONG" = "NAVAJO_VERY_STRONG";
-"NAVAJO_VERY_WEAK" = "NAVAJO_VERY_WEAK";
-"NAVAJO_WEAK" = "NAVAJO_WEAK";
-"New Guest" = "Nuevo invitado";
-"New Password" = "nueva contraseña";
-"New mode" = "Nuevo modo";
-"No connected Wifi devices found, in case it is an error please try again" = "No se han encontrado dispositivos Wifi conectados, en caso de que sea un error, inténtalo de nuevo.";
-"No connected ZWave devices found, in case it is an error please try again" = "No se han encontrado dispositivos ZWave conectados, en caso de que sea un error, inténtelo de nuevo.";
-"Old password" = "Contraseña anterior";
-"One moment please, we are registering your data" = "Un momento por favor, estamos registrando sus datos";
-"One moment please..." = "Un momento por favor...";
-"Operation failed, please try again..." = "Error en la operación: inténtalo de nuevo ...";
-"Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone" = "Asegúrese de que su teléfono WIFI esté activo y conectado a la red Domu-AP. También asegúrese de desactivar momentáneamente los datos móviles en su teléfono";
-"Room added succesfully..." = "Habitación añadida con éxito ...";
-"Room successfully added..." = "Habitación añadida con éxito ...";
-"Rooms" = "Habitaciones";
-"Saving device in the hub, one moment please..." = "Saving device in the hub, un momento por favor ...";
-"Scene has been updated..." = "La escena se ha actualizado ...";
-"Scene succesfully created..." = "Escena creada con éxito ...";
-"Scenes" = "Escenas";
-"Searching for Wifi devices, one moment please ..." = "Wifi, un momento por favor ...";
-"The IP is not reachable" = "El IP no es accesible";
-"The SSID can not be empty" = "El SSID no puede estar vacío";
-"The color cant be empty..." = "El color no puede estar vacío ...";
-"The device is offline, check your internet connection" = "El dispositivo está desconectado, comprueba tu conexión a Internet";
-"The device name cant be empty..." = "El nombre del dispositivo no puede estar vacío ...";
-"The password must be the same..." = "La contraseña debe ser la misma ...";
-"The room has been remove succesfully..." = "La habitación ha sido quitar con éxito ...";
-"The scene cant be empty..." = "La escena no puede estar vacía ...";
-"The scene has been created succesfully..." = "La escena ha sido creada con éxito ...";
-"The scene has been removed..." = "La escena se ha eliminado ...";
-"The scene was performed..." = "La escena fue realizada ...";
-"The scene's name can't be empty..." = "El nombre de la escena no puede estar vacío ...";
-"The trigger was created successfully" = "El disparador se creó correctamente";
-"There is a problem running the scene...." = "Hay un problema corriendo la escena ....";
-"There is no registered guest" = "No hay ningún usuario registrado";
-"There is no scenes..." = "No hay escenas ...";
-"This device is already registered..." = "Este dispositivo ya está registrado ...";
-"User added sucessfully..." = "Usuario añadido con éxito ...";
-"Wait a minute until the internet icon on the front of the device turns green. Once the led turn green, press the continue button on the app." = "Espere un minuto hasta que el icono de Internet en la parte frontal del dispositivo se vuelva verde. Una vez que el led se vuelva verde, presione el botón Continuar en la aplicación.";
-"You can't undo this action" = "No se puede deshacer esta acción";
-"You must choose a time zone" = "Debe elegir una zona horaria";
-"You must chose an image for your location ..." = "Debe elegir una imagen para su ubicación ...";
-"You must specify where is the location, please find your place in the map just dragging to it..." = "Debes especificar dónde está la ubicación, por favor encuentra tu lugar en el mapa simplemente arrastrándolo ...";
-"You must write a serial code..." = "Debe escribir un código de serie ...";
-"You must write the location's name" = "Debe escribir el nombre de la ubicación";
-"error, please try again" = "Error, inténtalo de nuevo";
-"error: %@" = "Error: %@";
-"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar esta habitación?";
-
-
-
+"zVo-Zw-jis.text" = "Agregar nuevo dispositivo";

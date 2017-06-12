@@ -275,7 +275,7 @@
         <scene sceneID="mrp-e0-vuB">
             <objects>
                 <navigationController storyboardIdentifier="DevicesNavigationController" id="tX5-yo-Rxa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mbw-b1-Jxc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mbw-b1-Jxc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -731,16 +731,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XF2-iD-aUw">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="225"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nuevo Dispositivo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19m-qD-a3d">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nuevo Dispositivo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="19m-qD-a3d">
                                         <rect key="frame" x="8" y="21" width="304" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MKg-xK-EBP">
-                                        <rect key="frame" x="0.0" y="-1" width="320" height="64"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MKg-xK-EBP">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0vP-Tu-lGb">
                                                 <rect key="frame" x="8" y="27" width="30" height="30"/>
@@ -759,11 +757,21 @@
                                             </label>
                                         </subviews>
                                         <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="6DL-ef-yFt"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="CQJ-lq-bC1"/>
+                                    <constraint firstAttribute="trailing" secondItem="19m-qD-a3d" secondAttribute="trailing" constant="63" id="Ewd-Mv-QMd"/>
+                                    <constraint firstItem="19m-qD-a3d" firstAttribute="top" secondItem="XF2-iD-aUw" secondAttribute="top" constant="21" id="IKe-7N-X0o"/>
+                                    <constraint firstItem="19m-qD-a3d" firstAttribute="leading" secondItem="XF2-iD-aUw" secondAttribute="leadingMargin" id="M3B-HV-xd8"/>
+                                    <constraint firstItem="MKg-xK-EBP" firstAttribute="centerY" secondItem="19m-qD-a3d" secondAttribute="centerY" id="nQK-JV-ST6"/>
+                                    <constraint firstItem="MKg-xK-EBP" firstAttribute="top" secondItem="XF2-iD-aUw" secondAttribute="top" id="oas-Qa-iEc"/>
+                                    <constraint firstAttribute="trailing" secondItem="MKg-xK-EBP" secondAttribute="trailing" id="sV6-s8-TgY"/>
+                                    <constraint firstItem="MKg-xK-EBP" firstAttribute="leading" secondItem="XF2-iD-aUw" secondAttribute="leading" id="xQ0-cF-ORj"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQR-In-oc2">
@@ -826,7 +834,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Weo-GX-aKg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="687" y="1137"/>
+            <point key="canvasLocation" x="685.60000000000002" y="1136.5817091454273"/>
         </scene>
     </scenes>
     <resources>
@@ -837,6 +845,6 @@
         <image name="registered_hubs.jpg" width="1150" height="763"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="JSJ-Kc-Umv"/>
+        <segue reference="z1m-HI-Re5"/>
     </inferredMetricsTieBreakers>
 </document>

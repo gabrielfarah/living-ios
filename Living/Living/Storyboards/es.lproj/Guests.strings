@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Living"; ObjectID = "GH9-Ie-M1s"; */
+"GH9-Ie-M1s.text" = "Bien Tu";
+
+/* Class = "UIButton"; normalTitle = "+ Add Guest"; ObjectID = "ZYK-ij-VqN"; */
+"ZYK-ij-VqN.normalTitle" = "+ Nuevo Invitado";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cRb-uy-fnm"; */
+"cRb-uy-fnm.normalTitle" = "Botón";

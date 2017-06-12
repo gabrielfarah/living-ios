@@ -75,6 +75,13 @@ class EndPointMenuCell: UICollectionViewCell {
 
         //TODO:Apagado
         itemImageView.tintColor = UIColor("#808080")
+        
+        itemImageView.isHidden = false
+        number_value.isHidden = true
+        label_value.isHidden = true
+        label_value.text = ""
+        
+        
     }
     func setColor(_ color:UIColor) {
         
@@ -104,6 +111,7 @@ class EndPointMenuCell: UICollectionViewCell {
             number_value.isHidden = false
             label_value.isHidden = false
             label_value.text = endpoint.sig_type
+            number_value.text = String(format:"%d",endpoint.state)
         
         }else{
             itemImageView.isHidden = false

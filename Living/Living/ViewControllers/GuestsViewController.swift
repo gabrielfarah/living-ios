@@ -90,8 +90,8 @@ class GuestsViewController: UIViewController,SideMenuControllerDelegate, UITable
     @IBAction func AddGuest(_ sender: AnyObject) {
         
         let width = ModalSize.custom(size: 280)
-        let height = ModalSize.custom(size: 132)
-        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.topCenter))
+        let height = ModalSize.custom(size: 197)
+        let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
         //presenter.backgroundOpacity = 0.1
         presenter.blurBackground = true
         presenter.dismissOnTap = true

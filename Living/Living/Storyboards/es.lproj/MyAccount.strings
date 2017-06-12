@@ -1,0 +1,66 @@
+
+/* Class = "UILabel"; text = "Domu"; ObjectID = "7Wm-ql-zPy"; */
+"7Wm-ql-zPy.text" = "Bien Tu";
+
+/* Class = "UITextField"; placeholder = "New password"; ObjectID = "8s1-Lm-vQC"; */
+"8s1-Lm-vQC.placeholder" = "Nueva Contraseña ";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "Bvq-4n-NNH"; */
+"Bvq-4n-NNH.normalTitle" = "Continuar";
+
+/* Class = "UILabel"; text = "Start now to automate your home and live more comfortable and safe with Domu."; ObjectID = "HB6-hH-CoO"; */
+"HB6-hH-CoO.text" = "Comience ahora a automatizar su hogar y vivir más cómodo y seguro con Bien Tu.";
+
+/* Class = "UILabel"; text = "Congratulations"; ObjectID = "IJM-br-kc5"; */
+"IJM-br-kc5.text" = "Felicidades";
+
+/* Class = "UILabel"; text = "Station connected correctly"; ObjectID = "JmO-sH-aff"; */
+"JmO-sH-aff.text" = "Estación conectada correctamente";
+
+/* Class = "UITextField"; placeholder = "EJ: LIV463E"; ObjectID = "KuO-m6-K2k"; */
+"KuO-m6-K2k.placeholder" = "EJ: LIV463E";
+
+/* Class = "UILabel"; text = "Enter the code included inside the packaging of its central station and press continue"; ObjectID = "LTc-bh-INe"; */
+"LTc-bh-INe.text" = "Introduzca el código incluido dentro del embalaje de su estación central y pulse Continuar";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "NaK-nh-4Ux"; */
+"NaK-nh-4Ux.normalTitle" = "Continuar";
+
+/* Class = "UIButton"; normalTitle = "+ Add new Hub"; ObjectID = "OFG-ky-kXM"; */
+"OFG-ky-kXM.normalTitle" = "+ Adicionar nuevo Hub";
+
+/* Class = "UILabel"; text = "Change Password"; ObjectID = "PC1-59-VAO"; */
+"PC1-59-VAO.text" = "Cambiar Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "W6t-9o-Lkm"; */
+"W6t-9o-Lkm.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Confirm new password"; ObjectID = "aGg-D3-R8b"; */
+"aGg-D3-R8b.placeholder" = "Confirmar Nueva Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Logout"; ObjectID = "ihr-YA-sq0"; */
+"ihr-YA-sq0.normalTitle" = "Cerrar Sesión";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "jHm-og-dTz"; */
+"jHm-og-dTz.normalTitle" = "Cambiar Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Change Password"; ObjectID = "pXc-iE-MrK"; */
+"pXc-iE-MrK.normalTitle" = "Cambiar Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "sX7-BN-fWh"; */
+"sX7-BN-fWh.normalTitle" = "Button";
+
+/* Class = "UITextField"; placeholder = "Old Password"; ObjectID = "t9l-mz-xxP"; */
+"t9l-mz-xxP.placeholder" = "Antigua Contraseña";
+
+/* Class = "UIButton"; normalTitle = "Manage Users"; ObjectID = "u3n-cf-8GR"; */
+"u3n-cf-8GR.normalTitle" = "Administración de Usuario";
+
+/* Class = "UIButton"; normalTitle = "Finalizar"; ObjectID = "uOB-sZ-tl2"; */
+"uOB-sZ-tl2.normalTitle" = "Finalizar";
+
+/* Class = "UIButton"; normalTitle = "Configure Hub"; ObjectID = "yPf-36-VVW"; */
+"yPf-36-VVW.normalTitle" = "Configure Hub";
+
+/* Class = "UILabel"; text = "Connect ti the central station using network cables and power included in the package. After completed the process press continue"; ObjectID = "ypv-ZE-rgM"; */
+"ypv-ZE-rgM.text" = "Conecte la estación central usando los cables de red y la energía incluida en el paquete. Después de completar la prensa de proceso, continúe";

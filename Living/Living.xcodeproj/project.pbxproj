@@ -25,7 +25,6 @@
 		BB099A701D6586EC009960C4 /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = BB099A6C1D6586EC009960C4 /* play.png */; };
 		BB099A711D6586EC009960C4 /* skip_to_start.png in Resources */ = {isa = PBXBuildFile; fileRef = BB099A6D1D6586EC009960C4 /* skip_to_start.png */; };
 		BB099A721D6586EC009960C4 /* end.png in Resources */ = {isa = PBXBuildFile; fileRef = BB099A6E1D6586EC009960C4 /* end.png */; };
-		BB099A741D667C38009960C4 /* Scenes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB099A731D667C38009960C4 /* Scenes.storyboard */; };
 		BB099A761D66F164009960C4 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */; };
 		BB099A781D6CA7EE009960C4 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A771D6CA7EE009960C4 /* Scenes.swift */; };
 		BB099A7A1D6CA8EA009960C4 /* Scene.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB099A791D6CA8EA009960C4 /* Scene.swift */; };
@@ -65,7 +64,6 @@
 		BB3DD8B61D2F2E470020B11D /* NewDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3DD8B51D2F2E470020B11D /* NewDeviceViewController.swift */; };
 		BB3DD8B81D2F2F300020B11D /* actualizar_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8B71D2F2F300020B11D /* actualizar_btn.png */; };
 		BB3DD8BA1D2F30460020B11D /* cerrar_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8B91D2F30460020B11D /* cerrar_btn.png */; };
-		BB3DD8BD1D31DDF80020B11D /* MyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB3DD8BC1D31DDF80020B11D /* MyAccount.storyboard */; };
 		BB3DD8BF1D31DEDB0020B11D /* MyAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3DD8BE1D31DEDB0020B11D /* MyAccountViewController.swift */; };
 		BB3EF4FD1DEDB2A30074F288 /* Living_registro_finalizacion.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3EF4F61DEDB2A30074F288 /* Living_registro_finalizacion.png */; };
 		BB3EF4FE1DEDB2A30074F288 /* Living_(Registro).png in Resources */ = {isa = PBXBuildFile; fileRef = BB3EF4F71DEDB2A30074F288 /* Living_(Registro).png */; };
@@ -100,7 +98,6 @@
 		BB63BE9F1D3C4BAA00481CC0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BE9E1D3C4BAA00481CC0 /* MenuViewController.swift */; };
 		BB63BEA11D3C515E00481CC0 /* MenuTableCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BEA01D3C515E00481CC0 /* MenuTableCellTableViewCell.swift */; };
 		BB63BEA31D3C526600481CC0 /* MenuItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BEA21D3C526600481CC0 /* MenuItems.swift */; };
-		BB63BEA81D3CB62600481CC0 /* Guests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB63BEA71D3CB62600481CC0 /* Guests.storyboard */; };
 		BB63BEAB1D3CB8ED00481CC0 /* AddGuestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB63BEAA1D3CB8ED00481CC0 /* AddGuestViewController.swift */; };
 		BB63BEAD1D3CB91800481CC0 /* AddGuestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB63BEAC1D3CB91800481CC0 /* AddGuestViewController.xib */; };
 		BB64C0501D3EC18E00B5EB12 /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB64C04F1D3EC18E00B5EB12 /* Device.swift */; };
@@ -108,7 +105,6 @@
 		BB6A2A1A1DBA84AB0032A51A /* Trash.png in Resources */ = {isa = PBXBuildFile; fileRef = BB6A2A191DBA84AB0032A51A /* Trash.png */; };
 		BB6A2A1C1DBA85090032A51A /* DeviceCellController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6A2A1B1DBA85090032A51A /* DeviceCellController.swift */; };
 		BB6A2A1E1DBA90B10032A51A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB6A2A1D1DBA90B10032A51A /* GoogleService-Info.plist */; };
-		BB794A7A1D3D78EC008EBBF3 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */; };
 		BB794A7D1D3D886F008EBBF3 /* SelectDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB794A7B1D3D886F008EBBF3 /* SelectDeviceViewController.swift */; };
 		BB794A7E1D3D886F008EBBF3 /* SelectDeviceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB794A7C1D3D886F008EBBF3 /* SelectDeviceViewController.xib */; };
 		BB794A811D3E4BE2008EBBF3 /* Action.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB794A801D3E4BE2008EBBF3 /* Action.swift */; };
@@ -120,6 +116,10 @@
 		BB794A8D1D3E68FF008EBBF3 /* NotificationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB794A8C1D3E68FF008EBBF3 /* NotificationViewCell.swift */; };
 		BB7A5D571D50FD5B00388B78 /* EndpointResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A5D561D50FD5B00388B78 /* EndpointResponse.swift */; };
 		BB7A5D591D5104DE00388B78 /* FoundDevicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7A5D581D5104DE00388B78 /* FoundDevicesViewController.swift */; };
+		BB9479111EE5C99400DADFB9 /* Guests.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9479131EE5C99400DADFB9 /* Guests.storyboard */; };
+		BB9479181EE5CB4300DADFB9 /* MyAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB94791A1EE5CB4300DADFB9 /* MyAccount.storyboard */; };
+		BB94791F1EE5CD5300DADFB9 /* Rooms.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9479211EE5CD5300DADFB9 /* Rooms.storyboard */; };
+		BB9479261EE5CDAB00DADFB9 /* Scenes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB9479281EE5CDAB00DADFB9 /* Scenes.storyboard */; };
 		BBA09B801D1A01220074765E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA09B7F1D1A01220074765E /* AppDelegate.swift */; };
 		BBA09B821D1A01220074765E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA09B811D1A01220074765E /* ViewController.swift */; };
 		BBA09B851D1A01220074765E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBA09B831D1A01220074765E /* Main.storyboard */; };
@@ -324,7 +324,6 @@
 		BB099A6C1D6586EC009960C4 /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
 		BB099A6D1D6586EC009960C4 /* skip_to_start.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = skip_to_start.png; sourceTree = "<group>"; };
 		BB099A6E1D6586EC009960C4 /* end.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = end.png; sourceTree = "<group>"; };
-		BB099A731D667C38009960C4 /* Scenes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Scenes.storyboard; path = Storyboards/Scenes.storyboard; sourceTree = "<group>"; };
 		BB099A751D66F164009960C4 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = ViewControllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		BB099A771D6CA7EE009960C4 /* Scenes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scenes.swift; path = Classes/Scenes.swift; sourceTree = "<group>"; };
 		BB099A791D6CA8EA009960C4 /* Scene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scene.swift; path = Classes/Scene.swift; sourceTree = "<group>"; };
@@ -366,7 +365,6 @@
 		BB3DD8B51D2F2E470020B11D /* NewDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewDeviceViewController.swift; path = ViewControllers/Devices/NewDeviceViewController.swift; sourceTree = "<group>"; };
 		BB3DD8B71D2F2F300020B11D /* actualizar_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = actualizar_btn.png; sourceTree = "<group>"; };
 		BB3DD8B91D2F30460020B11D /* cerrar_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cerrar_btn.png; sourceTree = "<group>"; };
-		BB3DD8BC1D31DDF80020B11D /* MyAccount.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = MyAccount.storyboard; path = Storyboards/MyAccount.storyboard; sourceTree = "<group>"; };
 		BB3DD8BE1D31DEDB0020B11D /* MyAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyAccountViewController.swift; path = ViewControllers/MyAccountViewController.swift; sourceTree = "<group>"; };
 		BB3EF4F61DEDB2A30074F288 /* Living_registro_finalizacion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Living_registro_finalizacion.png; sourceTree = "<group>"; };
 		BB3EF4F71DEDB2A30074F288 /* Living_(Registro).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Living_(Registro).png"; sourceTree = "<group>"; };
@@ -400,7 +398,6 @@
 		BB63BE9E1D3C4BAA00481CC0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuViewController.swift; path = ViewControllers/MenuViewController.swift; sourceTree = "<group>"; };
 		BB63BEA01D3C515E00481CC0 /* MenuTableCellTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuTableCellTableViewCell.swift; path = ViewControllers/Cells/MenuTableCellTableViewCell.swift; sourceTree = "<group>"; };
 		BB63BEA21D3C526600481CC0 /* MenuItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MenuItems.swift; path = Classes/MenuItems.swift; sourceTree = "<group>"; };
-		BB63BEA71D3CB62600481CC0 /* Guests.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Guests.storyboard; path = Storyboards/Guests.storyboard; sourceTree = "<group>"; };
 		BB63BEAA1D3CB8ED00481CC0 /* AddGuestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddGuestViewController.swift; path = ViewControllers/Modals/AddGuestViewController.swift; sourceTree = "<group>"; };
 		BB63BEAC1D3CB91800481CC0 /* AddGuestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AddGuestViewController.xib; path = ViewControllers/Modals/AddGuestViewController.xib; sourceTree = "<group>"; };
 		BB64C04F1D3EC18E00B5EB12 /* Device.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Device.swift; path = Classes/Device.swift; sourceTree = "<group>"; };
@@ -408,7 +405,6 @@
 		BB6A2A191DBA84AB0032A51A /* Trash.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Trash.png; sourceTree = "<group>"; };
 		BB6A2A1B1DBA85090032A51A /* DeviceCellController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DeviceCellController.swift; path = ViewControllers/Cells/DeviceCellController.swift; sourceTree = "<group>"; };
 		BB6A2A1D1DBA90B10032A51A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Rooms.storyboard; path = Storyboards/Rooms.storyboard; sourceTree = "<group>"; };
 		BB794A7B1D3D886F008EBBF3 /* SelectDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectDeviceViewController.swift; path = ViewControllers/Modals/SelectDeviceViewController.swift; sourceTree = "<group>"; };
 		BB794A7C1D3D886F008EBBF3 /* SelectDeviceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SelectDeviceViewController.xib; path = ViewControllers/Modals/SelectDeviceViewController.xib; sourceTree = "<group>"; };
 		BB794A801D3E4BE2008EBBF3 /* Action.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Action.swift; path = Classes/Action.swift; sourceTree = "<group>"; };
@@ -420,6 +416,18 @@
 		BB794A8C1D3E68FF008EBBF3 /* NotificationViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NotificationViewCell.swift; path = ViewControllers/Cells/NotificationViewCell.swift; sourceTree = "<group>"; };
 		BB7A5D561D50FD5B00388B78 /* EndpointResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EndpointResponse.swift; path = Classes/EndpointResponse.swift; sourceTree = "<group>"; };
 		BB7A5D581D5104DE00388B78 /* FoundDevicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FoundDevicesViewController.swift; path = ViewControllers/FoundDevicesViewController.swift; sourceTree = "<group>"; };
+		BB9479121EE5C99400DADFB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Guests.storyboard; sourceTree = "<group>"; };
+		BB9479151EE5C99700DADFB9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Guests.strings; sourceTree = "<group>"; };
+		BB9479171EE5C9A200DADFB9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Guests.strings; sourceTree = "<group>"; };
+		BB9479191EE5CB4300DADFB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MyAccount.storyboard; sourceTree = "<group>"; };
+		BB94791C1EE5CB4600DADFB9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MyAccount.strings; sourceTree = "<group>"; };
+		BB94791E1EE5CB4900DADFB9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/MyAccount.strings; sourceTree = "<group>"; };
+		BB9479201EE5CD5300DADFB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Rooms.storyboard; sourceTree = "<group>"; };
+		BB9479231EE5CD5500DADFB9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Rooms.strings; sourceTree = "<group>"; };
+		BB9479251EE5CD5800DADFB9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Rooms.strings; sourceTree = "<group>"; };
+		BB9479271EE5CDAB00DADFB9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Scenes.storyboard; sourceTree = "<group>"; };
+		BB94792A1EE5CDAF00DADFB9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Scenes.strings; sourceTree = "<group>"; };
+		BB94792C1EE5CDB100DADFB9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Scenes.strings; sourceTree = "<group>"; };
 		BBA05A281DE50A37000914DB /* genstrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = genstrings.swift; sourceTree = "<group>"; };
 		BBA09B7C1D1A01220074765E /* Living.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Living.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBA09B7F1D1A01220074765E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -735,12 +743,12 @@
 		BB3DD8BB1D31DDCB0020B11D /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				BB63BEA71D3CB62600481CC0 /* Guests.storyboard */,
-				BB3DD8BC1D31DDF80020B11D /* MyAccount.storyboard */,
+				BB9479131EE5C99400DADFB9 /* Guests.storyboard */,
+				BB94791A1EE5CB4300DADFB9 /* MyAccount.storyboard */,
 				BB63BE8D1D3AD56900481CC0 /* Notifications.storyboard */,
-				BB794A791D3D78EC008EBBF3 /* Rooms.storyboard */,
+				BB9479211EE5CD5300DADFB9 /* Rooms.storyboard */,
 				BBA1829A1EE3A29F0041E39F /* Device.storyboard */,
-				BB099A731D667C38009960C4 /* Scenes.storyboard */,
+				BB9479281EE5CDAB00DADFB9 /* Scenes.storyboard */,
 				BB552CFC1D78EB2B00C25F8B /* Hue.storyboard */,
 				BBDEE5A21DA2F59400761415 /* Configure.storyboard */,
 			);
@@ -1244,7 +1252,7 @@
 				BBA09B851D1A01220074765E /* Main.storyboard in Resources */,
 				BB794A8B1D3E582F008EBBF3 /* AddRoomViewController.xib in Resources */,
 				BB41CE1A1D2D7FC600682A72 /* LocalAlertViewController.xib in Resources */,
-				BB3DD8BD1D31DDF80020B11D /* MyAccount.storyboard in Resources */,
+				BB9479181EE5CB4300DADFB9 /* MyAccount.storyboard in Resources */,
 				BBAFED451D2ADA2500005212 /* Icon-Small-40@3x.png in Resources */,
 				BBAFED461D2ADA2500005212 /* Icon-72@2x.png in Resources */,
 				BBCB7B901ED33F770026CECB /* laptop.png in Resources */,
@@ -1252,7 +1260,7 @@
 				BBCB7B731ED33F770026CECB /* temperature.png in Resources */,
 				BBCB7B871ED33F770026CECB /* water_3_icon.png in Resources */,
 				BB3EF5001DEDB2A30074F288 /* logo_living.png in Resources */,
-				BB63BEA81D3CB62600481CC0 /* Guests.storyboard in Resources */,
+				BB9479111EE5C99400DADFB9 /* Guests.storyboard in Resources */,
 				BBCB7BBF1ED33F770026CECB /* office_3.png in Resources */,
 				BBCB7BB51ED33F770026CECB /* switch_icon.png in Resources */,
 				BBCB7BAE1ED33F770026CECB /* shades_4_icon.png in Resources */,
@@ -1263,7 +1271,7 @@
 				BB099A6A1D64C215009960C4 /* LevelViewController.xib in Resources */,
 				BB099A721D6586EC009960C4 /* end.png in Resources */,
 				BBAFED411D2ADA2500005212 /* Icon-Small@3x.png in Resources */,
-				BB099A741D667C38009960C4 /* Scenes.storyboard in Resources */,
+				BB9479261EE5CDAB00DADFB9 /* Scenes.storyboard in Resources */,
 				BBCB7B831ED33F770026CECB /* door_lock_2_icon.png in Resources */,
 				BBCB7BA91ED33F770026CECB /* open_close_sensor_2_icon.png in Resources */,
 				BBDEE5DB1DA5AB5000761415 /* SceneHueCell.xib in Resources */,
@@ -1331,7 +1339,7 @@
 				BB794A7E1D3D886F008EBBF3 /* SelectDeviceViewController.xib in Resources */,
 				BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */,
 				BBCB7BA51ED33F770026CECB /* sound_icon.png in Resources */,
-				BB794A7A1D3D78EC008EBBF3 /* Rooms.storyboard in Resources */,
+				BB94791F1EE5CD5300DADFB9 /* Rooms.storyboard in Resources */,
 				BB0D27C61D89C54B00ADBD2E /* SensorLevelViewController.xib in Resources */,
 				BB099A701D6586EC009960C4 /* play.png in Resources */,
 				BBAFED3D1D2ADA2500005212 /* Icon-60.png in Resources */,
@@ -1369,7 +1377,7 @@
 		};
 		C527B27004AF350AA2A91305 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -1377,7 +1385,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Living/Pods-Living-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
@@ -1508,6 +1516,50 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BB9479131EE5C99400DADFB9 /* Guests.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB9479121EE5C99400DADFB9 /* Base */,
+				BB9479151EE5C99700DADFB9 /* en */,
+				BB9479171EE5C9A200DADFB9 /* es */,
+			);
+			name = Guests.storyboard;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BB94791A1EE5CB4300DADFB9 /* MyAccount.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB9479191EE5CB4300DADFB9 /* Base */,
+				BB94791C1EE5CB4600DADFB9 /* en */,
+				BB94791E1EE5CB4900DADFB9 /* es */,
+			);
+			name = MyAccount.storyboard;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BB9479211EE5CD5300DADFB9 /* Rooms.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB9479201EE5CD5300DADFB9 /* Base */,
+				BB9479231EE5CD5500DADFB9 /* en */,
+				BB9479251EE5CD5800DADFB9 /* es */,
+			);
+			name = Rooms.storyboard;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		BB9479281EE5CDAB00DADFB9 /* Scenes.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BB9479271EE5CDAB00DADFB9 /* Base */,
+				BB94792A1EE5CDAF00DADFB9 /* en */,
+				BB94792C1EE5CDB100DADFB9 /* es */,
+			);
+			name = Scenes.storyboard;
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		BBA09B831D1A01220074765E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1675,7 +1727,7 @@
 				INFOPLIST_FILE = Living/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1746,7 +1798,7 @@
 				INFOPLIST_FILE = Living/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

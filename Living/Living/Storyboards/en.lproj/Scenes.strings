@@ -1,0 +1,21 @@
+
+/* Class = "UIButton"; normalTitle = "Save"; ObjectID = "4bM-zE-h8z"; */
+"4bM-zE-h8z.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "Hc6-Tf-hsf"; */
+"Hc6-Tf-hsf.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "+ New Mode"; ObjectID = "N8R-aE-ztf"; */
+"N8R-aE-ztf.normalTitle" = "+ New Mode";
+
+/* Class = "UILabel"; text = "Desactivado"; ObjectID = "acm-9j-kxX"; */
+"acm-9j-kxX.text" = "Disabled";
+
+/* Class = "UITextField"; placeholder = "Scene name"; ObjectID = "f9B-gq-nAK"; */
+"f9B-gq-nAK.placeholder" = "Scene name";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kWA-fp-kVY"; */
+"kWA-fp-kVY.text" = "Label";
+
+/* Class = "UILabel"; text = "Lampara"; ObjectID = "kfZ-oS-ofu"; */
+"kfZ-oS-ofu.text" = "Lampara";

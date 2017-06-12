@@ -10,6 +10,7 @@ import UIKit
 import Presentr
 import SideMenuController
 import DZNEmptyDataSet
+import Localize_Swift
 
 class DevicesViewController: UIViewController,SideMenuControllerDelegate, UITableViewDataSource, UITableViewDelegate,
 DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate, DeviceCellControllerDelegate{
@@ -51,7 +52,7 @@ DZNEmptyDataSetSource, DZNEmptyDataSetDelegate, DomuAlertViewControllerDelegate,
         
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
-        self.title = "Devices"
+        self.title = "Devices".localized()
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationError), name:NSNotification.Name(rawValue: "AddRoomError"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(methodOfReceivedNotificationSuccess), name:NSNotification.Name(rawValue: "AddRoomSuccess"), object: nil)
         
