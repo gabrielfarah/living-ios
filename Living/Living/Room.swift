@@ -99,6 +99,56 @@ class Room{
         }
         
     }
+    func update(_ token:String,hub:Int, completion:  @escaping (_ IsError:Bool,_ result: String) -> Void){
+        
+        let parameters: [String: AnyObject] = [
+            "description" : self.description as AnyObject,
+            "color" : self.color as AnyObject,
+            "orden" : self.order as AnyObject,
+            "image" : self.image as AnyObject
+        ]
+        
+        
+        let headers = [
+            "Authorization": "JWT "+token,
+            "Accept": "application/json",
+            "Accept-Language":"es-es",
+            ]
+        
+        
+        let endpoint = String(format:ArSmartApi.sharedApi.ApiUrl(Api.Hubs.Room), hub,self.rid)
+        
+        
+        
+        Alamofire.request(endpoint, method: .patch, parameters:parameters,encoding: JSONEncoding.default,headers: headers)
+            .validate()
+            .responseJSON { response  in
+                switch response.result {
+                    
+                case .success:
+                    
+                    print(response.response)
+                    if let JSON = response.result.value {
+                        print("JSON: \(JSON)")
+                        
+                    }
+                    completion(false,"")
+                    
+                    
+                case .failure:
+                    let data = NSData(data: response.data!) as Data
+                    var json = JSON(data: data)
+                    let response_string = (json["ERROR"]).rawString()
+                    completion(true,response_string!)
+                    
+                    
+                    
+                }
+                
+                
+        }
+        
+    }
     
     func delete(_ token:String,hub:Int,completion: @escaping (_ IsError:Bool,_ result: String) -> Void){
         

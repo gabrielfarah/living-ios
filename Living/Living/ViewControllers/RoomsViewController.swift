@@ -145,15 +145,25 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     func sideMenuControllerDidReveal(_ sideMenuController: SideMenuController) {
         print(#function)
     }
-    /*
+    
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
+        
+        
+        // Create a variable that you want to send
+
+        
+        // Create a new variable to store the instance of PlayerTableViewController
+        let destinationVC = segue.destination as! AddRoomViewController
+        destinationVC.room = selected_room
+        destinationVC.forUpdate = true
+        
      }
-     */
+ 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.rooms.rooms.count
@@ -178,24 +188,28 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        if(is_for_selection){
-            if let cell = tableView.cellForRow(at: indexPath) {
-                if cell.accessoryType == .checkmark {
-                    cell.accessoryType = .none
-                    
-                } else {
-                    cell.accessoryType = .checkmark
-                    
-                }
-            }
-            selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "RoomSelected"), object: selected_room)
-            _ = self.navigationController?.popViewController(animated: true)
-            
-            
-        }else{
+//        if(is_for_selection){
+//            if let cell = tableView.cellForRow(at: indexPath) {
+//                if cell.accessoryType == .checkmark {
+//                    cell.accessoryType = .none
+//                    
+//                } else {
+//                    cell.accessoryType = .checkmark
+//                    
+//                }
+//            }
+//            selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
+//            NotificationCenter.default.post(name: Notification.Name(rawValue: "RoomSelected"), object: selected_room)
+//            _ = self.navigationController?.popViewController(animated: true)
+//            
+//            
+//        }else{
+//        
+//        }
         
-        }
+        
+        self.performSegue(withIdentifier: "EditRoom", sender: sender)
+        
         
     }
 

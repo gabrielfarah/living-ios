@@ -24,7 +24,9 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
     @IBOutlet weak var img_icon: UIImageView!
     
     
-    var room:Room? = Room()
+    public var room:Room? = Room()
+    
+    public var forUpdate:Bool = false
     
     var color:UIColor?
     
@@ -34,10 +36,18 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
         picker.type = SwiftHUEColorPicker.PickerType.color
         
         self.color = UIColor("#FFFFFF")
+      
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(SelectIconNewDeviceNotification), name:NSNotification.Name(rawValue: "SelectIconNewDevice"), object: nil)
         
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if forUpdate{
+            self.title = "Editar Habitación".localized()
+        }
     }
     
 
@@ -55,6 +65,34 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
             
             room?.description = description!
             room?.color = self.toHexString(color: self.color!)
+        
+        if forUpdate{
+            room?.update(ArSmartApi.sharedApi.getToken(),hub: ArSmartApi.sharedApi.hub!.hid, completion: { (IsError, result) in
+                if(IsError){
+                    
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 120)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    
+                    vc2.setText("Operation failed, please try again...".localized())
+                }else{
+                    let width = ModalSize.custom(size: 240)
+                    let height = ModalSize.custom(size: 120)
+                    let presenter2 = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
+                    presenter2.transitionType = .crossDissolve // Optional
+                    let vc2 = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
+                    vc2.delegate = self
+                    self.customPresentViewController(presenter2, viewController: vc2, animated: true, completion: nil)
+                    vc2.setText("Room updated succesfully...".localized())
+                    
+                    
+                }
+            })
+        }else{
             room?.save(ArSmartApi.sharedApi.getToken(),hub: ArSmartApi.sharedApi.hub!.hid, completion: { (IsError, result) in
                 if(IsError){
                     
@@ -80,6 +118,8 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
                     
                 }
             })
+        }
+
         
         
 

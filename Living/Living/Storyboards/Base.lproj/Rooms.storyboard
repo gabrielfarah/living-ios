@@ -50,7 +50,7 @@
                                 </state>
                                 <connections>
                                     <action selector="AddGuest:" destination="lng-7i-NxA" eventType="touchUpInside" id="JWb-cc-qAR"/>
-                                    <segue destination="8Bu-mb-8zx" kind="show" id="tA6-bi-cSY"/>
+                                    <segue destination="8Bu-mb-8zx" kind="show" identifier="EditRoom" id="tA6-bi-cSY"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="R0I-Yt-wkd">
@@ -61,7 +61,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="yAh-OY-lBk" id="doh-ER-BhO">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ccg-Pc-E8r">
@@ -136,6 +136,7 @@
                     <connections>
                         <outlet property="btn_add_guest" destination="6xW-8h-0ZS" id="8Aj-ED-5mC"/>
                         <outlet property="tableView" destination="R0I-Yt-wkd" id="1RO-QU-D0v"/>
+                        <segue destination="8Bu-mb-8zx" kind="show" id="0OO-zj-1KO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7i2-CN-Myd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,4 +379,7 @@
         <image name="feed_btn.png" width="128" height="128"/>
         <image name="flecha_icon.png" width="128" height="128"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="tA6-bi-cSY"/>
+    </inferredMetricsTieBreakers>
 </document>
