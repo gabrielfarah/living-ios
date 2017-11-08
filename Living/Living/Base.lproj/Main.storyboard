@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eiO-L1-D4a">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="eiO-L1-D4a">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -261,7 +261,7 @@
         <scene sceneID="s31-Rj-In9">
             <objects>
                 <navigationController navigationBarHidden="YES" id="eiO-L1-D4a" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" translucent="NO" id="pp4-gP-Ido">
+                    <navigationBar key="navigationBar" opaque="NO" contentMode="scaleToFill" misplaced="YES" translucent="NO" id="pp4-gP-Ido">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" red="0.17254901959999999" green="0.76078431369999999" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1319,7 +1319,7 @@
         <scene sceneID="sqV-xd-42g">
             <objects>
                 <navigationController id="w6f-Qo-ELJ" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="eQr-nj-xd2">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="eQr-nj-xd2">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1686,7 +1686,7 @@
         <image name="clouds_backgound.jpg" width="1600" height="1200"/>
         <image name="code-registration.png" width="435" height="323"/>
         <image name="connect-station.png" width="451" height="365"/>
-        <image name="logo_living.png" width="1752" height="487"/>
+        <image name="logo_living.png" width="904" height="260"/>
         <image name="marker.png" width="64" height="64"/>
         <image name="nuevo(home)_btn.png" width="256" height="256"/>
         <image name="registered_hubs.jpg" width="1150" height="763"/>

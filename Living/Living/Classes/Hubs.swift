@@ -81,7 +81,7 @@ class Hubs{
                         if response.result.value != nil {
                             
                             let data = NSData(data: response.data!) as Data
-                            let json = JSON(data: data)
+                            let json = try! JSON(data: data)
                             
                             //(id:String,serial:String,mac:String,isRegistered:Bool,name:String,latitude:Double,longitude:Double,radius:Double)
 
@@ -144,6 +144,8 @@ class Hubs{
                                     var room:Room?
                                     if item["room"]["id"].exists(){
                                         room = Room(color:item["room"]["color"].stringValue ,rid:item["room"]["id"].int!)
+                                    }else{
+                                        room = Room()
                                     }
                                     
                                     let sensor = item["sensor"].intValue
@@ -197,7 +199,7 @@ class Hubs{
                         
                     case .failure:
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         let response_string = (json["ERROR"]).rawString()
                         completion(true,response_string!)
                         

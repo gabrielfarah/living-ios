@@ -38,7 +38,7 @@ class NotificationViewController: UIViewController,DZNEmptyDataSetSource, DZNEmp
         self.tableView.emptyDataSetDelegate = self
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         self.title = "Acciones"
         
         
@@ -114,13 +114,13 @@ class NotificationViewController: UIViewController,DZNEmptyDataSetSource, DZNEmp
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Notificaciones"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "No hay notificaciones registradas"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     

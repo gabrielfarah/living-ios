@@ -196,7 +196,7 @@ extension VKExpandableButton
                 // Configure button with String option
             else if option is String
             {
-                let textLength = (option as! NSString).size(attributes: [NSFontAttributeName : self.textFont]).width
+                let textLength = (option as! NSString).size(withAttributes: [NSAttributedStringKey.font : self.textFont]).width
                 
                 if textLength > self.minOptionSize && textLength > self.button.bounds.size.width
                 {

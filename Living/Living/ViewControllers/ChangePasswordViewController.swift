@@ -28,11 +28,11 @@ class ChangePasswordViewController: UIViewController {
         
 
         txt_old_password.attributedPlaceholder = NSAttributedString(string:"Old password".localized(),
-                                                               attributes:[NSForegroundColorAttributeName: UIColor.white])
+                                                                    attributes:[NSAttributedStringKey.foregroundColor: UIColor.white])
         txt_new_password_1.attributedPlaceholder = NSAttributedString(string:"New Password".localized(),
-                                                                    attributes:[NSForegroundColorAttributeName: UIColor.white])
+                                                                      attributes:[NSAttributedStringKey.foregroundColor: UIColor.white])
         txt_new_password_2.attributedPlaceholder = NSAttributedString(string:"Confirn new password".localized(),
-                                                                      attributes:[NSForegroundColorAttributeName: UIColor.white])
+                                                                      attributes:[NSAttributedStringKey.foregroundColor: UIColor.white])
         
     }
 

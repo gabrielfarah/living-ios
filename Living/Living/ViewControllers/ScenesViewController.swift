@@ -44,7 +44,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
         self.tableView.tableFooterView = UIView()
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         
         self.title = "Scenes".localized()
@@ -184,13 +184,13 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Scenes".localized()
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "There is no scenes...".localized()
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
@@ -198,7 +198,7 @@ class ScenesViewController: UIViewController,SideMenuControllerDelegate, UITable
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
         let str = "New mode".localized()
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     

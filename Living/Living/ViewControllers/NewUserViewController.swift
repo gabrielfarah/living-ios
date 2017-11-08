@@ -64,7 +64,7 @@ class NewUserViewController: UIViewController {
         
         
         self.navigationController?.isNavigationBarHidden = true
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         
         
@@ -73,10 +73,10 @@ class NewUserViewController: UIViewController {
         btn_new_account.layer.cornerRadius = 5.0
         
         
-        let attrs = [NSUnderlineStyleAttributeName : 1,NSForegroundColorAttributeName : UIColor.white] as [String : Any]
+        let attrs = [NSAttributedStringKey.underlineStyle.rawValue : 1,NSAttributedStringKey.foregroundColor : UIColor.white] as [AnyHashable : Any] 
         let attributedString = NSMutableAttributedString(string:"")
         
-        let buttonTitleStr = NSMutableAttributedString(string:"¿Ya tienes una cuenta?", attributes:attrs)
+        let buttonTitleStr = NSMutableAttributedString(string:"¿Ya tienes una cuenta?", attributes:attrs as! [NSAttributedStringKey : Any])
         attributedString.append(buttonTitleStr)
         btn_have_account.setAttributedTitle(attributedString, for: UIControlState())
         

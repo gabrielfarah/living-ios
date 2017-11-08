@@ -3,13 +3,13 @@
 "0vP-Tu-lGb.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "Domu"; ObjectID = "116-YR-XUz"; */
-"116-YR-XUz.text" = "Bien Tu";
+"116-YR-XUz.text" = "BienTú";
 
 /* Class = "UILabel"; text = "Nuevo Dispositivo"; ObjectID = "19m-qD-a3d"; */
 "19m-qD-a3d.text" = "Nuevo Dispositivo";
 
 /* Class = "UILabel"; text = "Domu"; ObjectID = "2WN-b1-mZZ"; */
-"2WN-b1-mZZ.text" = "Bien Tu";
+"2WN-b1-mZZ.text" = "BienTú";
 
 /* Class = "UIButton"; normalTitle = "Choose icon"; ObjectID = "3P7-eT-LXF"; */
 "3P7-eT-LXF.normalTitle" = "Choose icon";
@@ -21,7 +21,7 @@
 "6Me-Rr-Dne.normalTitle" = "Escoge Area";
 
 /* Class = "UIButton"; normalTitle = "+ New Room"; ObjectID = "6tL-83-7Dy"; */
-"6tL-83-7Dy.normalTitle" = "+ Nueva Habitación Room";
+"6tL-83-7Dy.normalTitle" = "+ Nuevo Ambiente";
 
 /* Class = "UILabel"; text = "Devices"; ObjectID = "8Sm-U0-TmF"; */
 "8Sm-U0-TmF.text" = "Dispositivos";

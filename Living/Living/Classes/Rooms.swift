@@ -65,7 +65,7 @@ class Rooms{
                     self.rooms.removeAll()
                     
                     let data = NSData(data: response.data!) as Data
-                    let json = JSON(data: data)
+                    let json = try! JSON(data: data)
                     
                     
                     //If json is .Dictionary
@@ -90,7 +90,7 @@ class Rooms{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     completion(true,response_string!)
                     
@@ -162,7 +162,7 @@ class Rooms{
                     
                 case .success:
                     if let value = response.result.value {
-                        let json = JSON(value)
+                        let json = try! JSON(value)
                         
                         
                         let url = json["url"].stringValue
@@ -176,7 +176,7 @@ class Rooms{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     completion(true,response_string!)
                     

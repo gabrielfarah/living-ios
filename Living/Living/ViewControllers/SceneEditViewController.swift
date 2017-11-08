@@ -52,7 +52,7 @@ class SceneEditViewController: UIViewController, UITableViewDelegate, UITableVie
         }
 
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         if scene.image != "" {
             img_icon.image = UIImage(named:scene.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)

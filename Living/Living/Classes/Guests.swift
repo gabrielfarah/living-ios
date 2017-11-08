@@ -63,34 +63,43 @@ class Guests{
                 switch response.result {
                     
                 case .success:
-                    self.guests.removeAll()
-                    let data = NSData(data: response.data!) as Data
-                    let json = JSON(data: data)
-                    
-                    
-                    //If json is .Dictionary
-                    for (_,subJson):(String, JSON) in json {
-                        //Do something you want
+                    do {
+                        self.guests.removeAll()
+                        let data = NSData(data: response.data!) as Data
+                        let json = try! JSON(data: data)
                         
                         
-                        
-                        let uid = subJson["id"].number
-                        let email = subJson["email"].stringValue
+                        //If json is .Dictionary
+                        for (_,subJson):(String, JSON) in json {
+                            //Do something you want
+                            
+                            
+                            
+                            let uid = subJson["id"].number
+                            let email = subJson["email"].stringValue
 
+                            
+                            let new_user = Guest(uid:uid!.intValue , email:email)
+                            
+                            self.guests.append(new_user)
+                        }
+
+                        completion(false,"")
+                    }catch{
+                         completion(false,"")
                         
-                        let new_user = Guest(uid:uid!.intValue , email:email)
-                        
-                        self.guests.append(new_user)
                     }
-
-                    completion(false,"")
-                    
                     
                 case .failure:
-                    let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
-                    let response_string = (json["ERROR"]).rawString()
-                    completion(true,response_string!)
+                    do {
+                        let data = NSData(data: response.data!) as Data
+                        var json = try! JSON(data: data)
+                        let response_string = (json["ERROR"]).rawString()
+                        completion(true,response_string!)
+                    }catch{
+                        completion(false,"")
+                        
+                    }
                     
                     
                     

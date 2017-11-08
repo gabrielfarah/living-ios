@@ -76,7 +76,7 @@ class Trigger{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = json["ERROR"].dictionary?.first
                     let final_string = response_string!.1[0].stringValue
                     

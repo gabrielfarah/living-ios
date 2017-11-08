@@ -55,7 +55,7 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
         self.tableView.emptyDataSetDelegate = self
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         
         self.title = "Rooms".localized()
@@ -149,18 +149,21 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
      // MARK: - Navigation
      
      // In a storyboard-based application, you will often want to do a little preparation before navigation
-     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
      // Get the new view controller using segue.destinationViewController.
      // Pass the selected object to the new view controller.
         
         
         // Create a variable that you want to send
 
-        
-        // Create a new variable to store the instance of PlayerTableViewController
-        let destinationVC = segue.destination as! AddRoomViewController
-        destinationVC.room = selected_room
-        destinationVC.forUpdate = true
+        if segue.identifier == "EditRoom"
+        {
+
+            // Create a new variable to store the instance of PlayerTableViewController
+            let destinationVC = segue.destination as! AddRoomViewController
+            destinationVC.room = selected_room
+            destinationVC.forUpdate = true
+        }
         
      }
  
@@ -188,27 +191,27 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-//        if(is_for_selection){
-//            if let cell = tableView.cellForRow(at: indexPath) {
-//                if cell.accessoryType == .checkmark {
-//                    cell.accessoryType = .none
-//                    
-//                } else {
-//                    cell.accessoryType = .checkmark
-//                    
-//                }
-//            }
-//            selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
-//            NotificationCenter.default.post(name: Notification.Name(rawValue: "RoomSelected"), object: selected_room)
-//            _ = self.navigationController?.popViewController(animated: true)
-//            
-//            
-//        }else{
-//        
-//        }
+        if(is_for_selection){
+            if let cell = tableView.cellForRow(at: indexPath) {
+                if cell.accessoryType == .checkmark {
+                    cell.accessoryType = .none
+                    
+                } else {
+                    cell.accessoryType = .checkmark
+                    
+                }
+           }
+            selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "RoomSelected"), object: selected_room)
+            _ = self.navigationController?.popViewController(animated: true)
+            
+            
+        }else{
+            selected_room = self.rooms.rooms[(indexPath as NSIndexPath).row]
+            self.performSegue(withIdentifier: "EditRoom", sender: self)
+       }
         
-        
-        self.performSegue(withIdentifier: "EditRoom", sender: sender)
+
         
         
     }
@@ -221,22 +224,22 @@ class RoomsViewController: UIViewController,SideMenuControllerDelegate, UITableV
     }
     
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "Rooms"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
+        let str = "Rooms".localized()
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
-        let str = "No hay cuartos registrados"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let str = "There are no rooms".localized()
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     
     
     
     func buttonTitle(forEmptyDataSet scrollView: UIScrollView!, for state: UIControlState) -> NSAttributedString! {
-        let str = "New room"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
+        let str = "New room".localized()
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.callout)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     

@@ -47,7 +47,7 @@ class DeviceManager{
                         
                     case .success:
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         let url = (json["url"]).rawString()
                         //completion(IsError:true,result: url!)
                         self.AvailableDevices(token, url: url!, completion: { (IsError, result,devices) in
@@ -58,7 +58,7 @@ class DeviceManager{
                         
                     case .failure:
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         let response_string = (json["detail"]).rawString()
                         completion(true,response_string!,[])
                         break
@@ -85,7 +85,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let url = (json["url"]).rawString()
                     completion(true, url!)
                     
@@ -94,7 +94,7 @@ class DeviceManager{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["detail"]).rawString()
                     completion(true,response_string!)
                     break
@@ -124,7 +124,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.AvailableDevices(token, url: url!, completion: { (IsError, result, devices) in
@@ -135,7 +135,7 @@ class DeviceManager{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["detail"]).rawString()
                     completion(true, response_string!, [])
                     break
@@ -175,7 +175,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let url = (json["url"]).rawString()
                     //completion(IsError:true,result: url!)
                     self.WaitForZwaveResponse(token, url: url!, completion: { (IsError, result) in
@@ -186,7 +186,7 @@ class DeviceManager{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["detail"]).rawString()
                     completion(true, response_string!)
                     break
@@ -218,7 +218,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let url = (json["url"]).rawString()
                     completion(true,url!)
                     
@@ -227,7 +227,7 @@ class DeviceManager{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["detail"]).rawString()
                     completion(true,response_string!)
                     break
@@ -258,7 +258,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
@@ -278,7 +278,7 @@ class DeviceManager{
                     }else if(status == "done"){
                         print("Done..")
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         
                         var devices = [EndpointResponse]()
                         
@@ -340,7 +340,7 @@ class DeviceManager{
                 case .failure:
                     print("error..")
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
                     completion(true,response_string!, [])
@@ -375,7 +375,7 @@ class DeviceManager{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
@@ -407,7 +407,7 @@ class DeviceManager{
                 case .failure:
                     print("error..")
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
                     completion(true,response_string!)

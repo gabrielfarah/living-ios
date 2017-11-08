@@ -55,7 +55,8 @@ class TokenManager{
     
     
     func CheckTokenTest(){
-    CheckToken("caev03@gmail.com", password: "caev03") { (result) in
+        CheckToken("caev03@gmail.com", password: "caev03") {
+            (isError:Bool, result:String) in
         
         do {
             let jwt = try decode(jwt: self.token)
@@ -75,7 +76,9 @@ class TokenManager{
     }
     
     func CheckTokenAuto(){
-        CheckToken(self.user, password: self.password) { (result) in
+        CheckToken(self.user, password: self.password) {
+            
+            (isError:Bool, result:String) in
             
             do {
                 let jwt = try decode(jwt: self.token)
@@ -163,7 +166,8 @@ class TokenManager{
                 case .failure(let error):
                     
                     let data = NSData(data: response.data!) as Data
-                    let final_response = JSON(data: data)
+                    do{
+                    let final_response = try! JSON(data: data)
                     let response_string = (final_response["non_field_errors"][0]).rawString()
                     print("Error Api Auth")
                     
@@ -171,6 +175,10 @@ class TokenManager{
                         completion(true,  response_string!)
                     }else{
                         completion(true, error.localizedDescription)
+                    }
+                    }catch{
+                        
+                        completion(false, "")
                     }
                     
                     
@@ -238,9 +246,9 @@ class TokenManager{
                     
                     
                 case .failure(let error):
-                    
+                    do {
                     let data = NSData(data: response.data!) as Data
-                    let final_response = JSON(data: data)
+                    let final_response = try! JSON(data: data)
                     let response_string = (final_response["non_field_errors"][0]).rawString()
                     print("Error Api Auth")
                     
@@ -249,6 +257,10 @@ class TokenManager{
                     }else{
                         completion(true, error.localizedDescription)
                     }
+                }catch{
+                    completion(false, "")
+                    
+                }
                     
                     
                 }

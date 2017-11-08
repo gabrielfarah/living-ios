@@ -65,7 +65,7 @@ class HueViewController: UIViewController,UITabBarDelegate, HueEndpointCellDeleg
 
         self.navigationController?.navigationBar.tintColor = UIColor.white
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
-                self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 
         self.title = "Hue Manager"
         
@@ -233,13 +233,13 @@ class HueViewController: UIViewController,UITabBarDelegate, HueEndpointCellDeleg
     }
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "Hue"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.headline)]
-        return NSAttributedString(string: str, attributes: attrs)
+let attrs = [NSAttributedStringKey.underlineStyle.rawValue : 1,NSAttributedStringKey.foregroundColor : UIColor.white] as [AnyHashable : Any]
+        return NSAttributedString(string: str, attributes: attrs as! [NSAttributedStringKey : Any])
     }
     
     func description(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let str = "No hay items registrados"
-        let attrs = [NSFontAttributeName: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
+        let attrs = [NSAttributedStringKey.font: UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)]
         return NSAttributedString(string: str, attributes: attrs)
     }
     

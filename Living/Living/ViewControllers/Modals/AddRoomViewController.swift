@@ -46,7 +46,12 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
         super.viewWillAppear(animated)
         
         if forUpdate{
-            self.title = "Editar Habitación".localized()
+            self.title = "Editar Ambiente".localized()
+            self.lbl_title.text = "Editar Ambiente".localized()
+            txt_email.text = self.room?.description
+            img_icon.image = UIImage(named:(self.room?.ImageNamed())!)
+            picker.currentColor = UIColor((self.room?.color.argb2rgba())!)
+ 
         }
     }
     
@@ -62,9 +67,9 @@ class AddRoomViewController: UIViewController, SwiftHUEColorPickerDelegate, Loca
             let description = self.txt_email.text
             
             
-            
+        
             room?.description = description!
-            room?.color = self.toHexString(color: self.color!)
+            room?.color = (self.color?.hexString().argb2rgba())!
         
         if forUpdate{
             room?.update(ArSmartApi.sharedApi.getToken(),hub: ArSmartApi.sharedApi.hub!.hid, completion: { (IsError, result) in

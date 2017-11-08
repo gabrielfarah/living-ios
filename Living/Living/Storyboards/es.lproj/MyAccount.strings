@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "Domu"; ObjectID = "7Wm-ql-zPy"; */
-"7Wm-ql-zPy.text" = "Bien Tu";
+"7Wm-ql-zPy.text" = "BienTú";
 
 /* Class = "UITextField"; placeholder = "New password"; ObjectID = "8s1-Lm-vQC"; */
 "8s1-Lm-vQC.placeholder" = "Nueva Contraseña ";
@@ -9,7 +9,7 @@
 "Bvq-4n-NNH.normalTitle" = "Continuar";
 
 /* Class = "UILabel"; text = "Start now to automate your home and live more comfortable and safe with Domu."; ObjectID = "HB6-hH-CoO"; */
-"HB6-hH-CoO.text" = "Comience ahora a automatizar su hogar y vivir más cómodo y seguro con Bien Tu.";
+"HB6-hH-CoO.text" = "Comience ahora a automatizar su hogar y vivir más cómodo y seguro con BienTú.";
 
 /* Class = "UILabel"; text = "Congratulations"; ObjectID = "IJM-br-kc5"; */
 "IJM-br-kc5.text" = "Felicidades";

@@ -129,7 +129,7 @@ class ArSmartApi{
                     completion(false,"")
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]["email"][0]).rawString()
                     completion(true,response_string!)
 

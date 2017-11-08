@@ -9,14 +9,19 @@ Simple iOS HUE color picker.</br>
 ## Installation
 <b>CocoaPods:</b>
 <pre>
-pod 'SwiftHUEColorPicker'
+Swift 2.2:
+pod 'SwiftHUEColorPicker', '~> 0.1.7'
+
+Swift 2.3:
+pod 'SwiftHUEColorPicker', '~> 0.2.3'
+
+Swift 3.0:
+pod 'SwiftHUEColorPicker', '~> 0.3.0'
 </pre>
 <b>Manual:</b>
 <pre>
 Copy <i>SwiftHUEColorPicker.swift</i> to your project.
 </pre>
-
-<b>For running in Xcode 8 please use <i>swift-3.0</i> branch.</b>
 
 ## Description
 Supports two modes: <i>horizontal</i> and <i>vertical</i>.</br>

@@ -57,7 +57,7 @@ class LoginViewController: UIViewController {
         navigationItem.backBarButtonItem = backButton
         
         self.navigationController?.isNavigationBarHidden = true
-        self.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController!.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
 
         btn_login.layer.borderColor = UIColor("#D1D3D4").cgColor
         btn_login.layer.borderWidth = 1.0

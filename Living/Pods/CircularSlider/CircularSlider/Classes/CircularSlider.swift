@@ -14,6 +14,7 @@ import UIKit
     @objc optional func circularSlider(_ circularSlider: CircularSlider, valueForValue value: Float) -> Float
     @objc optional func circularSlider(_ circularSlider: CircularSlider, didBeginEditing textfield: UITextField)
     @objc optional func circularSlider(_ circularSlider: CircularSlider, didEndEditing textfield: UITextField)
+    @objc optional func circularSlider(_ circularSlider: CircularSlider,  didEndMoved: Float)
     //  optional func circularSlider(circularSlider: CircularSlider, attributeTextForValue value: Float) -> NSAttributedString
 }
 
@@ -289,9 +290,9 @@ open class CircularSlider: UIView {
     
     fileprivate func configureFont() {
         if #available(iOS 8.2, *) {
-            intFont = UIFont.systemFont(ofSize: 42, weight: UIFontWeightRegular)
-            decimalFont = UIFont.systemFont(ofSize: 42, weight: UIFontWeightThin)
-            divisaFont = UIFont.systemFont(ofSize: 26, weight: UIFontWeightThin)
+            intFont = UIFont.systemFont(ofSize: 42, weight: UIFont.Weight.regular)
+            decimalFont = UIFont.systemFont(ofSize: 42, weight: UIFont.Weight.thin)
+            divisaFont = UIFont.systemFont(ofSize: 26, weight: UIFont.Weight.thin)
         }
     }
     
@@ -403,6 +404,12 @@ open class CircularSlider: UIView {
         
         let valueForAngle = Float(rotationAngle - startAngle) / Float(angleRange) * valueRange + minimumValue
         setValue(valueForAngle, animated: false)
+        
+        
+        if gesture.state == UIGestureRecognizerState.ended{
+            delegate?.circularSlider!(self, didEndMoved: valueForAngle)
+        }
+        
     }
     
     func cancelAnimation() {

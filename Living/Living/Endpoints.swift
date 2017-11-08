@@ -63,9 +63,15 @@ class Endpoints{
     func inRoom(room:Room)->[Endpoint]{
         
         
-        return endpoints.filter { $0.room!.description ==  room.description }
+        return endpoints.filter {
+            $0.room!.rid ==  room.rid
+        }
         
     }
+    
+
+    
+    
     
     func objectAtIndex(_ index:Int)->Endpoint{
     
@@ -159,7 +165,7 @@ class Endpoints{
                     
                 case .success:
                     if let value = response.result.value {
-                        let json = JSON(value)
+                        let json = try! JSON(value)
                         
                         
                         let url = json["url"].stringValue
@@ -173,7 +179,7 @@ class Endpoints{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     completion(true,response_string!)
                     
@@ -239,7 +245,7 @@ class Endpoints{
                         
                     case .success:
                         if let value = response.result.value {
-                            let json = JSON(value)
+                            let json = try! JSON(value)
                             
                             
                             let url = json["url"].stringValue
@@ -253,7 +259,7 @@ class Endpoints{
                         
                     case .failure:
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         let response_string = (json["ERROR"]).rawString()
                         completion(true,response_string!)
                         
@@ -284,7 +290,7 @@ class Endpoints{
                     
                 case .success:
                     if let value = response.result.value {
-                        let json = JSON(value)
+                        let json = try! JSON(value)
                         
                         let status = json["status"].stringValue
                         let url = json["url"].stringValue
@@ -340,7 +346,7 @@ class Endpoints{
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     completion(true,response_string!)
                     
@@ -370,7 +376,7 @@ class Endpoints{
                     
                 case .success:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let status = (json["status"]).rawString()
                     
                     if(status == "processing"){
@@ -390,7 +396,7 @@ class Endpoints{
                     }else if(status == "done"){
                         print("Done..")
                         let data = NSData(data: response.data!) as Data
-                        _ = JSON(data: data)
+                        _ = try! JSON(data: data)
                         
                         completion(false,"", [])
                     }
@@ -404,7 +410,7 @@ class Endpoints{
                 case .failure:
                     print("error..")
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     
                     completion(true,response_string!,[])

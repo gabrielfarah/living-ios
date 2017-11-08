@@ -14,6 +14,8 @@ import UIColor_Hex_Swift
 
 class EndPointMenuCell: UICollectionViewCell {
     
+    
+   
     var endpoint:Endpoint = Endpoint();
         var timer_status:Timer = Timer()
     var theme = ThemeManager()
@@ -34,7 +36,7 @@ class EndPointMenuCell: UICollectionViewCell {
     func setGalleryItem(_ item:UIImage, text:String) {
         
         image1 = item
-        image2 = item.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        image2 = item
         
         itemImageView.image = item
         itemLabel.text = text
@@ -48,7 +50,13 @@ class EndPointMenuCell: UICollectionViewCell {
     }
     func setHeaderColor(color:String?){
         if (color != nil){
-            color_view.backgroundColor =  UIColor(color!)
+            
+            if let rgba = color?.argb2rgba() {
+                color_view.backgroundColor =  UIColor(rgba)
+            }
+            
+            
+            
         }else{
             color_view.backgroundColor = UIColor.clear
         }
@@ -66,7 +74,7 @@ class EndPointMenuCell: UICollectionViewCell {
     func setGalleryItemNoStatus(_ item:UIImage, text:String) {
         
         image1 = item
-        image2 = item.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        image2 = item
         
         
         itemImageView.image = item
@@ -74,7 +82,7 @@ class EndPointMenuCell: UICollectionViewCell {
         bg_view.layer.cornerRadius = 5.0
 
         //TODO:Apagado
-        itemImageView.tintColor = UIColor("#808080")
+        //itemImageView.tintColor = UIColor("#808080")
         
         itemImageView.isHidden = false
         number_value.isHidden = true
@@ -132,7 +140,7 @@ class EndPointMenuCell: UICollectionViewCell {
         
         if(endpoint.state == 0 ){
             //TODO:Apagado
-            itemImageView.image = image2
+            itemImageView.image = UIImage(named:String(format:"%@",endpoint.image))
             itemImageView.tintColor = UIColor("#808080")
         }else if(endpoint.state == -1 ){
             //TODO:Apagado
@@ -140,8 +148,9 @@ class EndPointMenuCell: UICollectionViewCell {
             itemImageView.tintColor = UIColor("#D1D3D4")
         }else{
             //TODO:Encendido
-            itemImageView.image = image1
-            itemImageView.tintColor = UIColor("#2CC2BE")
+            let i = String(format:"%@_active",endpoint.image)
+            itemImageView.image = UIImage(named:String(format:"%@_active",endpoint.image))
+            //itemImageView.tintColor = UIColor("#2CC2BE")
         }
         self.setNeedsDisplay()
         

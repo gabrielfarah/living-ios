@@ -78,6 +78,7 @@
 		BB41CE1A1D2D7FC600682A72 /* LocalAlertViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB41CE181D2D7FC600682A72 /* LocalAlertViewController.xib */; };
 		BB41CE1D1D2D889B00682A72 /* CongratulationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41CE1C1D2D889B00682A72 /* CongratulationsViewController.swift */; };
 		BB41CE1F1D2D970900682A72 /* SelectInitialHubPositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41CE1E1D2D970900682A72 /* SelectInitialHubPositionViewController.swift */; };
+		BB4A608C1EFC20850004E106 /* icons_list.plist in Resources */ = {isa = PBXBuildFile; fileRef = BB4A608B1EFC20850004E106 /* icons_list.plist */; };
 		BB552CEB1D77E62200C25F8B /* VKExpandableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB0DACC91D77A0C100A472B2 /* VKExpandableButton.swift */; };
 		BB552CEF1D78964E00C25F8B /* Hue.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CEE1D78964E00C25F8B /* Hue.swift */; };
 		BB552CF11D78965D00C25F8B /* HueLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB552CF01D78965D00C25F8B /* HueLight.swift */; };
@@ -171,6 +172,95 @@
 		BBAFED4F1D2ADB3700005212 /* default_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BBAFED4C1D2ADB3700005212 /* default_background.jpg */; };
 		BBAFED511D2B8E9A00005212 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFED501D2B8E9A00005212 /* TokenManager.swift */; };
 		BBAFED531D2BA8AC00005212 /* RegisterNewHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAFED521D2BA8AC00005212 /* RegisterNewHub.swift */; };
+		BBBFD2F01EF9BC7600DBBC57 /* garden_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2971EF9BC7500DBBC57 /* garden_active.png */; };
+		BBBFD2F11EF9BC7600DBBC57 /* hue_icon2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2981EF9BC7500DBBC57 /* hue_icon2_active.png */; };
+		BBBFD2F21EF9BC7600DBBC57 /* energy_sensor_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2991EF9BC7500DBBC57 /* energy_sensor_icon_active.png */; };
+		BBBFD2F31EF9BC7600DBBC57 /* money_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29A1EF9BC7500DBBC57 /* money_active.png */; };
+		BBBFD2F41EF9BC7600DBBC57 /* people_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29B1EF9BC7500DBBC57 /* people_2_active.png */; };
+		BBBFD2F51EF9BC7600DBBC57 /* keys_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29C1EF9BC7500DBBC57 /* keys_active.png */; };
+		BBBFD2F61EF9BC7600DBBC57 /* reception_3_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29D1EF9BC7500DBBC57 /* reception_3_active.png */; };
+		BBBFD2F71EF9BC7600DBBC57 /* reception_5_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29E1EF9BC7500DBBC57 /* reception_5_active.png */; };
+		BBBFD2F81EF9BC7600DBBC57 /* people_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD29F1EF9BC7500DBBC57 /* people_1_active.png */; };
+		BBBFD2F91EF9BC7600DBBC57 /* power_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A01EF9BC7500DBBC57 /* power_icon_active.png */; };
+		BBBFD2FA1EF9BC7600DBBC57 /* movement_sensor_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A11EF9BC7500DBBC57 /* movement_sensor_3_icon_active.png */; };
+		BBBFD2FB1EF9BC7600DBBC57 /* reception_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A21EF9BC7500DBBC57 /* reception_1_active.png */; };
+		BBBFD2FC1EF9BC7600DBBC57 /* light_icon_6_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A31EF9BC7500DBBC57 /* light_icon_6_active.png */; };
+		BBBFD2FD1EF9BC7600DBBC57 /* time_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A41EF9BC7500DBBC57 /* time_active.png */; };
+		BBBFD2FE1EF9BC7600DBBC57 /* temperature_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A51EF9BC7500DBBC57 /* temperature_active.png */; };
+		BBBFD2FF1EF9BC7600DBBC57 /* movement_sensor_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A61EF9BC7500DBBC57 /* movement_sensor_2_icon_active.png */; };
+		BBBFD3001EF9BC7600DBBC57 /* shades_5_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A71EF9BC7500DBBC57 /* shades_5_icon_active.png */; };
+		BBBFD3011EF9BC7600DBBC57 /* shades_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A81EF9BC7500DBBC57 /* shades_icon_active.png */; };
+		BBBFD3021EF9BC7600DBBC57 /* movement_sensor_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2A91EF9BC7500DBBC57 /* movement_sensor_icon_active.png */; };
+		BBBFD3031EF9BC7600DBBC57 /* business_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AA1EF9BC7500DBBC57 /* business_1_active.png */; };
+		BBBFD3041EF9BC7600DBBC57 /* lamp_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AB1EF9BC7500DBBC57 /* lamp_icon_active.png */; };
+		BBBFD3051EF9BC7600DBBC57 /* sensor_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AC1EF9BC7500DBBC57 /* sensor_icon_active.png */; };
+		BBBFD3061EF9BC7600DBBC57 /* energy_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AD1EF9BC7500DBBC57 /* energy_2_active.png */; };
+		BBBFD3071EF9BC7600DBBC57 /* energy_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AE1EF9BC7500DBBC57 /* energy_2_icon_active.png */; };
+		BBBFD3081EF9BC7600DBBC57 /* water_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2AF1EF9BC7500DBBC57 /* water_icon_active.png */; };
+		BBBFD3091EF9BC7600DBBC57 /* alarm_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B01EF9BC7500DBBC57 /* alarm_2_icon_active.png */; };
+		BBBFD30A1EF9BC7600DBBC57 /* reception_4_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B11EF9BC7500DBBC57 /* reception_4_active.png */; };
+		BBBFD30B1EF9BC7600DBBC57 /* music_4_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B21EF9BC7500DBBC57 /* music_4_icon_active.png */; };
+		BBBFD30C1EF9BC7600DBBC57 /* bath_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B31EF9BC7500DBBC57 /* bath_2_active.png */; };
+		BBBFD30D1EF9BC7600DBBC57 /* office_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B41EF9BC7500DBBC57 /* office_1_active.png */; };
+		BBBFD30E1EF9BC7600DBBC57 /* music_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B51EF9BC7500DBBC57 /* music_active.png */; };
+		BBBFD30F1EF9BC7600DBBC57 /* music_5_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B61EF9BC7500DBBC57 /* music_5_icon_active.png */; };
+		BBBFD3101EF9BC7600DBBC57 /* weather_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B71EF9BC7500DBBC57 /* weather_2_active.png */; };
+		BBBFD3111EF9BC7600DBBC57 /* door_lock_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B81EF9BC7500DBBC57 /* door_lock_2_icon_active.png */; };
+		BBBFD3121EF9BC7600DBBC57 /* door_lock_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2B91EF9BC7500DBBC57 /* door_lock_active.png */; };
+		BBBFD3131EF9BC7600DBBC57 /* dinning_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BA1EF9BC7500DBBC57 /* dinning_1_active.png */; };
+		BBBFD3141EF9BC7600DBBC57 /* water_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BB1EF9BC7500DBBC57 /* water_3_icon_active.png */; };
+		BBBFD3151EF9BC7600DBBC57 /* music_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BC1EF9BC7500DBBC57 /* music_3_icon_active.png */; };
+		BBBFD3161EF9BC7600DBBC57 /* light_4_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BD1EF9BC7500DBBC57 /* light_4_icon_active.png */; };
+		BBBFD3171EF9BC7600DBBC57 /* alarm_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BE1EF9BC7500DBBC57 /* alarm_icon_active.png */; };
+		BBBFD3181EF9BC7600DBBC57 /* shades_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2BF1EF9BC7500DBBC57 /* shades_2_icon_active.png */; };
+		BBBFD3191EF9BC7600DBBC57 /* hue_icon1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C01EF9BC7500DBBC57 /* hue_icon1_active.png */; };
+		BBBFD31A1EF9BC7600DBBC57 /* plan_4_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C11EF9BC7500DBBC57 /* plan_4_active.png */; };
+		BBBFD31B1EF9BC7600DBBC57 /* water_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C21EF9BC7500DBBC57 /* water_2_icon_active.png */; };
+		BBBFD31C1EF9BC7600DBBC57 /* default_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C31EF9BC7500DBBC57 /* default_icon_active.png */; };
+		BBBFD31D1EF9BC7600DBBC57 /* power_outlet_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C41EF9BC7500DBBC57 /* power_outlet_2_icon_active.png */; };
+		BBBFD31E1EF9BC7600DBBC57 /* movement_sensor_4_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C51EF9BC7500DBBC57 /* movement_sensor_4_icon_active.png */; };
+		BBBFD31F1EF9BC7600DBBC57 /* plan_3_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C61EF9BC7500DBBC57 /* plan_3_active.png */; };
+		BBBFD3201EF9BC7600DBBC57 /* power_outlet_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C71EF9BC7500DBBC57 /* power_outlet_icon_active.png */; };
+		BBBFD3211EF9BC7600DBBC57 /* weather_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C81EF9BC7500DBBC57 /* weather_1_active.png */; };
+		BBBFD3221EF9BC7600DBBC57 /* shades_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2C91EF9BC7500DBBC57 /* shades_3_icon_active.png */; };
+		BBBFD3231EF9BC7600DBBC57 /* alarm_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CA1EF9BC7500DBBC57 /* alarm_3_icon_active.png */; };
+		BBBFD3241EF9BC7600DBBC57 /* music_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CB1EF9BC7500DBBC57 /* music_2_icon_active.png */; };
+		BBBFD3251EF9BC7600DBBC57 /* lamp_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CC1EF9BC7500DBBC57 /* lamp_3_icon_active.png */; };
+		BBBFD3261EF9BC7600DBBC57 /* cofee_maker_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CD1EF9BC7500DBBC57 /* cofee_maker_icon_active.png */; };
+		BBBFD3271EF9BC7600DBBC57 /* light_5_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CE1EF9BC7500DBBC57 /* light_5_icon_active.png */; };
+		BBBFD3281EF9BC7600DBBC57 /* laptop_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2CF1EF9BC7500DBBC57 /* laptop_active.png */; };
+		BBBFD3291EF9BC7600DBBC57 /* scene_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D01EF9BC7500DBBC57 /* scene_icon_active.png */; };
+		BBBFD32A1EF9BC7600DBBC57 /* temperature_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D11EF9BC7500DBBC57 /* temperature_icon_active.png */; };
+		BBBFD32B1EF9BC7600DBBC57 /* light_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D21EF9BC7500DBBC57 /* light_icon_active.png */; };
+		BBBFD32C1EF9BC7600DBBC57 /* plan_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D31EF9BC7500DBBC57 /* plan_2_active.png */; };
+		BBBFD32D1EF9BC7600DBBC57 /* business_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D41EF9BC7500DBBC57 /* business_2_active.png */; };
+		BBBFD32E1EF9BC7600DBBC57 /* door_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D51EF9BC7500DBBC57 /* door_icon_active.png */; };
+		BBBFD32F1EF9BC7600DBBC57 /* plan_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D61EF9BC7500DBBC57 /* plan_1_active.png */; };
+		BBBFD3301EF9BC7600DBBC57 /* reception_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D71EF9BC7500DBBC57 /* reception_2_active.png */; };
+		BBBFD3311EF9BC7600DBBC57 /* door_lock_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D81EF9BC7500DBBC57 /* door_lock_icon_active.png */; };
+		BBBFD3321EF9BC7600DBBC57 /* bath_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2D91EF9BC7500DBBC57 /* bath_1_active.png */; };
+		BBBFD3331EF9BC7600DBBC57 /* open_close_sensor_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DA1EF9BC7500DBBC57 /* open_close_sensor_2_icon_active.png */; };
+		BBBFD3341EF9BC7600DBBC57 /* light_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DB1EF9BC7500DBBC57 /* light_2_icon_active.png */; };
+		BBBFD3351EF9BC7600DBBC57 /* energy_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DC1EF9BC7500DBBC57 /* energy_icon_active.png */; };
+		BBBFD3361EF9BC7600DBBC57 /* shades_4_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DD1EF9BC7500DBBC57 /* shades_4_icon_active.png */; };
+		BBBFD3371EF9BC7600DBBC57 /* bed_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DE1EF9BC7500DBBC57 /* bed_2_active.png */; };
+		BBBFD3381EF9BC7600DBBC57 /* letter_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2DF1EF9BC7500DBBC57 /* letter_active.png */; };
+		BBBFD3391EF9BC7600DBBC57 /* battery_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E01EF9BC7500DBBC57 /* battery_active.png */; };
+		BBBFD33A1EF9BC7600DBBC57 /* open_close_sensor_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E11EF9BC7500DBBC57 /* open_close_sensor_3_icon_active.png */; };
+		BBBFD33B1EF9BC7600DBBC57 /* light_3_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E21EF9BC7500DBBC57 /* light_3_icon_active.png */; };
+		BBBFD33C1EF9BC7600DBBC57 /* battery_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E31EF9BC7500DBBC57 /* battery_icon_active.png */; };
+		BBBFD33D1EF9BC7600DBBC57 /* switch_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E41EF9BC7500DBBC57 /* switch_icon_active.png */; };
+		BBBFD33E1EF9BC7600DBBC57 /* door_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E51EF9BC7500DBBC57 /* door_2_icon_active.png */; };
+		BBBFD33F1EF9BC7600DBBC57 /* living_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E61EF9BC7500DBBC57 /* living_1_active.png */; };
+		BBBFD3401EF9BC7600DBBC57 /* bed_1_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E71EF9BC7500DBBC57 /* bed_1_active.png */; };
+		BBBFD3411EF9BC7600DBBC57 /* open_close_sensor_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E81EF9BC7500DBBC57 /* open_close_sensor_icon_active.png */; };
+		BBBFD3421EF9BC7600DBBC57 /* living_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2E91EF9BC7500DBBC57 /* living_2_active.png */; };
+		BBBFD3431EF9BC7600DBBC57 /* office_4_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2EA1EF9BC7500DBBC57 /* office_4_active.png */; };
+		BBBFD3441EF9BC7600DBBC57 /* office_2_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2EB1EF9BC7500DBBC57 /* office_2_active.png */; };
+		BBBFD3451EF9BC7600DBBC57 /* office_3_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2EC1EF9BC7500DBBC57 /* office_3_active.png */; };
+		BBBFD3461EF9BC7600DBBC57 /* business_5_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2ED1EF9BC7500DBBC57 /* business_5_active.png */; };
+		BBBFD3471EF9BC7600DBBC57 /* lamp_2_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2EE1EF9BC7500DBBC57 /* lamp_2_icon_active.png */; };
+		BBBFD3481EF9BC7600DBBC57 /* tv_icon_active.png in Resources */ = {isa = PBXBuildFile; fileRef = BBBFD2EF1EF9BC7600DBBC57 /* tv_icon_active.png */; };
 		BBCB7B651ED33F770026CECB /* hue_icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCB7B071ED33F770026CECB /* hue_icon2.png */; };
 		BBCB7B661ED33F770026CECB /* energy_sensor_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCB7B081ED33F770026CECB /* energy_sensor_icon.png */; };
 		BBCB7B671ED33F770026CECB /* keys.png in Resources */ = {isa = PBXBuildFile; fileRef = BBCB7B091ED33F770026CECB /* keys.png */; };
@@ -379,6 +469,7 @@
 		BB41CE181D2D7FC600682A72 /* LocalAlertViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LocalAlertViewController.xib; path = ViewControllers/LoadingViewController/LocalAlertViewController.xib; sourceTree = "<group>"; };
 		BB41CE1C1D2D889B00682A72 /* CongratulationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CongratulationsViewController.swift; path = ViewControllers/CongratulationsViewController.swift; sourceTree = "<group>"; };
 		BB41CE1E1D2D970900682A72 /* SelectInitialHubPositionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectInitialHubPositionViewController.swift; path = ViewControllers/SelectInitialHubPositionViewController.swift; sourceTree = "<group>"; };
+		BB4A608B1EFC20850004E106 /* icons_list.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = icons_list.plist; sourceTree = "<group>"; };
 		BB552CEE1D78964E00C25F8B /* Hue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Hue.swift; path = Classes/Endpoints/Hue.swift; sourceTree = "<group>"; };
 		BB552CF01D78965D00C25F8B /* HueLight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueLight.swift; path = Classes/Endpoints/HueLight.swift; sourceTree = "<group>"; };
 		BB552CF21D78D07A00C25F8B /* HueGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HueGroup.swift; path = Classes/Endpoints/HueGroup.swift; sourceTree = "<group>"; };
@@ -487,6 +578,95 @@
 		BBAFED4C1D2ADB3700005212 /* default_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default_background.jpg; sourceTree = "<group>"; };
 		BBAFED501D2B8E9A00005212 /* TokenManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TokenManager.swift; path = Classes/TokenManager.swift; sourceTree = "<group>"; };
 		BBAFED521D2BA8AC00005212 /* RegisterNewHub.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterNewHub.swift; sourceTree = "<group>"; };
+		BBBFD2971EF9BC7500DBBC57 /* garden_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = garden_active.png; sourceTree = "<group>"; };
+		BBBFD2981EF9BC7500DBBC57 /* hue_icon2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_icon2_active.png; sourceTree = "<group>"; };
+		BBBFD2991EF9BC7500DBBC57 /* energy_sensor_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy_sensor_icon_active.png; sourceTree = "<group>"; };
+		BBBFD29A1EF9BC7500DBBC57 /* money_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = money_active.png; sourceTree = "<group>"; };
+		BBBFD29B1EF9BC7500DBBC57 /* people_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people_2_active.png; sourceTree = "<group>"; };
+		BBBFD29C1EF9BC7500DBBC57 /* keys_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keys_active.png; sourceTree = "<group>"; };
+		BBBFD29D1EF9BC7500DBBC57 /* reception_3_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reception_3_active.png; sourceTree = "<group>"; };
+		BBBFD29E1EF9BC7500DBBC57 /* reception_5_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reception_5_active.png; sourceTree = "<group>"; };
+		BBBFD29F1EF9BC7500DBBC57 /* people_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = people_1_active.png; sourceTree = "<group>"; };
+		BBBFD2A01EF9BC7500DBBC57 /* power_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2A11EF9BC7500DBBC57 /* movement_sensor_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movement_sensor_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2A21EF9BC7500DBBC57 /* reception_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reception_1_active.png; sourceTree = "<group>"; };
+		BBBFD2A31EF9BC7500DBBC57 /* light_icon_6_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_icon_6_active.png; sourceTree = "<group>"; };
+		BBBFD2A41EF9BC7500DBBC57 /* time_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_active.png; sourceTree = "<group>"; };
+		BBBFD2A51EF9BC7500DBBC57 /* temperature_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature_active.png; sourceTree = "<group>"; };
+		BBBFD2A61EF9BC7500DBBC57 /* movement_sensor_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movement_sensor_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2A71EF9BC7500DBBC57 /* shades_5_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_5_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2A81EF9BC7500DBBC57 /* shades_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2A91EF9BC7500DBBC57 /* movement_sensor_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movement_sensor_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2AA1EF9BC7500DBBC57 /* business_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business_1_active.png; sourceTree = "<group>"; };
+		BBBFD2AB1EF9BC7500DBBC57 /* lamp_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lamp_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2AC1EF9BC7500DBBC57 /* sensor_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sensor_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2AD1EF9BC7500DBBC57 /* energy_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy_2_active.png; sourceTree = "<group>"; };
+		BBBFD2AE1EF9BC7500DBBC57 /* energy_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2AF1EF9BC7500DBBC57 /* water_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2B01EF9BC7500DBBC57 /* alarm_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2B11EF9BC7500DBBC57 /* reception_4_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reception_4_active.png; sourceTree = "<group>"; };
+		BBBFD2B21EF9BC7500DBBC57 /* music_4_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_4_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2B31EF9BC7500DBBC57 /* bath_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bath_2_active.png; sourceTree = "<group>"; };
+		BBBFD2B41EF9BC7500DBBC57 /* office_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office_1_active.png; sourceTree = "<group>"; };
+		BBBFD2B51EF9BC7500DBBC57 /* music_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_active.png; sourceTree = "<group>"; };
+		BBBFD2B61EF9BC7500DBBC57 /* music_5_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_5_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2B71EF9BC7500DBBC57 /* weather_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_2_active.png; sourceTree = "<group>"; };
+		BBBFD2B81EF9BC7500DBBC57 /* door_lock_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_lock_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2B91EF9BC7500DBBC57 /* door_lock_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_lock_active.png; sourceTree = "<group>"; };
+		BBBFD2BA1EF9BC7500DBBC57 /* dinning_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = dinning_1_active.png; sourceTree = "<group>"; };
+		BBBFD2BB1EF9BC7500DBBC57 /* water_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2BC1EF9BC7500DBBC57 /* music_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2BD1EF9BC7500DBBC57 /* light_4_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_4_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2BE1EF9BC7500DBBC57 /* alarm_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2BF1EF9BC7500DBBC57 /* shades_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C01EF9BC7500DBBC57 /* hue_icon1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_icon1_active.png; sourceTree = "<group>"; };
+		BBBFD2C11EF9BC7500DBBC57 /* plan_4_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_4_active.png; sourceTree = "<group>"; };
+		BBBFD2C21EF9BC7500DBBC57 /* water_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = water_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C31EF9BC7500DBBC57 /* default_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = default_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C41EF9BC7500DBBC57 /* power_outlet_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power_outlet_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C51EF9BC7500DBBC57 /* movement_sensor_4_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = movement_sensor_4_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C61EF9BC7500DBBC57 /* plan_3_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_3_active.png; sourceTree = "<group>"; };
+		BBBFD2C71EF9BC7500DBBC57 /* power_outlet_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = power_outlet_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2C81EF9BC7500DBBC57 /* weather_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = weather_1_active.png; sourceTree = "<group>"; };
+		BBBFD2C91EF9BC7500DBBC57 /* shades_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CA1EF9BC7500DBBC57 /* alarm_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alarm_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CB1EF9BC7500DBBC57 /* music_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = music_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CC1EF9BC7500DBBC57 /* lamp_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lamp_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CD1EF9BC7500DBBC57 /* cofee_maker_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cofee_maker_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CE1EF9BC7500DBBC57 /* light_5_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_5_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2CF1EF9BC7500DBBC57 /* laptop_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = laptop_active.png; sourceTree = "<group>"; };
+		BBBFD2D01EF9BC7500DBBC57 /* scene_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scene_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2D11EF9BC7500DBBC57 /* temperature_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = temperature_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2D21EF9BC7500DBBC57 /* light_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2D31EF9BC7500DBBC57 /* plan_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_2_active.png; sourceTree = "<group>"; };
+		BBBFD2D41EF9BC7500DBBC57 /* business_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business_2_active.png; sourceTree = "<group>"; };
+		BBBFD2D51EF9BC7500DBBC57 /* door_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2D61EF9BC7500DBBC57 /* plan_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = plan_1_active.png; sourceTree = "<group>"; };
+		BBBFD2D71EF9BC7500DBBC57 /* reception_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = reception_2_active.png; sourceTree = "<group>"; };
+		BBBFD2D81EF9BC7500DBBC57 /* door_lock_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_lock_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2D91EF9BC7500DBBC57 /* bath_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bath_1_active.png; sourceTree = "<group>"; };
+		BBBFD2DA1EF9BC7500DBBC57 /* open_close_sensor_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_close_sensor_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2DB1EF9BC7500DBBC57 /* light_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2DC1EF9BC7500DBBC57 /* energy_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2DD1EF9BC7500DBBC57 /* shades_4_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shades_4_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2DE1EF9BC7500DBBC57 /* bed_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bed_2_active.png; sourceTree = "<group>"; };
+		BBBFD2DF1EF9BC7500DBBC57 /* letter_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = letter_active.png; sourceTree = "<group>"; };
+		BBBFD2E01EF9BC7500DBBC57 /* battery_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battery_active.png; sourceTree = "<group>"; };
+		BBBFD2E11EF9BC7500DBBC57 /* open_close_sensor_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_close_sensor_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E21EF9BC7500DBBC57 /* light_3_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = light_3_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E31EF9BC7500DBBC57 /* battery_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = battery_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E41EF9BC7500DBBC57 /* switch_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = switch_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E51EF9BC7500DBBC57 /* door_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = door_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E61EF9BC7500DBBC57 /* living_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = living_1_active.png; sourceTree = "<group>"; };
+		BBBFD2E71EF9BC7500DBBC57 /* bed_1_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bed_1_active.png; sourceTree = "<group>"; };
+		BBBFD2E81EF9BC7500DBBC57 /* open_close_sensor_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_close_sensor_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2E91EF9BC7500DBBC57 /* living_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = living_2_active.png; sourceTree = "<group>"; };
+		BBBFD2EA1EF9BC7500DBBC57 /* office_4_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office_4_active.png; sourceTree = "<group>"; };
+		BBBFD2EB1EF9BC7500DBBC57 /* office_2_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office_2_active.png; sourceTree = "<group>"; };
+		BBBFD2EC1EF9BC7500DBBC57 /* office_3_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = office_3_active.png; sourceTree = "<group>"; };
+		BBBFD2ED1EF9BC7500DBBC57 /* business_5_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = business_5_active.png; sourceTree = "<group>"; };
+		BBBFD2EE1EF9BC7500DBBC57 /* lamp_2_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = lamp_2_icon_active.png; sourceTree = "<group>"; };
+		BBBFD2EF1EF9BC7600DBBC57 /* tv_icon_active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tv_icon_active.png; sourceTree = "<group>"; };
 		BBCB7B071ED33F770026CECB /* hue_icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hue_icon2.png; sourceTree = "<group>"; };
 		BBCB7B081ED33F770026CECB /* energy_sensor_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = energy_sensor_icon.png; sourceTree = "<group>"; };
 		BBCB7B091ED33F770026CECB /* keys.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = keys.png; sourceTree = "<group>"; };
@@ -889,6 +1069,7 @@
 				BBCC65D01D491CBB004D35A6 /* endpoints_icons */,
 				BBA09BA01D1C757A0074765E /* images */,
 				BBA182971EE39F8F0041E39F /* Localizable.strings */,
+				BB4A608B1EFC20850004E106 /* icons_list.plist */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -978,6 +1159,95 @@
 		BBCC65D01D491CBB004D35A6 /* endpoints_icons */ = {
 			isa = PBXGroup;
 			children = (
+				BBBFD2971EF9BC7500DBBC57 /* garden_active.png */,
+				BBBFD2981EF9BC7500DBBC57 /* hue_icon2_active.png */,
+				BBBFD2991EF9BC7500DBBC57 /* energy_sensor_icon_active.png */,
+				BBBFD29A1EF9BC7500DBBC57 /* money_active.png */,
+				BBBFD29B1EF9BC7500DBBC57 /* people_2_active.png */,
+				BBBFD29C1EF9BC7500DBBC57 /* keys_active.png */,
+				BBBFD29D1EF9BC7500DBBC57 /* reception_3_active.png */,
+				BBBFD29E1EF9BC7500DBBC57 /* reception_5_active.png */,
+				BBBFD29F1EF9BC7500DBBC57 /* people_1_active.png */,
+				BBBFD2A01EF9BC7500DBBC57 /* power_icon_active.png */,
+				BBBFD2A11EF9BC7500DBBC57 /* movement_sensor_3_icon_active.png */,
+				BBBFD2A21EF9BC7500DBBC57 /* reception_1_active.png */,
+				BBBFD2A31EF9BC7500DBBC57 /* light_icon_6_active.png */,
+				BBBFD2A41EF9BC7500DBBC57 /* time_active.png */,
+				BBBFD2A51EF9BC7500DBBC57 /* temperature_active.png */,
+				BBBFD2A61EF9BC7500DBBC57 /* movement_sensor_2_icon_active.png */,
+				BBBFD2A71EF9BC7500DBBC57 /* shades_5_icon_active.png */,
+				BBBFD2A81EF9BC7500DBBC57 /* shades_icon_active.png */,
+				BBBFD2A91EF9BC7500DBBC57 /* movement_sensor_icon_active.png */,
+				BBBFD2AA1EF9BC7500DBBC57 /* business_1_active.png */,
+				BBBFD2AB1EF9BC7500DBBC57 /* lamp_icon_active.png */,
+				BBBFD2AC1EF9BC7500DBBC57 /* sensor_icon_active.png */,
+				BBBFD2AD1EF9BC7500DBBC57 /* energy_2_active.png */,
+				BBBFD2AE1EF9BC7500DBBC57 /* energy_2_icon_active.png */,
+				BBBFD2AF1EF9BC7500DBBC57 /* water_icon_active.png */,
+				BBBFD2B01EF9BC7500DBBC57 /* alarm_2_icon_active.png */,
+				BBBFD2B11EF9BC7500DBBC57 /* reception_4_active.png */,
+				BBBFD2B21EF9BC7500DBBC57 /* music_4_icon_active.png */,
+				BBBFD2B31EF9BC7500DBBC57 /* bath_2_active.png */,
+				BBBFD2B41EF9BC7500DBBC57 /* office_1_active.png */,
+				BBBFD2B51EF9BC7500DBBC57 /* music_active.png */,
+				BBBFD2B61EF9BC7500DBBC57 /* music_5_icon_active.png */,
+				BBBFD2B71EF9BC7500DBBC57 /* weather_2_active.png */,
+				BBBFD2B81EF9BC7500DBBC57 /* door_lock_2_icon_active.png */,
+				BBBFD2B91EF9BC7500DBBC57 /* door_lock_active.png */,
+				BBBFD2BA1EF9BC7500DBBC57 /* dinning_1_active.png */,
+				BBBFD2BB1EF9BC7500DBBC57 /* water_3_icon_active.png */,
+				BBBFD2BC1EF9BC7500DBBC57 /* music_3_icon_active.png */,
+				BBBFD2BD1EF9BC7500DBBC57 /* light_4_icon_active.png */,
+				BBBFD2BE1EF9BC7500DBBC57 /* alarm_icon_active.png */,
+				BBBFD2BF1EF9BC7500DBBC57 /* shades_2_icon_active.png */,
+				BBBFD2C01EF9BC7500DBBC57 /* hue_icon1_active.png */,
+				BBBFD2C11EF9BC7500DBBC57 /* plan_4_active.png */,
+				BBBFD2C21EF9BC7500DBBC57 /* water_2_icon_active.png */,
+				BBBFD2C31EF9BC7500DBBC57 /* default_icon_active.png */,
+				BBBFD2C41EF9BC7500DBBC57 /* power_outlet_2_icon_active.png */,
+				BBBFD2C51EF9BC7500DBBC57 /* movement_sensor_4_icon_active.png */,
+				BBBFD2C61EF9BC7500DBBC57 /* plan_3_active.png */,
+				BBBFD2C71EF9BC7500DBBC57 /* power_outlet_icon_active.png */,
+				BBBFD2C81EF9BC7500DBBC57 /* weather_1_active.png */,
+				BBBFD2C91EF9BC7500DBBC57 /* shades_3_icon_active.png */,
+				BBBFD2CA1EF9BC7500DBBC57 /* alarm_3_icon_active.png */,
+				BBBFD2CB1EF9BC7500DBBC57 /* music_2_icon_active.png */,
+				BBBFD2CC1EF9BC7500DBBC57 /* lamp_3_icon_active.png */,
+				BBBFD2CD1EF9BC7500DBBC57 /* cofee_maker_icon_active.png */,
+				BBBFD2CE1EF9BC7500DBBC57 /* light_5_icon_active.png */,
+				BBBFD2CF1EF9BC7500DBBC57 /* laptop_active.png */,
+				BBBFD2D01EF9BC7500DBBC57 /* scene_icon_active.png */,
+				BBBFD2D11EF9BC7500DBBC57 /* temperature_icon_active.png */,
+				BBBFD2D21EF9BC7500DBBC57 /* light_icon_active.png */,
+				BBBFD2D31EF9BC7500DBBC57 /* plan_2_active.png */,
+				BBBFD2D41EF9BC7500DBBC57 /* business_2_active.png */,
+				BBBFD2D51EF9BC7500DBBC57 /* door_icon_active.png */,
+				BBBFD2D61EF9BC7500DBBC57 /* plan_1_active.png */,
+				BBBFD2D71EF9BC7500DBBC57 /* reception_2_active.png */,
+				BBBFD2D81EF9BC7500DBBC57 /* door_lock_icon_active.png */,
+				BBBFD2D91EF9BC7500DBBC57 /* bath_1_active.png */,
+				BBBFD2DA1EF9BC7500DBBC57 /* open_close_sensor_2_icon_active.png */,
+				BBBFD2DB1EF9BC7500DBBC57 /* light_2_icon_active.png */,
+				BBBFD2DC1EF9BC7500DBBC57 /* energy_icon_active.png */,
+				BBBFD2DD1EF9BC7500DBBC57 /* shades_4_icon_active.png */,
+				BBBFD2DE1EF9BC7500DBBC57 /* bed_2_active.png */,
+				BBBFD2DF1EF9BC7500DBBC57 /* letter_active.png */,
+				BBBFD2E01EF9BC7500DBBC57 /* battery_active.png */,
+				BBBFD2E11EF9BC7500DBBC57 /* open_close_sensor_3_icon_active.png */,
+				BBBFD2E21EF9BC7500DBBC57 /* light_3_icon_active.png */,
+				BBBFD2E31EF9BC7500DBBC57 /* battery_icon_active.png */,
+				BBBFD2E41EF9BC7500DBBC57 /* switch_icon_active.png */,
+				BBBFD2E51EF9BC7500DBBC57 /* door_2_icon_active.png */,
+				BBBFD2E61EF9BC7500DBBC57 /* living_1_active.png */,
+				BBBFD2E71EF9BC7500DBBC57 /* bed_1_active.png */,
+				BBBFD2E81EF9BC7500DBBC57 /* open_close_sensor_icon_active.png */,
+				BBBFD2E91EF9BC7500DBBC57 /* living_2_active.png */,
+				BBBFD2EA1EF9BC7500DBBC57 /* office_4_active.png */,
+				BBBFD2EB1EF9BC7500DBBC57 /* office_2_active.png */,
+				BBBFD2EC1EF9BC7500DBBC57 /* office_3_active.png */,
+				BBBFD2ED1EF9BC7500DBBC57 /* business_5_active.png */,
+				BBBFD2EE1EF9BC7500DBBC57 /* lamp_2_icon_active.png */,
+				BBBFD2EF1EF9BC7600DBBC57 /* tv_icon_active.png */,
 				BBCB7B071ED33F770026CECB /* hue_icon2.png */,
 				BBCB7B081ED33F770026CECB /* energy_sensor_icon.png */,
 				BBCB7B091ED33F770026CECB /* keys.png */,
@@ -1121,13 +1391,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "ar-smart";
 				TargetAttributes = {
 					BBA09B7B1D1A01220074765E = {
 						CreatedOnToolsVersion = 7.3;
 						DevelopmentTeam = K7RZU5HJ8U;
-						LastSwiftMigration = 0800;
+						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1167,28 +1437,45 @@
 				BBCB7BB11ED33F770026CECB /* light_3_icon.png in Resources */,
 				BBCB7B851ED33F770026CECB /* weather_2.png in Resources */,
 				BBAFED4E1D2ADB3700005212 /* created_user_back_min.jpg in Resources */,
+				BBBFD3331EF9BC7600DBBC57 /* open_close_sensor_2_icon_active.png in Resources */,
+				BBBFD2FB1EF9BC7600DBBC57 /* reception_1_active.png in Resources */,
 				BBCB7B771ED33F770026CECB /* shades_icon.png in Resources */,
+				BBBFD3381EF9BC7600DBBC57 /* letter_active.png in Resources */,
+				BBBFD3231EF9BC7600DBBC57 /* alarm_3_icon_active.png in Resources */,
+				BBBFD3431EF9BC7600DBBC57 /* office_4_active.png in Resources */,
 				BBCC665B1D4FC0E2004D35A6 /* areasDOWN_btn.png in Resources */,
 				BB552CFF1D80C7E900C25F8B /* Hue.storyboard in Resources */,
+				BBBFD32A1EF9BC7600DBBC57 /* temperature_icon_active.png in Resources */,
 				BBAFED401D2ADA2500005212 /* Icon-Small-40@2x.png in Resources */,
 				BBCB7B9F1ED33F770026CECB /* next_icon.png in Resources */,
+				BBBFD31C1EF9BC7600DBBC57 /* default_icon_active.png in Resources */,
+				BBBFD3341EF9BC7600DBBC57 /* light_2_icon_active.png in Resources */,
 				BBAFED3A1D2ADA2500005212 /* Icon-Small-50.png in Resources */,
+				BBBFD33F1EF9BC7600DBBC57 /* living_1_active.png in Resources */,
 				BBA1828B1EDE10610041E39F /* clouds_backgound.jpg in Resources */,
 				BBCB7B8A1ED33F770026CECB /* light_4_icon.png in Resources */,
+				BBBFD3271EF9BC7600DBBC57 /* light_5_icon_active.png in Resources */,
 				BBCB7B6E1ED33F770026CECB /* light_icon_6.png in Resources */,
 				BBCB7BC21ED33F770026CECB /* pause_icon.png in Resources */,
+				BBBFD30F1EF9BC7600DBBC57 /* music_5_icon_active.png in Resources */,
 				BBCB7B891ED33F770026CECB /* shades_2_icon.png in Resources */,
 				BBCB7B9A1ED33F770026CECB /* weather_1.png in Resources */,
+				BBBFD2F01EF9BC7600DBBC57 /* garden_active.png in Resources */,
 				BB3DD8A51D2DDC970020B11D /* feed_btn.png in Resources */,
 				BB552CF71D78E85E00C25F8B /* Hue2ViewController.xib in Resources */,
 				BBCB7BA21ED33F770026CECB /* business_2.png in Resources */,
 				BBCB7B6B1ED33F770026CECB /* power_icon.png in Resources */,
+				BBBFD3211EF9BC7600DBBC57 /* weather_1_active.png in Resources */,
 				BBAFED481D2ADA2500005212 /* Icon-60@3x.png in Resources */,
 				BBCB7B751ED33F770026CECB /* repeat_icon.png in Resources */,
 				BBCB7B691ED33F770026CECB /* people_2.png in Resources */,
 				BBA09B8D1D1A01220074765E /* LaunchScreen.storyboard in Resources */,
+				BBBFD3261EF9BC7600DBBC57 /* cofee_maker_icon_active.png in Resources */,
+				BBBFD2FC1EF9BC7600DBBC57 /* light_icon_6_active.png in Resources */,
+				BBBFD3161EF9BC7600DBBC57 /* light_4_icon_active.png in Resources */,
 				BBCB7B7F1ED33F770026CECB /* bath_2.png in Resources */,
 				BB0DACC71D778EA300A472B2 /* HueEndpointCell.xib in Resources */,
+				BBBFD31D1EF9BC7600DBBC57 /* power_outlet_2_icon_active.png in Resources */,
 				BBCB7BA71ED33F770026CECB /* open_close_sensor_icon.png in Resources */,
 				BBCB7B791ED33F770026CECB /* sensor_icon.png in Resources */,
 				BBCB7B7D1ED33F770026CECB /* alarm_2_icon.png in Resources */,
@@ -1197,19 +1484,28 @@
 				BBCB7B821ED33F770026CECB /* music_icon.png in Resources */,
 				BBCB7B951ED33F770026CECB /* scene_icon.png in Resources */,
 				BBCC665F1D4FCB76004D35A6 /* MainMenuHeaderView.xib in Resources */,
+				BBBFD3121EF9BC7600DBBC57 /* door_lock_active.png in Resources */,
 				BBCB7BB21ED33F770026CECB /* open_close_sensor_3_icon.png in Resources */,
+				BBBFD33D1EF9BC7600DBBC57 /* switch_icon_active.png in Resources */,
 				BB3DD8AF1D2F1CE70020B11D /* nuevo(home)_btn.png in Resources */,
 				BBCB7B761ED33F770026CECB /* lamp_icon.png in Resources */,
 				BBCB7B701ED33F770026CECB /* time.png in Resources */,
 				BB32D7471DC14E9200EA41FB /* play_32.png in Resources */,
+				BBBFD2F91EF9BC7600DBBC57 /* power_icon_active.png in Resources */,
 				BBAFED431D2ADA2500005212 /* Icon@2x.png in Resources */,
+				BBBFD3221EF9BC7600DBBC57 /* shades_3_icon_active.png in Resources */,
+				BBBFD3141EF9BC7600DBBC57 /* water_3_icon_active.png in Resources */,
 				BBCB7BBC1ED33F770026CECB /* office_2.png in Resources */,
 				BB3EF4FF1DEDB2A30074F288 /* code-registration.png in Resources */,
 				BBCB7BAB1ED33F770026CECB /* reception_2.png in Resources */,
+				BBBFD3471EF9BC7600DBBC57 /* lamp_2_icon_active.png in Resources */,
+				BBBFD32F1EF9BC7600DBBC57 /* plan_1_active.png in Resources */,
 				BBCB7B931ED33F770026CECB /* shades_3_icon.png in Resources */,
 				BBA66D981D5BCA07008971A2 /* LevelTableViewCell.xib in Resources */,
 				BBCB7B941ED33F770026CECB /* movement_sensor_4_icon.png in Resources */,
 				BB099A6F1D6586EC009960C4 /* pause.png in Resources */,
+				BBBFD33A1EF9BC7600DBBC57 /* open_close_sensor_3_icon_active.png in Resources */,
+				BBBFD32C1EF9BC7600DBBC57 /* plan_2_active.png in Resources */,
 				BBA09B8A1D1A01220074765E /* Assets.xcassets in Resources */,
 				BBCB7BAC1ED33F770026CECB /* door_lock_icon.png in Resources */,
 				BBCB7BC01ED33F770026CECB /* business_5.png in Resources */,
@@ -1217,78 +1513,112 @@
 				BB3DD8BA1D2F30460020B11D /* cerrar_btn.png in Resources */,
 				BBCC66561D4FC0E2004D35A6 /* dispositivosDOWN_btn.png in Resources */,
 				BB552CFB1D78EA3600C25F8B /* hue_icon1_ico_32.png in Resources */,
+				BBBFD32B1EF9BC7600DBBC57 /* light_icon_active.png in Resources */,
+				BBBFD32E1EF9BC7600DBBC57 /* door_icon_active.png in Resources */,
 				BBCB7B971ED33F770026CECB /* previous_icon.png in Resources */,
 				BBCC66591D4FC0E2004D35A6 /* dispositivos_btn.png in Resources */,
 				BBAFED4F1D2ADB3700005212 /* default_background.jpg in Resources */,
+				BBBFD3251EF9BC7600DBBC57 /* lamp_3_icon_active.png in Resources */,
+				BBBFD3071EF9BC7600DBBC57 /* energy_2_icon_active.png in Resources */,
 				BB3EF4FD1DEDB2A30074F288 /* Living_registro_finalizacion.png in Resources */,
 				BBFC28501D8B188A005E4D2F /* SceneHueEndpointCell.xib in Resources */,
 				BB03C7031D234E8E0023256F /* PhotoLibraryCell.xib in Resources */,
 				BBCB7BB41ED33F770026CECB /* battery.png in Resources */,
+				BBBFD3101EF9BC7600DBBC57 /* weather_2_active.png in Resources */,
 				BBCB7B7C1ED33F770026CECB /* energy_2_icon.png in Resources */,
+				BBBFD3421EF9BC7600DBBC57 /* living_2_active.png in Resources */,
 				BB0DACCC1D77DFF100A472B2 /* rgb_circle_1.png in Resources */,
 				BBCB7B9C1ED33F770026CECB /* lamp_3_icon.png in Resources */,
 				BBCB7B651ED33F770026CECB /* hue_icon2.png in Resources */,
+				BBBFD2FA1EF9BC7600DBBC57 /* movement_sensor_3_icon_active.png in Resources */,
 				BBCB7BBD1ED33F770026CECB /* office_4.png in Resources */,
 				BBCB7BA11ED33F770026CECB /* temperature_icon.png in Resources */,
 				BBCB7B981ED33F770026CECB /* alarm_3_icon.png in Resources */,
 				BBCB7B7B1ED33F770026CECB /* water_icon.png in Resources */,
 				BBCB7BAA1ED33F770026CECB /* bath_1.png in Resources */,
 				BB0DAC981D74ADEF00A472B2 /* EndPointMenuCell.xib in Resources */,
+				BBBFD2F21EF9BC7600DBBC57 /* energy_sensor_icon_active.png in Resources */,
+				BBBFD33C1EF9BC7600DBBC57 /* battery_icon_active.png in Resources */,
 				BB6A2A1E1DBA90B10032A51A /* GoogleService-Info.plist in Resources */,
 				BBCB7B841ED33F770026CECB /* music_5_icon.png in Resources */,
 				BBCB7BBE1ED33F770026CECB /* tv_icon.png in Resources */,
+				BBBFD3131EF9BC7600DBBC57 /* dinning_1_active.png in Resources */,
 				BBDEE5A31DA2F59400761415 /* Configure.storyboard in Resources */,
+				BBBFD3451EF9BC7600DBBC57 /* office_3_active.png in Resources */,
 				BBCB7B8B1ED33F770026CECB /* alarm_icon.png in Resources */,
+				BBBFD30E1EF9BC7600DBBC57 /* music_active.png in Resources */,
 				BBAFED471D2ADA2500005212 /* Icon-76@2x.png in Resources */,
 				BBCB7B6A1ED33F770026CECB /* people_1.png in Resources */,
 				BBCB7B881ED33F770026CECB /* music_3_icon.png in Resources */,
 				BBA66D941D5BC908008971A2 /* SonosTableViewCell.xib in Resources */,
 				BBCB7BA61ED33F770026CECB /* door_icon.png in Resources */,
+				BBBFD30D1EF9BC7600DBBC57 /* office_1_active.png in Resources */,
 				BB3EF5021DEDB2A30074F288 /* back_btn.png in Resources */,
 				BBCB7B671ED33F770026CECB /* keys.png in Resources */,
+				BBBFD3011EF9BC7600DBBC57 /* shades_icon_active.png in Resources */,
 				BBCB7B7A1ED33F770026CECB /* shuffle_icon.png in Resources */,
+				BBBFD3001EF9BC7600DBBC57 /* shades_5_icon_active.png in Resources */,
+				BBBFD3401EF9BC7600DBBC57 /* bed_1_active.png in Resources */,
 				BB3DD8B01D2F1CE70020B11D /* usuarioDOWN_icon.png in Resources */,
 				BBCC66581D4FC0E2004D35A6 /* favoritosDOWN_btn.png in Resources */,
+				BBBFD3181EF9BC7600DBBC57 /* shades_2_icon_active.png in Resources */,
 				BBA09B851D1A01220074765E /* Main.storyboard in Resources */,
 				BB794A8B1D3E582F008EBBF3 /* AddRoomViewController.xib in Resources */,
 				BB41CE1A1D2D7FC600682A72 /* LocalAlertViewController.xib in Resources */,
 				BB9479181EE5CB4300DADFB9 /* MyAccount.storyboard in Resources */,
+				BBBFD32D1EF9BC7600DBBC57 /* business_2_active.png in Resources */,
+				BBBFD3061EF9BC7600DBBC57 /* energy_2_active.png in Resources */,
 				BBAFED451D2ADA2500005212 /* Icon-Small-40@3x.png in Resources */,
 				BBAFED461D2ADA2500005212 /* Icon-72@2x.png in Resources */,
+				BBBFD2F11EF9BC7600DBBC57 /* hue_icon2_active.png in Resources */,
 				BBCB7B901ED33F770026CECB /* laptop.png in Resources */,
+				BBBFD2FE1EF9BC7600DBBC57 /* temperature_active.png in Resources */,
 				BBCB7B811ED33F770026CECB /* office_1.png in Resources */,
 				BBCB7B731ED33F770026CECB /* temperature.png in Resources */,
 				BBCB7B871ED33F770026CECB /* water_3_icon.png in Resources */,
 				BB3EF5001DEDB2A30074F288 /* logo_living.png in Resources */,
 				BB9479111EE5C99400DADFB9 /* Guests.storyboard in Resources */,
 				BBCB7BBF1ED33F770026CECB /* office_3.png in Resources */,
+				BBBFD3091EF9BC7600DBBC57 /* alarm_2_icon_active.png in Resources */,
+				BBBFD2F81EF9BC7600DBBC57 /* people_1_active.png in Resources */,
 				BBCB7BB51ED33F770026CECB /* switch_icon.png in Resources */,
 				BBCB7BAE1ED33F770026CECB /* shades_4_icon.png in Resources */,
 				BBCB7BB81ED33F770026CECB /* living_1.png in Resources */,
 				BBAFED421D2ADA2500005212 /* Icon-Small-50@2x.png in Resources */,
+				BBBFD3411EF9BC7600DBBC57 /* open_close_sensor_icon_active.png in Resources */,
+				BBBFD3321EF9BC7600DBBC57 /* bath_1_active.png in Resources */,
+				BBBFD3241EF9BC7600DBBC57 /* music_2_icon_active.png in Resources */,
 				BBCB7BBB1ED33F770026CECB /* path4796.png in Resources */,
 				BBAFED381D2ADA2500005212 /* Icon-Small.png in Resources */,
 				BB099A6A1D64C215009960C4 /* LevelViewController.xib in Resources */,
 				BB099A721D6586EC009960C4 /* end.png in Resources */,
 				BBAFED411D2ADA2500005212 /* Icon-Small@3x.png in Resources */,
+				BBBFD2F51EF9BC7600DBBC57 /* keys_active.png in Resources */,
 				BB9479261EE5CDAB00DADFB9 /* Scenes.storyboard in Resources */,
 				BBCB7B831ED33F770026CECB /* door_lock_2_icon.png in Resources */,
+				BBBFD3051EF9BC7600DBBC57 /* sensor_icon_active.png in Resources */,
 				BBCB7BA91ED33F770026CECB /* open_close_sensor_2_icon.png in Resources */,
+				BBBFD3081EF9BC7600DBBC57 /* water_icon_active.png in Resources */,
 				BBDEE5DB1DA5AB5000761415 /* SceneHueCell.xib in Resources */,
 				BB3EF4FE1DEDB2A30074F288 /* Living_(Registro).png in Resources */,
+				BBBFD3461EF9BC7600DBBC57 /* business_5_active.png in Resources */,
 				BBCB7B711ED33F770026CECB /* reception_1.png in Resources */,
 				BBA66D901D5BBA45008971A2 /* SonosViewController.xib in Resources */,
 				BBAFED491D2ADA2600005212 /* iTunesArtwork@2x.png in Resources */,
 				BB3DD8B81D2F2F300020B11D /* actualizar_btn.png in Resources */,
 				BBCB7B6C1ED33F770026CECB /* movement_sensor_3_icon.png in Resources */,
+				BBBFD3391EF9BC7600DBBC57 /* battery_active.png in Resources */,
 				BBCB7B6D1ED33F770026CECB /* reception_3.png in Resources */,
 				BBCB7B661ED33F770026CECB /* energy_sensor_icon.png in Resources */,
 				BBCB7BB71ED33F770026CECB /* door_2_icon.png in Resources */,
 				BBDEE59E1D9C6D4400761415 /* DomuAlertViewController.xib in Resources */,
 				BBFC28691D906C40005E4D2F /* Home.png in Resources */,
+				BBBFD3361EF9BC7600DBBC57 /* shades_4_icon_active.png in Resources */,
 				BB63BE8E1D3AD56900481CC0 /* Notifications.storyboard in Resources */,
 				BBCB7BA41ED33F770026CECB /* plan_2.png in Resources */,
+				BBBFD3371EF9BC7600DBBC57 /* bed_2_active.png in Resources */,
 				BBCC66651D4FDFDC004D35A6 /* xbox_menu.png in Resources */,
+				BBBFD3351EF9BC7600DBBC57 /* energy_icon_active.png in Resources */,
 				BBCB7BBA1ED33F770026CECB /* living_2.png in Resources */,
 				BBCB7B921ED33F770026CECB /* power_outlet_2_icon.png in Resources */,
 				BBA182981EE3A29F0041E39F /* Device.storyboard in Resources */,
@@ -1298,39 +1628,57 @@
 				BBCB7B8E1ED33F770026CECB /* plan_4.png in Resources */,
 				BBCB7BA01ED33F770026CECB /* light_5_icon.png in Resources */,
 				BBCB7B681ED33F770026CECB /* money.png in Resources */,
+				BBBFD2F31EF9BC7600DBBC57 /* money_active.png in Resources */,
 				BBAFED3E1D2ADA2500005212 /* Icon-72.png in Resources */,
+				BBBFD33E1EF9BC7600DBBC57 /* door_2_icon_active.png in Resources */,
 				BB0D27C21D831D4300ADBD2E /* cerrar_btn_domu.png in Resources */,
+				BBBFD30C1EF9BC7600DBBC57 /* bath_2_active.png in Resources */,
 				BB552CF91D78EA0A00C25F8B /* hue_icon1_ico.png in Resources */,
 				BB099A661D64C10E009960C4 /* SwitchTableViewCell.xib in Resources */,
 				BB3DD8A31D2DDBB10020B11D /* conectar_btn_512.png in Resources */,
 				BBAFED4D1D2ADB3700005212 /* registered_hubs.jpg in Resources */,
 				BBCB7B9E1ED33F770026CECB /* music_2_icon.png in Resources */,
 				BBF93E1B1D5000AE000985AE /* flecha_icon.png in Resources */,
+				BBBFD2F41EF9BC7600DBBC57 /* people_2_active.png in Resources */,
 				BBCB7B8D1ED33F770026CECB /* dinning_1.png in Resources */,
 				BBAFED3B1D2ADA2500005212 /* Icon.png in Resources */,
+				BBBFD31E1EF9BC7600DBBC57 /* movement_sensor_4_icon_active.png in Resources */,
+				BBBFD3481EF9BC7600DBBC57 /* tv_icon_active.png in Resources */,
+				BBBFD3301EF9BC7600DBBC57 /* reception_2_active.png in Resources */,
+				BBBFD2FD1EF9BC7600DBBC57 /* time_active.png in Resources */,
 				BBFC28681D906C40005E4D2F /* User.png in Resources */,
 				BBCB7B861ED33F770026CECB /* garden.png in Resources */,
 				BBCB7BA81ED33F770026CECB /* plan_1.png in Resources */,
 				BBCB7BAF1ED33F770026CECB /* energy_icon.png in Resources */,
 				BBCB7B741ED33F770026CECB /* business_1.png in Resources */,
 				BB3DD8B11D2F1CE70020B11D /* usuario_icon.png in Resources */,
+				BBBFD3111EF9BC7600DBBC57 /* door_lock_2_icon_active.png in Resources */,
 				BBCC66571D4FC0E2004D35A6 /* favoritos_btn.png in Resources */,
 				BBAFED3C1D2ADA2500005212 /* Icon-Small@2x.png in Resources */,
+				BBBFD31B1EF9BC7600DBBC57 /* water_2_icon_active.png in Resources */,
+				BBBFD3291EF9BC7600DBBC57 /* scene_icon_active.png in Resources */,
 				BBCB7B9B1ED33F770026CECB /* light_icon.png in Resources */,
 				BB3DD8AE1D2F1CE70020B11D /* homeDOWN_icon.png in Resources */,
 				BBCB7BC11ED33F770026CECB /* lamp_2_icon.png in Resources */,
 				BBCB7B6F1ED33F770026CECB /* reception_5.png in Resources */,
+				BBBFD3281EF9BC7600DBBC57 /* laptop_active.png in Resources */,
+				BBBFD3041EF9BC7600DBBC57 /* lamp_icon_active.png in Resources */,
 				BBCB7B7E1ED33F770026CECB /* music_4_icon.png in Resources */,
+				BBBFD31F1EF9BC7600DBBC57 /* plan_3_active.png in Resources */,
 				BB3DD8A11D2DDA770020B11D /* domu_home.png in Resources */,
 				BBCC665A1D4FC0E2004D35A6 /* areas_btn.png in Resources */,
 				BBCB7BB61ED33F770026CECB /* letter.png in Resources */,
+				BBBFD31A1EF9BC7600DBBC57 /* plan_4_active.png in Resources */,
 				BBA182951EE39F8F0041E39F /* Localizable.strings in Resources */,
 				BB3DD8AD1D2F1CE70020B11D /* home_icon.png in Resources */,
 				BBCB7BB01ED33F770026CECB /* bed_2.png in Resources */,
 				BBCB7B991ED33F770026CECB /* plan_3.png in Resources */,
 				BB41CE161D2CA2B200682A72 /* LoadingViewController.xib in Resources */,
+				BBBFD3311EF9BC7600DBBC57 /* door_lock_icon_active.png in Resources */,
+				BBBFD3441EF9BC7600DBBC57 /* office_2_active.png in Resources */,
 				BB099A621D64BEF0009960C4 /* SwitchViewController.xib in Resources */,
 				BBCB7B8F1ED33F770026CECB /* default_icon.png in Resources */,
+				BBBFD3021EF9BC7600DBBC57 /* movement_sensor_icon_active.png in Resources */,
 				BB63BEAD1D3CB91800481CC0 /* AddGuestViewController.xib in Resources */,
 				BB099A911D6E02BB009960C4 /* marker.png in Resources */,
 				BBAFED3F1D2ADA2500005212 /* Icon-76.png in Resources */,
@@ -1338,20 +1686,32 @@
 				BBCB7B781ED33F770026CECB /* movement_sensor_icon.png in Resources */,
 				BB794A7E1D3D886F008EBBF3 /* SelectDeviceViewController.xib in Resources */,
 				BB099A9D1D711093009960C4 /* SensorViewController.xib in Resources */,
+				BBBFD2F71EF9BC7600DBBC57 /* reception_5_active.png in Resources */,
+				BBBFD3191EF9BC7600DBBC57 /* hue_icon1_active.png in Resources */,
+				BBBFD2F61EF9BC7600DBBC57 /* reception_3_active.png in Resources */,
 				BBCB7BA51ED33F770026CECB /* sound_icon.png in Resources */,
 				BB94791F1EE5CD5300DADFB9 /* Rooms.storyboard in Resources */,
 				BB0D27C61D89C54B00ADBD2E /* SensorLevelViewController.xib in Resources */,
+				BBBFD33B1EF9BC7600DBBC57 /* light_3_icon_active.png in Resources */,
+				BBBFD30A1EF9BC7600DBBC57 /* reception_4_active.png in Resources */,
+				BBBFD30B1EF9BC7600DBBC57 /* music_4_icon_active.png in Resources */,
 				BB099A701D6586EC009960C4 /* play.png in Resources */,
 				BBAFED3D1D2ADA2500005212 /* Icon-60.png in Resources */,
 				BBCB7B9D1ED33F770026CECB /* cofee_maker_icon.png in Resources */,
 				BB099A8B1D6CD1CF009960C4 /* SceneEndpointCell.xib in Resources */,
 				BBCB7BB91ED33F770026CECB /* bed_1.png in Resources */,
+				BB4A608C1EFC20850004E106 /* icons_list.plist in Resources */,
 				BBCB7B8C1ED33F770026CECB /* hue_icon1.png in Resources */,
 				BBCB7B911ED33F770026CECB /* water_2_icon.png in Resources */,
 				BBFC286A1D906C40005E4D2F /* Menu.png in Resources */,
 				BBCB7BA31ED33F770026CECB /* play_icon.png in Resources */,
+				BBBFD3031EF9BC7600DBBC57 /* business_1_active.png in Resources */,
 				BBCB7BAD1ED33F770026CECB /* light_2_icon.png in Resources */,
 				BB6A2A1A1DBA84AB0032A51A /* Trash.png in Resources */,
+				BBBFD2FF1EF9BC7600DBBC57 /* movement_sensor_2_icon_active.png in Resources */,
+				BBBFD3201EF9BC7600DBBC57 /* power_outlet_icon_active.png in Resources */,
+				BBBFD3151EF9BC7600DBBC57 /* music_3_icon_active.png in Resources */,
+				BBBFD3171EF9BC7600DBBC57 /* alarm_icon_active.png in Resources */,
 				BB3EF5031DEDB2A30074F288 /* button_take_picture.png in Resources */,
 				BBAFED441D2ADA2500005212 /* Icon-60@2x.png in Resources */,
 			);
@@ -1366,9 +1726,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Living/Pods-Living-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
@@ -1381,9 +1744,48 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Living/Pods-Living-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BTNavigationDropdownMenu/BTNavigationDropdownMenu.framework",
+				"${BUILT_PRODUCTS_DIR}/CSStickyHeaderFlowLayout/CSStickyHeaderFlowLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/CircularSlider/CircularSlider.framework",
+				"${BUILT_PRODUCTS_DIR}/CollectionViewWaterfallLayout/CollectionViewWaterfallLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/JWTDecode/JWTDecode.framework",
+				"${BUILT_PRODUCTS_DIR}/Localize-Swift/Localize_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/Navajo-Swift/Navajo_Swift.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/SideMenuController/SideMenuController.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHUEColorPicker/SwiftHUEColorPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyTimer/SwiftyTimer.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyUserDefaults/SwiftyUserDefaults.framework",
+				"${BUILT_PRODUCTS_DIR}/UIColor_Hex_Swift/UIColor_Hex_Swift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BTNavigationDropdownMenu.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CSStickyHeaderFlowLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CircularSlider.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CollectionViewWaterfallLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JWTDecode.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Localize_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Navajo_Swift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SideMenuController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHUEColorPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyTimer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyUserDefaults.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UIColor_Hex_Swift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1396,13 +1798,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Living-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1611,14 +2016,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1659,14 +2070,20 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1782,7 +2199,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Living/Living-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1852,7 +2270,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.arsmart.domu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Living/Living-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

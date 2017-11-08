@@ -47,7 +47,7 @@ UINavigationControllerDelegate  {
         self.title = "Select Icons"
         self.navigationController?.navigationBar.barTintColor = UIColor(theme.MainColor)
         
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.white]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
         
         
     }
@@ -87,7 +87,7 @@ UINavigationControllerDelegate  {
         // Use the outlet in our custom class to get a reference to the UILabel in the cell
         
         
-        let img:UIImage = UIImage(named:self.images[(indexPath as NSIndexPath).item])!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        let img:UIImage = UIImage(named:self.images[(indexPath as NSIndexPath).item])!
         
         
         //theImageView.image = theImageView.image!.imageWithRenderingMode(UIImageRenderingMode.AlwaysTemplate)

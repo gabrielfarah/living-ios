@@ -110,22 +110,11 @@ class DeviceEditViewController: UIViewController,LocalAlertViewControllerDelegat
             customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
             vc.setText("The device name cant be empty...".localized())
             return
-        }else if color == nil {
-            let width = ModalSize.custom(size: 240)
-            let height = ModalSize.custom(size: 130)
-            let presenter = Presentr(presentationType: .custom(width: width, height: height, center:ModalCenterPosition.center))
-            
-            presenter.transitionType = .crossDissolve // Optional
-            presenter.dismissOnTap = true
-            let vc = LocalAlertViewController(nibName: "LocalAlertViewController", bundle: nil)
-            customPresentViewController(presenter, viewController: vc, animated: true, completion: nil)
-            vc.setText("The color cant be empty...".localized())
-            return
         }
         
         
         endpoint.favorite = 0
-        endpoint.color = self.toHexString(color: self.color!)
+
         
         let token = ArSmartApi.sharedApi.getToken()
         let hub = ArSmartApi.sharedApi.hub?.hid

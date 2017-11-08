@@ -86,7 +86,7 @@ class RegisterNewHub:UIViewController {
                     case .failure:
                         //completion(result: "Not Ok")
                         let data = NSData(data: response.data!) as Data
-                        var json = JSON(data: data)
+                        var json = try! JSON(data: data)
                         print("Error")
                         
                             let response_string = (json["ERROR"]).rawString()

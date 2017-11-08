@@ -45,8 +45,8 @@
 "One moment please..." = "Un momento por favor...";
 "Operation failed, please try again..." = "Error en la operación: inténtalo de nuevo ...";
 "Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone" = "Asegúrese de que su teléfono WIFI esté activo y conectado a la red Domu-AP. También asegúrese de desactivar momentáneamente los datos móviles en su teléfono";
-"Room added succesfully..." = "Habitación añadida con éxito ...";
-"Room successfully added..." = "Habitación añadida con éxito ...";
+"Room added succesfully..." = "Ambiente añadida con éxito ...";
+"Room successfully added..." = "Ambiente añadida con éxito ...";
 "Saving device in the hub, one moment please..." = "Saving device in the hub, un momento por favor ...";
 "Scene has been updated..." = "La escena se ha actualizado ...";
 "Scene succesfully created..." = "Escena creada con éxito ...";
@@ -58,7 +58,7 @@
 "The device is offline, check your internet connection" = "El dispositivo está desconectado, comprueba tu conexión a Internet";
 "The device name cant be empty..." = "El nombre del dispositivo no puede estar vacío ...";
 "The password must be the same..." = "La contraseña debe ser la misma ...";
-"The room has been remove succesfully..." = "La habitación ha sido quitar con éxito ...";
+"The room has been remove succesfully..." = "El ambiente ha sido eliminado con éxito ...";
 "The scene cant be empty..." = "La escena no puede estar vacía ...";
 "The scene has been created succesfully..." = "La escena ha sido creada con éxito ...";
 "The scene has been removed..." = "La escena se ha eliminado ...";
@@ -79,7 +79,7 @@
 "You must write the location's name" = "Debe escribir el nombre de la ubicación";
 "error, please try again" = "Error, inténtalo de nuevo";
 "error: %@" = "Error: %@";
-"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar esta habitación?";
+"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar esta ambiente?";
 "Account" = "Cuenta";
 "Actions" = "Acciones";
 "Are you sure?" = "¿Estás seguro?";
@@ -125,9 +125,9 @@
 "One moment please..." = "Un momento por favor...";
 "Operation failed, please try again..." = "Error en la operación: inténtalo de nuevo ...";
 "Please make sure your phone WIFI is active and connected to the 'Domu-AP' network. Also make sure to momentarily deactivate the mobile data in your phone" = "Asegúrese de que su teléfono WIFI esté activo y conectado a la red Domu-AP. También asegúrese de desactivar momentáneamente los datos móviles en su teléfono";
-"Room added succesfully..." = "Habitación añadida con éxito ...";
-"Room successfully added..." = "Habitación añadida con éxito ...";
-"Rooms" = "Habitaciones";
+"Room added succesfully..." = "Ambiente añadida con éxito ...";
+"Room successfully added..." = "Ambiente añadida con éxito ...";
+"Rooms" = "Ambientes";
 "Saving device in the hub, one moment please..." = "Saving device in the hub, un momento por favor ...";
 "Scene has been updated..." = "La escena se ha actualizado ...";
 "Scene succesfully created..." = "Escena creada con éxito ...";
@@ -139,7 +139,7 @@
 "The device is offline, check your internet connection" = "El dispositivo está desconectado, comprueba tu conexión a Internet";
 "The device name cant be empty..." = "El nombre del dispositivo no puede estar vacío ...";
 "The password must be the same..." = "La contraseña debe ser la misma ...";
-"The room has been remove succesfully..." = "La habitación ha sido quitar con éxito ...";
+"The room has been remove succesfully..." = "El ambiente ha sido eliminado con éxito ...";
 "The scene cant be empty..." = "La escena no puede estar vacía ...";
 "The scene has been created succesfully..." = "La escena ha sido creada con éxito ...";
 "The scene has been removed..." = "La escena se ha eliminado ...";
@@ -160,4 +160,8 @@
 "You must write the location's name" = "Debe escribir el nombre de la ubicación";
 "error, please try again" = "Error, inténtalo de nuevo";
 "error: %@" = "Error: %@";
-"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar esta habitación?";
+"¿Are you sure you want to delete this room?" = "¿Estás seguro de que quieres eliminar este ambiente?";
+"There are no rooms" = "No hay ambientes registrados";
+
+
+

@@ -183,14 +183,14 @@ class HueLight{
                 case .success:
                     
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["message"]).rawString()
                     completion(false,response_string!)
                     
                     
                 case .failure:
                     let data = NSData(data: response.data!) as Data
-                    var json = JSON(data: data)
+                    var json = try! JSON(data: data)
                     let response_string = (json["ERROR"]).rawString()
                     completion(true,response_string!)
                     

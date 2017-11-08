@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tX5-yo-Rxa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="tX5-yo-Rxa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -13,7 +13,7 @@
         <!--Device Edit View Controller-->
         <scene sceneID="AGa-Ph-zCA">
             <objects>
-                <viewController id="fDt-7t-DPa" customClass="DeviceEditViewController" customModule="Living" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="fDt-7t-DPa" customClass="DeviceEditViewController" customModule="Living" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hrh-sB-325"/>
                         <viewControllerLayoutGuide type="bottom" id="WdE-gf-1ow"/>
@@ -181,7 +181,7 @@
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mt4-Jf-e3W" customClass="SwiftHUEColorPicker">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mt4-Jf-e3W" customClass="SwiftHUEColorPicker" customModule="SwiftHUEColorPicker">
                                 <rect key="frame" x="0.0" y="338" width="375" height="64"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -275,7 +275,7 @@
         <scene sceneID="mrp-e0-vuB">
             <objects>
                 <navigationController storyboardIdentifier="DevicesNavigationController" id="tX5-yo-Rxa" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="mbw-b1-Jxc">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="mbw-b1-Jxc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

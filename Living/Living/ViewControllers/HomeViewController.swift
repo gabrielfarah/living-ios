@@ -313,11 +313,10 @@ class HomeViewController:UIViewController,SideMenuControllerDelegate, MainMenuHe
             let cell = collectionView.cellForItem(at: indexPath) as! EndPointMenuCell
             cell.setColor(UIColor.red)
             let scene = scenes.scenes[(indexPath as NSIndexPath).row]
+            hub = ArSmartApi.sharedApi.hub?.hid
             scene.run(token, hub: hub!, completion: { (IsError, result) in
                 if(!IsError){
 
-                    
-                    
                 }else{
                     
 
@@ -768,11 +767,23 @@ extension HomeViewController: UICollectionViewDataSource {
             }
             
             
-            let image = UIImage(named:endpoint.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            
+            var image:UIImage?
+            if endpoint.image != "" {
+                image = UIImage(named:endpoint.ImageNamed())
+                if image == nil{
+                    
+                    image = UIImage(named:"default_icon")
+                }
+            }
+            
+            
+            
+            
             cell.setStatus(endpoint)
             let endpoint_name = String(format:"%@",endpoint.name)
             cell.isEndpoint = true
-            cell.setGalleryItem(image, text: endpoint_name)
+            cell.setGalleryItem(image!, text: endpoint_name)
             if endpoint.room  != nil {
                 cell.setHeaderColor(color: endpoint.room?.color)
             }else{
@@ -787,13 +798,19 @@ extension HomeViewController: UICollectionViewDataSource {
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let room = rooms.rooms[(indexPath as NSIndexPath).item]
             
-            var image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+            var image:UIImage?
             if room.image != "" {
-                image = UIImage(named:room.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                image = UIImage(named:room.ImageNamed())
+                if image == nil{
+                    
+                    image = UIImage(named:"default_icon")
+                }
+            }else{
+                image = UIImage(named:"default_icon")
             }
             
             
-            cell.setGalleryItemNoStatus(image, text: room.description)
+            cell.setGalleryItemNoStatus(image!, text: room.description)
             cell.setHeaderColor(color: room.color)
             cell.itemImageView.layer.removeAllAnimations()
             
@@ -804,14 +821,21 @@ extension HomeViewController: UICollectionViewDataSource {
              cell.isEndpoint = false
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let scene = scenes.scenes[(indexPath as NSIndexPath).item]
-            
-            var image = UIImage(named:"lamp_icon")!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        
+            var image:UIImage? 
             if scene.image != "" {
-                image = UIImage(named:scene.ImageNamed())!.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+                image = UIImage(named:scene.ImageNamed())
+                if image == nil{
+                    
+                    image = UIImage(named:"default_icon")
+                }
+                
+               
+            }else{
+                image = UIImage(named:"default_icon")
             }
             
-            
-            cell.setGalleryItemNoStatus(image, text: scene.name)
+            cell.setGalleryItemNoStatus(image!, text: scene.name)
 
             cell.setHeaderColor(real_color: UIColor.clear)
             cell.itemImageView.layer.removeAllAnimations()
